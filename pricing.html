@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Working with Eren — Pricing</title>
+<meta name="description" content="How to work with Eren: a free assessment, then a scoped build priced to the value it creates, with optional ongoing optimization and automation as the relationship grows.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap">
+<style>
+  :root{--bg:#080D18;--bg-2:#0B1526;--panel:#101E3A;--panel-2:#0D1830;--ink:#EDF2FB;--sub:#AAB7D0;--muted:#7A87A4;--faint:#59668A;--navy:#1B3A6B;--blue:#3F7BD6;--azure:#57A2E8;--line:rgba(255,255,255,.08);--line-2:rgba(255,255,255,.14);--grad:linear-gradient(120deg,#57a2e8 0%,#2f62b8 45%,#122a52 100%);color-scheme:dark}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hanken Grotesk",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .shell{max-width:1160px;margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+  .grad-text{background:var(--grad);background-size:200% 200%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:drift 14s ease-in-out infinite}
+  @keyframes drift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  .btn{font-family:inherit;font-weight:700;font-size:14px;color:#fff;border:none;cursor:pointer;border-radius:11px;padding:13px 22px;display:inline-block;background:var(--grad);background-size:220% 220%;animation:drift 14s ease-in-out infinite;box-shadow:0 12px 30px -12px rgba(63,123,214,.6);transition:filter .15s}
+  .btn:hover{filter:brightness(1.09)} .btn.sm{padding:10px 18px}
+  .btn.ghost{background:transparent;border:1px solid var(--line-2);box-shadow:none;color:var(--ink);animation:none}.btn.ghost:hover{border-color:var(--azure);background:rgba(87,162,232,.08)}
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(8,13,24,.72);border-bottom:1px solid var(--line)}
+  .nav-in{max-width:1160px;margin:0 auto;padding:14px clamp(20px,4vw,40px);display:flex;align-items:center;justify-content:space-between}
+  .brand{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:21px;letter-spacing:-.03em}.brand .mark{width:26px;height:26px;flex:none}
+  .nav-links{display:flex;align-items:center;gap:26px;font-size:14px;font-weight:600;color:var(--sub)}.nav-links a:hover{color:var(--ink)}.nav-links a.on{color:var(--ink)}
+  .nav-r{display:flex;align-items:center;gap:16px}.signin{font-size:14px;font-weight:600;color:var(--sub)}.signin:hover{color:var(--ink)}
+  @media(max-width:820px){.nav-links,.signin{display:none}}
+  .subhero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);text-align:center}
+  .subhero .glow{position:absolute;left:50%;top:30%;transform:translate(-50%,-50%);width:min(900px,120vw);height:500px;border-radius:50%;background:radial-gradient(circle,rgba(63,123,214,.18),transparent 62%);filter:blur(50px);z-index:0}
+  .subhero-in{position:relative;z-index:1;padding:clamp(60px,10vw,120px) 0 clamp(44px,6vw,64px);max-width:820px;margin:0 auto}
+  .ey{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+  h1{font-size:clamp(36px,5.6vw,62px);font-weight:800;letter-spacing:-.04em;line-height:1.04;margin:16px 0 0;text-wrap:balance}
+  .subhero p{font-size:clamp(17px,2.2vw,21px);color:var(--sub);max-width:56ch;margin:20px auto 0}
+  section{padding:clamp(52px,8vw,100px) 0;border-bottom:1px solid var(--line)}
+  .center{text-align:center;margin:0 auto}
+  .sec-h{font-size:clamp(26px,4vw,42px);font-weight:800;letter-spacing:-.03em;line-height:1.06;margin:14px 0 0;text-wrap:balance}
+  .sec-sub{font-size:17px;color:var(--sub);max-width:60ch;margin:16px 0 0}
+
+  .stages{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px;align-items:stretch}
+  .stage{position:relative;border:1px solid var(--line);border-radius:22px;padding:30px 26px;background:var(--panel-2);display:flex;flex-direction:column}
+  .stage.mid{border:1px solid transparent;background:linear-gradient(#0c1830,#0c1830) padding-box,var(--grad) border-box;box-shadow:0 24px 60px -30px rgba(63,123,214,.5)}
+  .stage .step{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--azure)}
+  .stage h3{font-size:22px;font-weight:800;letter-spacing:-.02em;margin:12px 0 6px}
+  .stage .price{font-size:15px;font-weight:700;color:var(--ink);margin:0 0 12px}
+  .stage .price small{color:var(--muted);font-weight:600}
+  .stage p{font-size:14.5px;color:var(--sub);margin:0 0 16px;line-height:1.55}
+  .stage ul{list-style:none;margin:0 0 22px;padding:0;display:flex;flex-direction:column;gap:9px}
+  .stage li{font-size:14px;color:#d5deee;display:flex;gap:9px;align-items:flex-start}.stage li::before{content:"✓";color:var(--azure);font-weight:800;flex:none}
+  .stage .go{margin-top:auto}
+  .arrowrow{display:flex;justify-content:center;gap:8px;margin-top:18px;color:var(--muted);font-size:13px;font-weight:600;letter-spacing:.02em}
+  @media(max-width:860px){.stages{grid-template-columns:1fr}}
+
+  .how{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
+  .how .h{border:1px solid var(--line);border-radius:16px;padding:22px;background:linear-gradient(160deg,#101e3a,#0b1526)}
+  .how .h h4{font-size:16px;font-weight:700;margin:0 0 8px}
+  .how .h p{font-size:14px;color:var(--sub);margin:0;line-height:1.55}
+  @media(max-width:820px){.how{grid-template-columns:1fr 1fr}}
+
+  .faq{max-width:780px;margin:44px auto 0}
+  .faq details{border-bottom:1px solid var(--line);padding:16px 2px}
+  .faq summary{font-weight:700;font-size:16px;cursor:pointer;list-style:none}.faq summary::-webkit-details-marker{display:none}
+  .faq p{color:var(--sub);font-size:14.5px;margin:10px 0 0}
+
+  .cta{position:relative;overflow:hidden;border-radius:28px;margin:clamp(56px,8vw,96px) 0;padding:clamp(44px,7vw,74px);text-align:center;border:1px solid var(--line-2);isolation:isolate}
+  .cta::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(90% 120% at 15% 0%,#3f7bd6 0%,transparent 55%),radial-gradient(90% 120% at 90% 30%,#2b57a6 0%,transparent 55%),linear-gradient(120deg,#12244a,#0c1830);background-size:200% 200%;animation:drift 18s ease-in-out infinite}
+  .cta::after{content:"";position:absolute;inset:0;z-index:-1;background:rgba(7,12,24,.2)}
+  .cta h2{font-size:clamp(26px,4.2vw,44px);font-weight:800;letter-spacing:-.03em;margin:0}
+  .cta p{font-size:18px;color:#cdd8ee;margin:16px auto 28px;max-width:50ch}
+  footer{padding:50px 0 60px;color:var(--muted);font-size:13.5px}
+  .foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}.foot-cols{display:flex;gap:52px;flex-wrap:wrap}
+  .foot-cols h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin:0 0 12px}.foot-cols a{display:block;font-size:14px;color:var(--sub);margin-bottom:9px}.foot-cols a:hover{color:var(--ink)}
+  footer b{color:var(--ink);font-weight:700}
+  @media(prefers-reduced-motion:reduce){.grad-text,.btn,.cta::before{animation:none}}
+</style></head><body>
+
+<nav><div class="nav-in">
+  <a class="brand" href="index.html"><span class="mark"><svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="9" fill="#1B3A6B"/><path d="M16 8.6 L22.4 12.3 L22.4 19.7 L16 23.4 L9.6 19.7 L9.6 12.3 Z" fill="none" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/><circle cx="16" cy="16" r="2.3" fill="#fff"/></svg></span>Eren</a>
+  <div class="nav-links"><a href="index.html">Home</a><a href="how.html">How Eren operates</a><a href="pricing.html" class="on">Pricing</a><a href="about.html">About</a></div>
+  <div class="nav-r"><a class="signin" href="signup.html">Sign in</a><a class="btn sm" href="start.html">Start with an analysis</a></div>
+</div></nav>
+
+<header class="subhero"><div class="glow"></div><div class="shell subhero-in">
+  <div class="ey grad-text">Working with Eren</div>
+  <h1>Priced to what it's worth — not the hours.</h1>
+  <p>No rigid subscription tiers. You start with an analysis, then pay for the work scoped to the value it creates for your business. Simple, and in your control.</p>
+</div></header>
+
+<section><div class="shell">
+  <div class="center" style="max-width:44ch"><div class="ey grad-text">How it works</div><h2 class="sec-h center">Three stages, one relationship.</h2><p class="sec-sub center">Most businesses start at the first stage and move as far as the value justifies. You're never locked in.</p></div>
+  <div class="stages">
+    <div class="stage">
+      <div class="step">Stage 1</div>
+      <h3>Assessment</h3>
+      <div class="price">Free to start</div>
+      <p>Eren studies your business and comes back with what's costing you and what it's worth to fix — a real plan, no obligation.</p>
+      <ul><li>Full analysis of site, operations &amp; tools</li><li>Ranked findings, each with its impact</li><li>A clear scope for what's worth doing</li></ul>
+      <a class="btn ghost go" href="start.html">Start free</a>
+    </div>
+    <div class="stage mid">
+      <div class="step">Stage 2</div>
+      <h3>Build &amp; implement</h3>
+      <div class="price">Project-based <small>· scoped to the plan</small></div>
+      <p>Eren does the work — the redesigned presence, the fixes, the custom tools — priced against what it recovers, agreed up front.</p>
+      <ul><li>Done-for-you, not a to-do list</li><li>Fixed scope and price before we begin</li><li>Built to keep improving after launch</li></ul>
+      <a class="btn go" href="start.html">Get a scope</a>
+    </div>
+    <div class="stage">
+      <div class="step">Stage 3</div>
+      <h3>Ongoing &amp; automation</h3>
+      <div class="price">Optional monthly</div>
+      <p>Keep Eren improving what it built — new opportunities, deeper automation, and custom software as the relationship grows.</p>
+      <ul><li>Continuous optimization &amp; new findings</li><li>Automation &amp; software as you scale</li><li>Cancel anytime — it earns its place</li></ul>
+      <a class="btn ghost go" href="start.html">Talk it through</a>
+    </div>
+  </div>
+  <div class="arrowrow">Assessment → Build → Ongoing · move only as far as it pays off</div>
+</div></section>
+
+<section><div class="shell">
+  <div class="center" style="max-width:42ch"><div class="ey grad-text">How we price</div><h2 class="sec-h center">Value first. No surprises.</h2></div>
+  <div class="how">
+    <div class="h"><h4>Scoped up front</h4><p>You see the price and exactly what you're getting before any work starts — no open-ended hourly bills.</p></div>
+    <div class="h"><h4>Priced to impact</h4><p>The cost reflects what a fix is worth to your business, not how long it takes Eren to do it.</p></div>
+    <div class="h"><h4>No lock-in</h4><p>The build is a one-time project. Ongoing work is month-to-month and cancels anytime.</p></div>
+    <div class="h"><h4>Earns its place</h4><p>If a stage isn't clearly worth it, we don't push it. Eren only continues where it pays off.</p></div>
+  </div>
+</div></section>
+
+<section><div class="shell">
+  <div class="center" style="max-width:42ch"><div class="ey grad-text">Questions</div><h2 class="sec-h center">The honest answers.</h2></div>
+  <div class="faq">
+    <details open><summary>Why no set prices?</summary><p>Because a fair price depends on your business and what a fix is actually worth. A pizza shop and a law firm don't have the same problems — pretending they cost the same would be dishonest. You get a real number after the assessment, before any work.</p></details>
+    <details><summary>What does the free assessment include?</summary><p>A genuine analysis of your website, operations, and tools, with a ranked list of what's worth fixing and what each is worth. It's useful on its own — even if you never hire us.</p></details>
+    <details><summary>Do I have to commit to anything ongoing?</summary><p>No. The build is a one-time project. Ongoing optimization is optional, month-to-month, and you can stop whenever it stops paying off.</p></details>
+    <details><summary>Is my business information private?</summary><p>Yes. It's used only to analyze and improve your business, and never shared.</p></details>
+  </div>
+</div></section>
+
+<div class="shell"><div class="cta">
+  <h2>Start with the free assessment.</h2>
+  <p>See what's worth fixing and what it's worth — then decide how far you want to take it.</p>
+  <a class="btn" href="start.html" style="font-size:16px;padding:15px 30px">Start with an analysis</a>
+</div></div>
+
+<footer><div class="shell">
+  <div class="foot">
+    <div><a class="brand" href="index.html"><span class="mark"><svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="9" fill="#1B3A6B"/><path d="M16 8.6 L22.4 12.3 L22.4 19.7 L16 23.4 L9.6 19.7 L9.6 12.3 Z" fill="none" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/><circle cx="16" cy="16" r="2.3" fill="#fff"/></svg></span>Eren</a><div style="margin-top:10px;max-width:34ch">A done-for-you specialist that rebuilds how customers find and choose your business.</div></div>
+    <div class="foot-cols">
+      <div><h4>Product</h4><a href="how.html">How Eren operates</a><a href="pricing.html">Pricing</a><a href="start.html">Start an analysis</a></div>
+      <div><h4>Company</h4><a href="about.html">About</a><a href="signup.html">Sign in</a></div>
+      <div><h4>Contact</h4><a>Rockford, IL area</a><a>hello@eren.example</a></div>
+    </div>
+  </div>
+  <div style="margin-top:30px">© 2026 Eren. Built on Claude.</div>
+</div></footer>
+
+<script>
+(function(){
+  document.addEventListener('click',function(e){
+    var a=e.target.closest?e.target.closest('a[href]'):null;
+    if(!a)return;var h=a.getAttribute('href')||'';
+    // Standalone pages use normal browser navigation.
+  });
+})();
+</script>
+
+</body></html>

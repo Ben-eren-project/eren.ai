@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Eren — Get found, chosen, and contacted by more customers</title>
+<meta name="description" content="Eren is a done-for-you specialist that rebuilds how customers find, evaluate, and choose your business — then fixes what's costing you across your website, operations, and tools.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap">
+<style>
+  :root{
+    --bg:#080D18;--bg-2:#0B1526;--panel:#101E3A;--panel-2:#0D1830;
+    --ink:#EDF2FB;--sub:#AAB7D0;--muted:#7A87A4;--faint:#59668A;
+    --navy:#1B3A6B;--blue:#3F7BD6;--azure:#57A2E8;
+    --line:rgba(255,255,255,.08);--line-2:rgba(255,255,255,.14);
+    --grad:linear-gradient(120deg,#57a2e8 0%,#2f62b8 45%,#122a52 100%);
+    color-scheme:dark;
+  }
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hanken Grotesk",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .shell{max-width:1160px;margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+  .grad-text{background:var(--grad);background-size:200% 200%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:drift 14s ease-in-out infinite}
+  @keyframes drift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  .btn{font-family:inherit;font-weight:700;font-size:14px;color:#fff;border:none;cursor:pointer;border-radius:11px;padding:13px 22px;display:inline-block;background:var(--grad);background-size:220% 220%;animation:drift 14s ease-in-out infinite;box-shadow:0 12px 30px -12px rgba(63,123,214,.6);transition:filter .15s}
+  .btn:hover{filter:brightness(1.09)}
+  .btn.sm{padding:10px 18px}
+  .btn.ghost{background:transparent;border:1px solid var(--line-2);box-shadow:none;color:var(--ink);animation:none}
+  .btn.ghost:hover{border-color:var(--azure);background:rgba(87,162,232,.08)}
+
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(8,13,24,.72);border-bottom:1px solid var(--line)}
+  .nav-in{max-width:1160px;margin:0 auto;padding:14px clamp(20px,4vw,40px);display:flex;align-items:center;justify-content:space-between}
+  .brand{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:21px;letter-spacing:-.03em}
+  .brand .mark{width:26px;height:26px;flex:none}
+  .nav-links{display:flex;align-items:center;gap:26px;font-size:14px;font-weight:600;color:var(--sub)}
+  .nav-links a:hover{color:var(--ink)} .nav-links a.on{color:var(--ink)}
+  .nav-r{display:flex;align-items:center;gap:16px}
+  .signin{font-size:14px;font-weight:600;color:var(--sub)}.signin:hover{color:var(--ink)}
+  @media(max-width:820px){.nav-links,.signin{display:none}}
+
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero-orb{position:absolute;top:50%;right:-10%;transform:translateY(-50%);width:min(720px,68vw);aspect-ratio:1/1;z-index:0;pointer-events:none}
+  .hero-orb canvas{width:100%;height:100%;display:block}
+  .hero-glow{position:absolute;inset:0;background:radial-gradient(58% 55% at 74% 45%,rgba(63,123,214,.18),transparent 70%);z-index:0}
+  .hero-in{position:relative;z-index:1;padding:clamp(64px,11vw,132px) 0 clamp(56px,8vw,110px);max-width:760px}
+  .pill{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:600;color:var(--sub);border:1px solid var(--line-2);border-radius:999px;padding:7px 14px;background:rgba(255,255,255,.02)}
+  .pill .d{width:7px;height:7px;border-radius:50%;background:var(--azure);box-shadow:0 0 10px 1px rgba(87,162,232,.8)}
+  h1{font-size:clamp(40px,6.6vw,76px);font-weight:800;letter-spacing:-.04em;line-height:1.02;margin:22px 0 0;text-wrap:balance}
+  .hero p{font-size:clamp(17px,2.2vw,21px);color:var(--sub);max-width:56ch;margin:22px 0 0}
+  .hero-cta{margin-top:34px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .hero-cta .note{font-size:13.5px;color:var(--muted)}
+
+  section{padding:clamp(60px,9vw,112px) 0;border-bottom:1px solid var(--line)}
+  .ey{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+  .sec-h{font-size:clamp(28px,4.2vw,46px);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin:14px 0 0;max-width:22ch;text-wrap:balance}
+  .sec-sub{font-size:17px;color:var(--sub);max-width:60ch;margin:16px 0 0}
+
+  .shift{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,54px);align-items:center}
+  .shift .big{font-size:clamp(22px,2.6vw,30px);font-weight:700;letter-spacing:-.02em;line-height:1.32}
+  .shift .big b{background:var(--grad);background-size:200% 200%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:drift 14s ease-in-out infinite}
+  .shift .col p{color:var(--sub);font-size:16px;margin:0 0 14px}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+  .card{position:relative;isolation:isolate;overflow:hidden;border-radius:22px;padding:28px 26px;min-height:250px;display:flex;flex-direction:column;border:1px solid var(--line)}
+  .card::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(120% 130% at 20% 12%,#3f7bd6 0%,transparent 52%),radial-gradient(130% 120% at 88% 22%,#274d92 0%,transparent 50%),linear-gradient(150deg,#0f1f3d,#16294c 60%,#0b1730);background-size:200% 200%;animation:drift 17s ease-in-out infinite}
+  .card::after{content:"";position:absolute;inset:0;z-index:-1;background:rgba(7,12,24,.28)}
+  .card:nth-child(2)::before{animation-duration:20s;animation-direction:reverse}
+  .card:nth-child(3)::before{animation-duration:23s;filter:hue-rotate(6deg)}
+  .card .k{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#bcd4f5}
+  .card h3{font-size:21px;font-weight:800;letter-spacing:-.02em;margin:14px 0 9px}
+  .card p{font-size:14.5px;color:#c9d5ec;margin:0;line-height:1.55}
+
+  .flow{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-top:40px}
+  .flow .n{border:1px solid var(--line);border-radius:14px;padding:16px 14px;background:var(--panel-2);font-size:13px;font-weight:600}
+  .flow .n b{display:block;color:var(--azure);font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:7px}
+  @media(max-width:820px){.flow{grid-template-columns:1fr 1fr}}
+
+  .why{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,60px);align-items:center;margin-top:38px}
+  .checklist{display:flex;flex-direction:column;gap:15px;margin-top:24px}
+  .ci{display:flex;gap:14px;align-items:flex-start}.ci .dot{margin-top:6px;width:8px;height:8px;border-radius:50%;flex:none;background:var(--grad)}
+  .ci b{font-weight:700}.ci span{color:var(--sub)}
+  .quote{border:1px solid var(--line);border-radius:22px;padding:32px;background:linear-gradient(160deg,#101e3a,#0b1526)}
+  .quote p{font-size:19px;font-weight:600;letter-spacing:-.01em;line-height:1.4;margin:0}
+  .quote .src{margin-top:18px;font-size:13px;color:var(--muted);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+
+  .cta{position:relative;overflow:hidden;border-radius:28px;margin:clamp(60px,9vw,100px) 0;padding:clamp(44px,7vw,78px);text-align:center;border:1px solid var(--line-2);isolation:isolate}
+  .cta::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(90% 120% at 15% 0%,#3f7bd6 0%,transparent 55%),radial-gradient(90% 120% at 90% 30%,#2b57a6 0%,transparent 55%),linear-gradient(120deg,#12244a,#0c1830);background-size:200% 200%;animation:drift 18s ease-in-out infinite}
+  .cta::after{content:"";position:absolute;inset:0;z-index:-1;background:rgba(7,12,24,.2)}
+  .cta h2{font-size:clamp(28px,4.4vw,48px);font-weight:800;letter-spacing:-.03em;margin:0;text-wrap:balance}
+  .cta p{font-size:18px;color:#cdd8ee;margin:16px auto 28px;max-width:50ch}
+
+  footer{padding:50px 0 60px;color:var(--muted);font-size:13.5px}
+  .foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+  .foot-cols{display:flex;gap:52px;flex-wrap:wrap}
+  .foot-cols h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin:0 0 12px}
+  .foot-cols a{display:block;font-size:14px;color:var(--sub);margin-bottom:9px}.foot-cols a:hover{color:var(--ink)}
+  footer b{color:var(--ink);font-weight:700}
+
+  @media(max-width:900px){.cards{grid-template-columns:1fr}.shift,.why{grid-template-columns:1fr}}
+  @media(max-width:600px){.hero-orb{opacity:.45}}
+  @media(prefers-reduced-motion:reduce){.grad-text,.btn,.card::before,.cta::before,.shift .big b{animation:none}}
+</style></head><body>
+
+<nav><div class="nav-in">
+  <a class="brand" href="index.html"><span class="mark"><svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="9" fill="#1B3A6B"/><path d="M16 8.6 L22.4 12.3 L22.4 19.7 L16 23.4 L9.6 19.7 L9.6 12.3 Z" fill="none" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/><circle cx="16" cy="16" r="2.3" fill="#fff"/></svg></span>Eren</a>
+  <div class="nav-links">
+    <a href="index.html" class="on">Home</a>
+    <a href="how.html">How Eren operates</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="about.html">About</a>
+  </div>
+  <div class="nav-r">
+    <a class="signin" href="signup.html">Sign in</a>
+    <a class="btn sm" href="start.html">Start with an analysis</a>
+  </div>
+</div></nav>
+
+<header class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-orb"><canvas id="orb"></canvas></div>
+  <div class="shell hero-in">
+    <span class="pill"><span class="d"></span>Done-for-you · A specialist, not a chatbot</span>
+    <h1>Get found, chosen, and contacted by more <span class="grad-text">customers</span>.</h1>
+    <p>Eren rebuilds how customers find, evaluate, and reach your business — then fixes what's quietly costing you across your website, your operations, and your software. You get the work done for you, not another app to learn.</p>
+    <div class="hero-cta">
+      <a class="btn" href="start.html">Start with a free analysis</a>
+      <a class="btn ghost" href="how.html">See how Eren operates</a>
+      <span class="note">No obligation · Rockford-area</span>
+    </div>
+  </div>
+</header>
+
+<section id="shift"><div class="shell">
+  <div class="shift">
+    <div class="big">You don't need <b>“a website.”</b> You need more of the right customers finding you, trusting you, and reaching out — and the busywork behind it handled.</div>
+    <div class="col">
+      <p>Most local businesses lose customers in the gaps — a site that doesn't convert, a booking process that leaks leads, tools that don't talk to each other. Eren treats all of it as one system.</p>
+      <p>It studies your business, rebuilds your online presence around how people actually decide, wires up the way leads come in, and fixes the operations behind it. Then it keeps improving as results come in.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="what"><div class="shell">
+  <div class="ey grad-text">What Eren works on</div>
+  <h2 class="sec-h">One specialist, across the three places business leaks.</h2>
+  <p class="sec-sub">Website, operations, software — analyzed together, fixed together, and priced against what it recovers.</p>
+  <div class="cards">
+    <div class="card"><div class="k">Website &amp; presence</div><h3>Get found &amp; chosen</h3><p>Rebuilt around how customers search, compare, and decide — local SEO, trust, speed, and a clear path from click to contact.</p></div>
+    <div class="card"><div class="k">Operations</div><h3>Stop the leaks</h3><p>Booking, quoting, invoicing, follow-up — the manual work that loses leads and eats hours, streamlined or automated.</p></div>
+    <div class="card"><div class="k">Software &amp; tools</div><h3>The right stack</h3><p>Cut the tools you overpay for, add the ones you're missing, and build the custom ones no off-the-shelf app covers.</p></div>
+  </div>
+  <p class="sec-sub" style="margin-top:26px;font-size:15px;color:var(--muted)">More specialists and tools are added as Eren grows — each one sharper at its one job.</p>
+</div></section>
+
+<section id="how"><div class="shell">
+  <div class="ey grad-text">How Eren operates</div>
+  <h2 class="sec-h">A system, not a redesign you hope works.</h2>
+  <p class="sec-sub">Every engagement runs the same path — research to launch to ongoing improvement.</p>
+  <div class="flow">
+    <div class="n"><b>01</b>Research your business &amp; customers</div>
+    <div class="n"><b>02</b>New positioning &amp; message</div>
+    <div class="n"><b>03</b>Redesigned online presence</div>
+    <div class="n"><b>04</b>Conversion &amp; lead capture</div>
+    <div class="n"><b>05</b>Operations &amp; software fixes</div>
+    <div class="n"><b>06</b>Analytics &amp; launch</div>
+    <div class="n"><b>07</b>Ongoing optimization</div>
+  </div>
+  <div style="margin-top:34px"><a class="btn ghost" href="how.html">See the full process</a></div>
+</div></section>
+
+<section id="why"><div class="shell">
+  <div class="ey grad-text">Why Eren</div>
+  <div class="why">
+    <div>
+      <h2 class="sec-h">Built to be trusted with a real business.</h2>
+      <p class="sec-sub">Most AI guesses confidently and gets it wrong. Eren is built the opposite way — grounded, checked, and priced against what it recovers.</p>
+      <div class="checklist">
+        <div class="ci"><span class="dot"></span><span><b>Grounded in your real data.</b> Findings cite what's actually on your site and in your business — never made-up numbers.</span></div>
+        <div class="ci"><span class="dot"></span><span><b>Double-checked.</b> Every claim is verified against the evidence and cross-referenced before it reaches you.</span></div>
+        <div class="ci"><span class="dot"></span><span><b>A specialist, not a generalist.</b> One job — finding and fixing what costs you — done sharper than a jack-of-all-trades.</span></div>
+        <div class="ci"><span class="dot"></span><span><b>Done-for-you.</b> You get the redesign, the fixes, and the tools built — not homework and another login.</span></div>
+      </div>
+    </div>
+    <div class="quote">
+      <p>“Redesign how customers find, evaluate, and choose you — and hand the busywork behind it to a specialist that keeps improving it.”</p>
+      <div class="src">The idea behind Eren</div>
+    </div>
+  </div>
+</div></section>
+
+<div class="shell"><div class="cta">
+  <h2>See what Eren finds in your business.</h2>
+  <p>It starts with an analysis — a clear look at what's costing you customers and time, and what it's worth to fix. No obligation.</p>
+  <a class="btn" href="start.html" style="font-size:16px;padding:15px 30px">Start with an analysis</a>
+</div></div>
+
+<footer><div class="shell">
+  <div class="foot">
+    <div>
+      <a class="brand" href="index.html"><span class="mark"><svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="9" fill="#1B3A6B"/><path d="M16 8.6 L22.4 12.3 L22.4 19.7 L16 23.4 L9.6 19.7 L9.6 12.3 Z" fill="none" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/><circle cx="16" cy="16" r="2.3" fill="#fff"/></svg></span>Eren</a>
+      <div style="margin-top:10px;max-width:34ch">A done-for-you specialist that rebuilds how customers find and choose your business.</div>
+    </div>
+    <div class="foot-cols">
+      <div><h4>Product</h4><a href="how.html">How Eren operates</a><a href="pricing.html">Pricing</a><a href="start.html">Start an analysis</a></div>
+      <div><h4>Company</h4><a href="about.html">About</a><a href="signup.html">Sign in</a></div>
+      <div><h4>Contact</h4><a>Rockford, IL area</a><a>hello@eren.example</a></div>
+    </div>
+  </div>
+  <div style="margin-top:30px">© 2026 Eren. Built on Claude.</div>
+</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  var canvas=document.getElementById('orb');if(!canvas||!window.THREE)return;
+  var vertexShader="varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.0,1.0);}";
+  var fragmentShader=["precision highp float;","uniform float iTime;uniform vec3 iResolution;uniform float hue;uniform float rot;uniform float noiseScale;uniform float innerRadius;","varying vec2 vUv;","vec3 rgb2yiq(vec3 c){return vec3(dot(c,vec3(0.299,0.587,0.114)),dot(c,vec3(0.596,-0.274,-0.322)),dot(c,vec3(0.211,-0.523,0.312)));}","vec3 yiq2rgb(vec3 c){return vec3(c.x+0.956*c.y+0.621*c.z,c.x-0.272*c.y-0.647*c.z,c.x-1.106*c.y+1.703*c.z);}","vec3 adjustHue(vec3 col,float h){float r=radians(h);vec3 y=rgb2yiq(col);float ca=cos(r),sa=sin(r);y.yz=vec2(y.y*ca-y.z*sa,y.y*sa+y.z*ca);return yiq2rgb(y);}","vec3 hash33(vec3 p){p=fract(p*vec3(0.1031,0.11369,0.13787));p+=dot(p,p.yxz+19.19);return -1.0+2.0*fract(vec3(p.x+p.y,p.x+p.z,p.y+p.z)*p.zyx);}","float snoise3(vec3 p){const float K1=0.333333333;const float K2=0.166666667;vec3 i=floor(p+(p.x+p.y+p.z)*K1);vec3 d0=p-(i-(i.x+i.y+i.z)*K2);vec3 e=step(vec3(0.0),d0-d0.yzx);vec3 i1=e*(1.0-e.zxy);vec3 i2=1.0-e.zxy*(1.0-e);vec3 d1=d0-(i1-K2);vec3 d2=d0-(i2-K1);vec3 d3=d0-0.5;vec4 h=max(0.6-vec4(dot(d0,d0),dot(d1,d1),dot(d2,d2),dot(d3,d3)),0.0);vec4 n=h*h*h*h*vec4(dot(d0,hash33(i)),dot(d1,hash33(i+i1)),dot(d2,hash33(i+i2)),dot(d3,hash33(i+1.0)));return dot(vec4(31.316),n);}","vec4 extractAlpha(vec3 c){float a=max(max(c.r,c.g),c.b);return vec4(c.rgb/(a+1e-5),a);}","const vec3 b0=vec3(0.20,0.42,0.82);const vec3 b1=vec3(0.10,0.22,0.45);const vec3 b2=vec3(0.52,0.70,1.0);const vec3 b3=vec3(0.02,0.05,0.13);","float l1(float i,float a,float d){return i/(1.0+d*a);}float l2(float i,float a,float d){return i/(1.0+d*d*a);}","vec4 draw(vec2 uv){vec3 c0=adjustHue(b0,hue);vec3 c1=adjustHue(b1,hue);vec3 c2=adjustHue(b2,hue);vec3 c3=adjustHue(b3,hue);float len=length(uv);float il=len>0.0?1.0/len:0.0;float pulse=sin(iTime*1.5)*0.02;float n0=snoise3(vec3(uv*noiseScale,iTime*0.5))*0.5+0.5;float r0=mix(mix(innerRadius+pulse,1.0,0.4),mix(innerRadius+pulse,1.0,0.6),n0);float d0=distance(uv,(r0*il)*uv);float v0=l1(1.0,10.0,d0);v0*=smoothstep(r0*1.05,r0,len);float cl=cos(atan(uv.y,uv.x)+iTime*2.0)*0.5+0.5;float a=iTime*-1.0;vec2 pos=vec2(cos(a),sin(a))*r0;float d=distance(uv,pos);float v1=l2(1.5,5.0,d);v1*=l1(1.0,50.0,d0);float v2=smoothstep(1.0,mix(innerRadius,1.0,n0*0.5),len);float v3=smoothstep(innerRadius,mix(innerRadius,1.0,0.5),len);vec3 col=mix(c1,c2,cl);col=mix(col,c0,n0);col=mix(c3,col,v0);col=(col+v1)*v2*v3;col=clamp(col,0.0,1.0);return extractAlpha(col);}","void main(){vec2 ctr=iResolution.xy*0.5;float sz=min(iResolution.x,iResolution.y);vec2 uv=(vUv*iResolution.xy-ctr)/sz*2.0;float s=sin(rot),c=cos(rot);uv=vec2(c*uv.x-s*uv.y,s*uv.x+c*uv.y);vec4 col=draw(uv);gl_FragColor=vec4(col.rgb*col.a,col.a);}"].join("\n");
+  var renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:true,alpha:true});renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+  var scene=new THREE.Scene(),camera=new THREE.Camera(),geo=new THREE.BufferGeometry();
+  geo.setAttribute("position",new THREE.Float32BufferAttribute([-1,-1,0,3,-1,0,-1,3,0],3));
+  geo.setAttribute("uv",new THREE.Float32BufferAttribute([0,0,2,0,0,2],2));
+  var u={iTime:{value:0},iResolution:{value:new THREE.Vector3(1,1,1)},hue:{value:0},rot:{value:0},noiseScale:{value:0.65},innerRadius:{value:0.12}};
+  var mat=new THREE.ShaderMaterial({vertexShader:vertexShader,fragmentShader:fragmentShader,uniforms:u,transparent:true,depthWrite:false,depthTest:false});
+  var mesh=new THREE.Mesh(geo,mat);mesh.frustumCulled=false;scene.add(mesh);
+  function resize(){var r=canvas.getBoundingClientRect();var w=Math.max(1,r.width|0),h=Math.max(1,r.height|0);renderer.setSize(w,h,false);var dpr=renderer.getPixelRatio();u.iResolution.value.set(w*dpr,h*dpr,w/h);}
+  var rot=0,last=0,run=true;
+  function frame(ms){if(!run)return;var t=ms*0.001;var dt=Math.min(t-last,0.05);last=t;rot+=dt*0.26;u.iTime.value=t;u.rot.value=rot;renderer.render(scene,camera);requestAnimationFrame(frame);}
+  window.addEventListener("resize",resize);document.addEventListener("visibilitychange",function(){run=!document.hidden;if(run){last=(performance.now()||0)*0.001;requestAnimationFrame(frame);}});
+  resize();requestAnimationFrame(frame);
+})();
+</script>
+
+<script>
+(function(){
+  document.addEventListener('click',function(e){
+    var a=e.target.closest?e.target.closest('a[href]'):null;
+    if(!a)return;var h=a.getAttribute('href')||'';
+    // Standalone pages use normal browser navigation.
+  });
+})();
+</script>
+
+</body></html>

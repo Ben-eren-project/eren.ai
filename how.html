@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How Eren operates</title>
+<meta name="description" content="How Eren works: understand the business, find what's costing you, use the right intelligence and tools, execute, verify, measure, and get sharper every cycle.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap">
+<style>
+  :root{--bg:#080D18;--bg-2:#0B1526;--panel:#101E3A;--panel-2:#0D1830;--ink:#EDF2FB;--sub:#AAB7D0;--muted:#7A87A4;--faint:#59668A;--navy:#1B3A6B;--blue:#3F7BD6;--azure:#57A2E8;--line:rgba(255,255,255,.08);--line-2:rgba(255,255,255,.14);--grad:linear-gradient(120deg,#57a2e8 0%,#2f62b8 45%,#122a52 100%);color-scheme:dark}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hanken Grotesk",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .shell{max-width:1160px;margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+  .grad-text{background:var(--grad);background-size:200% 200%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:drift 14s ease-in-out infinite}
+  @keyframes drift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  .btn{font-family:inherit;font-weight:700;font-size:14px;color:#fff;border:none;cursor:pointer;border-radius:11px;padding:13px 22px;display:inline-block;background:var(--grad);background-size:220% 220%;animation:drift 14s ease-in-out infinite;box-shadow:0 12px 30px -12px rgba(63,123,214,.6);transition:filter .15s}
+  .btn:hover{filter:brightness(1.09)} .btn.sm{padding:10px 18px}
+  .btn.ghost{background:transparent;border:1px solid var(--line-2);box-shadow:none;color:var(--ink);animation:none}.btn.ghost:hover{border-color:var(--azure);background:rgba(87,162,232,.08)}
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(8,13,24,.72);border-bottom:1px solid var(--line)}
+  .nav-in{max-width:1160px;margin:0 auto;padding:14px clamp(20px,4vw,40px);display:flex;align-items:center;justify-content:space-between}
+  .brand{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:21px;letter-spacing:-.03em}.brand .mark{width:26px;height:26px;flex:none}
+  .nav-links{display:flex;align-items:center;gap:26px;font-size:14px;font-weight:600;color:var(--sub)}.nav-links a:hover{color:var(--ink)}.nav-links a.on{color:var(--ink)}
+  .nav-r{display:flex;align-items:center;gap:16px}.signin{font-size:14px;font-weight:600;color:var(--sub)}.signin:hover{color:var(--ink)}
+  @media(max-width:820px){.nav-links,.signin{display:none}}
+  .subhero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);text-align:center}
+  .subhero .glow{position:absolute;left:50%;top:30%;transform:translate(-50%,-50%);width:min(900px,120vw);height:520px;border-radius:50%;background:radial-gradient(circle,rgba(63,123,214,.20),transparent 62%);filter:blur(50px);z-index:0}
+  .subhero-in{position:relative;z-index:1;padding:clamp(60px,10vw,120px) 0 clamp(44px,6vw,68px);max-width:820px;margin:0 auto}
+  .ey{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+  h1{font-size:clamp(38px,6vw,66px);font-weight:800;letter-spacing:-.04em;line-height:1.03;margin:16px 0 0;text-wrap:balance}
+  .subhero p{font-size:clamp(17px,2.2vw,21px);color:var(--sub);max-width:58ch;margin:20px auto 0}
+  section{padding:clamp(56px,8vw,104px) 0;border-bottom:1px solid var(--line)}
+  .sec-h{font-size:clamp(26px,4vw,42px);font-weight:800;letter-spacing:-.03em;line-height:1.06;margin:14px 0 0;max-width:24ch;text-wrap:balance}
+  .sec-sub{font-size:17px;color:var(--sub);max-width:60ch;margin:16px 0 0}
+  .center{text-align:center;margin:0 auto}
+
+  /* plain-english strip */
+  .plain{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:44px}
+  .plain .p{border:1px solid var(--line);border-radius:16px;padding:20px 16px;background:var(--panel-2);text-align:center}
+  .plain .p .ic{font-size:22px}
+  .plain .p h4{font-size:15px;font-weight:700;margin:12px 0 6px}
+  .plain .p span{font-size:13px;color:var(--sub)}
+  @media(max-width:820px){.plain{grid-template-columns:1fr 1fr}}
+
+  /* the loop */
+  .loop{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:44px}
+  .stg{position:relative;border:1px solid var(--line);border-radius:16px;padding:18px 16px;background:linear-gradient(160deg,#101e3a,#0b1526)}
+  .stg .n{font-size:12px;font-weight:800;color:var(--azure);font-variant-numeric:tabular-nums;letter-spacing:.06em}
+  .stg h4{font-size:16px;font-weight:700;letter-spacing:-.01em;margin:8px 0 5px}
+  .stg p{font-size:13px;color:var(--sub);margin:0;line-height:1.5}
+  .loopback{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:22px;font-size:14px;font-weight:600;color:var(--sub)}
+  .loopback .ring{width:34px;height:34px;border-radius:50%;border:2px solid var(--azure);border-right-color:transparent;display:inline-block;animation:spin 3.2s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @media(max-width:960px){.loop{grid-template-columns:repeat(2,1fr)}}
+
+  /* orchestration */
+  .orch{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,56px);align-items:center;margin-top:40px}
+  .hub{position:relative;border:1px solid var(--line);border-radius:24px;padding:34px;background:radial-gradient(120% 120% at 50% 0%,rgba(63,123,214,.16),transparent 60%),#0c1830;text-align:center}
+  .hub .core{display:inline-flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:22px}
+  .hub .core .mk{width:56px;height:56px}
+  .hub .core b{font-size:18px;font-weight:800;letter-spacing:-.02em}
+  .hub .core span{font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;justify-content:center}
+  .chip{font-size:13px;font-weight:600;color:var(--ink);border:1px solid var(--line-2);border-radius:999px;padding:8px 14px;background:rgba(255,255,255,.03)}
+  .orch .col h2{margin-top:0}
+  .orch .col p{color:var(--sub);font-size:16px;margin:14px 0 0}
+
+  /* verify callout */
+  .verify{border:1px solid var(--line);border-radius:24px;padding:clamp(28px,4vw,44px);background:linear-gradient(160deg,#0f1f3d,#0b1526);display:grid;grid-template-columns:1fr 1fr;gap:clamp(22px,4vw,44px);align-items:center}
+  .verify h2{font-size:clamp(24px,3.2vw,34px);font-weight:800;letter-spacing:-.02em;margin:0}
+  .vlist{display:flex;flex-direction:column;gap:14px}
+  .vi{display:flex;gap:13px;align-items:flex-start}.vi .dot{margin-top:6px;width:8px;height:8px;border-radius:50%;flex:none;background:var(--grad)}
+  .vi b{font-weight:700}.vi span{color:var(--sub)}
+  @media(max-width:820px){.orch,.verify{grid-template-columns:1fr}}
+
+  .cta{position:relative;overflow:hidden;border-radius:28px;margin:clamp(56px,8vw,96px) 0;padding:clamp(44px,7vw,74px);text-align:center;border:1px solid var(--line-2);isolation:isolate}
+  .cta::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(90% 120% at 15% 0%,#3f7bd6 0%,transparent 55%),radial-gradient(90% 120% at 90% 30%,#2b57a6 0%,transparent 55%),linear-gradient(120deg,#12244a,#0c1830);background-size:200% 200%;animation:drift 18s ease-in-out infinite}
+  .cta::after{content:"";position:absolute;inset:0;z-index:-1;background:rgba(7,12,24,.2)}
+  .cta h2{font-size:clamp(26px,4.2vw,44px);font-weight:800;letter-spacing:-.03em;margin:0}
+  .cta p{font-size:18px;color:#cdd8ee;margin:16px auto 28px;max-width:50ch}
+  footer{padding:50px 0 60px;color:var(--muted);font-size:13.5px}
+  .foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}.foot-cols{display:flex;gap:52px;flex-wrap:wrap}
+  .foot-cols h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin:0 0 12px}.foot-cols a{display:block;font-size:14px;color:var(--sub);margin-bottom:9px}.foot-cols a:hover{color:var(--ink)}
+  footer b{color:var(--ink);font-weight:700}
+  @media(prefers-reduced-motion:reduce){.grad-text,.btn,.cta::before,.loopback .ring{animation:none}}
+</style></head><body>
+
+<nav><div class="nav-in">
+  <a class="brand" href="index.html"><span class="mark"><svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="9" fill="#1B3A6B"/><path d="M16 8.6 L22.4 12.3 L22.4 19.7 L16 23.4 L9.6 19.7 L9.6 12.3 Z" fill="none" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/><circle cx="16" cy="16" r="2.3" fill="#fff"/></svg></span>Eren</a>
+  <div class="nav-links"><a href="index.html">Home</a><a href="how.html" class="on">How Eren operates</a><a href="pricing.html">Pricing</a><a href="about.html">About</a></div>
+  <div class="nav-r"><a class="signin" href="signup.html">Sign in</a><a class="btn sm" href="start.html">Start with an analysis</a></div>
+</div></nav>
+
+<header class="subhero"><div class="glow"></div><div class="shell subhero-in">
+  <div class="ey grad-text">How Eren operates</div>
+  <h1>A system that understands, acts, and gets sharper.</h1>
+  <p>Eren isn't a single AI answering questions. It runs a loop — understand your business, find what's costing you, do the work with the right tools, check itself, and improve every time. Here's the whole thing, in plain English.</p>
+</div></header>
+
+<section><div class="shell">
+  <div class="center" style="max-width:40ch"><div class="ey grad-text">The idea in one line</div><h2 class="sec-h center">Understand → fix → measure → get better.</h2></div>
+  <div class="plain">
+    <div class="p"><div class="ic">🔍</div><h4>Understands</h4><span>Learns your business — how customers find you, how the work runs.</span></div>
+    <div class="p"><div class="ic">🎯</div><h4>Finds</h4><span>Spots what's costing you customers, time, and money.</span></div>
+    <div class="p"><div class="ic">🛠️</div><h4>Does the work</h4><span>Picks the right intelligence and tools and executes the fix.</span></div>
+    <div class="p"><div class="ic">📈</div><h4>Measures</h4><span>Checks what actually happened against your goal.</span></div>
+    <div class="p"><div class="ic">↻</div><h4>Improves</h4><span>Keeps what worked, drops what didn't, comes back sharper.</span></div>
+  </div>
+</div></section>
+
+<section><div class="shell">
+  <div class="center" style="max-width:44ch"><div class="ey grad-text">The operating loop</div><h2 class="sec-h center">Ten stages. Then it runs again.</h2><p class="sec-sub center">Every meaningful task moves through the same sequence — the same discipline a good operator would use, run consistently every time.</p></div>
+  <div class="loop">
+    <div class="stg"><div class="n">01 · UNDERSTAND</div><h4>Understand</h4><p>Take in the business, its customers, and its goals.</p></div>
+    <div class="stg"><div class="n">02 · IDENTIFY</div><h4>Identify</h4><p>Find the real problem or opportunity worth acting on.</p></div>
+    <div class="stg"><div class="n">03 · DECOMPOSE</div><h4>Decompose</h4><p>Break it into clear, workable pieces.</p></div>
+    <div class="stg"><div class="n">04 · RESEARCH</div><h4>Research</h4><p>Gather the real evidence each piece needs.</p></div>
+    <div class="stg"><div class="n">05 · EXECUTE</div><h4>Execute</h4><p>Do the work with the right models and tools.</p></div>
+    <div class="stg"><div class="n">06 · VERIFY</div><h4>Verify</h4><p>Check every result against the evidence — no guessing.</p></div>
+    <div class="stg"><div class="n">07 · MEASURE</div><h4>Measure</h4><p>Did the objective actually move?</p></div>
+    <div class="stg"><div class="n">08 · LEARN</div><h4>Learn</h4><p>Capture what worked, what didn't, and why.</p></div>
+    <div class="stg"><div class="n">09 · IMPROVE</div><h4>Improve</h4><p>Fold the lesson back into how Eren works.</p></div>
+    <div class="stg"><div class="n">10 · REPEAT</div><h4>Repeat</h4><p>Run it again — a little sharper each cycle.</p></div>
+  </div>
+  <div class="loopback"><span class="ring"></span> Every cycle feeds the next — Eren gets better by doing.</div>
+</div></section>
+
+<section><div class="shell">
+  <div class="orch">
+    <div class="col">
+      <div class="ey grad-text">The orchestration</div>
+      <h2 class="sec-h">Eren isn't one AI. It's the conductor.</h2>
+      <p>A single AI is a generalist that guesses. Eren is the layer above — it decides what each job needs, then brings the right intelligence and tools to it: different models for different problems, its own memory and skills, live research, and a verification step that checks the work before you ever see it.</p>
+      <p>You never touch the technical side. You get the result — and the judgment behind picking the best way to reach it.</p>
+      <div style="margin-top:26px"><a class="btn ghost" href="start.html">See it on your business</a></div>
+    </div>
+    <div class="hub">
+      <div class="core"><span class="mk"><svg width="56" height="56" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="9" fill="#1B3A6B"/><path d="M16 8.6 L22.4 12.3 L22.4 19.7 L16 23.4 L9.6 19.7 L9.6 12.3 Z" fill="none" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/><circle cx="16" cy="16" r="2.3" fill="#fff"/></svg></span><b>Eren</b><span>Orchestrates</span></div>
+      <div class="chips">
+        <span class="chip">AI models</span><span class="chip">Memory</span><span class="chip">Context</span><span class="chip">Skills</span><span class="chip">Tools</span><span class="chip">Research</span><span class="chip">Execution</span><span class="chip">Verification</span><span class="chip">Human input</span>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="shell">
+  <div class="verify">
+    <div><div class="ey grad-text">The part most AI skips</div><h2>It checks its own work before you see it.</h2></div>
+    <div class="vlist">
+      <div class="vi"><span class="dot"></span><span><b>Evidence over confidence.</b> A claim only counts if the evidence backs it — a confident-sounding answer isn't enough.</span></div>
+      <div class="vi"><span class="dot"></span><span><b>Cross-checked.</b> Findings are verified against your data and what's live online before they reach you.</span></div>
+      <div class="vi"><span class="dot"></span><span><b>Nothing invented.</b> No made-up numbers, no fake certainty. If something's unknown, it says so.</span></div>
+      <div class="vi"><span class="dot"></span><span><b>You stay in control.</b> Eren prepares and recommends; the decisions are yours.</span></div>
+    </div>
+  </div>
+</div></section>
+
+<div class="shell"><div class="cta">
+  <h2>Point it at your business.</h2>
+  <p>The whole loop starts with an analysis — a grounded look at what's worth fixing, and what it's worth.</p>
+  <a class="btn" href="start.html" style="font-size:16px;padding:15px 30px">Start with an analysis</a>
+</div></div>
+
+<footer><div class="shell">
+  <div class="foot">
+    <div><a class="brand" href="index.html"><span class="mark"><svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="9" fill="#1B3A6B"/><path d="M16 8.6 L22.4 12.3 L22.4 19.7 L16 23.4 L9.6 19.7 L9.6 12.3 Z" fill="none" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/><circle cx="16" cy="16" r="2.3" fill="#fff"/></svg></span>Eren</a><div style="margin-top:10px;max-width:34ch">A done-for-you specialist that rebuilds how customers find and choose your business.</div></div>
+    <div class="foot-cols">
+      <div><h4>Product</h4><a href="how.html">How Eren operates</a><a href="pricing.html">Pricing</a><a href="start.html">Start an analysis</a></div>
+      <div><h4>Company</h4><a href="about.html">About</a><a href="signup.html">Sign in</a></div>
+      <div><h4>Contact</h4><a>Rockford, IL area</a><a>hello@eren.example</a></div>
+    </div>
+  </div>
+  <div style="margin-top:30px">© 2026 Eren. Built on Claude.</div>
+</div></footer>
+
+<script>
+(function(){
+  document.addEventListener('click',function(e){
+    var a=e.target.closest?e.target.closest('a[href]'):null;
+    if(!a)return;var h=a.getAttribute('href')||'';
+    // Standalone pages use normal browser navigation.
+  });
+})();
+</script>
+
+</body></html>
