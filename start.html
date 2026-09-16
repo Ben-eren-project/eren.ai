@@ -112,7 +112,7 @@
   <div class="done" id="done">
     <div class="ok">✓</div>
     <h2 id="doneHead">Thanks — we've got it.</h2>
-    <p id="doneMsg">Eren is putting your analysis together. You'll hear back within one business day with the specific things worth fixing. (Design preview — submissions aren't wired up yet.)</p>
+    <p id="doneMsg">Eren is putting your analysis together. You'll hear back within one business day with the specific things worth fixing.</p>
   </div>
 </div>
 
@@ -121,7 +121,7 @@
   // Where the Eren ops API lives. Empty = same origin (when the backend serves this page).
   // When the site is hosted separately, set this to the API base, e.g.
   //   var EREN_API = "https://eren-api.onrender.com";
-  var EREN_API = "";
+  var EREN_API = "https://eren-ops.onrender.com";
 
   function v(id){return document.getElementById(id).value.trim();}
   var form=document.getElementById('intake'),done=document.getElementById('done'),err=document.getElementById('err');
