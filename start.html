@@ -98,7 +98,7 @@
     <fieldset data-package="build" hidden>
       <div class="sh"><span class="i">02</span><h3>Scope the change</h3></div>
       <div class="fields">
-        <div class="f full"><label for="buildChange">What improvement do you want put in place? <span class="req">*</span></label><textarea id="buildChange" style="min-height:130px" placeholder="For example: a clearer service page, a follow-up process, or a cleaner website-to-booking handoff." required></textarea></div>
+        <div class="f full"><label for="buildChange">What improvement would you like us to make? <span class="req">*</span></label><textarea id="buildChange" style="min-height:130px" placeholder="For example: a clearer service page, a follow-up process, or a cleaner website-to-booking handoff." required></textarea></div>
       </div>
       <div class="f full" style="margin:14px 0 8px"><label>Have you completed an Eren Diagnose for this problem?</label></div>
       <div class="checks">
@@ -108,7 +108,7 @@
       <div class="fields" style="margin-top:14px">
         <div class="f full"><label for="buildFinding">What did Diagnose identify, or what have you already agreed to change?</label><textarea id="buildFinding" placeholder="Share the recommendation or decision if you have it. If you haven't done Diagnose, leave this blank."></textarea></div>
         <div class="f full"><label for="buildDeliverable">What should be delivered?</label><textarea id="buildDeliverable" placeholder="Describe the page, process, template, or tool you expect to receive."></textarea></div>
-        <div class="f full"><label for="buildSuccess">How would you know the work is complete?</label><textarea id="buildSuccess" placeholder="List any must-haves, acceptance checks, or constraints you already know."></textarea></div>
+        <div class="f full"><label for="buildSuccess">How will you know the work is complete?</label><textarea id="buildSuccess" placeholder="List any must-haves, acceptance checks, or constraints you already know."></textarea></div>
         <div class="f full"><label for="buildDependencies">What systems or people does this depend on?</label><textarea id="buildDependencies" placeholder="For example: website platform, booking tool, CRM, approvals, or existing content. Do not send passwords here."></textarea></div>
         <div class="f full"><label for="buildTiming">Is there a date that matters?</label><input id="buildTiming" placeholder="Optional — tell us why the date matters"></div>
       </div>
@@ -119,8 +119,8 @@
       <div class="fields">
         <div class="f full"><label for="reviewChange">What change or result should we review? <span class="req">*</span></label><textarea id="reviewChange" style="min-height:130px" placeholder="Tell us what was changed, when it went live, and what you want to learn from the results." required></textarea></div>
         <div class="f full"><label for="reviewMeasures">What would you like to track?</label><textarea id="reviewMeasures" placeholder="For example: inquiries, bookings, response time, or completed jobs. It's fine if the scorecard isn't defined yet."></textarea></div>
-        <div class="f full"><label for="reviewBaseline">Do you have a baseline or previous period to compare against?</label><textarea id="reviewBaseline" placeholder="Share the period and figures if you have them, or say what is still unknown."></textarea></div>
-        <div class="f full"><label for="reviewData">Where can the evidence be found?</label><textarea id="reviewData" placeholder="Name the reports, tools, or records available. Do not send logins or passwords here."></textarea></div>
+        <div class="f full"><label for="reviewBaseline">Do you have a baseline or previous period to compare against?</label><textarea id="reviewBaseline" placeholder="Share the period and figures you have, and note what is still unknown."></textarea></div>
+        <div class="f full"><label for="reviewData">Where is the evidence?</label><textarea id="reviewData" placeholder="Name the reports, tools, or records available. Do not send logins or passwords here."></textarea></div>
         <div class="f full"><label for="reviewQuestion">What decision should this review help you make?</label><textarea id="reviewQuestion" placeholder="Tell us what is uncertain, what feels off, or what you'd like to improve next."></textarea></div>
       </div>
     </fieldset>
@@ -160,7 +160,7 @@
       button:"Request a Diagnose conversation", primary:"diagnoseProblem",
       fields:[["Business context","about"],["Problem to diagnose","diagnoseProblem"],["Current process","diagnoseFlow"],["Evidence available","diagnoseEvidence"],["Desired outcome","diagnoseOutcome"]]},
     build: {ey:"Package 2 · Eren Build", title:"Ask about Build.",
-      intro:"Tell us the improvement you'd like put in place. Build follows a defined Diagnose and receives an exact quote before any work begins.",
+      intro:"Tell us the improvement you'd like us to make. Build follows a defined Diagnose and receives an exact quote before any work begins.",
       button:"Ask about Build", primary:"buildChange",
       fields:[["Business context","about"],["Change requested","buildChange"],["Diagnose finding or agreed change","buildFinding"],["Expected deliverable","buildDeliverable"],["Acceptance criteria","buildSuccess"],["Systems and dependencies","buildDependencies"],["Timing","buildTiming"]]},
     review: {ey:"Package 3 · Eren Review", title:"Ask about Review.",
