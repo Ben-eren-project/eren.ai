@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Eren — Start with an analysis</title>
+<title>Eren — Start with Diagnose</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
 <style>
   :root{--bg:#080D18;--panel:#0D1830;--ink:#EDF2FB;--sub:#AAB7D0;--muted:#7A87A4;--faint:#59668A;--navy:#1B3A6B;--azure:#57A2E8;--line:rgba(255,255,255,.09);--line-2:rgba(255,255,255,.16);--grad:linear-gradient(120deg,#57a2e8,#2f62b8 45%,#122a52);--good:#4ADE9E;color-scheme:dark}
@@ -53,12 +53,6 @@
   .done h2{font-size:28px;font-weight:800;letter-spacing:-.02em;margin:0 0 10px}
   .done p{color:var(--sub);max-width:46ch;margin:0 auto}
   @media(max-width:640px){.fields,.checks{grid-template-columns:1fr}}
-
-  /* Light display typography — applied site-wide */
-  h1,h2,.sec-h,.cta h2{font-weight:400 !important;letter-spacing:-.012em !important}
-  h3,h4,.card h3,.stage h3,.blk h3,.panel h3,.belief h3,.short h3,.quote p,.fu h4,.q h4,.stage h4,.hub .core b{font-weight:500 !important}
-  .brand{font-weight:600 !important}
-  .btn{font-weight:600 !important}
 </style></head><body>
 
 <nav><div class="nav-in">
@@ -68,83 +62,174 @@
 
 <div class="shell">
   <div class="head">
-    <div class="ey">Start your service</div>
-    <h1>It begins with an analysis.</h1>
-    <p>Tell Eren about your business. It studies your website, operations, and tools, and comes back with exactly what's costing you — and what it's worth to fix. No obligation.</p>
-    <div class="steps-mini"><span><b>1</b> Tell us about your business</span><span><b>2</b> Eren analyzes</span><span><b>3</b> You get the plan + tools</span></div>
+    <div class="ey" id="packageEy">Package 1 · Eren Diagnose</div>
+    <h1 id="packageTitle">Start with Diagnose.</h1>
+    <p id="packageIntro">Tell us the one problem you want to understand. We start with a free conversation; the paid Diagnose begins only after you agree to it.</p>
+    <div class="steps-mini"><span><b>1</b> Share the context</span><span><b>2</b> We review it</span><span><b>3</b> Agree on the next step</span></div>
   </div>
 
   <form id="intake" novalidate>
     <fieldset>
       <div class="sh"><span class="i">01</span><h3>About your business</h3></div>
-      <div class="f full"><label for="about">Tell us everything <span class="req">*</span></label>
-        <textarea id="about" style="min-height:220px" placeholder="However much you want to share — your business name and website, what you do, how you get customers, how the day-to-day runs (booking, quoting, invoicing, follow-up), the tools you use, and your biggest headaches. The more detail, the sharper the analysis."></textarea></div>
+      <div class="fields">
+        <div class="f"><label for="business">Business name <span class="req">*</span></label><input id="business" autocomplete="organization" maxlength="300" placeholder="Your business name" required></div>
+        <div class="f"><label for="website">Website, if you have one</label><input id="website" type="url" inputmode="url" maxlength="500" placeholder="https://yourbusiness.com"></div>
+        <div class="f full"><label for="about">What do you do, and who do you serve?</label><textarea id="about" placeholder="A few sentences are enough. Share your location or service area if it matters."></textarea></div>
+      </div>
     </fieldset>
 
-    <fieldset>
-      <div class="sh"><span class="i">02</span><h3>What should Eren focus on?</h3></div>
+    <fieldset data-package="diagnose">
+      <div class="sh"><span class="i">02</span><h3>Define the problem</h3></div>
+      <div class="fields">
+        <div class="f full"><label for="diagnoseProblem">What is the one problem you want us to diagnose? <span class="req">*</span></label><textarea id="diagnoseProblem" style="min-height:130px" placeholder="For example: inquiries arrive, but too few turn into quotes. Tell us what you see rather than estimating a loss." required></textarea></div>
+        <div class="f full"><label for="diagnoseFlow">How does that process work today?</label><textarea id="diagnoseFlow" placeholder="Walk us through what happens, from the first customer contact to the outcome."></textarea></div>
+        <div class="f full"><label for="diagnoseEvidence">What evidence can you share?</label><textarea id="diagnoseEvidence" placeholder="Examples: inquiry records, a service page, messages, a booking flow, or feedback. It's fine if you don't have numbers yet."></textarea></div>
+        <div class="f full"><label for="diagnoseOutcome">What would a useful fix achieve?</label><textarea id="diagnoseOutcome" placeholder="Describe the change you'd want to see, even if you don't know the solution yet."></textarea></div>
+      </div>
+      <div class="f full" style="margin:14px 0 8px"><label>Where does this problem show up?</label></div>
       <div class="checks">
         <label class="check"><input type="checkbox" name="focus" value="Website & getting found">Website &amp; getting found</label>
         <label class="check"><input type="checkbox" name="focus" value="Getting more customers">Getting more customers</label>
         <label class="check"><input type="checkbox" name="focus" value="Saving time on daily work">Saving time on daily work</label>
         <label class="check"><input type="checkbox" name="focus" value="Better software & tools">Better software &amp; tools</label>
       </div>
-      <div class="f full" style="margin-top:12px"><label for="focusText">Anything specific — in your own words</label><textarea id="focusText" placeholder="e.g. We lose a lot of after-hours calls, and I want to stop doing invoices by hand."></textarea></div>
+    </fieldset>
+
+    <fieldset data-package="build" hidden>
+      <div class="sh"><span class="i">02</span><h3>Scope the change</h3></div>
+      <div class="fields">
+        <div class="f full"><label for="buildChange">What improvement do you want put in place? <span class="req">*</span></label><textarea id="buildChange" style="min-height:130px" placeholder="For example: a clearer service page, a follow-up process, or a cleaner website-to-booking handoff." required></textarea></div>
+      </div>
+      <div class="f full" style="margin:14px 0 8px"><label>Have you completed an Eren Diagnose for this problem?</label></div>
+      <div class="checks">
+        <label class="check"><input type="radio" name="diagnoseStage" value="Yes, Diagnose is complete">Yes, Diagnose is complete</label>
+        <label class="check"><input type="radio" name="diagnoseStage" value="Not yet">Not yet</label>
+      </div>
+      <div class="fields" style="margin-top:14px">
+        <div class="f full"><label for="buildFinding">What did Diagnose identify, or what have you already agreed to change?</label><textarea id="buildFinding" placeholder="Share the recommendation or decision if you have it. If you haven't done Diagnose, leave this blank."></textarea></div>
+        <div class="f full"><label for="buildDeliverable">What should be delivered?</label><textarea id="buildDeliverable" placeholder="Describe the page, process, template, or tool you expect to receive."></textarea></div>
+        <div class="f full"><label for="buildSuccess">How would you know the work is complete?</label><textarea id="buildSuccess" placeholder="List any must-haves, acceptance checks, or constraints you already know."></textarea></div>
+        <div class="f full"><label for="buildDependencies">What systems or people does this depend on?</label><textarea id="buildDependencies" placeholder="For example: website platform, booking tool, CRM, approvals, or existing content. Do not send passwords here."></textarea></div>
+        <div class="f full"><label for="buildTiming">Is there a date that matters?</label><input id="buildTiming" placeholder="Optional — tell us why the date matters"></div>
+      </div>
+    </fieldset>
+
+    <fieldset data-package="review" hidden>
+      <div class="sh"><span class="i">02</span><h3>Set the review focus</h3></div>
+      <div class="fields">
+        <div class="f full"><label for="reviewChange">What change or result should we review? <span class="req">*</span></label><textarea id="reviewChange" style="min-height:130px" placeholder="Tell us what was changed, when it went live, and what you want to learn from the results." required></textarea></div>
+        <div class="f full"><label for="reviewMeasures">What would you like to track?</label><textarea id="reviewMeasures" placeholder="For example: inquiries, bookings, response time, or completed jobs. It's fine if the scorecard isn't defined yet."></textarea></div>
+        <div class="f full"><label for="reviewBaseline">Do you have a baseline or previous period to compare against?</label><textarea id="reviewBaseline" placeholder="Share the period and figures if you have them, or say what is still unknown."></textarea></div>
+        <div class="f full"><label for="reviewData">Where can the evidence be found?</label><textarea id="reviewData" placeholder="Name the reports, tools, or records available. Do not send logins or passwords here."></textarea></div>
+        <div class="f full"><label for="reviewQuestion">What decision should this review help you make?</label><textarea id="reviewQuestion" placeholder="Tell us what is uncertain, what feels off, or what you'd like to improve next."></textarea></div>
+      </div>
     </fieldset>
 
     <fieldset>
-      <div class="sh"><span class="i">03</span><h3>Where to send it</h3></div>
+      <div class="sh"><span class="i">03</span><h3>How to reach you</h3></div>
       <div class="fields">
-        <div class="f"><label for="you">Your name <span class="req">*</span></label><input id="you" placeholder="First &amp; last"></div>
-        <div class="f"><label for="email">Email <span class="req">*</span></label><input id="email" type="email" placeholder="you@business.com"></div>
-        <div class="f"><label for="phone">Phone</label><input id="phone" placeholder="(815) 555-0000"></div>
-        <div class="f"><label for="pref">Best way to reach you</label><input id="pref" placeholder="Text, call, or email"></div>
+        <div class="f"><label for="you">Your name <span class="req">*</span></label><input id="you" autocomplete="name" maxlength="200" placeholder="First &amp; last" required></div>
+        <div class="f"><label for="email">Email <span class="req">*</span></label><input id="email" type="email" autocomplete="email" maxlength="200" placeholder="you@business.com" required></div>
+        <div class="f"><label for="phone">Phone</label><input id="phone" type="tel" autocomplete="tel" maxlength="60" placeholder="(815) 555-0000"></div>
+        <div class="f"><label for="pref">Best way to reach you</label><input id="pref" maxlength="120" placeholder="Text, call, or email"></div>
       </div>
     </fieldset>
 
     <div class="submit-row">
-      <button type="button" class="btn" id="sendBtn">Send &amp; start my analysis</button>
-      <span class="err" id="err" hidden>Add a note about your business, your name, and an email so we can send it.</span>
+      <button type="submit" class="btn" id="sendBtn">Request a Diagnose conversation</button>
+      <span class="err" id="err" role="alert" hidden></span>
     </div>
-    <div class="trust">No obligation · Your information is used only to analyze your business, never shared.</div>
+    <div class="trust">No payment is taken here. Nothing is booked or sent to a client automatically. Please do not enter passwords or sensitive customer records.</div>
   </form>
 
   <div class="done" id="done">
     <div class="ok">✓</div>
     <h2 id="doneHead">Thanks — we've got it.</h2>
-    <p id="doneMsg">Eren is putting your analysis together. You'll hear back within one business day with the specific things worth fixing.</p>
+    <p id="doneMsg">Your request is with Eren. We'll review the details and contact you about the next step. No payment or booking has been made.</p>
   </div>
 </div>
 
 <script>
 (function(){
-  // Where the Eren ops API lives. Empty = same origin (when the backend serves this page).
-  // When the site is hosted separately, set this to the API base, e.g.
-  //   var EREN_API = "https://eren-api.onrender.com";
+  // Set this to the verified Eren Ops origin when the site and API are hosted separately.
+  // Empty means the API is available on this page's origin.
   var EREN_API = "https://eren-ops.onrender.com";
-
-  function v(id){return document.getElementById(id).value.trim();}
-  var form=document.getElementById('intake'),done=document.getElementById('done'),err=document.getElementById('err');
-
-  function finish(){
-    document.getElementById('doneHead').textContent='Thanks, '+v('you').split(' ')[0]+" — we've got it.";
-    form.style.display='none';done.classList.add('show');window.scrollTo({top:0,behavior:'smooth'});
+  var packages = {
+    diagnose: {ey:"Package 1 · Eren Diagnose", title:"Start with Diagnose.",
+      intro:"Tell us the one problem you want to understand. We start with a free conversation; the paid Diagnose begins only after you agree to it.",
+      button:"Request a Diagnose conversation", primary:"diagnoseProblem",
+      fields:[["Business context","about"],["Problem to diagnose","diagnoseProblem"],["Current process","diagnoseFlow"],["Evidence available","diagnoseEvidence"],["Desired outcome","diagnoseOutcome"]]},
+    build: {ey:"Package 2 · Eren Build", title:"Ask about Build.",
+      intro:"Tell us the improvement you'd like put in place. Build follows a defined Diagnose and receives an exact quote before any work begins.",
+      button:"Ask about Build", primary:"buildChange",
+      fields:[["Business context","about"],["Change requested","buildChange"],["Diagnose finding or agreed change","buildFinding"],["Expected deliverable","buildDeliverable"],["Acceptance criteria","buildSuccess"],["Systems and dependencies","buildDependencies"],["Timing","buildTiming"]]},
+    review: {ey:"Package 3 · Eren Review", title:"Ask about Review.",
+      intro:"Tell us what has changed and what you want to watch. Review is an optional monthly check when there is an ongoing reason to measure progress.",
+      button:"Ask about Review", primary:"reviewChange",
+      fields:[["Business context","about"],["Change or result to review","reviewChange"],["Measures to track","reviewMeasures"],["Baseline or previous period","reviewBaseline"],["Evidence sources","reviewData"],["Decision this review should support","reviewQuestion"]]}
+  };
+  var requested = new URLSearchParams(window.location.search).get("package");
+  var packageKey = Object.prototype.hasOwnProperty.call(packages, requested) ? requested : "diagnose";
+  var selected = packages[packageKey];
+  var form=document.getElementById("intake"), done=document.getElementById("done");
+  var err=document.getElementById("err"), btn=document.getElementById("sendBtn");
+  function value(id){return document.getElementById(id).value.trim();}
+  document.title="Eren — "+selected.ey;
+  document.getElementById("packageEy").textContent=selected.ey;
+  document.getElementById("packageTitle").textContent=selected.title;
+  document.getElementById("packageIntro").textContent=selected.intro;
+  btn.textContent=selected.button;
+  document.querySelectorAll("[data-package]").forEach(function(section){
+    section.hidden=section.getAttribute("data-package")!==packageKey;
+  });
+  function showError(message, field){
+    err.textContent=message; err.hidden=false;
+    if(field) document.getElementById(field).focus();
   }
-
-  document.getElementById('sendBtn').addEventListener('click',function(){
-    if(!v('about')||!v('you')||!v('email')){err.hidden=false;document.getElementById(!v('about')?'about':(!v('you')?'you':'email')).focus();return;}
+  function notes(){
+    var lines=["Package requested: "+selected.ey];
+    selected.fields.forEach(function(pair){if(value(pair[1])) lines.push(pair[0]+": "+value(pair[1]));});
+    if(packageKey==="diagnose"){
+      var checked=Array.from(document.querySelectorAll('input[name="focus"]:checked')).map(function(item){return item.value;});
+      if(checked.length) lines.push("Problem areas: "+checked.join(", "));
+    }
+    if(packageKey==="build"){
+      var stage=document.querySelector('input[name="diagnoseStage"]:checked');
+      lines.push("Eren Diagnose status: "+(stage ? stage.value : "Not specified"));
+    }
+    return lines.join("\n\n");
+  }
+  form.addEventListener("submit",function(event){
+    event.preventDefault();
+    var required=["business",selected.primary,"you","email"];
+    for(var i=0;i<required.length;i++){
+      if(!value(required[i])){showError("Please complete the required fields before sending.",required[i]);return;}
+    }
+    if(!document.getElementById("email").checkValidity()){
+      showError("Please enter a valid email address.","email");return;
+    }
+    if(value("website") && !document.getElementById("website").checkValidity()){
+      showError("Please enter a full website URL, including https://.","website");return;
+    }
     err.hidden=true;
-
-    var focus=Array.prototype.slice.call(document.querySelectorAll('input[name=focus]:checked')).map(function(c){return c.value;}).join(', ');
-    var notes=v('about');
-    if(v('focusText')) notes += "\n\nSpecifics: " + v('focusText');
-    var payload={ contact_name:v('you'), email:v('email'), phone:v('phone'),
-      preferred_contact:v('pref'), focus:focus, notes:notes, source:"start.html" };
-
-    var btn=document.getElementById('sendBtn'); btn.disabled=true; btn.textContent='Sending…';
-    fetch((EREN_API||'')+"/api/leads",{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-      .then(function(){ finish(); })
-      .catch(function(){ finish(); });  // design preview / offline: still confirm to the visitor
+    var areas=packageKey==="diagnose" ? Array.from(document.querySelectorAll('input[name="focus"]:checked')).map(function(item){return item.value;}) : [];
+    var payload={business_name:value("business"),website:value("website"),contact_name:value("you"),
+      email:value("email"),phone:value("phone"),preferred_contact:value("pref"),
+      focus:[selected.ey].concat(areas).join(", "),notes:notes(),source:"start.html:"+packageKey};
+    btn.disabled=true; btn.textContent="Sending…";
+    fetch(EREN_API.replace(/\/$/,"")+"/api/leads",{
+      method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)
+    }).then(function(response){
+      if(!response.ok) throw new Error("Request failed");
+      return response.json();
+    }).then(function(saved){
+      if(!saved || typeof saved.id!=="number") throw new Error("No lead confirmation");
+      document.getElementById("doneHead").textContent="Thanks, "+value("you").split(" ")[0]+" — we've got it.";
+      form.style.display="none";done.classList.add("show");window.scrollTo({top:0,behavior:"smooth"});
+    }).catch(function(){
+      showError("Your request was not sent. Please try again when the connection is available.");
+      btn.disabled=false;btn.textContent=selected.button;
+    });
   });
 })();
 </script>
