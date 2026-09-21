@@ -53,6 +53,58 @@
   .done h2{font-size:28px;font-weight:800;letter-spacing:-.02em;margin:0 0 10px}
   .done p{color:var(--sub);max-width:46ch;margin:0 auto}
   @media(max-width:640px){.fields,.checks{grid-template-columns:1fr}}
+
+/* EREN MOBILE LAYOUT PATCH - BEGIN */
+/* Mobile layout only. Existing HTML, copy, URLs, form logic and scripts stay intact. */
+@media (max-width: 1000px) {
+  /* Keep the original navigation links visible in a second row; no new menu copy. */
+  .nav-in { display:grid; grid-template-columns:auto minmax(0,1fr); column-gap:12px; row-gap:6px; padding-block:10px; }
+  .nav-in .brand { grid-column:1; grid-row:1; min-height:44px; }
+  .nav-r { grid-column:2; grid-row:1; justify-self:end; min-width:0; max-width:100%; }
+  .nav-r a { min-height:44px; display:inline-flex; align-items:center; justify-content:center; text-align:center; }
+  .nav-r .btn { max-width:100%; padding:10px 12px; line-height:1.4; }
+  .nav-links { display:flex; grid-column:1 / -1; grid-row:2; justify-content:center; flex-wrap:wrap; gap:0 20px; }
+  .nav-links a { display:flex; align-items:center; justify-content:center; min-height:44px; padding:5px 3px; text-align:center; }
+  nav a:focus-visible { outline:2px solid var(--azure); outline-offset:2px; border-radius:5px; }
+  /* These elements share .shell, but their padding shorthand erased its gutters. */
+  .shell.hero-in, .shell.subhero-in { padding-inline:clamp(20px,4vw,40px); }
+  .btn { max-width:100%; white-space:normal; text-align:center; overflow-wrap:anywhere; }
+  .shell, .stage, .panel, .f, fieldset { min-width:0; }
+  input:not([type="checkbox"]):not([type="radio"]), textarea, select { font-size:16px; max-width:100%; }
+  input, textarea, button, summary, a { touch-action:manipulation; }
+  .faq summary { min-height:44px; display:flex; align-items:center; }
+  .foot-cols a { min-height:44px; display:flex; align-items:center; margin-bottom:2px; }
+  [id] { scroll-margin-top:150px; }
+}
+@media (max-width: 600px) {
+  .nav-links { display:grid; grid-template-columns:auto minmax(0,1fr) auto auto; gap:0 8px; font-size:13px; }
+  .nav-links a { padding-inline:0; }
+  .hero h1 { font-size:clamp(32px,9vw,40px); line-height:1.1; }
+  .hero-cta { align-items:stretch; }
+  .hero-cta .btn { width:100%; min-height:48px; }
+  .hero-cta .note { width:100%; }
+  .pill { max-width:100%; }
+  .pill .d { flex-shrink:0; }
+  .cta { padding:32px 20px; }
+  .cta .btn, .stage .go .btn { width:100%; min-height:48px; }
+  .how { grid-template-columns:minmax(0,1fr); }
+  .foot-cols { gap:24px; }
+  .submit-row .btn { width:100%; min-height:48px; }
+  .check { min-height:48px; }
+  .stage .txt { min-width:0; }
+  .step { grid-template-columns:44px minmax(0,1fr); gap:12px; }
+  .step .marker { width:44px; }
+  .step:not(:last-child)::before { left:21px; }
+  .short .row { flex-wrap:wrap; }
+  .short .row span:last-child { text-align:left; }
+}
+@media (max-width: 380px) {
+  .flow, .chain { grid-template-columns:minmax(0,1fr); }
+  .tab { flex-basis:100%; }
+  .stage, .short, .quote { padding:22px 18px; }
+}
+
+/* EREN MOBILE LAYOUT PATCH - END */
 </style></head><body>
 
 <nav><div class="nav-in">
