@@ -166,17 +166,6 @@
       </div>
     </fieldset>
 
-    <fieldset data-package="review" hidden>
-      <div class="sh"><span class="i">02</span><h3>Set the review focus</h3></div>
-      <div class="fields">
-        <div class="f full"><label for="reviewChange">What change or result should we review? <span class="req">*</span></label><textarea id="reviewChange" style="min-height:130px" placeholder="Tell us what was changed, when it went live, and what you want to learn from the results." required></textarea></div>
-        <div class="f full"><label for="reviewMeasures">What would you like to track?</label><textarea id="reviewMeasures" placeholder="For example: inquiries, bookings, response time, or completed jobs. It's fine if the scorecard isn't defined yet."></textarea></div>
-        <div class="f full"><label for="reviewBaseline">Do you have a baseline or previous period to compare against?</label><textarea id="reviewBaseline" placeholder="Share the period and figures you have, and note what is still unknown."></textarea></div>
-        <div class="f full"><label for="reviewData">Where is the evidence?</label><textarea id="reviewData" placeholder="Name the reports, tools, or records available. Do not send logins or passwords here."></textarea></div>
-        <div class="f full"><label for="reviewQuestion">What decision should this review help you make?</label><textarea id="reviewQuestion" placeholder="Tell us what is uncertain, what feels off, or what you'd like to improve next."></textarea></div>
-      </div>
-    </fieldset>
-
     <fieldset>
       <div class="sh"><span class="i">03</span><h3>How to reach you</h3></div>
       <div class="fields">
@@ -214,11 +203,7 @@
     build: {ey:"Package 2 · Eren Build", title:"Ask about Build.",
       intro:"Tell us the improvement you'd like us to make. Build follows a defined Diagnose and receives an exact quote before any work begins.",
       button:"Ask about Build", primary:"buildChange",
-      fields:[["Business context","about"],["Change requested","buildChange"],["Diagnose finding or agreed change","buildFinding"],["Expected deliverable","buildDeliverable"],["Acceptance criteria","buildSuccess"],["Systems and dependencies","buildDependencies"],["Timing","buildTiming"]]},
-    review: {ey:"Package 3 · Eren Review", title:"Ask about Review.",
-      intro:"Tell us what has changed and what you want to watch. Review is an optional monthly check when there is an ongoing reason to measure progress.",
-      button:"Ask about Review", primary:"reviewChange",
-      fields:[["Business context","about"],["Change or result to review","reviewChange"],["Measures to track","reviewMeasures"],["Baseline or previous period","reviewBaseline"],["Evidence sources","reviewData"],["Decision this review should support","reviewQuestion"]]}
+      fields:[["Business context","about"],["Change requested","buildChange"],["Diagnose finding or agreed change","buildFinding"],["Expected deliverable","buildDeliverable"],["Acceptance criteria","buildSuccess"],["Systems and dependencies","buildDependencies"],["Timing","buildTiming"]]}
   };
   var requested = new URLSearchParams(window.location.search).get("package");
   var packageKey = Object.prototype.hasOwnProperty.call(packages, requested) ? requested : "diagnose";
