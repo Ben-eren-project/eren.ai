@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Eren — Client onboarding</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Eren client onboarding — the detailed intake for booked clients, so the specialists work from real evidence instead of guesses.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+<style>
+  :root{--bg:#080D18;--panel:#0D1830;--ink:#EDF2FB;--sub:#AAB7D0;--muted:#7A87A4;--faint:#59668A;--navy:#1B3A6B;--azure:#57A2E8;--line:rgba(255,255,255,.09);--line-2:rgba(255,255,255,.16);--grad:linear-gradient(120deg,#57a2e8,#2f62b8 45%,#122a52);--good:#4ADE9E;color-scheme:dark}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .shell{max-width:820px;margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+  @keyframes drift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(8,13,24,.72);border-bottom:1px solid var(--line)}
+  .nav-in{max-width:1160px;margin:0 auto;padding:14px clamp(20px,4vw,40px);display:flex;align-items:center;justify-content:space-between}
+  .brand{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:21px;letter-spacing:-.03em}
+  .brand .mark{width:26px;height:26px;flex:none}
+  .nav-r a{font-size:14px;font-weight:600;color:var(--sub)}.nav-r a:hover{color:var(--ink)}
+
+  .head{padding:clamp(48px,8vw,84px) 0 clamp(20px,3vw,30px);text-align:center}
+  .ey{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;background:var(--grad);background-size:200% 200%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:drift 14s ease-in-out infinite}
+  h1{font-size:clamp(32px,5vw,52px);font-weight:800;letter-spacing:-.03em;margin:14px 0 0;text-wrap:balance}
+  .head p{font-size:17px;color:var(--sub);max-width:56ch;margin:16px auto 0}
+  .steps-mini{display:flex;justify-content:center;gap:8px 22px;flex-wrap:wrap;margin:22px 0 0;font-size:13px;color:var(--muted)}
+  .steps-mini b{color:var(--azure)}
+
+  form{padding:clamp(20px,4vw,36px) 0 90px;display:flex;flex-direction:column;gap:30px}
+  fieldset{border:none;margin:0;padding:0}
+  .sh{display:flex;align-items:baseline;gap:11px;margin-bottom:6px;padding-bottom:11px;border-bottom:1px solid var(--line)}
+  .sh .i{font-size:12px;font-weight:700;color:var(--azure)}
+  .sh h3{font-size:16px;font-weight:700;margin:0}
+  .sub-note{font-size:13.5px;color:var(--muted);margin:0 0 16px;max-width:64ch}
+  label{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+  .req{color:var(--azure)}
+  .fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .f{display:flex;flex-direction:column;gap:6px}.f.full{grid-column:1/-1}
+  .hint{font-size:12px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--faint);margin-top:-2px}
+  input,textarea,select{font-family:inherit;font-size:15px;color:var(--ink);background:rgba(255,255,255,.03);border:1px solid var(--line-2);border-radius:11px;padding:12px 14px;width:100%}
+  select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 20px) 20px,calc(100% - 14px) 20px;background-size:6px 6px,6px 6px;background-repeat:no-repeat;cursor:pointer}
+  textarea{resize:vertical;min-height:80px;line-height:1.55}
+  input::placeholder,textarea::placeholder{color:var(--muted)}
+  input:focus,textarea:focus,select:focus{outline:none;border-color:var(--azure);box-shadow:0 0 0 3px rgba(87,162,232,.18)}
+  .checks{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .checks.one{grid-template-columns:1fr}
+  .check{display:flex;align-items:center;gap:11px;border:1px solid var(--line-2);border-radius:11px;padding:13px 15px;cursor:pointer;font-size:14.5px;font-weight:600;background:rgba(255,255,255,.02)}
+  .check:hover{border-color:var(--azure)}
+  .check input{width:17px;height:17px;flex:none;accent-color:var(--azure)}
+  .check:has(input:checked){border-color:var(--azure);background:rgba(87,162,232,.10)}
+  .grouplabel{margin:16px 0 8px}
+  .focusblock{border:1px solid var(--line);border-radius:16px;padding:22px;background:rgba(87,162,232,.03)}
+  .focusblock .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--azure);margin-bottom:14px}
+  .submit-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .btn{font-family:inherit;font-weight:700;font-size:15px;color:#fff;border:none;cursor:pointer;border-radius:11px;padding:15px 28px;background:var(--grad);background-size:220% 220%;box-shadow:0 12px 30px -12px rgba(63,123,214,.6);transition:filter .15s}
+  .btn:hover{filter:brightness(1.09)}
+  .err{font-size:13px;color:#ffb4b4;font-weight:600}
+  .trust{margin-top:2px;font-size:12.5px;color:var(--muted);max-width:70ch}
+
+  .done{display:none;text-align:center;padding:40px 0 100px}
+  .done.show{display:block}
+  .done .ok{width:60px;height:60px;border-radius:50%;background:rgba(74,222,158,.14);color:var(--good);font-size:30px;display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+  .done h2{font-size:28px;font-weight:800;letter-spacing:-.02em;margin:0 0 10px}
+  .done p{color:var(--sub);max-width:48ch;margin:0 auto}
+  @media(max-width:640px){.fields,.checks{grid-template-columns:1fr}}
+  @media (max-width:1000px){
+    .nav-in{padding-block:10px}
+    .nav-r a{min-height:44px;display:inline-flex;align-items:center}
+    .btn{max-width:100%;white-space:normal;text-align:center;overflow-wrap:anywhere}
+    .shell,.f,fieldset,.focusblock{min-width:0}
+    input:not([type="checkbox"]):not([type="radio"]),textarea,select{font-size:16px;max-width:100%}
+    input,textarea,select,button,a{touch-action:manipulation}
+    [id]{scroll-margin-top:90px}
+  }
+  @media (max-width:600px){.submit-row .btn{width:100%;min-height:48px}.check{min-height:48px}}
+</style></head><body>
+
+<nav><div class="nav-in">
+  <a class="brand" href="index.html"><span class="mark"><svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="6.5" width="2.6" height="19" rx="1.3" fill="#57A2E8"/><rect x="7" y="6.5" width="17" height="2.6" rx="1.3" fill="#57A2E8"/><rect x="7" y="15" width="11.5" height="2.6" rx="1.3" fill="#8FC3F2"/><rect x="7" y="22.9" width="17" height="2.6" rx="1.3" fill="#57A2E8"/></svg></span>Eren</a>
+  <div class="nav-r"><a href="index.html">← Back to site</a></div>
+</div></nav>
+
+<div class="shell">
+  <div class="head">
+    <div class="ey">Client onboarding</div>
+    <h1>Now the real work begins.</h1>
+    <p>You've booked in — this is where we get the full picture of your business so the work is grounded in your reality, not a guess. Share what you can; anything you leave blank we'll simply ask about later. Nothing here is a test, and there are no wrong answers.</p>
+    <div class="steps-mini"><span><b>1</b> You tell us how it really works</span><span><b>2</b> We ground the diagnosis in it</span><span><b>3</b> You approve what happens next</span></div>
+  </div>
+
+  <form id="intake" novalidate>
+
+    <!-- 01 Business -->
+    <fieldset>
+      <div class="sh"><span class="i">01</span><h3>Your business</h3></div>
+      <div class="fields">
+        <div class="f"><label for="business">Business name <span class="req">*</span></label><input id="business" autocomplete="organization" maxlength="300" placeholder="Your business name" required></div>
+        <div class="f"><label for="website">Website</label><input id="website" type="url" inputmode="url" maxlength="500" placeholder="https://yourbusiness.com"></div>
+        <div class="f"><label for="serviceArea">Location / service area</label><input id="serviceArea" maxlength="200" placeholder="e.g. Rockford, IL + 30 miles"></div>
+        <div class="f"><label for="years">How long in business?</label><input id="years" maxlength="60" placeholder="e.g. 6 years"></div>
+        <div class="f full"><label for="about">What do you do, and who do you serve? <span class="req">*</span></label><textarea id="about" placeholder="Your main services and the customers they're for. If one service or customer matters most right now, say which." required></textarea></div>
+        <div class="f full"><label for="priority">If we could only improve one thing first, what should it be?</label><textarea id="priority" placeholder="The single outcome that would matter most to you over the next few months."></textarea></div>
+      </div>
+    </fieldset>
+
+    <!-- 02 Team -->
+    <fieldset>
+      <div class="sh"><span class="i">02</span><h3>Your team &amp; how work gets done</h3></div>
+      <p class="sub-note">Who's behind the business. This tells us who owns what, where handoffs happen, and who we'd actually work with.</p>
+      <div class="fields">
+        <div class="f"><label for="teamSize">How many people work in the business?</label>
+          <select id="teamSize">
+            <option value="">Select…</option>
+            <option>Just me</option><option>2–5</option><option>6–10</option><option>11–25</option><option>26–50</option><option>50+</option>
+          </select></div>
+        <div class="f"><label for="decision">Who decides on changes and spending?</label><input id="decision" maxlength="200" placeholder="e.g. me; me + my partner; office manager signs off"></div>
+        <div class="f full"><label for="roles">Who does what?</label><textarea id="roles" placeholder="A quick rundown of roles and responsibilities — who answers the phone, who quotes, who does the work, who handles the books or the website. Rough is fine."></textarea></div>
+        <div class="f full"><label for="contactDay">Who will we work with day-to-day, and how do they prefer to be reached?</label><input id="contactDay" maxlength="200" placeholder="Name + best way to reach them"></div>
+      </div>
+    </fieldset>
+
+    <!-- 03 Problem, goal, constraints -->
+    <fieldset>
+      <div class="sh"><span class="i">03</span><h3>The problem, the goal, the guardrails</h3></div>
+      <div class="fields">
+        <div class="f full"><label for="problem">What's the main problem we're solving? <span class="req">*</span></label><textarea id="problem" style="min-height:120px" placeholder="Describe what you see happening — not what you think it's costing you. If Diagnose already named it, restate it in your words." required></textarea></div>
+        <div class="f full"><label for="outcome">What would a good result look like?</label><textarea id="outcome" placeholder="The change you want to see. Even 'I'm not sure, I just know this isn't working' is a useful answer."></textarea></div>
+        <div class="f full"><label for="measure">How would you know it worked?</label><textarea id="measure" placeholder="What you'd watch to tell it's helping — more booked jobs, fewer missed calls, hours back in your week. It's fine if you don't track it yet."></textarea></div>
+        <div class="f"><label for="timeline">How soon do you want this solved?</label>
+          <select id="timeline">
+            <option value="">Select…</option>
+            <option>As soon as possible</option><option>Within a month</option><option>1–3 months</option><option>Just exploring for now</option>
+          </select></div>
+        <div class="f"><label for="budget">Rough budget in mind? <span class="hint" style="display:inline">optional</span></label>
+          <select id="budget">
+            <option value="">Prefer to discuss</option><option>Not sure yet</option><option>Under $1,000</option><option>$1,000–$3,000</option><option>$3,000–$7,000</option><option>$7,000–$15,000</option><option>$15,000+</option>
+          </select></div>
+        <div class="f full"><label for="constraints">Anything we must work around?</label><textarea id="constraints" placeholder="A busy season, a system that can't be touched, a deadline, approvals we'd need, or anything off-limits."></textarea></div>
+      </div>
+    </fieldset>
+
+    <!-- 04 Capacity -->
+    <fieldset>
+      <div class="sh"><span class="i">04</span><h3>Capacity — can you take on more right now?</h3></div>
+      <p class="sub-note">This one matters more than it looks. There's no point sending you more leads if you can't serve them — the right fix might be the opposite. Be honest here.</p>
+      <div class="checks one">
+        <label class="check"><input type="radio" name="capacity" value="Plenty of room for more work">We've got plenty of room for more work</label>
+        <label class="check"><input type="radio" name="capacity" value="Some room for the right work">Some room, for the right work</label>
+        <label class="check"><input type="radio" name="capacity" value="Near capacity">We're near capacity</label>
+        <label class="check"><input type="radio" name="capacity" value="Full — need efficiency, not more leads">We're full — we need efficiency, not more leads</label>
+      </div>
+    </fieldset>
+
+    <!-- 05 Focus areas -->
+    <fieldset>
+      <div class="sh"><span class="i">05</span><h3>Where should we focus?</h3></div>
+      <p class="sub-note">Pick every area that's in play. Choosing one opens a few extra questions just for that area — the more you tell us, the sharper the work.</p>
+      <div class="checks">
+        <label class="check"><input type="checkbox" name="focus" value="Website &amp; getting found" data-focus="website">Website &amp; getting found</label>
+        <label class="check"><input type="checkbox" name="focus" value="Getting more customers" data-focus="customers">Getting more customers</label>
+        <label class="check"><input type="checkbox" name="focus" value="Saving time on daily work" data-focus="time">Saving time on daily work</label>
+        <label class="check"><input type="checkbox" name="focus" value="Better software &amp; tools" data-focus="software">Better software &amp; tools</label>
+      </div>
+    </fieldset>
+
+    <!-- Adaptive: Website -->
+    <fieldset class="focusblock" data-focus-block="website" hidden>
+      <span class="tag">Website &amp; getting found</span>
+      <div class="fields">
+        <div class="f full"><label for="w_pages">Which pages matter most, and who updates the site?</label><textarea id="w_pages" placeholder="e.g. the service page and the contact page; my nephew built it and updates it, or we can't edit it ourselves."></textarea></div>
+        <div class="f"><label for="w_platform">What's the site built on?</label><input id="w_platform" maxlength="160" placeholder="e.g. Squarespace, WordPress, not sure"></div>
+        <div class="f"><label for="w_analytics">Do you have analytics we could look at?</label><input id="w_analytics" maxlength="160" placeholder="e.g. Google Analytics, none, not sure"></div>
+        <div class="f full"><label for="w_found">When someone searches for what you sell, what happens?</label><textarea id="w_found" placeholder="Do you show up? On Google Maps? Do you have a Google Business Profile you manage? Tell us what you know."></textarea></div>
+      </div>
+    </fieldset>
+
+    <!-- Adaptive: Customers / leads -->
+    <fieldset class="focusblock" data-focus-block="customers" hidden>
+      <span class="tag">Getting more customers</span>
+      <div class="fields">
+        <div class="f full"><label for="c_find">How do customers find you today?</label><textarea id="c_find" placeholder="Word of mouth, Google, Facebook, referrals, ads — whatever's actually bringing people in, and roughly which brings the most."></textarea></div>
+        <div class="f full"><label for="c_path">When someone reaches out, what happens next — and who handles it?</label><textarea id="c_path" placeholder="Where the inquiry lands (phone, form, DMs), who responds, and what happens if it comes in after hours or while everyone's busy."></textarea></div>
+        <div class="f"><label for="c_hours">Your business hours?</label><input id="c_hours" maxlength="160" placeholder="e.g. Mon–Fri 8–5, emergencies anytime"></div>
+        <div class="f"><label for="c_crm">Where do leads/customers get tracked?</label><input id="c_crm" maxlength="160" placeholder="e.g. a notebook, spreadsheet, Jobber, nothing yet"></div>
+        <div class="f full"><label for="c_offer">What do you say to win the job — your offer or pitch?</label><textarea id="c_offer" placeholder="How you describe what you do and why someone should choose you over the next option."></textarea></div>
+      </div>
+    </fieldset>
+
+    <!-- Adaptive: Time / operations -->
+    <fieldset class="focusblock" data-focus-block="time" hidden>
+      <span class="tag">Saving time on daily work</span>
+      <div class="fields">
+        <div class="f full"><label for="t_task">What's the repetitive task that eats the most time?</label><textarea id="t_task" placeholder="The thing you or your team keep doing by hand — scheduling, quoting, invoicing, chasing updates, re-entering the same info."></textarea></div>
+        <div class="f"><label for="t_freq">How often does it happen?</label><input id="t_freq" maxlength="160" placeholder="e.g. every job, a few times a day, weekly"></div>
+        <div class="f"><label for="t_who">Who does it?</label><input id="t_who" maxlength="160" placeholder="e.g. me, office manager"></div>
+        <div class="f full"><label for="t_steps">Walk us through the steps — and where it breaks or gets copied between tools.</label><textarea id="t_steps" placeholder="From start to finish, including the annoying parts, the exceptions, and anything that gets re-typed from one place to another."></textarea></div>
+      </div>
+    </fieldset>
+
+    <!-- Adaptive: Software / tools -->
+    <fieldset class="focusblock" data-focus-block="software" hidden>
+      <span class="tag">Better software &amp; tools</span>
+      <div class="fields">
+        <div class="f full"><label for="s_stack">What tools and software do you use to run the business?</label><textarea id="s_stack" placeholder="List what you can — website, booking, invoicing, texting, email, spreadsheets. Rough monthly cost is helpful if you know it."></textarea></div>
+        <div class="f full"><label for="s_pain">What's frustrating, missing, or doesn't talk to anything else?</label><textarea id="s_pain" placeholder="Tools you pay for but barely use, things you wish they did, or work you do to bridge two tools by hand."></textarea></div>
+        <div class="f full"><label for="s_wish">If you could wave a wand, what would your tools just do for you?</label><textarea id="s_wish" placeholder="No wrong answers — this tells us what's worth building or combining."></textarea></div>
+      </div>
+    </fieldset>
+
+    <!-- 06 Evidence & permissions -->
+    <fieldset>
+      <div class="sh"><span class="i">06</span><h3>Evidence &amp; permission to look</h3></div>
+      <p class="sub-note">The more we can observe first-hand, the less we have to assume. Only grant what you're comfortable with — you can change your mind anytime.</p>
+      <div class="f full"><label for="evidence">What records could you share?</label><textarea id="evidence" placeholder="Examples: recent inquiries or jobs, a booking flow, screenshots, a spreadsheet export, customer feedback. Don't send passwords or sensitive customer data here — we'll set up secure access if it's needed."></textarea></div>
+      <div class="grouplabel"><label>You give us permission to:</label></div>
+      <div class="checks one">
+        <label class="check"><input type="checkbox" name="perm" value="Send a test inquiry through our forms">Send a test inquiry through your website/forms to see where it lands</label>
+        <label class="check"><input type="checkbox" name="perm" value="Place a test call during business hours">Place one test call during business hours</label>
+        <label class="check"><input type="checkbox" name="perm" value="Review analytics/tools we grant access to">Review analytics or tools once we grant access</label>
+      </div>
+    </fieldset>
+
+    <!-- 07 Contact -->
+    <fieldset>
+      <div class="sh"><span class="i">07</span><h3>How to reach you</h3></div>
+      <div class="fields">
+        <div class="f"><label for="you">Your name <span class="req">*</span></label><input id="you" autocomplete="name" maxlength="200" placeholder="First &amp; last" required></div>
+        <div class="f"><label for="email">Email <span class="req">*</span></label><input id="email" type="email" autocomplete="email" maxlength="200" placeholder="you@business.com" required></div>
+        <div class="f"><label for="phone">Phone</label><input id="phone" type="tel" autocomplete="tel" maxlength="60" placeholder="(815) 555-0000"></div>
+        <div class="f"><label for="pref">Best way &amp; time to reach you</label><input id="pref" maxlength="160" placeholder="e.g. text after 4pm"></div>
+      </div>
+    </fieldset>
+
+    <div class="submit-row">
+      <button type="submit" class="btn" id="sendBtn">Send my onboarding details</button>
+      <span class="err" id="err" role="alert" hidden></span>
+    </div>
+    <div class="trust">Please don't enter passwords or sensitive customer records here — if we need protected access, we'll set it up securely and with your say-so. Nothing is charged on this page, and nothing is sent to your customers without your approval.</div>
+  </form>
+
+  <div class="done" id="done">
+    <div class="ok">✓</div>
+    <h2 id="doneHead">Thanks — we've got everything.</h2>
+    <p id="doneMsg">This goes straight to Eren to ground the work. We'll follow up about next steps — and we'll ask before anything reaches your customers.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var EREN_API = "https://eren-ops.onrender.com";
+  var form=document.getElementById("intake"), done=document.getElementById("done");
+  var err=document.getElementById("err"), btn=document.getElementById("sendBtn");
+  function value(id){var el=document.getElementById(id);return el?el.value.trim():"";}
+
+  // Reveal the deep block for each focus area as it's checked.
+  function syncFocus(){
+    document.querySelectorAll('input[name="focus"]').forEach(function(box){
+      var key=box.getAttribute("data-focus");
+      var block=document.querySelector('[data-focus-block="'+key+'"]');
+      if(block) block.hidden=!box.checked;
+    });
+  }
+  document.querySelectorAll('input[name="focus"]').forEach(function(box){
+    box.addEventListener("change",syncFocus);
+  });
+  syncFocus();
+
+  function showError(message, field){
+    err.textContent=message; err.hidden=false;
+    if(field){var el=document.getElementById(field); if(el) el.focus();}
+  }
+
+  // Serialize the whole intake into a readable, grouped notes block.
+  function notes(){
+    var L=[];
+    function add(label,id){var v=value(id); if(v) L.push(label+": "+v);}
+    L.push("=== CLIENT ONBOARDING (booked) ===");
+    L.push("-- Business --");
+    add("Service area","serviceArea"); add("Years in business","years");
+    add("What they do / who they serve","about"); add("First thing to improve","priority");
+    L.push("-- Team --");
+    add("Team size","teamSize"); add("Decision maker","decision"); add("Roles","roles"); add("Day-to-day contact","contactDay");
+    L.push("-- Problem & goal --");
+    add("Main problem","problem"); add("Desired result","outcome"); add("How they'd measure it","measure");
+    add("Timeline","timeline"); add("Budget","budget"); add("Constraints","constraints");
+    var cap=document.querySelector('input[name="capacity"]:checked'); if(cap) L.push("Capacity: "+cap.value);
+    var picked=Array.from(document.querySelectorAll('input[name="focus"]:checked')).map(function(b){return b.value.replace(/&amp;/g,"&");});
+    if(picked.length) L.push("-- Focus areas: "+picked.join(", ")+" --");
+    // Only include a deep block if its focus is checked.
+    function on(key){var b=document.querySelector('input[data-focus="'+key+'"]');return b&&b.checked;}
+    if(on("website")){L.push("[Website] "); add("Key pages / who updates","w_pages"); add("Platform","w_platform"); add("Analytics","w_analytics"); add("Search visibility","w_found");}
+    if(on("customers")){L.push("[Customers] "); add("How customers find them","c_find"); add("Inquiry path & owner","c_path"); add("Hours","c_hours"); add("Lead tracking","c_crm"); add("Offer / pitch","c_offer");}
+    if(on("time")){L.push("[Time/Ops] "); add("Repetitive task","t_task"); add("Frequency","t_freq"); add("Who does it","t_who"); add("Steps & breakpoints","t_steps");}
+    if(on("software")){L.push("[Software] "); add("Current stack","s_stack"); add("Frustrations / gaps","s_pain"); add("Wish list","s_wish");}
+    L.push("-- Evidence & permissions --");
+    add("Records offered","evidence");
+    var perms=Array.from(document.querySelectorAll('input[name="perm"]:checked')).map(function(b){return b.value;});
+    L.push("Permissions granted: "+(perms.length?perms.join("; "):"none granted yet"));
+    return L.join("\n");
+  }
+
+  form.addEventListener("submit",function(event){
+    event.preventDefault();
+    var required=["business","about","problem","you","email"];
+    for(var i=0;i<required.length;i++){
+      if(!value(required[i])){showError("Please complete the required fields before sending.",required[i]);return;}
+    }
+    if(!document.getElementById("email").checkValidity()){showError("Please enter a valid email address.","email");return;}
+    if(value("website") && !document.getElementById("website").checkValidity()){showError("Please enter a full website URL, including https://.","website");return;}
+    err.hidden=true;
+    var areas=Array.from(document.querySelectorAll('input[name="focus"]:checked')).map(function(b){return b.value.replace(/&amp;/g,"&");});
+    var payload={business_name:value("business"),website:value("website"),contact_name:value("you"),
+      email:value("email"),phone:value("phone"),preferred_contact:value("pref"),
+      focus:["Client onboarding"].concat(areas).join(", "),notes:notes(),source:"onboarding.html"};
+    btn.disabled=true; btn.textContent="Sending…";
+    fetch(EREN_API.replace(/\/$/,"")+"/api/leads",{
+      method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)
+    }).then(function(r){if(!r.ok)throw new Error("Request failed");return r.json();})
+    .then(function(saved){
+      if(!saved||typeof saved.id!=="number")throw new Error("No confirmation");
+      var n=value("you").split(" ")[0];
+      document.getElementById("doneHead").textContent="Thanks, "+n+" — we've got everything.";
+      form.style.display="none";done.classList.add("show");window.scrollTo({top:0,behavior:"smooth"});
+    }).catch(function(){
+      showError("Your details weren't sent. Please try again when the connection is available.");
+      btn.disabled=false;btn.textContent="Send my onboarding details";
+    });
+  });
+})();
+</script>
+</body></html>
