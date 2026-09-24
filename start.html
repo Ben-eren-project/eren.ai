@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Eren — Start with Diagnose</title>
+<title>Contact Eren | Discuss Your Business</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
 <style>
   :root{--bg:#080D18;--panel:#0D1830;--ink:#EDF2FB;--sub:#AAB7D0;--muted:#7A87A4;--faint:#59668A;--navy:#1B3A6B;--azure:#57A2E8;--line:rgba(255,255,255,.09);--line-2:rgba(255,255,255,.16);--grad:linear-gradient(120deg,#57a2e8,#2f62b8 45%,#122a52);--good:#4ADE9E;color-scheme:dark}
@@ -105,7 +105,22 @@
 }
 
 /* EREN MOBILE LAYOUT PATCH - END */
+#intake [hidden]{display:none!important}
 </style><link rel="stylesheet" href="eren-editorial.css">
+<meta name="description" content="Tell Eren what you want to improve. Request a free First Look or discuss a paid Diagnose or Build. No payment or booking is made by submitting this form.">
+<link rel="canonical" href="https://erenforbusiness.com/start.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Eren">
+<meta property="og:title" content="Contact Eren | Discuss Your Business">
+<meta property="og:description" content="Tell Eren what you want to improve. Request a free First Look or discuss a paid Diagnose or Build. No payment or booking is made by submitting this form.">
+<meta property="og:url" content="https://erenforbusiness.com/start.html">
+<meta property="og:image" content="https://erenforbusiness.com/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Eren — Know what to fix. Then build what matters.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="noindex,follow">
 </head><body class="page-start">
 
 <nav><div class="nav-in">
@@ -177,6 +192,7 @@
       </div>
     </fieldset>
 
+    <div class="f" style="margin-bottom:24px"><label for="heardFrom">How did you hear about Eren? <span>(optional)</span></label><input id="heardFrom" maxlength="200" placeholder="A person, a post, a search, or something else"></div>
     <div class="submit-row">
       <button type="submit" class="btn" id="sendBtn">Request a Diagnose conversation</button>
       <span class="err" id="err" role="alert" hidden></span>
@@ -191,6 +207,7 @@
   </div>
 </div>
 
+<script src="lead-source.js"></script>
 <script>
 (function(){
   // Set this to the verified Eren Ops origin when the site and API are hosted separately.
@@ -209,6 +226,14 @@
   var requested = new URLSearchParams(window.location.search).get("package");
   var packageKey = Object.prototype.hasOwnProperty.call(packages, requested) ? requested : "diagnose";
   var selected = packages[packageKey];
+  var isFirstLook = new URLSearchParams(window.location.search).get("intent") === "first-look" && !requested;
+  if (isFirstLook) {
+    selected = Object.assign({}, selected, {ey:"First Look · Free", title:"Start with a First Look.",
+      intro:"A free 15-minute fit call and one real observation about your website or workflow. Share the question on your mind; a full diagnosis is a separate paid engagement.",
+      button:"Request my free First Look"});
+    document.querySelector('label[for="diagnoseProblem"]').innerHTML = 'What would you like us to look at? <span class="req">*</span>';
+    ["diagnoseFlow","diagnoseEvidence","diagnoseOutcome"].forEach(function(id){document.getElementById(id).closest(".f").hidden=true;});
+  }
   var form=document.getElementById("intake"), done=document.getElementById("done");
   var err=document.getElementById("err"), btn=document.getElementById("sendBtn");
   function value(id){return document.getElementById(id).value.trim();}
@@ -235,6 +260,9 @@
       var stage=document.querySelector('input[name="diagnoseStage"]:checked');
       lines.push("Eren Diagnose status: "+(stage ? stage.value : "Not specified"));
     }
+    if (isFirstLook) lines.push("Offer requested: Free First Look only. No paid Diagnose or Build agreed.");
+    if(value("heardFrom")) lines.push("How they heard about Eren (self-reported): "+value("heardFrom"));
+    if(window.ErenLeadSource){var source=window.ErenLeadSource.read();if(source) lines.push("Tagged visit source (not verified identity): "+source.source+"; campaign: "+source.campaign);}
     return lines.join("\n\n");
   }
   form.addEventListener("submit",function(event){
@@ -253,7 +281,7 @@
     var areas=packageKey==="diagnose" ? Array.from(document.querySelectorAll('input[name="focus"]:checked')).map(function(item){return item.value;}) : [];
     var payload={business_name:value("business"),website:value("website"),contact_name:value("you"),
       email:value("email"),phone:value("phone"),preferred_contact:value("pref"),
-      focus:[selected.ey].concat(areas).join(", "),notes:notes(),source:"start.html:"+packageKey};
+      focus:[selected.ey].concat(areas).join(", "),notes:notes(),source:"start.html:"+(isFirstLook ? "first-look" : packageKey)};
     btn.disabled=true; btn.textContent="Sending…";
     fetch(EREN_API.replace(/\/$/,"")+"/api/leads",{
       method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)

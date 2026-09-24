@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Eren — Client onboarding</title>
+<title>Eren | Client Onboarding</title>
 <meta name="robots" content="noindex,nofollow">
-<meta name="description" content="Eren client onboarding — the detailed intake for booked clients, so the specialists work from real evidence instead of guesses.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
 <style>
   :root{--bg:#080D18;--panel:#0D1830;--ink:#EDF2FB;--sub:#AAB7D0;--muted:#7A87A4;--faint:#59668A;--navy:#1B3A6B;--azure:#57A2E8;--line:rgba(255,255,255,.09);--line-2:rgba(255,255,255,.16);--grad:linear-gradient(120deg,#57a2e8,#2f62b8 45%,#122a52);--good:#4ADE9E;color-scheme:dark}
@@ -73,6 +72,19 @@
   }
   @media (max-width:600px){.submit-row .btn{width:100%;min-height:48px}.check{min-height:48px}}
 </style><link rel="stylesheet" href="eren-editorial.css">
+<meta name="description" content="Share the business context and evidence for your agreed Eren engagement. This intake is for booked clients.">
+<link rel="canonical" href="https://erenforbusiness.com/onboarding.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Eren">
+<meta property="og:title" content="Eren | Client Onboarding">
+<meta property="og:description" content="Share the business context and evidence for your agreed Eren engagement. This intake is for booked clients.">
+<meta property="og:url" content="https://erenforbusiness.com/onboarding.html">
+<meta property="og:image" content="https://erenforbusiness.com/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Eren — Know what to fix. Then build what matters.">
+<meta name="twitter:card" content="summary_large_image">
 </head><body class="page-onboarding">
 
 <nav><div class="nav-in">
@@ -96,7 +108,7 @@
       <div class="fields">
         <div class="f"><label for="business">Business name <span class="req">*</span></label><input id="business" autocomplete="organization" maxlength="300" placeholder="Your business name" required></div>
         <div class="f"><label for="website">Website</label><input id="website" type="url" inputmode="url" maxlength="500" placeholder="https://yourbusiness.com"></div>
-        <div class="f"><label for="serviceArea">Location / service area</label><input id="serviceArea" maxlength="200" placeholder="e.g. Rockford, IL + 30 miles"></div>
+        <div class="f"><label for="serviceArea">Location / service area</label><input id="serviceArea" maxlength="200" placeholder="e.g. your city + 30 miles"></div>
         <div class="f"><label for="years">How long in business?</label><input id="years" maxlength="60" placeholder="e.g. 6 years"></div>
         <div class="f full"><label for="about">What do you do, and who do you serve? <span class="req">*</span></label><textarea id="about" placeholder="Your main services and the customers they're for. If one service or customer matters most right now, say which." required></textarea></div>
         <div class="f full"><label for="priority">If we could only improve one thing first, what should it be?</label><textarea id="priority" placeholder="The single outcome that would matter most to you over the next few months."></textarea></div>
@@ -151,9 +163,37 @@
       </div>
     </fieldset>
 
-    <!-- 05 Focus areas -->
+    <!-- 05 Current setup: stack & hosting (always asked) -->
     <fieldset>
-      <div class="sh"><span class="i">05</span><h3>Where should we focus?</h3></div>
+      <div class="sh"><span class="i">05</span><h3>Your current setup</h3></div>
+      <p class="sub-note">What you run the business on today — your apps and where your site lives. This is the map we work from: it's how we spot what overlaps, what's missing, and what any fix would have to fit into. "Not sure" is a perfectly good answer.</p>
+      <div class="fields">
+        <div class="f"><label for="cur_platform">What's your website built on?</label><input id="cur_platform" maxlength="160" placeholder="e.g. Squarespace, WordPress, Wix, Shopify, custom, none yet"></div>
+        <div class="f"><label for="cur_host">Where is it hosted?</label><input id="cur_host" maxlength="160" placeholder="e.g. Squarespace, GoDaddy, Bluehost, not sure"></div>
+        <div class="f"><label for="cur_domain">Where's your domain registered?</label><input id="cur_domain" maxlength="160" placeholder="e.g. GoDaddy, Namecheap, Google Domains, not sure"></div>
+        <div class="f"><label for="cur_sitemgr">Who manages / updates the site?</label><input id="cur_sitemgr" maxlength="160" placeholder="e.g. me, a vendor, a family member, nobody right now"></div>
+      </div>
+      <div class="grouplabel"><label>Which of these do you use software for? (check all that apply)</label></div>
+      <div class="checks">
+        <label class="check"><input type="checkbox" name="apps" value="Booking / scheduling">Booking / scheduling</label>
+        <label class="check"><input type="checkbox" name="apps" value="Invoicing / payments">Invoicing / payments</label>
+        <label class="check"><input type="checkbox" name="apps" value="CRM / lead tracking">CRM / lead tracking</label>
+        <label class="check"><input type="checkbox" name="apps" value="Email / newsletter">Email / newsletter</label>
+        <label class="check"><input type="checkbox" name="apps" value="Accounting / bookkeeping">Accounting / bookkeeping</label>
+        <label class="check"><input type="checkbox" name="apps" value="Texting / calls">Texting / calls</label>
+        <label class="check"><input type="checkbox" name="apps" value="Files / documents">Files / documents</label>
+        <label class="check"><input type="checkbox" name="apps" value="Point of sale">Point of sale</label>
+        <label class="check"><input type="checkbox" name="apps" value="Social / content">Social / content</label>
+        <label class="check"><input type="checkbox" name="apps" value="Other">Other</label>
+      </div>
+      <div class="fields" style="margin-top:14px">
+        <div class="f full"><label for="cur_apps">Name the specific apps you use — and rough monthly cost if you know it.</label><textarea id="cur_apps" placeholder="e.g. Jobber for scheduling + invoicing (~$99/mo), QuickBooks, Mailchimp, Google Workspace, a POS at the counter. List what you can — even partial helps."></textarea></div>
+      </div>
+    </fieldset>
+
+    <!-- 06 Focus areas -->
+    <fieldset>
+      <div class="sh"><span class="i">06</span><h3>Where should we focus?</h3></div>
       <p class="sub-note">Pick every area that's in play. Choosing one opens a few extra questions just for that area — the more you tell us, the sharper the work.</p>
       <div class="checks">
         <label class="check"><input type="checkbox" name="focus" value="Website &amp; getting found" data-focus="website">Website &amp; getting found</label>
@@ -168,7 +208,6 @@
       <span class="tag">Website &amp; getting found</span>
       <div class="fields">
         <div class="f full"><label for="w_pages">Which pages matter most, and who updates the site?</label><textarea id="w_pages" placeholder="e.g. the service page and the contact page; my nephew built it and updates it, or we can't edit it ourselves."></textarea></div>
-        <div class="f"><label for="w_platform">What's the site built on?</label><input id="w_platform" maxlength="160" placeholder="e.g. Squarespace, WordPress, not sure"></div>
         <div class="f"><label for="w_analytics">Do you have analytics we could look at?</label><input id="w_analytics" maxlength="160" placeholder="e.g. Google Analytics, none, not sure"></div>
         <div class="f full"><label for="w_found">When someone searches for what you sell, what happens?</label><textarea id="w_found" placeholder="Do you show up? On Google Maps? Do you have a Google Business Profile you manage? Tell us what you know."></textarea></div>
       </div>
@@ -200,16 +239,16 @@
     <!-- Adaptive: Software / tools -->
     <fieldset class="focusblock" data-focus-block="software" hidden>
       <span class="tag">Better software &amp; tools</span>
+      <p class="sub-note">You've listed your stack above — this is where we go deeper on what isn't working.</p>
       <div class="fields">
-        <div class="f full"><label for="s_stack">What tools and software do you use to run the business?</label><textarea id="s_stack" placeholder="List what you can — website, booking, invoicing, texting, email, spreadsheets. Rough monthly cost is helpful if you know it."></textarea></div>
         <div class="f full"><label for="s_pain">What's frustrating, missing, or doesn't talk to anything else?</label><textarea id="s_pain" placeholder="Tools you pay for but barely use, things you wish they did, or work you do to bridge two tools by hand."></textarea></div>
         <div class="f full"><label for="s_wish">If you could wave a wand, what would your tools just do for you?</label><textarea id="s_wish" placeholder="No wrong answers — this tells us what's worth building or combining."></textarea></div>
       </div>
     </fieldset>
 
-    <!-- 06 Evidence & permissions -->
+    <!-- 07 Evidence & permissions -->
     <fieldset>
-      <div class="sh"><span class="i">06</span><h3>Evidence &amp; permission to look</h3></div>
+      <div class="sh"><span class="i">07</span><h3>Evidence &amp; permission to look</h3></div>
       <p class="sub-note">The more we can observe first-hand, the less we have to assume. Only grant what you're comfortable with — you can change your mind anytime.</p>
       <div class="f full"><label for="evidence">What records could you share?</label><textarea id="evidence" placeholder="Examples: recent inquiries or jobs, a booking flow, screenshots, a spreadsheet export, customer feedback. Don't send passwords or sensitive customer data here — we'll set up secure access if it's needed."></textarea></div>
       <div class="grouplabel"><label>You give us permission to:</label></div>
@@ -220,9 +259,9 @@
       </div>
     </fieldset>
 
-    <!-- 07 Contact -->
+    <!-- 08 Contact -->
     <fieldset>
-      <div class="sh"><span class="i">07</span><h3>How to reach you</h3></div>
+      <div class="sh"><span class="i">08</span><h3>How to reach you</h3></div>
       <div class="fields">
         <div class="f"><label for="you">Your name <span class="req">*</span></label><input id="you" autocomplete="name" maxlength="200" placeholder="First &amp; last" required></div>
         <div class="f"><label for="email">Email <span class="req">*</span></label><input id="email" type="email" autocomplete="email" maxlength="200" placeholder="you@business.com" required></div>
@@ -284,14 +323,19 @@
     add("Main problem","problem"); add("Desired result","outcome"); add("How they'd measure it","measure");
     add("Timeline","timeline"); add("Budget","budget"); add("Constraints","constraints");
     var cap=document.querySelector('input[name="capacity"]:checked'); if(cap) L.push("Capacity: "+cap.value);
+    L.push("-- Current setup (stack & hosting) --");
+    add("Website platform","cur_platform"); add("Hosting","cur_host"); add("Domain registrar","cur_domain"); add("Who manages the site","cur_sitemgr");
+    var apps=Array.from(document.querySelectorAll('input[name="apps"]:checked')).map(function(b){return b.value;});
+    if(apps.length) L.push("App categories in use: "+apps.join(", "));
+    add("Specific apps (& cost)","cur_apps");
     var picked=Array.from(document.querySelectorAll('input[name="focus"]:checked')).map(function(b){return b.value.replace(/&amp;/g,"&");});
     if(picked.length) L.push("-- Focus areas: "+picked.join(", ")+" --");
     // Only include a deep block if its focus is checked.
     function on(key){var b=document.querySelector('input[data-focus="'+key+'"]');return b&&b.checked;}
-    if(on("website")){L.push("[Website] "); add("Key pages / who updates","w_pages"); add("Platform","w_platform"); add("Analytics","w_analytics"); add("Search visibility","w_found");}
+    if(on("website")){L.push("[Website] "); add("Key pages / who updates","w_pages"); add("Analytics","w_analytics"); add("Search visibility","w_found");}
     if(on("customers")){L.push("[Customers] "); add("How customers find them","c_find"); add("Inquiry path & owner","c_path"); add("Hours","c_hours"); add("Lead tracking","c_crm"); add("Offer / pitch","c_offer");}
     if(on("time")){L.push("[Time/Ops] "); add("Repetitive task","t_task"); add("Frequency","t_freq"); add("Who does it","t_who"); add("Steps & breakpoints","t_steps");}
-    if(on("software")){L.push("[Software] "); add("Current stack","s_stack"); add("Frustrations / gaps","s_pain"); add("Wish list","s_wish");}
+    if(on("software")){L.push("[Software] "); add("Frustrations / gaps","s_pain"); add("Wish list","s_wish");}
     L.push("-- Evidence & permissions --");
     add("Records offered","evidence");
     var perms=Array.from(document.querySelectorAll('input[name="perm"]:checked')).map(function(b){return b.value;});
