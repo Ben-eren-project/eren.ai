@@ -152,6 +152,25 @@
 }
 
 /* EREN MOBILE LAYOUT PATCH - END */
+
+  /* A closer look — film section (added under hero) */
+  .closer .closer-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
+  .closer .closer-title{font-size:clamp(30px,4vw,46px);font-weight:400;letter-spacing:-.02em;line-height:1.12;margin:14px 0 0}
+  .closer .closer-title em{font-family:Georgia,'Iowan Old Style','Palatino Linotype',serif;font-style:italic;color:var(--sub)}
+  .closer .closer-link{font-size:14px;color:var(--sub);white-space:nowrap;transition:color .15s;padding-bottom:8px}
+  .closer .closer-link:hover{color:var(--azure)}
+  .closer .film{position:relative;margin-top:34px;border:1px solid var(--line-2);border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:linear-gradient(160deg,#0b1526,#0d1830)}
+  .closer .film-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#05080f;display:block}
+  .closer .film-poster{position:absolute;inset:0;cursor:pointer}
+  .closer .film-radar{position:absolute;inset:0;width:100%;height:100%;opacity:.55;pointer-events:none}
+  .closer .film-top,.closer .film-bottom{position:absolute;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:20px clamp(18px,2.5vw,28px);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);z-index:2}
+  .closer .film-top{top:0}.closer .film-bottom{bottom:0}
+  .closer .film-bottom .film-cap{color:var(--sub);letter-spacing:.02em;text-transform:none;font-size:13px}
+  .closer .film-arrow{color:var(--azure);font-size:15px}
+  .closer .film-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:74px;height:74px;border-radius:50%;border:1px solid var(--line-2);background:rgba(8,13,24,.5);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .15s,border-color .15s,background .15s;z-index:3}
+  .closer .film-play:hover{transform:translate(-50%,-50%) scale(1.06);border-color:var(--azure);background:rgba(63,123,214,.16)}
+  .closer .film-play svg{width:22px;height:22px;margin-left:3px;fill:var(--ink)}
+  @media(max-width:700px){.closer .closer-head{align-items:flex-start}.closer .film-play{width:60px;height:60px}}
 </style><link rel="stylesheet" href="eren-editorial.css">
 <meta name="description" content="Eren helps local businesses find and fix problems across websites, inquiries and daily work. Start with a free First Look, then choose a paid Diagnose or Build.">
 <link rel="canonical" href="https://erenforbusiness.com/">
@@ -206,6 +225,31 @@
   </div>
   <div class="shell hero-foot"><span>Focused on the path from discovery to inquiry.</span><a href="pricing.html">Diagnose first. Build by agreement. <span aria-hidden="true">↗</span></a></div>
 </header>
+
+<section class="closer">
+  <div class="shell">
+    <div class="closer-head">
+      <div>
+        <div class="ey">A closer look</div>
+        <h2 class="closer-title">A clearer next move.<br><em>In 15 seconds.</em></h2>
+      </div>
+      <a class="closer-link" href="how.html">See the thinking behind Eren.</a>
+    </div>
+    <div class="film" id="film">
+      <video class="film-video" playsinline preload="metadata"><source src="eren-showreel.mp4" type="video/mp4"></video>
+      <div class="film-poster" id="filmPoster">
+        <svg class="film-radar" viewBox="0 0 1200 675" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g fill="none" stroke="rgba(255,255,255,.10)"><circle cx="600" cy="337" r="92"/><circle cx="600" cy="337" r="162"/><circle cx="600" cy="337" r="236"/><circle cx="600" cy="337" r="316"/></g>
+          <g stroke="rgba(255,255,255,.10)"><line x1="150" y1="250" x2="470" y2="250"/><line x1="150" y1="337" x2="442" y2="337"/><line x1="150" y1="424" x2="470" y2="424"/><line x1="730" y1="250" x2="1050" y2="250"/><line x1="758" y1="337" x2="1050" y2="337"/><line x1="730" y1="424" x2="1050" y2="424"/></g>
+          <g fill="#57A2E8"><circle cx="322" cy="250" r="4.5"/><circle cx="447" cy="337" r="4.5"/><circle cx="396" cy="424" r="4.5"/><circle cx="905" cy="250" r="4.5"/><circle cx="840" cy="337" r="4.5"/><circle cx="986" cy="424" r="4.5"/></g>
+        </svg>
+        <div class="film-top"><span>Eren / The approach</span><span>Short film &mdash; 00:15</span></div>
+        <button class="film-play" id="filmPlay" type="button" aria-label="Play the film"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+        <div class="film-bottom"><span class="film-cap">Watch Eren in 15 seconds</span><span class="film-arrow">&#8599;</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="shift"><div class="shell">
   <div class="shift">
@@ -288,4 +332,5 @@
 
 
 <script src="lead-source.js" defer></script>
+<script>(function(){var f=document.getElementById('film');if(!f)return;var v=f.querySelector('.film-video'),p=document.getElementById('filmPoster');p.addEventListener('click',function(){p.style.display='none';v.setAttribute('controls','');var r=v.play();if(r&&r.catch)r.catch(function(){});});})();</script>
 </body></html>
