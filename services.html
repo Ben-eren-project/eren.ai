@@ -87,7 +87,12 @@ h1,h2,h3{ font-weight:400; letter-spacing:-.04em; margin:0; }
 section{ padding-block:88px; border-bottom:1px solid var(--line); }
 
 /* hero */
-.subhero{ border-bottom:1px solid var(--line); background:radial-gradient(ellipse at 80% 40%,#14243a 0,transparent 55%),var(--bg); }
+.subhero{ position:relative; isolation:isolate; overflow:hidden; border-bottom:1px solid var(--line); background:radial-gradient(ellipse at 80% 40%,#14243a 0,transparent 55%),var(--bg); }
+.subhero > .shell{ position:relative; z-index:1; }
+/* Constellation field (idea from mengto's Constellation Field on 21st.dev; rebuilt in plain JS) */
+.cfield{ position:absolute; inset:0; width:100%; height:100%; z-index:0; pointer-events:none;
+  -webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.1) 0%,rgba(0,0,0,.32) 38%,#000 78%); mask-image:linear-gradient(90deg,rgba(0,0,0,.1) 0%,rgba(0,0,0,.32) 38%,#000 78%); }
+@media (max-width:800px){ .cfield{ -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.25) 45%,#000 70%); mask-image:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.25) 45%,#000 70%); } }
 .hero-grid{ display:grid; grid-template-columns:1.05fr 1fr; gap:clamp(32px,5vw,64px); align-items:center; padding-block:76px 70px; }
 .subhero h1{ font-size:clamp(40px,5vw,64px); line-height:1.08; max-width:14ch; margin-top:22px; }
 .subhero p{ color:var(--sub); font-size:17px; line-height:1.8; max-width:52ch; margin:25px 0 0; }
@@ -270,6 +275,7 @@ footer{ border-top:1px solid var(--line); font-size:12px; padding-block:48px 40p
 <main>
   <!-- HERO -->
   <header class="subhero">
+    <canvas class="cfield" id="cfield" aria-hidden="true"></canvas>
     <div class="shell hero-grid">
       <div>
         <div class="ey">Services</div>
@@ -664,6 +670,57 @@ footer{ border-top:1px solid var(--line); font-size:12px; padding-block:48px 40p
   </div>
 </footer>
 
+<script>
+/* Constellation field: drifting nodes joined by fading lines; nearby nodes ease away from the pointer.
+   Pauses off-screen and in hidden tabs; draws one still frame for reduced-motion users. */
+(() => {
+  const cv = document.getElementById("cfield");
+  if (!cv || !cv.getContext) return;
+  const ctx = cv.getContext("2d"), host = cv.parentElement;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const C = "145,194,237", LINK = 130, PUSH = 160;
+  let W = 0, H = 0, D = 1, nodes = [], lastW = -1;
+  const mouse = { x: -1e4, y: -1e4 };
+  function seed() {
+    const r = cv.getBoundingClientRect(); D = Math.min(devicePixelRatio || 1, 2);
+    W = r.width; H = r.height; cv.width = Math.round(W * D); cv.height = Math.round(H * D);
+    if (Math.abs(W - lastW) < 2 && nodes.length) return; lastW = W;
+    const n = Math.round(Math.min(130, W * H / 9500));
+    nodes = Array.from({ length: n }, () => ({ x: Math.random() * W, y: Math.random() * H,
+      vx: (Math.random() - .5) * .18, vy: (Math.random() - .5) * .18, r: .8 + Math.random() * 1.4 }));
+  }
+  host.addEventListener("pointermove", e => { const r = cv.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; });
+  host.addEventListener("pointerleave", () => { mouse.x = mouse.y = -1e4; });
+  function draw(move) {
+    ctx.setTransform(D, 0, 0, D, 0, 0); ctx.clearRect(0, 0, W, H);
+    if (move) for (const p of nodes) {
+      const dx = p.x - mouse.x, dy = p.y - mouse.y, d = Math.hypot(dx, dy);
+      if (d < PUSH) { const f = (1 - d / PUSH) * .03; p.vx += dx / (d + 1) * f; p.vy += dy / (d + 1) * f; }
+      p.vx *= .985; p.vy *= .985;
+      if (Math.abs(p.vx) < .05) p.vx += (Math.random() - .5) * .02;
+      if (Math.abs(p.vy) < .05) p.vy += (Math.random() - .5) * .02;
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < -20) p.x = W + 20; else if (p.x > W + 20) p.x = -20;
+      if (p.y < -20) p.y = H + 20; else if (p.y > H + 20) p.y = -20;
+    }
+    ctx.lineWidth = 1;
+    for (let i = 0; i < nodes.length; i++) for (let j = i + 1; j < nodes.length; j++) {
+      const a = nodes[i], b = nodes[j], d = Math.hypot(a.x - b.x, a.y - b.y);
+      if (d < LINK) { ctx.strokeStyle = `rgba(${C},${(1 - d / LINK) * .26})`; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); }
+    }
+    for (const p of nodes) {
+      const d = Math.hypot(p.x - mouse.x, p.y - mouse.y);
+      if (d < 170) { ctx.strokeStyle = `rgba(${C},${(1 - d / 170) * .4})`; ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke(); }
+      ctx.fillStyle = `rgba(${C},.7)`; ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.2832); ctx.fill();
+    }
+  }
+  let visible = true;
+  if ("IntersectionObserver" in window) new IntersectionObserver(e => { visible = e[0].isIntersecting; }).observe(cv);
+  seed(); addEventListener("resize", () => { seed(); if (reduce) draw(false); });
+  if (reduce) { draw(false); return; }
+  (function loop() { if (visible && !document.hidden) draw(true); requestAnimationFrame(loop); })();
+})();
+</script>
 <script src="lead-source.js"></script>
 <script>
 /* Hero: business signals flow through the Eren gateway and come out as three ranked fixes. */
