@@ -124,7 +124,8 @@
   [id] { scroll-margin-top:150px; }
 }
 @media (max-width: 600px) {
-  .nav-links { display:grid; grid-template-columns:auto minmax(0,1fr) auto auto; gap:0 8px; font-size:13px; }
+  .nav-links { display:flex; justify-content:space-between; flex-wrap:nowrap; overflow-x:auto; gap:0 12px; font-size:12.5px; }
+  .nav-links a { white-space:nowrap; }
   .nav-links a { padding-inline:0; }
   .hero h1 { font-size:clamp(32px,9vw,40px); line-height:1.1; }
   .hero-cta { align-items:stretch; }
@@ -193,6 +194,7 @@
   <div class="nav-links">
     <a href="/" class="on">Home</a>
     <a href="how.html">How Eren operates</a>
+    <a href="services.html">Services</a>
     <a href="pricing.html">Pricing</a>
     <a href="about.html">About</a>
   </div>
@@ -321,7 +323,7 @@
       <div style="margin-top:10px;max-width:34ch">A done-for-you specialist that rebuilds how customers find and choose your business.</div>
     </div>
     <div class="foot-cols">
-      <div><h4>Product</h4><a href="how.html">How Eren operates</a><a href="pricing.html">Pricing</a><a href="first-look.html">Start a free conversation</a></div>
+      <div><h4>Product</h4><a href="how.html">How Eren operates</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="first-look.html">Start a free conversation</a></div>
       <div><h4>Guides</h4><a href="website-inquiries.html">Website inquiry checklist</a><a href="first-look.html">First Look</a></div>
       <div><h4>Company</h4><a href="about.html">About</a></div>
       <div><h4>Contact</h4><a href="mailto:eren.client@gmail.com">eren.client@gmail.com</a></div>
