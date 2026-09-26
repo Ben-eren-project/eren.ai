@@ -4,7 +4,7 @@
 (function () {
   'use strict';
   var key = 'eren-source-v1';
-  var sources = ['referral','partner','research','linkedin','community','workshop','organic','case-study'];
+  var sources = ['referral','partner','research','linkedin','community','workshop','organic','case-study','facebook','youtube'];
   var campaigns = ['first-look','lead-leak','booking','manual-work','presence','tool-stack','custom-tool'];
   function valid(value, list) { return typeof value === 'string' && list.indexOf(value) !== -1; }
   function read() {
