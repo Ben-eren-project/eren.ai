@@ -111,7 +111,7 @@
 <link rel="canonical" href="https://erenforbusiness.com/start.html">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Eren">
+<meta property="og:site_name" content="Eren for Business">
 <meta property="og:title" content="Contact Eren | Discuss Your Business">
 <meta property="og:description" content="Tell Eren what you want to improve. Request a free First Look or discuss a paid Diagnose or Build. No payment or booking is made by submitting this form.">
 <meta property="og:url" content="https://erenforbusiness.com/start.html">
@@ -124,8 +124,8 @@
 </head><body class="page-start">
 
 <nav><div class="nav-in">
-  <a class="brand" href="index.html"><span class="mark"><svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="6.5" width="2.6" height="19" rx="1.3" fill="#57A2E8"/><rect x="7" y="6.5" width="17" height="2.6" rx="1.3" fill="#57A2E8"/><rect x="7" y="15" width="11.5" height="2.6" rx="1.3" fill="#8FC3F2"/><rect x="7" y="22.9" width="17" height="2.6" rx="1.3" fill="#57A2E8"/></svg></span>Eren</a>
-  <div class="nav-r"><a href="index.html">← Back to site</a></div>
+  <a class="brand" href="/"><span class="mark"><svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="6.5" width="2.6" height="19" rx="1.3" fill="#57A2E8"/><rect x="7" y="6.5" width="17" height="2.6" rx="1.3" fill="#57A2E8"/><rect x="7" y="15" width="11.5" height="2.6" rx="1.3" fill="#8FC3F2"/><rect x="7" y="22.9" width="17" height="2.6" rx="1.3" fill="#57A2E8"/></svg></span>Eren</a>
+  <div class="nav-r"><a href="/">← Back to site</a></div>
 </div></nav>
 
 <div class="shell">
@@ -135,6 +135,21 @@
     <p id="packageIntro">Tell us the one problem you want to understand. We start with a free conversation; the paid Diagnose begins only after you agree to it.</p>
     <div class="steps-mini"><span><b>1</b> Share the context</span><span><b>2</b> We review it</span><span><b>3</b> Agree on the next step</span></div>
   </div>
+  <script>
+  // ?intent=first-look (with no ?package=): swap in First Look wording as soon as the header exists, so Diagnose wording never shows first.
+  window.ErenFirstLook = (function(){
+    var q = new URLSearchParams(window.location.search);
+    if (q.get("intent") !== "first-look" || q.get("package")) return null;
+    var copy = {ey:"First Look · Free", title:"Start with a First Look.",
+      intro:"A free 15-minute fit call and one real observation about your website or workflow. Share the question on your mind; a full diagnosis is a separate paid engagement.",
+      button:"Request my free First Look"};
+    document.title = "Eren — "+copy.ey;
+    document.getElementById("packageEy").textContent = copy.ey;
+    document.getElementById("packageTitle").textContent = copy.title;
+    document.getElementById("packageIntro").textContent = copy.intro;
+    return copy;
+  })();
+  </script>
 
   <noscript><p style="border:1px solid #3F7BD6;background:rgba(63,123,214,.08);color:#EDF2FB;border-radius:12px;padding:16px 18px;margin:0 0 22px;font-size:15px;line-height:1.6">This form needs JavaScript to send. If it's turned off, email <a href="mailto:eren.client@gmail.com" style="color:#57A2E8;text-decoration:underline">eren.client@gmail.com</a> with your business name and what you'd like Eren to look at — that reaches the same place.</p></noscript><form id="intake" novalidate>
     <fieldset>
@@ -197,6 +212,13 @@
       <button type="submit" class="btn" id="sendBtn">Request a Diagnose conversation</button>
       <span class="err" id="err" role="alert" hidden></span>
     </div>
+    <script>
+    if (window.ErenFirstLook) {
+      document.querySelector('label[for="diagnoseProblem"]').innerHTML = 'What would you like us to look at? <span class="req">*</span>';
+      ["diagnoseFlow","diagnoseEvidence","diagnoseOutcome"].forEach(function(id){document.getElementById(id).closest(".f").hidden=true;});
+      document.getElementById("sendBtn").textContent = window.ErenFirstLook.button;
+    }
+    </script>
     <div class="trust">No payment is taken here. Nothing is booked or sent to a client automatically. Please do not enter passwords or sensitive customer records.</div>
   </form>
 
@@ -226,14 +248,9 @@
   var requested = new URLSearchParams(window.location.search).get("package");
   var packageKey = Object.prototype.hasOwnProperty.call(packages, requested) ? requested : "diagnose";
   var selected = packages[packageKey];
-  var isFirstLook = new URLSearchParams(window.location.search).get("intent") === "first-look" && !requested;
-  if (isFirstLook) {
-    selected = Object.assign({}, selected, {ey:"First Look · Free", title:"Start with a First Look.",
-      intro:"A free 15-minute fit call and one real observation about your website or workflow. Share the question on your mind; a full diagnosis is a separate paid engagement.",
-      button:"Request my free First Look"});
-    document.querySelector('label[for="diagnoseProblem"]').innerHTML = 'What would you like us to look at? <span class="req">*</span>';
-    ["diagnoseFlow","diagnoseEvidence","diagnoseOutcome"].forEach(function(id){document.getElementById(id).closest(".f").hidden=true;});
-  }
+  // First Look wording and field changes are applied earlier, inline, by the scripts next to the header and submit button.
+  var isFirstLook = !!window.ErenFirstLook && !requested;
+  if (isFirstLook) selected = Object.assign({}, selected, window.ErenFirstLook);
   var form=document.getElementById("intake"), done=document.getElementById("done");
   var err=document.getElementById("err"), btn=document.getElementById("sendBtn");
   function value(id){return document.getElementById(id).value.trim();}
