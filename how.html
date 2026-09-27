@@ -180,7 +180,8 @@
   [id] { scroll-margin-top:150px; }
 }
 @media (max-width: 600px) {
-  .nav-links { display:grid; grid-template-columns:auto minmax(0,1fr) auto auto; gap:0 8px; font-size:13px; }
+  .nav-links { display:flex; justify-content:space-between; flex-wrap:nowrap; overflow-x:auto; gap:0 12px; font-size:12.5px; }
+  .nav-links a { white-space:nowrap; }
   .nav-links a { padding-inline:0; }
   .hero h1 { font-size:clamp(32px,9vw,40px); line-height:1.1; }
   .hero-cta { align-items:stretch; }
@@ -223,11 +224,12 @@
 <meta property="og:image:alt" content="Eren — Know what to fix. Then build what matters.">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "@id": "https://erenforbusiness.com/how.html#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://erenforbusiness.com/"}, {"@type": "ListItem", "position": 2, "name": "How Eren operates", "item": "https://erenforbusiness.com/how.html"}]}]}</script>
+<link rel="stylesheet" href="eren-chrome.css">
 </head><body class="page-how">
 
 <nav><div class="nav-in">
   <a class="brand" href="/"><span class="mark"><svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="6.5" width="2.6" height="19" rx="1.3" fill="#57A2E8"/><rect x="7" y="6.5" width="17" height="2.6" rx="1.3" fill="#57A2E8"/><rect x="7" y="15" width="11.5" height="2.6" rx="1.3" fill="#8FC3F2"/><rect x="7" y="22.9" width="17" height="2.6" rx="1.3" fill="#57A2E8"/></svg></span>Eren</a>
-  <div class="nav-links"><a href="/">Home</a><a href="how.html" class="on">How Eren operates</a><a href="pricing.html">Pricing</a><a href="about.html">About</a></div>
+  <div class="nav-links"><a href="/">Home</a><a href="how.html" class="on">How Eren operates</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="about.html">About</a></div>
   <div class="nav-r"><a class="btn sm" href="first-look.html">Start with a free conversation</a></div>
 </div></nav>
 
@@ -501,23 +503,38 @@
 </div></section>
 
 <!-- CTA -->
-<div class="shell"><div class="cta">
-  <h2>Point it at your business.</h2>
-  <p>It starts with a free 15-minute conversation — then, if it's a fit, a grounded look at what's worth fixing, checked before it reaches you, with nothing sent without your say-so.</p>
-  <a class="btn" href="first-look.html" style="font-size:16px;padding:15px 30px">Start with a free conversation</a>
-</div></div>
+<section class="cta2" aria-labelledby="cta2-h">
+  <div class="marq" aria-hidden="true"><div class="marq-track"><span>Missed call at 9:47 pm</span><span>Contact form sent to an old inbox</span><span>Booking link broken on mobile</span><span>Quote still waiting on a reply</span><span>Three apps, none of them talking</span><span>Last review answered in March</span><span>No hours on the business profile</span><span>After-hours calls go to voicemail</span><span>Missed call at 9:47 pm</span><span>Contact form sent to an old inbox</span><span>Booking link broken on mobile</span><span>Quote still waiting on a reply</span><span>Three apps, none of them talking</span><span>Last review answered in March</span><span>No hours on the business profile</span><span>After-hours calls go to voicemail</span></div></div>
+  <div class="shell cta2-in">
+    <div>
+      <div class="ey">Start here</div>
+      <h2 id="cta2-h">Point it at your business.</h2>
+      <p>It starts with a free 15-minute conversation — then, if it's a fit, a grounded look at what's worth fixing, checked before it reaches you, with nothing sent without your say-so.</p>
+    </div>
+    <div class="cta2-side">
+      <div class="cta2-row">
+        <a class="btn" href="first-look.html">Start with a free conversation</a>
+        <a class="text-link" href="services.html">See the six services <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <ul class="assure"><li>Free, and about 15 minutes</li><li>No payment taken, nothing booked</li><li>A paid Diagnose only if it&rsquo;s worth it</li></ul>
+    </div>
+  </div>
+</section>
 
 <footer><div class="shell">
   <div class="foot">
-    <div><a class="brand" href="/"><span class="mark"><svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="6.5" width="2.6" height="19" rx="1.3" fill="#57A2E8"/><rect x="7" y="6.5" width="17" height="2.6" rx="1.3" fill="#57A2E8"/><rect x="7" y="15" width="11.5" height="2.6" rx="1.3" fill="#8FC3F2"/><rect x="7" y="22.9" width="17" height="2.6" rx="1.3" fill="#57A2E8"/></svg></span>Eren</a><div style="margin-top:10px;max-width:34ch">Eren finds what's costing your business, then helps fix it. Website, inquiries, and the work behind them.</div></div>
+    <div><a class="brand" href="/"><span class="mark"><svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="6.5" width="2.6" height="19" rx="1.3" fill="#57A2E8"/><rect x="7" y="6.5" width="17" height="2.6" rx="1.3" fill="#57A2E8"/><rect x="7" y="15" width="11.5" height="2.6" rx="1.3" fill="#8FC3F2"/><rect x="7" y="22.9" width="17" height="2.6" rx="1.3" fill="#57A2E8"/></svg></span>Eren</a><div style="margin-top:10px;max-width:34ch">Eren finds what's costing your business, then helps fix it. Website, inquiries, and the work behind them.</div>
+      <div class="socials"><a href="https://www.facebook.com/profile.php?id=61594707334528" target="_blank" rel="noopener" aria-label="Eren on Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8v3h2.6V21h2.9z"/></svg></a><a href="https://www.youtube.com/@ErenForBusiness" target="_blank" rel="noopener" aria-label="Eren on YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg></a><a href="mailto:eren.client@gmail.com" aria-label="Email Eren"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a></div></div>
     <div class="foot-cols">
-      <div><h4>Product</h4><a href="how.html">How Eren operates</a><a href="pricing.html">Pricing</a><a href="first-look.html">Start a free conversation</a></div>
+      <div><h4>Product</h4><a href="how.html">How Eren operates</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="first-look.html">Start a free conversation</a></div>
       <div><h4>Guides</h4><a href="website-inquiries.html">Website inquiry checklist</a><a href="first-look.html">First Look</a></div>
       <div><h4>Company</h4><a href="about.html">About</a></div>
       <div><h4>Contact</h4><a href="mailto:eren.client@gmail.com">eren.client@gmail.com</a></div>
+      <div><h4>Follow</h4><a href="https://www.facebook.com/profile.php?id=61594707334528" target="_blank" rel="noopener">Facebook</a><a href="https://www.youtube.com/@ErenForBusiness" target="_blank" rel="noopener">YouTube</a></div>
     </div>
   </div>
-  <div style="margin-top:30px">© 2026 Eren. Built on Claude.</div>
+  <div class="foot2-bar"><span>&copy; 2026 Eren. Built on Claude.</span><span><a href="#top">Back to top &uarr;</a></span></div>
+  <div class="wordmark" aria-hidden="true"><span>Eren</span></div>
 </div></footer>
 
 <script>
@@ -547,4 +564,5 @@
 })();
 </script>
 <script src="lead-source.js" defer></script>
+<script src="eren-chrome.js" defer></script>
 </body></html>
