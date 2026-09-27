@@ -1,0 +1,57 @@
+/* Eren site chrome: capsule header on scroll, closing CTA band, footer socials + wordmark.
+   Shared by every page with the main nav/footer. Respects prefers-reduced-motion. */
+
+/* Header: sliding hover pill, capsule on scroll (desktop), hide on scroll down (mobile) */
+nav{transition:background .35s,border-color .35s,transform .35s}
+.nav-in{position:relative;border:1px solid transparent;transition:max-width .45s cubic-bezier(.2,.8,.2,1),margin .45s,padding .45s,border-radius .45s,background .35s,box-shadow .35s,border-color .35s}
+.nav-links{position:relative}
+.nav-links a{position:relative;z-index:1;transition:color .2s}
+.nav-pill{position:absolute;top:50%;height:32px;margin-top:-16px;left:0;width:0;border-radius:999px;background:rgba(145,194,237,.10);border:1px solid rgba(145,194,237,.18);opacity:0;transition:left .28s cubic-bezier(.2,.8,.2,1),width .28s cubic-bezier(.2,.8,.2,1),opacity .2s;pointer-events:none;z-index:0}
+.nav-links:hover .nav-pill{opacity:1}
+.nav-progress{display:none}
+@media(min-width:1001px){
+  nav.scrolled{padding-top:12px;background:transparent;border-bottom-color:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
+  nav.scrolled .nav-in{max-width:980px;margin:0 auto;padding:8px 8px 8px 22px;border-radius:999px;background:rgba(16,26,39,.86);border-color:rgba(196,215,235,.2);box-shadow:0 18px 40px -18px rgba(0,0,0,.75);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+  nav.scrolled .brand{font-size:18px}
+  nav.scrolled .brand .mark svg,nav.scrolled .brand>svg{width:22px;height:22px}
+  nav.scrolled .btn.sm{border-radius:999px;padding:9px 16px}
+  .nav-progress{display:block;position:absolute;left:22px;right:22px;bottom:-1px;height:1px;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,#57A2E8,#a8d1f1);opacity:0;transition:opacity .3s}
+  nav.scrolled .nav-progress{opacity:1}
+}
+@media(max-width:1000px){nav.hide{transform:translateY(-100%)}}
+@media(hover:none){.nav-pill{display:none}}
+
+/* Closing CTA band with a slow problem marquee */
+.cta2{position:relative;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:radial-gradient(ellipse 60% 90% at 85% 100%,#14243a 0,transparent 70%),var(--bg);margin-top:40px}
+.marq{position:relative;overflow:hidden;border-bottom:1px solid var(--line);padding:16px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marq-track{display:flex;width:max-content;animation:marq 60s linear infinite}
+.marq-track span{white-space:nowrap;font-size:13px;color:var(--muted);padding:0 22px;position:relative}
+.marq-track span:after{content:"";position:absolute;right:-3px;top:50%;width:5px;height:5px;margin-top:-2.5px;border-radius:50%;background:#e8b56a;opacity:.7}
+.cta2:hover .marq-track{animation-play-state:paused}
+@keyframes marq{to{transform:translateX(-50%)}}
+.cta2-in{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(30px,5vw,70px);align-items:end;padding-block:clamp(56px,8vw,96px)}
+.cta2 .ey{color:var(--azure)}
+.cta2 h2{font-size:clamp(36px,4.6vw,58px);line-height:1.08;letter-spacing:-.045em!important;font-weight:400!important;margin:18px 0 0;color:var(--ink)}
+.cta2 h2 em{font-family:Georgia,'Times New Roman',serif;font-style:italic;color:#a8d1f1;letter-spacing:-.05em}
+.cta2 p{font-size:16px;color:var(--sub);max-width:46ch;margin:22px 0 0;line-height:1.75}
+.cta2-side{border-left:1px solid var(--line-2);padding-left:clamp(24px,3vw,44px)}
+.cta2-row{display:flex;flex-wrap:wrap;gap:18px 24px;align-items:center}
+.cta2 .text-link{color:var(--ink);border-color:var(--line-2);margin-top:0}
+.assure{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:10px}
+.assure li{display:flex;gap:10px;align-items:baseline;font-size:13.5px;color:var(--sub)}
+.assure li:before{content:"\2713";color:#91c2ed;font-weight:600}
+@media(max-width:800px){.cta2-in{grid-template-columns:1fr;align-items:start}.cta2-side{border-left:0;padding-left:0;border-top:1px solid var(--line-2);padding-top:26px}}
+
+/* Footer: social icons, bottom bar, oversized wordmark with a pointer spotlight */
+footer{padding-bottom:0!important}
+.socials{display:flex;gap:10px;margin-top:22px}
+.socials a{width:40px;height:40px;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;color:var(--sub);transition:border-color .2s,color .2s,background .2s,transform .2s}
+.socials a:hover{color:#f3f2ee;border-color:#91c2ed;background:rgba(145,194,237,.08);transform:translateY(-2px)}
+.socials svg{width:17px;height:17px}
+.foot2-bar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:44px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+.foot2-bar a{color:var(--sub)}.foot2-bar a:hover{color:#f3f2ee}
+.wordmark{--mx:50%;--my:60%;position:relative;margin-top:28px;height:clamp(120px,24vw,330px);overflow:hidden;user-select:none;-webkit-user-select:none}
+.wordmark span{display:block;font-weight:600;letter-spacing:-.07em;line-height:.8;font-size:clamp(160px,40vw,560px);white-space:nowrap;margin-left:-.04em;background:radial-gradient(260px circle at var(--mx) var(--my),rgba(145,194,237,.55),rgba(145,194,237,0) 70%),linear-gradient(180deg,rgba(243,242,238,.11) 0%,rgba(243,242,238,.02) 85%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+@media(hover:none){.wordmark span{background:linear-gradient(180deg,rgba(145,194,237,.22) 0%,rgba(243,242,238,.02) 85%);-webkit-background-clip:text;background-clip:text}}
+
+@media(prefers-reduced-motion:reduce){.marq-track{animation:none}nav,.nav-in,.nav-pill{transition:none}}
