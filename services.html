@@ -151,6 +151,12 @@ section{ padding-block:88px; border-bottom:1px solid var(--line); }
 .ev h3{ font-size:17px; letter-spacing:-.02em; }
 .ev p{ color:var(--sub); font-size:13.5px; line-height:1.7; margin:8px 0 0; }
 .ev .ex{ font:11px/1.6 var(--mono); color:var(--muted); margin-top:12px; border-top:1px solid var(--line); padding-top:10px; }
+.bld-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin-top:44px; }
+.bld-how{ display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap:60px; margin-top:64px; padding-top:48px; border-top:1px solid var(--line-2); }
+.bld-how h3.lead{ font-size:clamp(24px,2.6vw,30px); line-height:1.2; letter-spacing:-.02em; max-width:18ch; }
+.bld-how p.lead-sub{ color:var(--sub); font-size:14.5px; line-height:1.75; margin:14px 0 0; max-width:40ch; }
+@media (max-width:1000px){ .bld-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } .bld-how{ grid-template-columns:1fr; gap:32px; } }
+@media (max-width:600px){ .bld-grid{ grid-template-columns:1fr; } }
 .reject{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:20px; }
 .claim{ border-radius:5px; padding:20px 22px; border:1px solid var(--line-2); background:var(--panel); position:relative; }
 .claim .lbl{ font-size:10px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; }
@@ -602,12 +608,41 @@ footer{ border-top:1px solid var(--line); font-size:12px; padding-block:48px 40p
           <div class="n">03</div>
           <h3>Build</h3>
           <div class="price">$1,500&ndash;$3,000 <small>&middot; exact quote after Diagnose</small></div>
-          <p>The agreed fix, built for you, checked against acceptance criteria you've agreed to, and handed over with documentation.</p>
+          <p>Anything from one focused fix to a full website and backend rebuild, built for you, checked against acceptance criteria you've agreed to, and handed over with documentation.</p>
           <div class="mini" aria-label="Example acceptance checklist"><div class="h">Example acceptance checks</div>
             <div class="row"><i>&#10003;</i>A test call after hours gets a reply</div><div class="row"><i>&#10003;</i>Form submissions reach the owner's phone</div><div class="row wait"><i>&#9675;</i>Handover walkthrough</div></div>
         </div>
       </div>
       <p class="fine">Stop after Diagnose if that's all you need; it stands on its own. The Diagnose fee is separate from Build. Software, hosting, ads, and tax are always shown separately before you agree. <a class="text-link" style="padding:0;margin-left:6px" href="pricing.html">Full pricing <span aria-hidden="true">&rarr;</span></a></p>
+    </div>
+  </section>
+
+  <!-- BUILD -->
+  <section id="build" aria-labelledby="build-h">
+    <div class="shell">
+      <div class="ey">What a Build can be</div>
+      <h2 class="sec-h" id="build-h">Build what your business actually needs.</h2>
+      <p class="sec-sub">A Build isn't a menu item. After the Diagnose, we scope it around your business: one focused fix, or a full rebuild of your website, the backend behind it, and the way work moves through the tools you use. If the right answer is bigger than the minimum, we'll tell you, and we're glad to take it on.</p>
+      <div class="bld-grid">
+        <div class="ev"><h3>One focused fix</h3><p>The leak closed, the page rebuilt, the form that finally reaches a person. Small, fast, and done properly.</p><div class="ex">e.g. every missed call gets a text back</div></div>
+        <div class="ev"><h3>A whole new website</h3><p>Reorganized from the ground up: clear services, pages that answer what customers actually ask, and a site you can update without calling anyone.</p><div class="ex">e.g. a rebuilt site with a clean services structure</div></div>
+        <div class="ev"><h3>A website with a real backend</h3><p>Inquiries, quotes and customer details in one place you control, with a simple dashboard instead of five inboxes and a notebook.</p><div class="ex">e.g. every inquiry in one list, with an owner and a status</div></div>
+        <div class="ev"><h3>Your tools, working together</h3><p>We start with what you already pay for, then connect it, configure it, or replace it only when that's worth it, so information gets entered once.</p><div class="ex">e.g. website form to your CRM to your invoices, no retyping</div></div>
+        <div class="ev"><h3>AI where it fits</h3><p>Practical, supervised AI: drafting customer updates from job notes, answering common questions, sorting incoming requests. Your team sees and approves what goes out.</p><div class="ex">e.g. job notes, drafted update, staff approves, sent</div></div>
+        <div class="ev"><h3>A tool built just for you</h3><p>When no app works the way your business does, we build the one that does. Finished and handed over, not something you have to set up.</p><div class="ex">e.g. a job board built around how your crews actually work</div></div>
+      </div>
+      <div class="bld-how">
+        <div>
+          <h3 class="lead">However big it gets, it works the same way.</h3>
+          <p class="lead-sub">The examples above are the kinds of work a Build can cover. Yours is scoped from what the Diagnose finds and what you want to take on.</p>
+        </div>
+        <ol class="notes">
+          <li><h3>You choose how far to go</h3><p>We lay out the options, from the smallest useful change to the full rebuild, and what each one involves.</p></li>
+          <li><h3>One fixed price before work starts</h3><p>An exact quote up front. Half to start, half when it passes the checks we agreed on.</p></li>
+          <li><h3>Checked before it's handed over</h3><p>Every acceptance check tested, then a walkthrough and plain documentation.</p></li>
+          <li><h3>Yours to keep</h3><p>The site, the setup and the documentation are yours. No subscription to us to keep it running.</p></li>
+        </ol>
+      </div>
     </div>
   </section>
 
