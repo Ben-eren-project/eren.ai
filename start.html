@@ -132,11 +132,11 @@
   <div class="head">
     <div class="ey" id="packageEy">Package 1 · Eren Diagnose</div>
     <h1 id="packageTitle">Start with Diagnose.</h1>
-    <p id="packageIntro">Tell us the one problem you want to understand. We start with a free conversation; the paid Diagnose begins only after you agree to it.</p>
+    <p id="packageIntro">Tell us the one problem you want to understand. We start with a free First Look; the paid Diagnose begins only after you agree to it.</p>
     <div class="steps-mini"><span><b>1</b> Share the context</span><span><b>2</b> We review it</span><span><b>3</b> Agree on the next step</span></div>
   </div>
 
-  <noscript><p style="border:1px solid #3F7BD6;background:rgba(63,123,214,.08);color:#EDF2FB;border-radius:12px;padding:16px 18px;margin:0 0 22px;font-size:15px;line-height:1.6">This form needs JavaScript to send. If it's turned off, email <a href="mailto:ben@erenforbusiness.com" style="color:#57A2E8;text-decoration:underline">ben@erenforbusiness.com</a> with your business name and what you'd like Eren to look at — that reaches the same place.</p></noscript><form id="intake" novalidate>
+  <noscript><p style="border:1px solid #3F7BD6;background:rgba(63,123,214,.08);color:#EDF2FB;border-radius:12px;padding:16px 18px;margin:0 0 22px;font-size:15px;line-height:1.6">This form needs JavaScript to send. If it's turned off, email <a href="mailto:ben@erenforbusiness.com" style="color:#57A2E8;text-decoration:underline">ben@erenforbusiness.com</a> with your business name and what you'd like Eren to look at, or call <a href="tel:+18155200102" style="color:#57A2E8;text-decoration:underline">(815) 520-0102</a>. Both reach the same place.</p></noscript><form id="intake" novalidate>
     <fieldset>
       <div class="sh"><span class="i">01</span><h3>About your business</h3></div>
       <div class="fields">
@@ -215,7 +215,7 @@
   var EREN_API = "https://eren-ops.onrender.com";
   var packages = {
     diagnose: {ey:"Package 1 · Eren Diagnose", title:"Start with Diagnose.",
-      intro:"Tell us the one problem you want to understand. We start with a free conversation; the paid Diagnose begins only after you agree to it.",
+      intro:"Tell us the one problem you want to understand. We start with a free First Look; the paid Diagnose begins only after you agree to it.",
       button:"Request a Diagnose conversation", primary:"diagnoseProblem",
       fields:[["Business context","about"],["Problem to diagnose","diagnoseProblem"],["Current process","diagnoseFlow"],["Evidence available","diagnoseEvidence"],["Desired outcome","diagnoseOutcome"]]},
     build: {ey:"Package 2 · Eren Build", title:"Ask about Build.",
@@ -233,6 +233,7 @@
       button:"Request my free First Look"});
     document.querySelector('label[for="diagnoseProblem"]').innerHTML = 'What would you like us to look at? <span class="req">*</span>';
     ["diagnoseFlow","diagnoseEvidence","diagnoseOutcome"].forEach(function(id){document.getElementById(id).closest(".f").hidden=true;});
+    selected.fields = [["Business context","about"],["What they want looked at","diagnoseProblem"]];
   }
   var form=document.getElementById("intake"), done=document.getElementById("done");
   var err=document.getElementById("err"), btn=document.getElementById("sendBtn");
@@ -243,11 +244,14 @@
   document.getElementById("packageIntro").textContent=selected.intro;
   btn.textContent=selected.button;
   document.querySelectorAll("[data-package]").forEach(function(section){
-    section.hidden=section.getAttribute("data-package")!==packageKey;
+    var active=section.getAttribute("data-package")===packageKey;
+    section.hidden=!active;
+    section.querySelectorAll("[required]").forEach(function(field){ if(!active) field.removeAttribute("required"); });
   });
   function showError(message, field){
     err.textContent=message; err.hidden=false;
     if(field) document.getElementById(field).focus();
+    else err.scrollIntoView({block:"center",behavior:"smooth"});
   }
   function notes(){
     var lines=["Package requested: "+selected.ey];
@@ -291,9 +295,9 @@
     }).then(function(saved){
       if(!saved || typeof saved.id!=="number") throw new Error("No lead confirmation");
       document.getElementById("doneHead").textContent="Thanks, "+value("you").split(" ")[0]+" — we've got it.";
-      form.style.display="none";done.classList.add("show");window.scrollTo({top:0,behavior:"smooth"});
+      form.style.display="none";done.classList.add("show");window.scrollTo({top:0,behavior:"smooth"});var dh=document.getElementById("doneHead");dh.setAttribute("tabindex","-1");dh.focus({preventScroll:true});
     }).catch(function(){
-      showError("Your request was not sent. Please try again when the connection is available.");
+      showError("Your request was not sent. Please try again, or email ben@erenforbusiness.com or call (815) 520-0102.");
       btn.disabled=false;btn.textContent=selected.button;
     });
   });
