@@ -112,3 +112,19 @@
 @media (prefers-reduced-motion:reduce) {
   .page-pricing .pricing-faq .faq details { transition:none; }
 }
+
+/* One heading across the top, the questions in two columns underneath. Each column stacks on
+   its own, so opening a question never stretches the one beside it. */
+.page-pricing .pricing-faq > .shell{display:block}
+.page-pricing .pricing-faq .faq-intro{display:flex;align-items:baseline;justify-content:space-between;gap:12px 32px;flex-wrap:wrap;padding:0 0 28px;margin:0}
+.page-pricing .pricing-faq .faq-intro .sec-h{max-width:none}
+.page-pricing .pricing-faq .faq-lede{margin:0;font-size:15px;color:var(--sub)}
+.page-pricing .pricing-faq .faq-lede a{color:var(--azure);text-decoration:underline;text-underline-offset:4px}
+.page-pricing .pricing-faq .faq-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 clamp(28px,4vw,56px);align-items:start}
+.page-pricing .pricing-faq .faq summary{min-height:72px}
+.page-pricing .pricing-faq .faq p{padding:0 60px 24px 24px}
+@media (max-width:800px){
+  .page-pricing .pricing-faq .faq-cols{grid-template-columns:minmax(0,1fr)}
+  .page-pricing .pricing-faq .faq-cols .faq+.faq{border-top:0}
+  .page-pricing .pricing-faq .faq p{padding:0 16px 24px}
+}
