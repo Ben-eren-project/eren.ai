@@ -55,3 +55,30 @@ footer{padding-bottom:0!important}
 @media(hover:none){.wordmark span{background:linear-gradient(180deg,rgba(145,194,237,.22) 0%,rgba(243,242,238,.02) 85%);-webkit-background-clip:text;background-clip:text}}
 
 @media(prefers-reduced-motion:reduce){.marq-track{animation:none}nav,.nav-in,.nav-pill{transition:none}}
+
+/* Guides menu in the main nav. Without JS "Guides" is a plain link to guides.html. */
+.nav-dd{position:relative;display:inline-flex;align-items:center}
+.nav-dd-link{display:inline-flex;align-items:center;gap:5px}
+.nav-dd-caret{width:12px;height:12px;flex:none;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.7;transition:transform .2s}
+.nav-dd-link[aria-expanded="true"] .nav-dd-caret{transform:rotate(180deg);opacity:1}
+.nav-dd-link[aria-expanded="true"]{color:var(--ink)}
+.nav-dd-panel{position:absolute;z-index:60;top:calc(100% + 6px);left:0;width:min(620px,calc(100vw - 24px));background:#101c2b;border:1px solid rgba(196,215,235,.22);border-radius:14px;box-shadow:0 24px 60px -20px rgba(0,0,0,.8);padding:10px;text-align:left;font-weight:400;opacity:0;transform:translateY(-4px);transition:opacity .16s ease,transform .16s ease}
+.nav-dd-panel.is-open{opacity:1;transform:none}
+.nav-dd-panel[hidden]{display:none}
+.nav-dd-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.nav-dd-panel a.nav-dd-item{display:block;padding:12px 14px;border-radius:9px;color:var(--ink);text-decoration:none;min-height:0;text-align:left}
+.nav-dd-panel a.nav-dd-item:hover,.nav-dd-panel a.nav-dd-item:focus-visible{background:rgba(145,194,237,.09);outline:none}
+.nav-dd-panel a.nav-dd-item:focus-visible{box-shadow:inset 0 0 0 1.5px #91c2ed}
+.nav-dd-panel a.nav-dd-item[aria-current="page"]{background:rgba(145,194,237,.12)}
+.nav-dd-item b{display:block;font-size:14px;font-weight:500;letter-spacing:-.005em;line-height:1.35;white-space:normal}
+.nav-dd-item span{display:block;margin-top:4px;font-size:12.5px;line-height:1.45;color:var(--muted);white-space:normal}
+.nav-dd-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:6px;padding:12px 14px 6px;border-top:1px solid rgba(196,215,235,.14);font-size:12.5px;color:var(--muted)}
+.nav-dd-foot a{color:#91c2ed;font-weight:500;text-decoration:none;min-height:0}
+.nav-dd-foot a:hover{color:#c2e1f8}
+@media(max-width:1000px){
+  .nav-dd-panel{position:absolute;left:12px;right:12px;width:auto;top:calc(100% + 4px);max-height:calc(100vh - 140px);overflow:auto}
+  .nav-dd-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){.nav-dd-panel,.nav-dd-caret{transition:none}}
+/* Phones: room for Guides in the one-line menu (same overflow as before at narrower phones) */
+@media(max-width:600px){nav .nav-links{gap:0 8px;font-size:12px}.nav-dd-caret{display:none}.nav-dd-link{gap:0}}
