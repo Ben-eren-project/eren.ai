@@ -25,3 +25,29 @@
 .page-growth .flx figcaption{grid-column:1/-1;font-size:13px;line-height:1.6;color:var(--muted);max-width:60ch}
 @media(max-width:1020px) and (min-width:851px){.flx{grid-template-columns:minmax(0,1fr)}.flx-phone{width:224px}}
 @media(max-width:560px){.flx{grid-template-columns:minmax(0,1fr);justify-items:start}.flx-phone{width:224px;margin-left:4px}}
+
+/* first-look.html hero: threads drawn into one point, one line out (canvas, decorative) */
+.fx-hero{position:relative;min-height:min(86vh,760px);display:flex;align-items:center;isolation:isolate}
+.fx-canvas{position:absolute;inset:0;z-index:0;pointer-events:none}
+.fx-hero::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(90deg,rgba(11,17,27,.92) 0,rgba(11,17,27,.7) 34%,rgba(11,17,27,0) 62%)}
+.subhero .fx-in{position:relative;z-index:1;max-width:1280px;width:100%;padding-inline:clamp(20px,4vw,40px)}
+.fx-in h1,.fx-in>p{max-width:min(21ch,100%)}
+.fx-in>p{max-width:46ch}
+.fx-labels{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity .6s ease .1s}
+.fx-drawn .fx-labels{opacity:1}
+.fx-l{position:absolute;font:500 12px/1.3 Inter,system-ui,sans-serif;color:var(--muted);white-space:nowrap}
+.fx-l1{left:var(--fx);top:var(--fy);transform:translate(16px,calc(-100% - 10px));color:var(--sub)}
+.fx-l2{right:clamp(20px,4vw,40px);top:var(--fy);transform:translateY(12px);font:italic 400 15px/1.3 Lora,Georgia,serif;color:#a8d1f1}
+.fx-labels.fx-narrow{display:none}
+@media (prefers-reduced-motion:reduce){.fx-labels{transition:none}}
+@media(max-width:860px){.fx-hero{min-height:0;align-items:flex-start;padding-bottom:120px}.fx-hero::after{background:linear-gradient(180deg,rgba(11,17,27,.88) 0,rgba(11,17,27,.55) 60%,rgba(11,17,27,0) 100%)}}
+
+/* first-look.html: what to bring, as a plain list beside the intro */
+.fx-bring-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px 80px;align-items:start}
+.page-growth .fx-bring-list h3{font-size:13px;font-weight:600;color:var(--azure);margin:6px 0 4px;letter-spacing:0}
+.page-growth .fx-bring-list ul{list-style:none;margin:0;padding:0;counter-reset:b}
+.page-growth .fx-bring-list li{display:flex;gap:18px;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--line);font-size:clamp(18px,1.6vw,21px);line-height:1.45;color:var(--ink)}
+.fx-bring-list li::before{content:"";flex:none;width:9px;height:9px;border-radius:50%;border:1.5px solid #91c2ed;transform:translateY(-2px)}
+.page-growth .fx-leave{margin:22px 0 0;font-size:14.5px;line-height:1.7;color:var(--sub)}
+.fx-leave b{font-weight:600;color:#e8b56a;margin-right:6px}
+@media(max-width:850px){.fx-bring-in{grid-template-columns:minmax(0,1fr)}}
