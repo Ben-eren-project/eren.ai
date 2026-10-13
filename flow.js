@@ -97,7 +97,20 @@
     var target = document.getElementById(group.getAttribute('data-sync'));
     if (!target) return;
     group.addEventListener('change', function (e) {
-      if (e.target && e.target.type === 'radio') { target.value = e.target.value; render(); }
+      if (!e.target || e.target.type !== 'radio') return;
+      all('input[type=radio]', group).forEach(function (r) { r.removeAttribute('data-was'); });
+      e.target.setAttribute('data-was', '1');
+      target.value = e.target.value;
+      render();
+    });
+    // Clicking the picked chip again clears it, like the old "Select…" option.
+    group.addEventListener('click', function (e) {
+      var r = e.target;
+      if (!r || r.type !== 'radio' || r.getAttribute('data-was') !== '1') return;
+      r.checked = false;
+      r.removeAttribute('data-was');
+      target.value = '';
+      render();
     });
   });
 
@@ -147,7 +160,9 @@
   form.addEventListener('keydown', function (e) {
     if (e.key !== 'Enter' || e.isComposing) return;
     var t = e.target;
-    if (!t || t.tagName !== 'INPUT' || t.type === 'checkbox' || t.type === 'radio' || t.type === 'submit') return;
+    if (!t || t.tagName !== 'INPUT' || t.type === 'submit') return;
+    // Space picks a chip; Enter on a chip must not send the form.
+    if (t.type === 'checkbox' || t.type === 'radio') { e.preventDefault(); return; }
     if (cur < steps().length - 1) {
       e.preventDefault();
       var s = steps()[cur];
@@ -155,14 +170,28 @@
     }
   });
 
+  // A send can only start from the last step. Anything else (an implicit submit from a
+  // browser, say) is turned into a normal Continue, checked first. Capture phase on the
+  // document runs before the page's own submit handler.
+  document.addEventListener('submit', function (e) {
+    if (e.target !== form) return;
+    var list = steps();
+    if (cur < list.length - 1) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (validate(list[cur])) show(cur + 1, true);
+    }
+  }, true);
+
   if (mobile.addEventListener) mobile.addEventListener('change', placeSheet);
 
   // Save for later: kept only in this browser, cleared once the details are sent.
+  var NOT_SAVED = ['you', 'email', 'phone', 'pref'];
   function snapshot() {
     var data = { v: {}, c: [], step: cur };
     all('input, textarea', form).forEach(function (el) {
       if (el.type === 'checkbox' || el.type === 'radio') { if (el.checked) data.c.push(el.name + '=' + el.value); }
-      else if (el.id) data.v[el.id] = el.value;
+      else if (el.id && NOT_SAVED.indexOf(el.id) === -1) data.v[el.id] = el.value;
     });
     return data;
   }
@@ -171,6 +200,11 @@
     all('input[type=checkbox], input[type=radio]', form).forEach(function (el) {
       var on = (data.c || []).indexOf(el.name + '=' + el.value) !== -1;
       if (el.checked !== on) { el.checked = on; el.dispatchEvent(new Event('change', { bubbles: true })); }
+    });
+    all('[data-sync]', form).forEach(function (g) {
+      var c = g.querySelector('input[type=radio]:checked');
+      all('input[type=radio]', g).forEach(function (r) { r.removeAttribute('data-was'); });
+      if (c) c.setAttribute('data-was', '1');
     });
     render();
     show(data.step || 0, true);
@@ -181,7 +215,7 @@
     if (saveBtn) saveBtn.addEventListener('click', function () {
       try {
         localStorage.setItem(saveKey, JSON.stringify(snapshot()));
-        if (savedNote) { savedNote.hidden = false; savedNote.textContent = 'Saved in this browser only. Open this page again on this device to pick up where you left off.'; }
+        if (savedNote) { savedNote.hidden = false; savedNote.textContent = 'Saved in this browser only, without your contact details. Open this page again on this device to pick up where you left off.'; }
       } catch (_) {
         if (savedNote) { savedNote.hidden = false; savedNote.textContent = 'This browser won’t let the page save. Your answers are still here while the page stays open.'; }
       }

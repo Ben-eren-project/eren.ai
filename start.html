@@ -202,12 +202,7 @@
             <div class="f"><label for="you">Your name <span class="req">*</span></label><input id="you" autocomplete="name" maxlength="200" placeholder="First &amp; last" required></div>
             <div class="f"><label for="email">Email <span class="req">*</span></label><input id="email" type="email" autocomplete="email" maxlength="200" placeholder="you@business.com" required></div>
             <div class="f"><label for="phone">Phone</label><input id="phone" type="tel" autocomplete="tel" maxlength="60" placeholder="(815) 555-0000"></div>
-            <div class="f"><p class="flow-q" id="prefQ">Best way to reach you</p><input type="hidden" id="pref">
-              <div class="chips" role="radiogroup" aria-labelledby="prefQ" data-sync="pref">
-                <label class="chip"><input type="radio" name="prefChoice" value="Text">Text</label>
-                <label class="chip"><input type="radio" name="prefChoice" value="Call">Call</label>
-                <label class="chip"><input type="radio" name="prefChoice" value="Email">Email</label>
-              </div></div>
+            <div class="f"><label for="pref">Best way to reach you</label><input id="pref" maxlength="120" placeholder="Text, call, or email"></div>
             <div class="f full"><label for="heardFrom">How did you hear about Eren? <span class="opt">optional</span></label><input id="heardFrom" maxlength="200" placeholder="A person, a post, a search, or something else"></div>
           </div>
           <div class="review-slot"></div>
@@ -275,7 +270,7 @@
     selected.fields = [["Business context","about"],["What they want looked at","diagnoseProblem"]];
     var probStep=document.querySelector('[data-package="diagnose"]');
     probStep.querySelector(".step-title").textContent="What should we look at?";
-    probStep.querySelector(".step-why").textContent="The question on your mind, in your words. You’ll get one real observation about it on the call.";
+    probStep.querySelector(".step-why").textContent="The question on your mind, in your words. We’ll use it to choose what to look at.";
   }
   var form=document.getElementById("intake"), done=document.getElementById("done");
   var err=document.getElementById("err"), btn=document.getElementById("sendBtn");

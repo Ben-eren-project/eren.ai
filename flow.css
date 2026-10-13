@@ -19,6 +19,7 @@
 
 /* A step */
 .flow form{display:block;padding:0;gap:0}
+.flow [data-off]{display:none}
 .flow fieldset.step{border:0;margin:0;padding:0;min-width:0}
 .flow-js .flow fieldset.step{margin-top:34px}
 html:not(.flow-js) .flow fieldset.step+fieldset.step{margin-top:56px;padding-top:40px;border-top:1px solid var(--f-line)}
