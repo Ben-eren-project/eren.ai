@@ -151,6 +151,16 @@ section{ padding-block:88px; border-bottom:1px solid var(--line); }
 .ev h3{ font-size:17px; letter-spacing:-.02em; }
 .ev p{ color:var(--sub); font-size:13.5px; line-height:1.7; margin:8px 0 0; }
 .ev .ex{ font:11px/1.6 var(--mono); color:var(--muted); margin-top:12px; border-top:1px solid var(--line); padding-top:10px; }
+.svc3{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin-top:44px; align-items:stretch; }
+.svc3-item{ background:var(--panel); border:1px solid var(--line-2); border-radius:5px; padding:24px 22px; display:flex; flex-direction:column; min-width:0; }
+.svc3-item h3{ font-size:18px; letter-spacing:-.02em; line-height:1.3; }
+.svc3-say{ font-family:Lora,Georgia,"Times New Roman",serif; font-style:italic; color:var(--azure); font-size:15px; line-height:1.55; margin:12px 0 0; }
+.svc3-item dl{ margin:18px 0 0; }
+.svc3-item dt{ font-size:12px; font-weight:600; color:var(--ink); letter-spacing:.01em; margin-top:16px; }
+.svc3-item dt:first-child{ margin-top:0; }
+.svc3-item dd{ margin:4px 0 0; color:var(--sub); font-size:13.5px; line-height:1.7; }
+.svc3-terms{ margin:28px 0 0; color:var(--sub); font-size:14px; line-height:1.7; max-width:78ch; }
+@media (max-width:1000px){ .svc3{ grid-template-columns:1fr; } .svc3-item{ padding:22px 20px; } }
 .bld-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin-top:44px; }
 .bld-how{ display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap:60px; margin-top:64px; padding-top:48px; border-top:1px solid var(--line-2); }
 .bld-how h3.lead{ font-size:clamp(24px,2.6vw,30px); line-height:1.2; letter-spacing:-.02em; max-width:18ch; }
@@ -275,7 +285,7 @@ footer{ border-top:1px solid var(--line); font-size:12px; padding-block:48px 40p
       <div>
         <div class="ey">Services</div>
         <h1>Find the real problem. Fix the right one.</h1>
-        <p>Sometimes it’s one broken step. Sometimes the whole website and workflow need rebuilding. Eren finds what to fix first, then builds it, as small or as big as the job needs.</p>
+        <p>Eren improves the websites, workflows and software your business already relies on, and builds the change around how you actually work. Sometimes that’s a rebuilt service page. Sometimes it’s your current software set up properly, or a small tool that connects two things you already pay for.</p>
         <div class="hero-cta">
           <a class="btn" href="start.html?intent=first-look">Book a free 15-minute First Look</a>
           <a class="text-link" href="#services">See what we fix <span aria-hidden="true">&darr;</span></a>
@@ -577,16 +587,38 @@ footer{ border-top:1px solid var(--line); font-size:12px; padding-block:48px 40p
   <!-- BUILD -->
   <section id="build" aria-labelledby="build-h">
     <div class="shell">
-      <h2 class="sec-h" id="build-h">Build what your business actually needs.</h2>
-      <p class="sec-sub">Each Build is scoped from what the Diagnose finds: one focused fix, or a full rebuild of your website, its backend and the way work moves through your tools. One exact quote up front, half to start and half when it passes the checks. What we build is yours, with no subscription to us to keep it running.</p>
-      <div class="bld-grid">
-        <div class="ev"><h3>One focused fix</h3><p>The leak closed, the page rebuilt, the form that finally reaches a person.</p><div class="ex">e.g. a clear routine so every missed call gets a reply</div></div>
-        <div class="ev"><h3>A whole new website</h3><p>Clear services, pages that answer what customers ask, and a site you can update yourself.</p><div class="ex">e.g. a rebuilt site with a clean services structure</div></div>
-        <div class="ev"><h3>A website with a real backend</h3><p>Inquiries, quotes and customer details in one place you control.</p><div class="ex">e.g. every inquiry in one list, with an owner and a status</div></div>
-        <div class="ev"><h3>Your tools, working together</h3><p>We connect or configure what you already pay for, and replace it only when that’s worth it.</p><div class="ex">e.g. website form to your CRM to your invoices, no retyping</div></div>
-        <div class="ev"><h3>AI where it fits</h3><p>Supervised AI for jobs like drafting customer updates from job notes. Your team approves what goes out.</p><div class="ex">e.g. job notes, drafted update, staff approves, sent</div></div>
-        <div class="ev"><h3>A tool built just for you</h3><p>When no app works the way you do, we build one and hand it over finished.</p><div class="ex">e.g. a job board built around how your crews actually work</div></div>
+      <h2 class="sec-h" id="build-h">Three kinds of work we build.</h2>
+      <p class="sec-sub">Each Build is scoped from what the Diagnose finds, from one focused fix to a full rebuild. A website change gets checked against the process and tools behind it, because better inquiries are no use if nobody can act on them.</p>
+      <div class="svc3">
+        <article class="svc3-item" aria-labelledby="s3-web">
+          <h3 id="s3-web">Website restructuring and redesign</h3>
+          <p class="svc3-say">“Our site doesn’t say what we actually do any more.” “People can’t find the service they came for.”</p>
+          <dl>
+            <dt>You get</dt><dd>The agreed pages rebuilt around the customers you serve, written from verified facts, working on a phone, with one clear next step and an inquiry route that reaches the right person. Plus an editing guide and a handover sheet.</dd>
+            <dt>Done when</dt><dd>Your services are described accurately, a test reader finds the right offer, the inquiry route works end to end, and you can make routine edits yourself.</dd>
+            <dt>Not included</dt><dd>Guaranteed leads or rankings, invented reviews or badges, or taking over disputed domains and accounts.</dd>
+          </dl>
+        </article>
+        <article class="svc3-item" aria-labelledby="s3-flow">
+          <h3 id="s3-flow">Workflow and connected tools</h3>
+          <p class="svc3-say">“Changes get lost between the office and the team.” “We enter the same thing three times.”</p>
+          <dl>
+            <dt>You get</dt><dd>One process mapped from a real example, then the simplest reliable solution that fits the job and its ongoing costs: your current software set up properly, two tools connected where their plans allow, or a small tool when nothing you have will do. Your data stays yours and exportable.</dd>
+            <dt>Done when</dt><dd>The normal case, the missing-information case and the exception each behave as agreed, nothing happens without the approval you set, and your staff can run it without us.</dd>
+            <dt>Not included</dt><dd>Connections we haven’t confirmed your plan allows, replacing software that works, or anything that sends, pays or decides on its own.</dd>
+          </dl>
+        </article>
+        <article class="svc3-item" aria-labelledby="s3-ai">
+          <h3 id="s3-ai">Practical AI inside one defined job</h3>
+          <p class="svc3-say">“Staff keep asking the same questions.” “We want a first draft from our own records.”</p>
+          <dl>
+            <dt>You get</dt><dd>AI with one job, one approved set of sources and a named person who checks it. For example, an assistant that answers only from your procedures and shows where each answer came from.</dd>
+            <dt>Done when</dt><dd>A fixed set of test questions, including missing and trick ones, has been run and the results written down, and your reviewer signs off.</dd>
+            <dt>Not included</dt><dd>Anything that acts on its own, or promises about accuracy before the test set exists.</dd>
+          </dl>
+        </article>
       </div>
+      <p class="svc3-terms">Every Build: one exact quote up front, half to start and half when it passes the checks, and a 30-day fix period after you accept it. Code, copy and data are yours. Hosting, domains and software plans are paid by you to the provider, with no subscription to us.</p>
     </div>
   </section>
 
