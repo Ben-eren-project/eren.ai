@@ -2,7 +2,7 @@
 <html lang="en"><head><script>if(/\.onrender\.com$/i.test(location.hostname)){location.replace("https://erenforbusiness.com"+location.pathname+location.search+location.hash);}</script>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Contact Eren | Discuss Your Business</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lora:ital,wght@1,400&display=swap">
 <style>
   :root{--bg:#080D18;--panel:#0D1830;--ink:#EDF2FB;--sub:#AAB7D0;--muted:#7A87A4;--faint:#59668A;--navy:#1B3A6B;--azure:#57A2E8;--line:rgba(255,255,255,.09);--line-2:rgba(255,255,255,.16);--grad:linear-gradient(120deg,#57a2e8,#2f62b8 45%,#122a52);--good:#4ADE9E;color-scheme:dark}
   *{box-sizing:border-box}html{scroll-behavior:smooth}
@@ -106,7 +106,7 @@
 
 /* EREN MOBILE LAYOUT PATCH - END */
 #intake [hidden]{display:none!important}
-</style><link rel="stylesheet" href="eren-editorial.css">
+</style><link rel="stylesheet" href="eren-editorial.css"><link rel="stylesheet" href="flow.css">
 <meta name="description" content="Tell Eren what you want to improve. Request a free First Look or discuss a paid Diagnose or Build. No payment or booking is made by submitting this form.">
 <link rel="canonical" href="https://erenforbusiness.com/start.html">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -121,90 +121,129 @@
 <meta property="og:image:alt" content="Eren — Know what to fix. Then build what matters.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="noindex,follow">
-</head><body class="page-start">
+</head><body class="page-start flow-page">
 
 <nav><div class="nav-in">
   <a class="brand" href="index.html"><span class="mark"><svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="6.5" width="2.6" height="19" rx="1.3" fill="#57A2E8"/><rect x="7" y="6.5" width="17" height="2.6" rx="1.3" fill="#57A2E8"/><rect x="7" y="15" width="11.5" height="2.6" rx="1.3" fill="#8FC3F2"/><rect x="7" y="22.9" width="17" height="2.6" rx="1.3" fill="#57A2E8"/></svg></span>Eren</a>
   <div class="nav-r"><a href="index.html">← Back to site</a></div>
 </div></nav>
 
-<div class="shell">
-  <div class="head">
-    <div class="ey" id="packageEy">Package 1 · Eren Diagnose</div>
-    <h1 id="packageTitle">Start with Diagnose.</h1>
-    <p id="packageIntro">Tell us the one problem you want to understand. We start with a free First Look; the paid Diagnose begins only after you agree to it.</p>
-    <div class="steps-mini"><span><b>1</b> Share the context</span><span><b>2</b> We review it</span><span><b>3</b> Agree on the next step</span></div>
-  </div>
-
-  <noscript><p style="border:1px solid #3F7BD6;background:rgba(63,123,214,.08);color:#EDF2FB;border-radius:12px;padding:16px 18px;margin:0 0 22px;font-size:15px;line-height:1.6">This form needs JavaScript to send. If it's turned off, email <a href="mailto:ben@erenforbusiness.com" style="color:#57A2E8;text-decoration:underline">ben@erenforbusiness.com</a> with your business name and what you'd like Eren to look at, or call <a href="tel:+18155200102" style="color:#57A2E8;text-decoration:underline">(815) 520-0102</a>. Both reach the same place.</p></noscript><form id="intake" novalidate>
-    <fieldset>
-      <div class="sh"><span class="i">01</span><h3>About your business</h3></div>
-      <div class="fields">
-        <div class="f"><label for="business">Business name <span class="req">*</span></label><input id="business" autocomplete="organization" maxlength="300" placeholder="Your business name" required></div>
-        <div class="f"><label for="website">Website, if you have one</label><input id="website" type="url" inputmode="url" maxlength="500" placeholder="https://yourbusiness.com"></div>
-        <div class="f full"><label for="about">What do you do, and who do you serve?</label><textarea id="about" placeholder="A few sentences are enough. Share your location or service area if it matters."></textarea></div>
-      </div>
-    </fieldset>
-
-    <fieldset data-package="diagnose">
-      <div class="sh"><span class="i">02</span><h3>Define the problem</h3></div>
-      <div class="fields">
-        <div class="f full"><label for="diagnoseProblem">What is the one problem you want us to diagnose? <span class="req">*</span></label><textarea id="diagnoseProblem" style="min-height:130px" placeholder="For example: inquiries arrive, but too few turn into quotes. Tell us what you see rather than estimating a loss." required></textarea></div>
-        <div class="f full"><label for="diagnoseFlow">How does that process work today?</label><textarea id="diagnoseFlow" placeholder="Walk us through what happens, from the first customer contact to the outcome."></textarea></div>
-        <div class="f full"><label for="diagnoseEvidence">What evidence can you share?</label><textarea id="diagnoseEvidence" placeholder="Examples: inquiry records, a service page, messages, a booking flow, or feedback. It's fine if you don't have numbers yet."></textarea></div>
-        <div class="f full"><label for="diagnoseOutcome">What would a useful fix achieve?</label><textarea id="diagnoseOutcome" placeholder="Describe the change you'd want to see, even if you don't know the solution yet."></textarea></div>
-      </div>
-      <div class="f full" style="margin:14px 0 8px"><label>Where does this problem show up?</label></div>
-      <div class="checks">
-        <label class="check"><input type="checkbox" name="focus" value="Website & getting found">Website &amp; getting found</label>
-        <label class="check"><input type="checkbox" name="focus" value="Getting more customers">Getting more customers</label>
-        <label class="check"><input type="checkbox" name="focus" value="Saving time on daily work">Saving time on daily work</label>
-        <label class="check"><input type="checkbox" name="focus" value="Better software & tools">Better software &amp; tools</label>
-      </div>
-    </fieldset>
-
-    <fieldset data-package="build" hidden>
-      <div class="sh"><span class="i">02</span><h3>Scope the change</h3></div>
-      <div class="fields">
-        <div class="f full"><label for="buildChange">What improvement would you like us to make? <span class="req">*</span></label><textarea id="buildChange" style="min-height:130px" placeholder="For example: a clearer service page, a follow-up process, or a cleaner website-to-booking handoff." required></textarea></div>
-      </div>
-      <div class="f full" style="margin:14px 0 8px"><label>Have you completed an Eren Diagnose for this problem?</label></div>
-      <div class="checks">
-        <label class="check"><input type="radio" name="diagnoseStage" value="Yes, Diagnose is complete">Yes, Diagnose is complete</label>
-        <label class="check"><input type="radio" name="diagnoseStage" value="Not yet">Not yet</label>
-      </div>
-      <div class="fields" style="margin-top:14px">
-        <div class="f full"><label for="buildFinding">What did Diagnose identify, or what have you already agreed to change?</label><textarea id="buildFinding" placeholder="Share the recommendation or decision if you have it. If you haven't done Diagnose, leave this blank."></textarea></div>
-        <div class="f full"><label for="buildDeliverable">What should be delivered?</label><textarea id="buildDeliverable" placeholder="Describe the page, process, template, or tool you expect to receive."></textarea></div>
-        <div class="f full"><label for="buildSuccess">How will you know the work is complete?</label><textarea id="buildSuccess" placeholder="List any must-haves, acceptance checks, or constraints you already know."></textarea></div>
-        <div class="f full"><label for="buildDependencies">What systems or people does this depend on?</label><textarea id="buildDependencies" placeholder="For example: website platform, booking tool, CRM, approvals, or existing content. Do not send passwords here."></textarea></div>
-        <div class="f full"><label for="buildTiming">Is there a date that matters?</label><input id="buildTiming" placeholder="Optional — tell us why the date matters"></div>
-      </div>
-    </fieldset>
-
-    <fieldset>
-      <div class="sh"><span class="i">03</span><h3>How to reach you</h3></div>
-      <div class="fields">
-        <div class="f"><label for="you">Your name <span class="req">*</span></label><input id="you" autocomplete="name" maxlength="200" placeholder="First &amp; last" required></div>
-        <div class="f"><label for="email">Email <span class="req">*</span></label><input id="email" type="email" autocomplete="email" maxlength="200" placeholder="you@business.com" required></div>
-        <div class="f"><label for="phone">Phone</label><input id="phone" type="tel" autocomplete="tel" maxlength="60" placeholder="(815) 555-0000"></div>
-        <div class="f"><label for="pref">Best way to reach you</label><input id="pref" maxlength="120" placeholder="Text, call, or email"></div>
-      </div>
-    </fieldset>
-
-    <div class="f" style="margin-bottom:24px"><label for="heardFrom">How did you hear about Eren? <span>(optional)</span></label><input id="heardFrom" maxlength="200" placeholder="A person, a post, a search, or something else"></div>
-    <div class="submit-row">
-      <button type="submit" class="btn" id="sendBtn">Request a Diagnose conversation</button>
-      <span class="err" id="err" role="alert" hidden></span>
+<div class="flow">
+  <main class="flow-main">
+    <div class="flow-head">
+      <p class="flow-pkg" id="packageEy">Package 1 · Eren Diagnose</p>
+      <div class="flow-progress" aria-hidden="true"><span class="flow-bar"><i></i></span><span class="flow-count">1 of 3</span></div>
+      <span class="flow-live" aria-live="polite"></span>
     </div>
-    <div class="trust">No payment is taken here. Nothing is booked or sent to a client automatically. Please do not enter passwords or sensitive customer records.</div>
-  </form>
 
-  <div class="done" id="done">
-    <div class="ok">✓</div>
-    <h2 id="doneHead">Thanks — we've got it.</h2>
-    <p id="doneMsg">Your request is with Eren. We'll review the details and contact you about the next step. No payment or booking has been made.</p>
-  </div>
+    <noscript><p style="border:1px solid #3F7BD6;background:rgba(63,123,214,.08);color:#EDF2FB;border-radius:12px;padding:16px 18px;margin:22px 0 0;font-size:15px;line-height:1.6">This form needs JavaScript to send. If it's turned off, email <a href="mailto:ben@erenforbusiness.com" style="color:#57A2E8;text-decoration:underline">ben@erenforbusiness.com</a> with your business name and what you'd like Eren to look at, or call <a href="tel:+18155200102" style="color:#57A2E8;text-decoration:underline">(815) 520-0102</a>. Both reach the same place.</p></noscript>
+
+    <form id="intake" novalidate>
+      <fieldset class="step" data-step="business">
+        <h1 class="step-title" id="packageTitle">Start with Diagnose.</h1>
+        <p class="step-why" id="packageIntro">Tell us the one problem you want to understand. We start with a free First Look; the paid Diagnose begins only after you agree to it.</p>
+        <div class="step-body">
+          <p class="sub">About your business</p>
+          <div class="fields">
+            <div class="f"><label for="business">Business name <span class="req">*</span></label><input id="business" autocomplete="organization" maxlength="300" placeholder="Your business name" required></div>
+            <div class="f"><label for="website">Website <span class="opt">if you have one</span></label><input id="website" type="url" inputmode="url" maxlength="500" placeholder="https://yourbusiness.com"></div>
+            <div class="f full"><label for="about">What do you do, and who do you serve?</label><textarea id="about" placeholder="A few sentences are enough. Share your location or service area if it matters."></textarea></div>
+          </div>
+        </div>
+        <p class="step-err" role="alert" hidden></p>
+        <div class="step-nav"><button type="button" class="step-back">Back</button><button type="button" class="step-next">Continue</button></div>
+      </fieldset>
+
+      <fieldset class="step" data-step="problem" data-package="diagnose">
+        <h2 class="step-title">Define the problem</h2>
+        <p class="step-why">One problem, in your own words. Say what you see happening. You don’t need numbers to start.</p>
+        <div class="step-body">
+          <div class="f full"><label for="diagnoseProblem">What is the one problem you want us to diagnose? <span class="req">*</span></label><textarea id="diagnoseProblem" style="min-height:130px" placeholder="For example: inquiries arrive, but too few turn into quotes. Tell us what you see rather than estimating a loss." required></textarea></div>
+          <div class="f full"><label for="diagnoseFlow">How does that process work today?</label><textarea id="diagnoseFlow" placeholder="Walk us through what happens, from the first customer contact to the outcome."></textarea></div>
+          <div class="f full"><label for="diagnoseEvidence">What evidence can you share?</label><textarea id="diagnoseEvidence" placeholder="Examples: inquiry records, a service page, messages, a booking flow, or feedback. It's fine if you don't have numbers yet."></textarea></div>
+          <div class="f full"><label for="diagnoseOutcome">What would a useful fix achieve?</label><textarea id="diagnoseOutcome" placeholder="Describe the change you'd want to see, even if you don't know the solution yet."></textarea></div>
+          <div class="f full"><p class="flow-q" id="focusQ">Where does this problem show up? <span class="opt">Pick any</span></p>
+            <div class="chips" role="group" aria-labelledby="focusQ">
+              <label class="chip"><input type="checkbox" name="focus" value="Website & getting found">Website &amp; getting found</label>
+              <label class="chip"><input type="checkbox" name="focus" value="Getting more customers">Getting more customers</label>
+              <label class="chip"><input type="checkbox" name="focus" value="Saving time on daily work">Saving time on daily work</label>
+              <label class="chip"><input type="checkbox" name="focus" value="Better software & tools">Better software &amp; tools</label>
+            </div></div>
+        </div>
+        <p class="step-err" role="alert" hidden></p>
+        <div class="step-nav"><button type="button" class="step-back">Back</button><button type="button" class="step-next">Continue</button></div>
+      </fieldset>
+
+      <fieldset class="step" data-step="problem" data-package="build">
+        <h2 class="step-title">Scope the change</h2>
+        <p class="step-why">Describe the change and what it depends on. You get an exact quote before any work begins.</p>
+        <div class="step-body">
+          <div class="f full"><label for="buildChange">What improvement would you like us to make? <span class="req">*</span></label><textarea id="buildChange" style="min-height:130px" placeholder="For example: a clearer service page, a follow-up process, or a cleaner website-to-booking handoff." required></textarea></div>
+          <div class="f full"><p class="flow-q" id="stageQ">Have you completed an Eren Diagnose for this problem?</p>
+            <div class="chips" role="radiogroup" aria-labelledby="stageQ">
+              <label class="chip"><input type="radio" name="diagnoseStage" value="Yes, Diagnose is complete">Yes, Diagnose is complete</label>
+              <label class="chip"><input type="radio" name="diagnoseStage" value="Not yet">Not yet</label>
+            </div></div>
+          <div class="f full"><label for="buildFinding">What did Diagnose identify, or what have you already agreed to change?</label><textarea id="buildFinding" placeholder="Share the recommendation or decision if you have it. If you haven't done Diagnose, leave this blank."></textarea></div>
+          <div class="f full"><label for="buildDeliverable">What should be delivered?</label><textarea id="buildDeliverable" placeholder="Describe the page, process, template, or tool you expect to receive."></textarea></div>
+          <div class="f full"><label for="buildSuccess">How will you know the work is complete?</label><textarea id="buildSuccess" placeholder="List any must-haves, acceptance checks, or constraints you already know."></textarea></div>
+          <div class="f full"><label for="buildDependencies">What systems or people does this depend on?</label><textarea id="buildDependencies" placeholder="For example: website platform, booking tool, CRM, approvals, or existing content. Do not send passwords here."></textarea></div>
+          <div class="f full"><label for="buildTiming">Is there a date that matters? <span class="opt">optional</span></label><input id="buildTiming" placeholder="Tell us why the date matters"></div>
+        </div>
+        <p class="step-err" role="alert" hidden></p>
+        <div class="step-nav"><button type="button" class="step-back">Back</button><button type="button" class="step-next">Continue</button></div>
+      </fieldset>
+
+      <fieldset class="step" data-step="contact">
+        <h2 class="step-title">How to reach you</h2>
+        <p class="step-why">So we can reply about your request. Nothing is booked or sent to a client automatically.</p>
+        <div class="step-body">
+          <div class="fields">
+            <div class="f"><label for="you">Your name <span class="req">*</span></label><input id="you" autocomplete="name" maxlength="200" placeholder="First &amp; last" required></div>
+            <div class="f"><label for="email">Email <span class="req">*</span></label><input id="email" type="email" autocomplete="email" maxlength="200" placeholder="you@business.com" required></div>
+            <div class="f"><label for="phone">Phone</label><input id="phone" type="tel" autocomplete="tel" maxlength="60" placeholder="(815) 555-0000"></div>
+            <div class="f"><p class="flow-q" id="prefQ">Best way to reach you</p><input type="hidden" id="pref">
+              <div class="chips" role="radiogroup" aria-labelledby="prefQ" data-sync="pref">
+                <label class="chip"><input type="radio" name="prefChoice" value="Text">Text</label>
+                <label class="chip"><input type="radio" name="prefChoice" value="Call">Call</label>
+                <label class="chip"><input type="radio" name="prefChoice" value="Email">Email</label>
+              </div></div>
+            <div class="f full"><label for="heardFrom">How did you hear about Eren? <span class="opt">optional</span></label><input id="heardFrom" maxlength="200" placeholder="A person, a post, a search, or something else"></div>
+          </div>
+          <div class="review-slot"></div>
+        </div>
+        <div class="send-row"><button type="button" class="step-back">Back</button><button type="submit" class="send" id="sendBtn">Request a Diagnose conversation</button></div>
+        <span class="err" id="err" role="alert" hidden></span>
+        <div class="trust">No payment is taken here. Nothing is booked or sent to a client automatically. Please do not enter passwords or sensitive customer records.</div>
+      </fieldset>
+    </form>
+
+    <div class="done" id="done">
+      <div class="ok" aria-hidden="true">✓</div>
+      <h2 id="doneHead">Thanks — we've got it.</h2>
+      <p id="doneMsg">Your request is with Eren. We'll review the details and contact you about the next step. No payment or booking has been made.</p>
+    </div>
+  </main>
+
+  <aside class="flow-preview" aria-label="Preview of your request">
+    <div class="flow-preview-in">
+      <div class="flow-sheet-wrap">
+        <div class="flow-sheet">
+          <div class="flow-sheet-top"><span>Your request</span><span id="sheetPkg">Eren</span></div>
+          <dl>
+            <div class="row"><dt>Business</dt><dd class="big" data-preview="business" style="--w:52%"></dd></div>
+            <div class="row"><dt>Website</dt><dd data-preview="website" style="--w:44%"></dd></div>
+            <div class="row"><dt>What they do</dt><dd data-preview="about" data-max="140" style="--w:78%"></dd></div>
+            <div class="row"><dt>What to look at</dt><dd data-preview="diagnoseProblem|buildChange" data-max="180" style="--w:86%"></dd></div>
+            <div class="row" data-package-row="diagnose"><dt>Where it shows up</dt><dd class="pills" data-preview-group="focus" style="--w:40%"></dd></div>
+            <div class="row"><dt>Reply to</dt><dd data-preview="you" style="--w:36%"></dd><dd data-preview="email" style="--w:50%"></dd><dd data-preview="pref" style="--w:20%"></dd></div>
+          </dl>
+          <div class="flow-sheet-bottom"><span>No payment taken</span><span>Nothing is booked automatically</span></div>
+        </div>
+      </div>
+      <p class="flow-note"><b>What happens next.</b> We read your request, then contact you about the next step. A paid Diagnose or Build starts only after you agree to it.</p>
+    </div>
+  </aside>
 </div>
 
 <script src="lead-source.js"></script>
@@ -234,6 +273,9 @@
     document.querySelector('label[for="diagnoseProblem"]').innerHTML = 'What would you like us to look at? <span class="req">*</span>';
     ["diagnoseFlow","diagnoseEvidence","diagnoseOutcome"].forEach(function(id){document.getElementById(id).closest(".f").hidden=true;});
     selected.fields = [["Business context","about"],["What they want looked at","diagnoseProblem"]];
+    var probStep=document.querySelector('[data-package="diagnose"]');
+    probStep.querySelector(".step-title").textContent="What should we look at?";
+    probStep.querySelector(".step-why").textContent="The question on your mind, in your words. You’ll get one real observation about it on the call.";
   }
   var form=document.getElementById("intake"), done=document.getElementById("done");
   var err=document.getElementById("err"), btn=document.getElementById("sendBtn");
@@ -242,13 +284,16 @@
   document.getElementById("packageEy").textContent=selected.ey;
   document.getElementById("packageTitle").textContent=selected.title;
   document.getElementById("packageIntro").textContent=selected.intro;
+  var sheetPkg=document.getElementById("sheetPkg"); if(sheetPkg) sheetPkg.textContent=selected.ey;
   btn.textContent=selected.button;
   document.querySelectorAll("[data-package]").forEach(function(section){
     var active=section.getAttribute("data-package")===packageKey;
-    section.hidden=!active;
+    section.toggleAttribute("data-off",!active);
     section.querySelectorAll("[required]").forEach(function(field){ if(!active) field.removeAttribute("required"); });
   });
+  document.querySelectorAll("[data-package-row]").forEach(function(row){row.hidden=row.getAttribute("data-package-row")!==packageKey;});
   function showError(message, field){
+    if(field && window.ErenFlow) window.ErenFlow.reveal(field);
     err.textContent=message; err.hidden=false;
     if(field) document.getElementById(field).focus();
     else err.scrollIntoView({block:"center",behavior:"smooth"});
@@ -295,7 +340,7 @@
     }).then(function(saved){
       if(!saved || typeof saved.id!=="number") throw new Error("No lead confirmation");
       document.getElementById("doneHead").textContent="Thanks, "+value("you").split(" ")[0]+" — we've got it.";
-      form.style.display="none";done.classList.add("show");window.scrollTo({top:0,behavior:"smooth"});var dh=document.getElementById("doneHead");dh.setAttribute("tabindex","-1");dh.focus({preventScroll:true});
+      form.style.display="none";done.classList.add("show");if(window.ErenFlow) window.ErenFlow.sent();window.scrollTo({top:0,behavior:"smooth"});var dh=document.getElementById("doneHead");dh.setAttribute("tabindex","-1");dh.focus({preventScroll:true});
     }).catch(function(){
       showError("Your request was not sent. Please try again, or email ben@erenforbusiness.com or call (815) 520-0102.");
       btn.disabled=false;btn.textContent=selected.button;
@@ -303,4 +348,5 @@
   });
 })();
 </script>
+<script src="flow.js"></script>
 </body></html>

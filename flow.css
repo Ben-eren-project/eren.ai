@@ -1,0 +1,137 @@
+/* Step-by-step intake (start.html, onboarding.html).
+   Left: one topic per step. Right: a paper sheet that fills in as you answer.
+   Loaded after each page's own styles; everything is scoped under .flow. */
+.flow{--f-bg:#0b111b;--f-field:#101c2b;--f-ink:#f3f2ee;--f-sub:#b5c0ce;--f-muted:#99a7b8;--f-azure:#91c2ed;--f-btn:#a8d1f1;--f-btn-ink:#0d2233;--f-line:rgba(196,215,235,.14);--f-line-2:rgba(196,215,235,.24);--f-err:#ffb4b4;
+  max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,600px) minmax(0,1fr);border-inline:1px solid var(--f-line);border-bottom:1px solid var(--f-line);min-height:calc(100vh - 74px)}
+.flow-main{padding:clamp(28px,4vw,48px) clamp(20px,4.5vw,64px) 72px;min-width:0}
+.flow-preview{position:relative;border-left:1px solid var(--f-line);padding:clamp(28px,4vw,48px) clamp(20px,4vw,56px);min-width:0;
+  background-image:linear-gradient(rgba(196,215,235,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(196,215,235,.045) 1px,transparent 1px);background-size:44px 44px;background-position:-1px -1px}
+.flow-preview-in{position:sticky;top:110px;max-width:430px;margin:0 auto}
+
+/* Head: which package, and how far along */
+.flow-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.flow .flow-pkg{margin:0;font-size:13px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--f-azure);background:none;-webkit-text-fill-color:currentColor;animation:none}
+.flow-progress{display:none;align-items:center;gap:10px;font-size:13px;color:var(--f-muted);font-variant-numeric:tabular-nums}
+.flow-js .flow-progress{display:flex}
+.flow-bar{width:120px;height:4px;border-radius:4px;background:rgba(196,215,235,.16);overflow:hidden}
+.flow-bar i{display:block;height:100%;width:0;background:var(--f-azure);border-radius:4px;transition:width .35s ease}
+.flow-live{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* A step */
+.flow form{display:block;padding:0;gap:0}
+.flow fieldset.step{border:0;margin:0;padding:0;min-width:0}
+.flow-js .flow fieldset.step{margin-top:34px}
+html:not(.flow-js) .flow fieldset.step+fieldset.step{margin-top:56px;padding-top:40px;border-top:1px solid var(--f-line)}
+.flow .step-title{font-size:clamp(28px,3.2vw,38px);font-weight:500;letter-spacing:-.03em!important;line-height:1.12;margin:0;color:var(--f-ink);text-wrap:balance}
+.flow .step-title:focus{outline:none}
+.flow .step-why{font-size:15.5px;line-height:1.6;color:var(--f-sub);margin:12px 0 0;max-width:50ch}
+.flow .step-body{margin-top:30px;display:grid;gap:22px}
+.flow .sub{font-size:13px;font-weight:600;color:var(--f-muted);margin:6px 0 -8px;letter-spacing:0;text-transform:none}
+
+/* Fields */
+.flow .fields{display:grid;grid-template-columns:1fr 1fr;gap:20px 16px}
+.flow .f{display:flex;flex-direction:column;gap:7px;min-width:0}
+.flow .f.full{grid-column:1/-1}
+.flow label,.flow .flow-q{font-size:14px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--f-ink);line-height:1.4}
+.flow .flow-q{display:block;margin:0;background:none;border-radius:0;padding:0}
+.flow .req{color:var(--f-azure)}
+.flow .opt{color:var(--f-muted);font-weight:400}
+.flow .hint{font-size:12.5px;color:var(--f-muted);line-height:1.5;margin:-2px 0 0}
+.flow input:not([type=checkbox]):not([type=radio]),.flow textarea{font-family:inherit;font-size:15px;color:var(--f-ink);background:var(--f-field);border:1px solid var(--f-line-2);border-radius:10px;padding:12px 14px;width:100%;line-height:1.5;box-shadow:none}
+.flow textarea{resize:vertical;min-height:96px}
+.flow input::placeholder,.flow textarea::placeholder{color:#7d8b9c}
+.flow input:focus,.flow textarea:focus{outline:none;border-color:var(--f-azure);box-shadow:0 0 0 3px rgba(145,194,237,.2)}
+.flow .f.is-invalid input,.flow .f.is-invalid textarea{border-color:var(--f-err)}
+
+/* Chips: tap to pick. The real input stays in the DOM for keyboards and screen readers. */
+.flow .chips{display:flex;flex-wrap:wrap;gap:8px}
+.flow .chip{position:relative;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--f-line-2);border-radius:10px;padding:10px 14px;font-size:14px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--f-sub);background:rgba(255,255,255,.015);cursor:pointer;user-select:none;transition:border-color .15s,background .15s,color .15s}
+.flow .chip input{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+.flow .chip:hover{border-color:rgba(145,194,237,.6);color:var(--f-ink)}
+.flow .chip:has(input:checked){border-color:var(--f-azure);background:rgba(145,194,237,.13);color:var(--f-ink)}
+.flow .chip:has(input:checked):before{content:"";width:12px;height:7px;border-left:2px solid var(--f-azure);border-bottom:2px solid var(--f-azure);transform:rotate(-45deg) translate(1px,-2px);margin-right:1px}
+.flow .chip:has(input:focus-visible){outline:2px solid var(--f-azure);outline-offset:2px}
+
+/* Option cards: for longer choices */
+.flow .options{display:grid;gap:10px}
+.flow .option{position:relative;display:flex;align-items:flex-start;gap:12px;border:1px solid var(--f-line-2);border-radius:12px;padding:15px 16px;font-size:14.5px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--f-sub);background:rgba(255,255,255,.015);cursor:pointer;line-height:1.45}
+.flow .option input{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+.flow .option:before{content:"";flex:none;width:18px;height:18px;margin-top:1px;border:1.5px solid var(--f-line-2);border-radius:50%;box-sizing:border-box}
+.flow .option.box:before{border-radius:5px}
+.flow .option:hover{border-color:rgba(145,194,237,.6);color:var(--f-ink)}
+.flow .option:has(input:checked){border-color:var(--f-azure);background:rgba(145,194,237,.11);color:var(--f-ink)}
+.flow .option:has(input:checked):before{border-color:var(--f-azure);background:var(--f-azure);box-shadow:inset 0 0 0 3px var(--f-field)}
+.flow .option:has(input:focus-visible){outline:2px solid var(--f-azure);outline-offset:2px}
+
+/* Adaptive blocks inside the focus step */
+.flow .focusblock{border:0;border-left:2px solid var(--f-azure);margin:4px 0 0;padding:4px 0 4px 18px;min-width:0}
+.flow .focusblock .tag{display:block;font-size:13px;font-weight:600;color:var(--f-azure);margin-bottom:14px}
+
+/* Step controls */
+.flow .step-nav{display:none;align-items:center;gap:12px;margin-top:34px}
+.flow-js .flow .step-nav{display:flex}
+.flow .step-next,.flow .send{flex:1;font-family:inherit;font-size:15px;font-weight:600;color:var(--f-btn-ink);background:var(--f-btn);border:0;border-radius:10px;padding:15px 22px;cursor:pointer;box-shadow:none;transition:background .15s;letter-spacing:0;text-align:center}
+.flow .step-next:hover,.flow .send:hover{background:#c2e1f8;filter:none}
+.flow .send:disabled{opacity:.7;cursor:progress}
+.flow .step-back{font-family:inherit;font-size:14px;font-weight:500;color:var(--f-sub);background:none;border:1px solid var(--f-line-2);border-radius:10px;padding:14px 18px;cursor:pointer}
+.flow .step-back:hover{color:var(--f-ink);border-color:rgba(145,194,237,.6)}
+.flow-js .flow.is-first .step-back{display:none}
+.flow .step-next:focus-visible,.flow .send:focus-visible,.flow .step-back:focus-visible,.flow .flow-save:focus-visible{outline:2px solid var(--f-azure);outline-offset:3px}
+.flow .send-row{display:flex;gap:12px;align-items:center;margin-top:34px}
+.flow .send-row .step-back{display:none}
+.flow-js .flow .send-row .step-back{display:inline-block}
+.flow .step-err,.flow .err{display:block;font-size:13.5px;color:var(--f-err);font-weight:500;margin-top:14px}
+.flow .step-err[hidden],.flow .err[hidden]{display:none}
+.flow .trust{font-size:12.5px;line-height:1.6;color:var(--f-muted);margin-top:16px}
+
+/* Save for later (onboarding) */
+.flow-save{display:none;font-family:inherit;font-size:13px;font-weight:500;color:var(--f-azure);background:none;border:0;padding:4px 0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.flow-js .flow-save{display:inline}
+.flow .flow-saved{font-size:12.5px;color:var(--f-muted);margin:8px 0 0}
+.flow-resume{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:22px;border:1px solid var(--f-line-2);border-radius:12px;padding:14px 16px;font-size:14px;color:var(--f-sub)}
+.flow-resume[hidden]{display:none}
+.flow-resume button{font-family:inherit;font-size:13.5px;font-weight:600;border-radius:8px;padding:8px 12px;cursor:pointer}
+.flow-resume .yes{background:var(--f-btn);color:var(--f-btn-ink);border:0}
+.flow-resume .no{background:none;color:var(--f-sub);border:1px solid var(--f-line-2)}
+
+/* The paper sheet preview */
+.flow-sheet{border:1px solid #aebdcb;background:#e8edf0;color:#172d40;padding:22px 24px 16px;box-shadow:12px 12px 0 -1px #15263a,12px 12px 0 0 #34495f;margin:0 12px 12px 0}
+.flow-sheet-top{display:flex;justify-content:space-between;gap:12px;font:10px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid #b9c6cf;padding-bottom:14px}
+.flow-sheet-top span+span{color:#486278;text-align:right}
+.flow-sheet dl{margin:0}
+.flow-sheet .row{padding:12px 0;border-bottom:1px solid #c6d0d7}
+.flow-sheet dt{font-size:11px;color:#516478;margin:0 0 4px}
+.flow-sheet dd{margin:0;font-size:14px;line-height:1.45;color:#172d40;overflow-wrap:anywhere;white-space:pre-line}
+.flow-sheet dd.big{font-size:19px;letter-spacing:-.02em;line-height:1.25}
+.flow-sheet dd.is-empty:before{content:"";display:block;height:8px;width:var(--w,58%);margin:6px 0 3px;border-radius:4px;background:#cdd6dd}
+.flow-sheet dd.big.is-empty:before{height:12px}
+.flow-sheet .pills{display:flex;flex-wrap:wrap;gap:5px}
+.flow-sheet .pills span{font-size:11.5px;color:#2c4558;background:#f3f6f8;border:1px solid #c6d0d7;border-radius:999px;padding:2px 9px}
+.flow-sheet-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px 12px;padding-top:13px;font-size:10.5px;color:#486278}
+.flow .flow-note{font-size:12.5px;line-height:1.6;color:var(--f-muted);margin:26px 12px 0 2px}
+.flow .flow-note b{color:var(--f-sub);font-weight:500}
+.flow .review-slot:empty{display:none}
+.flow .review-slot{margin-top:30px}
+.flow .review-slot .flow-note{display:none}
+
+/* Sent */
+.flow .done{display:none;padding:30px 0 0;text-align:left}
+.flow .done.show{display:block}
+.flow .done .ok{width:44px;height:44px;border-radius:50%;background:rgba(145,194,237,.14);color:var(--f-azure);font-size:22px;display:flex;align-items:center;justify-content:center;margin:0 0 18px}
+.flow .done h2{font-size:clamp(28px,3vw,36px);font-weight:500;letter-spacing:-.03em;margin:0 0 12px}
+.flow .done p{color:var(--f-sub);max-width:48ch;margin:0;font-size:15.5px;line-height:1.6}
+.flow.is-sent .flow-progress,.flow.is-sent .flow-save{display:none}
+
+@media (prefers-reduced-motion:reduce){.flow-bar i{transition:none}}
+@media (max-width:979px){
+  .flow{grid-template-columns:minmax(0,1fr);border-inline:0;min-height:0}
+  .flow-preview{display:none}
+  .flow .fields{grid-template-columns:minmax(0,1fr)}
+  .flow-sheet{margin-right:12px}
+}
+@media (max-width:420px){.flow .step-back{padding:14px 14px}.flow-bar{width:80px}}
+.flow-savebar{display:none;margin-top:22px}
+.flow-js .flow-savebar{display:block}
+.flow.is-sent .flow-savebar{display:none}
+.flow fieldset.focusblock{background:none;border-radius:0;box-shadow:none}
+.flow .focusblock .tag{text-transform:none;letter-spacing:0;background:none;border:0;padding:0;border-radius:0;-webkit-text-fill-color:currentColor}

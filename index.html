@@ -2,7 +2,7 @@
 <html lang="en"><head><script>if(/\.onrender\.com$/i.test(location.hostname)){location.replace("https://erenforbusiness.com"+location.pathname+location.search+location.hash);}</script>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Eren for Business | Website &amp; Workflow Improvements</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lora:ital,wght@1,400&display=swap">
 <style>
   :root{
     --bg:#080D18;--bg-2:#0B1526;--panel:#101E3A;--panel-2:#0D1830;
@@ -157,7 +157,7 @@
   /* A closer look — film section (added under hero) */
   .closer .closer-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
   .closer .closer-title{font-size:clamp(30px,4vw,46px);font-weight:400;letter-spacing:-.02em;line-height:1.12;margin:14px 0 0}
-  .closer .closer-title em{font-family:Georgia,'Iowan Old Style','Palatino Linotype',serif;font-style:italic;color:var(--sub)}
+  .closer .closer-title em{font-family:Lora,Georgia,'Times New Roman',serif;font-style:italic;color:var(--sub)}
   .closer .closer-link{font-size:14px;color:var(--sub);white-space:nowrap;transition:color .15s;padding-bottom:8px}
   .closer .closer-link:hover{color:var(--azure)}
   .closer .film{position:relative;margin-top:34px;border:1px solid var(--line-2);border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:linear-gradient(160deg,#0b1526,#0d1830)}
@@ -172,7 +172,7 @@
   .closer .film-play:hover{transform:translate(-50%,-50%) scale(1.06);border-color:var(--azure);background:rgba(63,123,214,.16)}
   .closer .film-play svg{width:22px;height:22px;margin-left:3px;fill:var(--ink)}
   @media(max-width:700px){.closer .closer-head{align-items:flex-start}.closer .film-play{width:60px;height:60px}}
-</style><link rel="stylesheet" href="eren-editorial.css">
+</style><link rel="stylesheet" href="eren-editorial.css"><link rel="stylesheet" href="home-figures.css">
 <meta name="description" content="Eren helps local businesses find and fix problems across websites, inquiries and daily work. Start with a free First Look, then choose a paid Diagnose or Build.">
 <link rel="canonical" href="https://erenforbusiness.com/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -209,46 +209,45 @@
   <div class="shell editorial-grid">
     <div class="hero-copy">
       <div class="ey hero-kicker"><span></span> For local businesses</div>
-      <h1>Before you build more,<br><em>know what to fix.</em></h1>
+      <h1><span class="l1">Before you build more,</span><br><em>know what to fix.</em></h1>
       <p>Your website, your workflow and the tools behind them. Eren works out what’s worth changing, then builds the agreed improvement, as small or as big as the job needs.</p>
       <div class="hero-cta">
-        <a class="btn" href="first-look.html">Start with a free First Look <span aria-hidden="true">↗</span></a>
+        <a class="btn" href="first-look.html">Start with a free First Look <span aria-hidden="true">→</span></a>
         <a class="text-link" href="how.html">Explore the approach <span aria-hidden="true">→</span></a>
       </div>
       <div class="hero-fine">First Look: a free 15-minute fit call and one real observation.<br>Diagnosis is a separate, paid engagement.</div>
     </div>
-    <aside class="decision-sheet" aria-label="What Eren Diagnose delivers">
-      <div class="sheet-top"><span>EREN / DIAGNOSE</span><span class="sheet-symbol" aria-hidden="true">↗</span></div>
-      <div class="sheet-intro">One business question.<br><em>A clearer next move.</em></div>
-      <div class="sheet-row"><span class="sheet-number">01</span><div><h2>Understand the whole path</h2><p>Map the website, the inquiry, and what happens next.</p></div></div>
-      <div class="sheet-row"><span class="sheet-number">02</span><div><h2>Separate evidence from assumption</h2><p>What we can show. What you’ve told us. What’s still unknown.</p></div></div>
-      <div class="sheet-row"><span class="sheet-number">03</span><div><h2>Decide what deserves attention</h2><p>Up to three ranked fixes, with a plan and a way to measure each.</p></div></div>
-      <div class="sheet-bottom"><span>The decision pack is yours.</span><span>No obligation to Build.</span></div>
+    <aside class="pack" aria-label="Example of an Eren decision pack">
+      <div class="pack-top"><span>Decision pack</span><span class="ex">Example</span></div>
+      <p class="pack-label">You asked for</p>
+      <p class="pack-ask">A new website</p>
+      <p class="pack-ask-note">What the diagnosis found was in the way first:</p>
+      <ol class="pack-list">
+        <li><span class="pack-n">1</span><span class="pack-t">Contact form sent to an old inbox</span><span class="pack-tags"><span class="first">Fix first</span><span>A plan</span><span>A way to measure</span></span></li>
+        <li><span class="pack-n">2</span><span class="pack-t">Quote still waiting on a reply</span><span class="pack-tags"><span>A plan</span><span>A way to measure</span></span></li>
+        <li><span class="pack-n">3</span><span class="pack-t">Three apps, none of them talking</span><span class="pack-tags"><span>A plan</span><span>A way to measure</span></span></li>
+      </ol>
+      <div class="pack-bottom"><span>The decision pack is yours.</span><span>No obligation to Build.</span></div>
     </aside>
   </div>
-  <div class="shell hero-foot"><span>Focused on your website, your workflow and the tools behind them.</span><a href="pricing.html">Diagnose first. Build by agreement. <span aria-hidden="true">↗</span></a></div>
+  <div class="shell hero-foot"><span>Focused on your website, your workflow and the tools behind them.</span><a href="pricing.html">Diagnose first. Build by agreement. <span aria-hidden="true">→</span></a></div>
 </header>
 
 <section class="closer">
   <div class="shell">
     <div class="closer-head">
       <div>
-        <div class="ey">A closer look</div>
         <h2 class="closer-title">A clearer next move.<br><em>In 30 seconds.</em></h2>
       </div>
       <a class="closer-link" href="how.html">See the thinking behind Eren.</a>
     </div>
     <div class="film" id="film">
       <video class="film-video" playsinline preload="metadata"><source src="eren-film-30s.mp4" type="video/mp4"></video>
-      <div class="film-poster" id="filmPoster">
-        <svg class="film-radar" viewBox="0 0 1200 675" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <g fill="none" stroke="rgba(255,255,255,.10)"><circle cx="600" cy="337" r="92"/><circle cx="600" cy="337" r="162"/><circle cx="600" cy="337" r="236"/><circle cx="600" cy="337" r="316"/></g>
-          <g stroke="rgba(255,255,255,.10)"><line x1="150" y1="250" x2="470" y2="250"/><line x1="150" y1="337" x2="442" y2="337"/><line x1="150" y1="424" x2="470" y2="424"/><line x1="730" y1="250" x2="1050" y2="250"/><line x1="758" y1="337" x2="1050" y2="337"/><line x1="730" y1="424" x2="1050" y2="424"/></g>
-          <g fill="#57A2E8"><circle cx="322" cy="250" r="4.5"/><circle cx="447" cy="337" r="4.5"/><circle cx="396" cy="424" r="4.5"/><circle cx="905" cy="250" r="4.5"/><circle cx="840" cy="337" r="4.5"/><circle cx="986" cy="424" r="4.5"/></g>
-        </svg>
+      <div class="film-poster has-still" id="filmPoster">
+        <img class="film-still" src="eren-film-poster.jpg" alt="" width="1600" height="900" loading="lazy">
         <div class="film-top"><span>Eren / The approach</span><span>Short film &mdash; 00:30</span></div>
         <button class="film-play" id="filmPlay" type="button" aria-label="Play the film"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
-        <div class="film-bottom"><span class="film-cap">Watch Eren in 30 seconds</span><span class="film-arrow">&#8599;</span></div>
+        <div class="film-bottom"><span class="film-cap">Watch Eren in 30 seconds</span><span class="film-arrow">&rarr;</span></div>
       </div>
     </div>
   </div>
@@ -265,32 +264,100 @@
 </div></section>
 
 <section id="what"><div class="shell">
-  <div class="ey grad-text">What Eren works on</div>
   <h2 class="sec-h">One customer journey.<br>Three places to look.</h2>
   <p class="sec-sub">We look across the website, the process, and the tools before recommending a change.</p>
-  <div class="cards">
-    <div class="card"><div class="k">Website &amp; presence</div><h3>Get found &amp; chosen</h3><p>Rebuilt around how customers search, compare, and decide — local SEO, trust, speed, and a clear path from click to contact.</p></div>
-    <div class="card"><div class="k">Operations</div><h3>Make the handoffs easier</h3><p>Booking, quoting, invoicing, follow-up — the everyday steps between a first call and a finished job, made clearer, simpler or automated where it helps.</p></div>
-    <div class="card"><div class="k">Software &amp; tools</div><h3>The right stack</h3><p>Cut the tools you overpay for, add the ones you're missing, and build the custom ones no off-the-shelf app covers.</p></div>
+  <figure class="journey">
+    <svg class="jy-wide" viewBox="0 0 1200 470" role="img" aria-label="One customer path from first contact to finished job, running across the website, the workflow and the tools underneath both. Amber marks show example gaps.">
+      <rect class="jb jb-w" x="250" y="34" width="940" height="134" rx="14"/>
+      <rect class="jb jb-p" x="250" y="182" width="940" height="134" rx="14"/>
+      <rect class="jb jb-t" x="250" y="330" width="940" height="134" rx="14"/>
+
+      <text class="jk" x="0" y="94">Website &amp; presence</text><text class="jh" x="0" y="120">Get found &amp; chosen</text>
+      <text class="jk" x="0" y="242">Operations</text><text class="jh" x="0" y="268">Make the handoffs easier</text>
+      <text class="jk" x="0" y="390">Software &amp; tools</text><text class="jh" x="0" y="416">The right stack</text>
+
+      <!-- tools sit under every step -->
+      <path class="jconn" d="M350 162 V378 M495 162 V378 M640 162 V378 M800 310 V378 M950 310 V378 M1100 310 V378"/>
+
+      <!-- the one path -->
+      <path class="jpath" d="M276 101 H664 C 732 101, 732 249, 800 249 H1152"/>
+      <path class="jpath" d="M1144 243 L1154 249 L1144 255"/>
+      <text class="js" x="276" y="86" style="text-anchor:start">First contact</text>
+      <text class="js" x="1154" y="234" style="text-anchor:end">Finished job</text>
+
+      <g class="jstop"><circle class="jnode" cx="350" cy="101" r="7"/><circle class="jdot" cx="350" cy="101" r="2.5"/><text class="jl" x="350" y="132">Finds you</text><text class="js" x="350" y="150">search, maps, a referral</text></g>
+      <g class="jstop"><circle class="jring" cx="495" cy="101" r="14"/><circle class="jnode" cx="495" cy="101" r="7"/><circle class="jdot" cx="495" cy="101" r="2.5"/><text class="ja" x="495" y="72">Booking link broken on mobile</text><text class="jl" x="495" y="132">Checks the site</text><text class="js" x="495" y="150">usually on a phone</text></g>
+      <g class="jstop"><circle class="jnode" cx="640" cy="101" r="7"/><circle class="jdot" cx="640" cy="101" r="2.5"/><text class="jl" x="640" y="132">Asks</text><text class="js" x="640" y="150">call, form or text</text></g>
+
+      <g class="jstop"><circle class="jnode" cx="800" cy="249" r="7"/><circle class="jdot" cx="800" cy="249" r="2.5"/><text class="jl" x="800" y="280">Gets a reply</text><text class="js" x="800" y="298">how fast, and from whom</text></g>
+      <g class="jstop"><circle class="jring" cx="950" cy="249" r="14"/><circle class="jnode" cx="950" cy="249" r="7"/><circle class="jdot" cx="950" cy="249" r="2.5"/><text class="ja" x="950" y="220">Quote still waiting on a reply</text><text class="jl" x="950" y="280">Quote &amp; booking</text><text class="js" x="950" y="298">sent and followed up</text></g>
+      <g class="jstop"><circle class="jnode" cx="1100" cy="249" r="7"/><circle class="jdot" cx="1100" cy="249" r="2.5"/><text class="jl" x="1100" y="280">Job done</text><text class="js" x="1100" y="298">invoiced and paid</text></g>
+
+      <!-- the tools layer -->
+      <g><rect class="jchip" x="296" y="378" width="108" height="34" rx="8"/><text class="jct" x="350" y="399">Business profile</text></g>
+      <g><rect class="jchip" x="441" y="378" width="108" height="34" rx="8"/><text class="jct" x="495" y="399">Website</text></g>
+      <g><rect class="jchip jchip-amb" x="586" y="378" width="108" height="34" rx="8"/><text class="jct" x="640" y="399">Contact form</text></g>
+      <g><rect class="jchip jchip-amb" x="746" y="378" width="108" height="34" rx="8"/><text class="jct" x="800" y="399">Inbox</text></g>
+      <g><rect class="jchip" x="896" y="378" width="108" height="34" rx="8"/><text class="jct" x="950" y="399">Quote app</text></g>
+      <g><rect class="jchip" x="1046" y="378" width="108" height="34" rx="8"/><text class="jct" x="1100" y="399">Invoicing</text></g>
+      <path class="jlink" d="M404 395 H441 M549 395 H586 M854 395 H896 M1004 395 H1046"/>
+      <path class="jbreak" d="M694 395 H746"/><path class="jx" d="M714 389 l12 12 M726 389 l-12 12"/>
+      <text class="ja" x="720" y="442">Contact form sent to an old inbox</text>
+    </svg>
+
+    <svg class="jy-tall" viewBox="0 0 360 900" role="img" aria-label="One customer path from first contact to finished job, running down through the website, the workflow and the tools underneath both. Amber marks show example gaps.">
+      <rect class="jb jb-w" x="1" y="1" width="358" height="300" rx="14"/>
+      <rect class="jb jb-p" x="1" y="318" width="358" height="300" rx="14"/>
+      <rect class="jb jb-t" x="1" y="636" width="358" height="262" rx="14"/>
+      <text class="jk" x="50" y="32">Website &amp; presence</text><text class="jh" x="50" y="56">Get found &amp; chosen</text>
+      <text class="jk" x="50" y="349">Operations</text><text class="jh" x="50" y="373">Make the handoffs easier</text>
+      <text class="jk" x="50" y="667">Software &amp; tools</text><text class="jh" x="50" y="691">The right stack</text>
+
+      <path class="jpath" d="M24 86 V586"/><path class="jpath" d="M18 578 L24 588 L30 578"/>
+      <text class="js" x="50" y="90" style="text-anchor:start">First contact</text>
+      <text class="js" x="50" y="606" style="text-anchor:start">Finished job</text>
+
+      <g><circle class="jnode" cx="24" cy="124" r="7"/><circle class="jdot" cx="24" cy="124" r="2.5"/><text class="jl jl-s" x="50" y="129">Finds you</text><text class="js js-s" x="50" y="146">search, maps, a referral</text></g>
+      <g><circle class="jring" cx="24" cy="190" r="14"/><circle class="jnode" cx="24" cy="190" r="7"/><circle class="jdot" cx="24" cy="190" r="2.5"/><text class="jl jl-s" x="50" y="195">Checks the site</text><text class="js js-s" x="50" y="212">usually on a phone</text><text class="ja ja-s" x="50" y="230">Booking link broken on mobile</text></g>
+      <g><circle class="jnode" cx="24" cy="266" r="7"/><circle class="jdot" cx="24" cy="266" r="2.5"/><text class="jl jl-s" x="50" y="271">Asks</text><text class="js js-s" x="50" y="288">call, form or text</text></g>
+
+      <g><circle class="jnode" cx="24" cy="420" r="7"/><circle class="jdot" cx="24" cy="420" r="2.5"/><text class="jl jl-s" x="50" y="425">Gets a reply</text><text class="js js-s" x="50" y="442">how fast, and from whom</text></g>
+      <g><circle class="jring" cx="24" cy="486" r="14"/><circle class="jnode" cx="24" cy="486" r="7"/><circle class="jdot" cx="24" cy="486" r="2.5"/><text class="jl jl-s" x="50" y="491">Quote &amp; booking</text><text class="js js-s" x="50" y="508">sent and followed up</text><text class="ja ja-s" x="50" y="526">Quote still waiting on a reply</text></g>
+      <g><circle class="jnode" cx="24" cy="560" r="7"/><circle class="jdot" cx="24" cy="560" r="2.5"/><text class="jl jl-s" x="50" y="565">Job done</text><text class="js js-s" x="50" y="582">invoiced and paid</text></g>
+
+      <g><rect class="jchip jchip-amb" x="50" y="716" width="120" height="34" rx="8"/><text class="jct" x="110" y="737">Contact form</text></g>
+      <g><rect class="jchip jchip-amb" x="222" y="716" width="120" height="34" rx="8"/><text class="jct" x="282" y="737">Inbox</text></g>
+      <path class="jbreak" d="M170 733 H222"/><path class="jx" d="M190 727 l12 12 M202 727 l-12 12"/>
+      <text class="ja" x="196" y="774">Contact form sent to an old inbox</text>
+      <g><rect class="jchip" x="50" y="796" width="140" height="34" rx="8"/><text class="jct" x="120" y="817">Business profile</text></g>
+      <g><rect class="jchip" x="202" y="796" width="140" height="34" rx="8"/><text class="jct" x="272" y="817">Website</text></g>
+      <g><rect class="jchip" x="50" y="842" width="140" height="34" rx="8"/><text class="jct" x="120" y="863">Quote app</text></g>
+      <g><rect class="jchip" x="202" y="842" width="140" height="34" rx="8"/><text class="jct" x="272" y="863">Invoicing</text></g>
+    </svg>
+    <figcaption>One path from first contact to finished job. The amber marks are the kind of gap we look for, not findings about your business.</figcaption>
+  </figure>
+  <div class="journey-key">
+    <div><h3>Get found &amp; chosen</h3><p>Rebuilt around how customers search, compare, and decide — local SEO, trust, speed, and a clear path from click to contact.</p></div>
+    <div><h3>Make the handoffs easier</h3><p>Booking, quoting, invoicing, follow-up — the everyday steps between a first call and a finished job, made clearer, simpler or automated where it helps.</p></div>
+    <div><h3>The right stack</h3><p>Cut the tools you overpay for, add the ones you're missing, and build the custom ones no off-the-shelf app covers.</p></div>
   </div>
   <p class="sec-sub" style="margin-top:26px;font-size:15px;color:var(--muted)">More specialists and tools are added as Eren grows — each one sharper at its one job.</p>
 </div></section>
 
 <section id="how"><div class="shell">
-  <div class="ey grad-text">How Eren operates</div>
   <h2 class="sec-h">The work follows the diagnosis.</h2>
   <p class="sec-sub">Every job runs the same governed loop — grounded in your evidence, checked before you ever see it, and nothing sent without your say-so.</p>
-  <div class="flow">
-    <div class="n"><b>01 · Understand</b>Your business, your customers, and where the path from first contact to finished job could be clearer.</div>
-    <div class="n"><b>02 · Find</b>Where inquiries and everyday work may be breaking down — ranked by likely impact.</div>
-    <div class="n"><b>03 · Do the work</b>The right specialist methods applied to the real problem.</div>
-    <div class="n"><b>04 · Check</b>A verification pass checks the findings against the evidence — independently when a separate model is available.</div>
-    <div class="n"><b>05 · Improve</b>You approve what ships — and it gets sharper each run.</div>
-  </div>
+  <div class="loop-wrap"><ol class="loop" style="--n:5" aria-label="The loop every job follows, ending back at the start">
+    <li><b>Understand</b><span>Your business, your customers, and where the path from first contact to finished job could be clearer.</span></li>
+    <li><b>Find</b><span>Where inquiries and everyday work may be breaking down — ranked by likely impact.</span></li>
+    <li><b>Do the work</b><span>The right specialist methods applied to the real problem.</span></li>
+    <li><b>Check</b><span>A verification pass checks the findings against the evidence — independently when a separate model is available.</span></li>
+    <li><b>Improve</b><span>You approve what ships — and it gets sharper each run.</span></li>
+  </ol><i class="loop-arrow top" aria-hidden="true"></i><i class="loop-arrow bottom" aria-hidden="true"></i><span class="loop-back" aria-hidden="true">Then back to the start</span></div>
   <div style="margin-top:34px"><a class="btn ghost" href="how.html">See how Eren operates</a></div>
 </div></section>
 
-<section class="engagement"><div class="shell engagement-in"><div><div class="ey">A decision you can act on</div><h2>Good thinking is a deliverable.</h2><p>Diagnose stands on its own. Take the decision pack and act on it yourself, or ask Eren to scope the build.</p></div><div class="engagement-price"><span>Eren Diagnose</span><strong>$750 <small>one-time</small></strong><span>$495 for founding clients</span><a class="text-link" href="pricing.html">See exactly what’s included <span aria-hidden="true">↗</span></a></div></div></section>
+<section class="engagement"><div class="shell engagement-in"><div><h2>Good thinking is a deliverable.</h2><p>Diagnose stands on its own. Take the decision pack and act on it yourself, or ask Eren to scope the build.</p></div><div class="engagement-price"><span>Eren Diagnose</span><strong>$750 <small>one-time</small></strong><span>$495 for founding clients</span><a class="text-link" href="pricing.html">See exactly what’s included <span aria-hidden="true">→</span></a></div></div></section>
 <section id="why"><div class="shell">
   <div class="ey grad-text">Why Eren</div>
   <div class="why">

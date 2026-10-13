@@ -25,7 +25,7 @@ section{padding-block:88px}
 .hero-kicker{display:flex;align-items:center;gap:10px;line-height:1.8}
 .hero-kicker>span{width:6px;height:6px;flex:none;background:var(--azure)}
 .editorial-hero h1{font-size:clamp(45px,5.5vw,75px);line-height:1.07;margin:26px 0 0;text-wrap:initial;letter-spacing:-.048em!important}
-.editorial-hero h1 em{font-family:Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:-.055em;font-style:italic;color:#a8d1f1}
+.editorial-hero h1 em{font-family:Lora,Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:-.055em;font-style:italic;color:#a8d1f1}
 .hero-copy>p{font-size:16px;line-height:1.8;max-width:46ch;margin:27px 0 0}
 .hero-cta{gap:20px;margin-top:30px}
 .hero-cta .btn{font-size:13px}
@@ -34,9 +34,9 @@ section{padding-block:88px}
 .hero-fine{color:var(--muted);font-size:11px;line-height:1.8;margin-top:20px}
 .decision-sheet{position:relative;border:1px solid #aebdcb;background:#e8edf0;color:#172d40;padding:27px 31px;box-shadow:12px 12px 0 -1px #15263a,12px 12px 0 0 #34495f;transform:none}
 .sheet-top{display:flex;align-items:center;justify-content:space-between;font:10px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.14em;border-bottom:1px solid #b9c6cf;padding-bottom:18px}
-.sheet-symbol{font:24px Georgia,serif}
+.sheet-symbol{font:24px Lora,Georgia,serif}
 .sheet-intro{font-size:29px;font-weight:400;letter-spacing:-.035em;line-height:1.2;margin:26px 0 25px}
-.sheet-intro em{font-family:Georgia,serif;font-weight:400;color:#416482}
+.sheet-intro em{font-family:Lora,Georgia,serif;font-weight:400;color:#416482}
 .sheet-row{display:flex;gap:17px;border-top:1px solid #c6d0d7;padding:18px 0}
 .sheet-number{font:11px/1.8 ui-monospace,Consolas,monospace;color:#536f83}
 .sheet-row h2{font-size:13px;font-weight:600!important;letter-spacing:-.01em!important;margin:0;line-height:1.5}
@@ -47,7 +47,7 @@ section{padding-block:88px}
 .hero-foot a span{margin-left:12px;color:var(--azure)}
 .section-index{display:block;font-size:10px;font-weight:500;letter-spacing:.16em;color:var(--azure);margin-bottom:23px}
 .shift .big{font-weight:400;font-size:35px;letter-spacing:-.04em;line-height:1.3;max-width:19ch}
-.shift .big b{font-family:Georgia,serif;font-style:italic;font-weight:400;background:none;-webkit-text-fill-color:var(--azure);color:var(--azure);animation:none}
+.shift .big b{font-family:Lora,Georgia,serif;font-style:italic;font-weight:400;background:none;-webkit-text-fill-color:var(--azure);color:var(--azure);animation:none}
 .shift .col p{font-size:15px;line-height:1.8}
 .cards{gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .card{border:0;border-right:1px solid var(--line);border-radius:0;background:none;min-height:235px;padding:30px}
@@ -70,7 +70,7 @@ section{padding-block:88px}
 .engagement .text-link{color:#172d40;border-color:#9aafbf;margin-top:14px}
 .quote,.short,.belief,.fu,.principle,.panel,.blk,.q,.h{border-radius:5px;background:#111d2b;box-shadow:none}
 .quote{border-left:2px solid var(--azure);padding:38px}
-.quote p{font-family:Georgia,serif;font-style:italic;font-size:33px;font-weight:400!important;line-height:1.35}
+.quote p{font-family:Lora,Georgia,serif;font-style:italic;font-size:33px;font-weight:400!important;line-height:1.35}
 .quote .src{font-size:10px}
 .ci{font-size:14px;line-height:1.8}
 .ci b{font-weight:500;color:var(--ink)}
