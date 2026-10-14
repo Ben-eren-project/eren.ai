@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Request a quote — Northline Metal Works (demo)</title>
-<meta name="description" content="Fictional demo: the quote request form. Nothing is sent.">
+<title>Request a quote — Northline Metal Works</title>
+<meta name="description" content="Request a quote.">
 <meta name="robots" content="noindex">
 <!-- Display face: a renamed Latin subset of TeX Gyre Heros Condensed Bold (GUST Font License / LPPL), embedded so the page makes no network requests. -->
 <style>
@@ -279,13 +279,13 @@ footer a:hover{color:#fff}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="demo"><b>Fictional demonstration.</b> Northline Metal Works is an invented company made by Eren for Business to show a website restructure. No real customers, projects, certifications or results are shown. The quote form does not send anything. <a class="demo-back" href="/services.html#build">Back to Eren for Business</a></div>
+<div class="demo"><b>Demo site.</b> Northline Metal Works is made up, and the quote form doesn’t send anything. <a class="demo-back" href="/services.html#examples">Back to Eren for Business</a></div>
 
 <header class="site">
   <div class="wrap nav">
     <a class="logo" href="index.html" aria-label="Northline Metal Works, home">
       <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect x="1.5" y="1.5" width="31" height="31" fill="none" stroke="#1b232b" stroke-width="3"/><path d="M8 26V8l18 18V8" fill="none" stroke="#1f48c8" stroke-width="3.2" stroke-linecap="square"/></svg>
-      <span><b>Northline Metal Works</b><span class="sub">Custom fabrication, Dayton, Ohio (fictional)</span></span>
+      <span><b>Northline Metal Works</b><span class="sub">Custom fabrication, Dayton, Ohio</span></span>
     </a>
     <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="links">Menu</button>
     <nav class="links" id="links" aria-label="Site">
@@ -311,7 +311,6 @@ footer a:hover{color:#fff}
         <h2>What happens after you send it</h2>
         <ol><li>Your coordinator reads it and replies by email, with questions or a written quote.</li><li>If it’s outside the shop’s limits, you hear that plainly instead of silence.</li><li>Nothing is cut until you approve the quote, and the drawings for assemblies.</li></ol>
       </div>
-      <p class="note">Demo form: nothing is sent or stored. On a real site it would deliver to the shop’s quote inbox, and the handover checks would confirm that it arrives.</p>
     </div>
     <div class="form">
       <form id="qf" novalidate aria-labelledby="formH">
@@ -330,9 +329,9 @@ footer a:hover{color:#fff}
           <div class="field"><label for="f_qty">Quantity</label><input id="f_qty" name="qty" inputmode="numeric" placeholder="e.g. 40"></div>
         </div>
         <div class="field"><label for="f_desc">What it is, and when you need it</label><textarea id="f_desc" name="desc" placeholder="A real form would take your drawing here. In the demo, describe it."></textarea></div>
-        <button class="btn" type="submit" id="send" disabled>Send quote request (demo)</button>
+        <button class="btn" type="submit" id="send" disabled>Send quote request</button>
         <noscript><p class="note">This demo form needs JavaScript, so it stays switched off here. Nothing can be sent from it.</p></noscript>
-        <div class="done" id="ok" role="status" hidden><b>Demo only. Nothing was sent.</b>On a live site your request would now be in the shop’s quote inbox, and you’d get a confirmation by email.</div>
+        <div class="done" id="ok" role="status" hidden><b>Nothing was sent.</b>On a live site your request would now be in the shop’s quote inbox, and you’d get a confirmation by email.</div>
       </form>
     </div>
   </div>
@@ -342,9 +341,9 @@ footer a:hover{color:#fff}
 
 <footer>
   <div class="wrap fgrid">
-    <div><b>Northline Metal Works</b><p>A fictional company. The address, phone and email are left out on purpose, so nobody tries to contact it.</p></div>
+    <div><b>Northline Metal Works</b><p>Cutting, forming, welding and powder coat for steel, stainless and aluminum.</p></div>
     <div><h3>Site</h3><a href="index.html">Home</a><a href="what-we-make.html">What we make</a><a href="how-we-work.html">How we work</a><a href="how-we-work.html#capabilities">Capabilities and limits</a><a href="quote.html">Request a quote</a></div>
-    <div><h3>About this demo</h3><p>Made by Eren for Business to show how a website restructure works. Invented content, no real results.</p></div>
+    <div><h3>About this demo</h3><p>Made by Eren for Business to show how a website restructure works.</p></div>
   </div>
 </footer>
 
@@ -399,7 +398,7 @@ f.addEventListener("submit",function(e){
   Object.keys(rules).forEach(function(id){if(!check(id)&&!first)first=id});
   if(first){document.getElementById(first).focus();return}
   var ok=document.getElementById("ok"), b=document.getElementById("send");
-  ok.hidden=false; b.disabled=true; b.textContent="Request recorded (demo)";
+  ok.hidden=false; b.disabled=true; b.textContent="Request recorded";
 });
 })();
 </script>

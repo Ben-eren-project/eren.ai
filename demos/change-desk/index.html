@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Change Desk — Demo</title>
+<title>Change Desk</title>
 <meta name="robots" content="noindex">
 <style>
 /* Change Desk: an engineering change notice, made into a tool.
@@ -208,10 +208,10 @@ textarea{min-height:88px;resize:vertical}
 </style>
 </head>
 <body>
-<div class="demo"><b>Fictional demonstration.</b> Change Desk is a prototype built by Eren for Business, with invented records for an invented shop (Northline Metal Works). Nothing is stored on a server: data lives in this browser tab until you export it. Not a client project, and no results are claimed. <a class="demo-back" href="/services.html#build">Back to Eren for Business</a></div>
+<div class="demo"><b>Demo tool.</b> The shop and its records are made up, and nothing leaves this browser tab. <a class="demo-back" href="/services.html#examples">Back to Eren for Business</a></div>
 
 <header class="bar">
-  <div class="brand"><div class="brand-mark" aria-hidden="true">CR</div><div><b>Change Desk</b><span>Northline Metal Works (fictional) · customer changes to floor instructions</span></div></div>
+  <div class="brand"><div class="brand-mark" aria-hidden="true">CR</div><div><b>Change Desk</b><span>Northline Metal Works · customer changes to floor instructions</span></div></div>
   <div class="tools">
     <div class="seg" role="group" aria-label="View as">
       <button type="button" id="vOffice" aria-pressed="true">Office · Dana</button>
@@ -272,25 +272,25 @@ var COORDINATOR = "Dana";
 var KEY = "changeDesk.v3";
 
 function seed(){return [
- {id:"CR-1041", job:"J-2208", jobName:"Conveyor guard brackets", customer:"Fictional Conveyor Co.", drawing:"BRK-1042 rev B → rev C",
+ {id:"CR-1041", job:"J-2208", jobName:"Conveyor guard brackets", customer:"Conveyor Co.", drawing:"BRK-1042 rev B → rev C",
   requested:"2026-10-12 09:40", via:"email", from:"R. Patel, buyer", owner:COORDINATOR,
   change:"Increase slot width from 7/16 in to 1/2 in on all brackets.", reason:"Their supplier changed the bolt size.", material:"11 ga carbon steel",
   qty:{n:40, unit:"brackets"}, cost:{state:"none", note:"Same cut path length"}, date:{state:"none", on:"", note:"Parts not yet cut"},
   conf:{ok:true, who:"R. Patel", how:"email", when:"2026-10-12"}, status:"ready",
   history:[{t:"2026-10-12 09:40",who:"System",what:"Created from customer email"},{t:"2026-10-12 11:05",who:COORDINATOR,what:"Settled cost and date; customer confirmed by email"}]},
- {id:"CR-1042", job:"J-2211", jobName:"Mezzanine railing", customer:"Fictional Builders LLC", drawing:"RL-2211 sheet 2",
+ {id:"CR-1042", job:"J-2211", jobName:"Mezzanine railing", customer:"Builders LLC", drawing:"RL-2211 sheet 2",
   requested:"2026-10-13 08:15", via:"phone", from:"Site foreman", owner:COORDINATOR,
   change:"Add two more railing sections.", reason:"The opening is longer than drawn.", material:"1.5 in sq tube, 14 ga",
   qty:{n:null, unit:"sections"}, cost:{state:"", note:""}, date:{state:"", on:"", note:""},
   conf:{ok:false, who:"", how:"", when:""}, status:"needs_info",
   history:[{t:"2026-10-13 08:15",who:COORDINATOR,what:"Created from a phone call; lengths not given"}]},
- {id:"CR-1043", job:"J-2213", jobName:"Machine frame", customer:"Fictional Packaging Inc.", drawing:"FR-2213 rev A",
+ {id:"CR-1043", job:"J-2213", jobName:"Machine frame", customer:"Packaging Inc.", drawing:"FR-2213 rev A",
   requested:"2026-10-13 10:02", via:"email", from:"Plant engineer", owner:COORDINATOR,
   change:"Switch the frame tube from 4 in to 8 in square.", reason:"A heavier motor was selected.", material:"8 in sq tube, 1/4 in wall",
   qty:{n:1, unit:"frame"}, cost:{state:"requote", note:"8 in tube is beyond the tube laser (6 in max)"}, date:{state:"unknown", on:"", note:""},
   conf:{ok:false, who:"", how:"", when:""}, status:"needs_info",
   history:[{t:"2026-10-13 10:02",who:"System",what:"Created from customer email"}]},
- {id:"CR-1038", job:"J-2199", jobName:"Chute liners", customer:"Fictional Grain Co.", drawing:"Finish spec only",
+ {id:"CR-1038", job:"J-2199", jobName:"Chute liners", customer:"Grain Co.", drawing:"Finish spec only",
   requested:"2026-10-09 14:20", via:"email", from:"Maintenance lead", owner:COORDINATOR,
   change:"Change the finish from bare to safety-yellow powder coat.", reason:"Site standard.", material:"3/16 in AR plate",
   qty:{n:6, unit:"liners"}, cost:{state:"accepted", note:"Quoted and accepted; amount left out of the demo"}, date:{state:"confirmed", on:"2026-10-17", note:"+2 days"},
