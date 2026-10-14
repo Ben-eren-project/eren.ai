@@ -1,12 +1,14 @@
-/* Services: the two fictional examples, shown early with a scrolling preview */
+/* Services: the three fictional examples, shown early with a scrolling preview */
 .xshow{position:relative;isolation:isolate;padding-block:84px 76px;border-bottom:1px solid var(--line);background:radial-gradient(ellipse 70% 60% at 78% 20%,rgba(29,74,110,.45),transparent 70%),radial-gradient(ellipse 50% 60% at 10% 90%,rgba(18,35,58,.8),transparent 70%),#0b111b}
 .xshow-bg{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.9}
 .xshow-bg>canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
 .xshow-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px 64px;align-items:end}
 .xshow-head h2{font-size:clamp(28px,3.2vw,40px);line-height:1.15;margin:14px 0 0;max-width:19ch}
 .xshow-head p{color:var(--sub);font-size:16px;line-height:1.75;margin:0;max-width:52ch}
-.xshow-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;margin-top:40px;align-items:start}
+.xshow-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:40px;align-items:start}
 .xshow-grid>:nth-child(2){--fx-i:1}
+.xshow-grid>:nth-child(3){--fx-i:2}
+.xshow-grid>:nth-child(3) .xcard-win{background:#f4edde}
 .xcard{display:block;color:var(--ink);text-decoration:none;border:1px solid var(--line-2);border-radius:14px;background:rgba(16,26,39,.82);overflow:hidden;transition:border-color var(--fx-fast,140ms) ease,transform var(--fx-base,260ms) cubic-bezier(.4,0,.2,1)}
 .xcard:hover{border-color:rgba(145,194,237,.6);transform:translateY(-2px)}
 .xcard:focus-visible{outline:2px solid #91c2ed;outline-offset:4px}
@@ -25,4 +27,5 @@
 .xcard:hover .xcard-go,.xcard:focus-visible .xcard-go{background-size:100% 1px}
 .xshow-note{margin:22px 0 0;color:var(--muted);font-size:13px}
 @media (prefers-reduced-motion:reduce){.xcard,.xcard-win img,.xcard-hint,.xcard-go{transition:none}.xcard:hover{transform:none}.xcard:hover .xcard-win img,.xcard:focus-visible .xcard-win img{object-position:50% 0}}
-@media (max-width:900px){.xshow-head,.xshow-grid{grid-template-columns:minmax(0,1fr)}.xshow{padding-block:60px}}
+@media (max-width:1100px){.xshow-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.xshow-grid>:nth-child(3){grid-column:1/-1}.xshow-grid>:nth-child(3) .xcard-win{height:clamp(260px,34vw,360px)}}
+@media (max-width:900px){.xshow-head,.xshow-grid{grid-template-columns:minmax(0,1fr)}.xshow-grid>:nth-child(3){grid-column:auto}.xshow{padding-block:60px}}

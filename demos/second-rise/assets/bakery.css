@@ -1,0 +1,198 @@
+/* Second Rise Bakehouse (fictional), built on the Eren kit.
+   Genre: retro-print (madebymustafa/design-taste genre pack, MIT), contrast fixed per the
+   eren-design note: riso red #E4572E is display-only (3.2:1, 24px and up); small red text uses #A83A1A.
+   Layout concept: a risograph poster run, one giant element per viewport, ink rules instead of cards. */
+@font-face{font-family:"Anton";src:url(../fonts/anton.woff) format("woff");font-weight:400;font-display:swap}
+@font-face{font-family:"Newsreader";src:url(../fonts/newsreader-400.woff) format("woff");font-weight:400;font-display:swap}
+@font-face{font-family:"Newsreader";src:url(../fonts/newsreader-600.woff) format("woff");font-weight:600;font-display:swap}
+@font-face{font-family:"Newsreader";src:url(../fonts/newsreader-italic.woff) format("woff");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Plex Mono";src:url(../fonts/plexmono-400.woff) format("woff");font-weight:400;font-display:swap}
+@font-face{font-family:"Plex Mono";src:url(../fonts/plexmono-500.woff) format("woff");font-weight:500;font-display:swap}
+
+:root{
+  color-scheme:light;
+  /* the five inks of this print run */
+  --paper:#f4edde; --paper-2:#ebe2cf; --ink:#21201c; --ink-2:#4a463d; --riso-red:#e4572e; --riso-red-text:#a83a1a; --riso-blue:#355e8c;
+  /* kit contract, mapped to the run */
+  --background:var(--paper); --foreground:var(--ink); --card:var(--paper); --card-2:var(--paper); --secondary:var(--paper-2);
+  --muted:var(--paper-2); --muted-foreground:var(--ink-2); --faint:var(--ink-2);
+  --primary:var(--ink); --primary-foreground:var(--paper); --primary-ink:var(--riso-red);
+  --accent:var(--riso-red); --accent-foreground:var(--ink);
+  --border:var(--ink); --border-strong:var(--ink); --ring:var(--riso-blue);
+  --grid-line:color-mix(in srgb,var(--ink) 9%,transparent); --hatch:color-mix(in srgb,var(--ink) 10%,transparent); --spot:transparent;
+  --doc:var(--paper); --doc-ink:var(--ink); --doc-sub:var(--ink-2); --doc-line:var(--ink); --doc-accent:var(--riso-blue); --doc-warn:var(--riso-red-text); --field:#fbf7ee; --field-line:var(--ink);
+  --font-body:"Newsreader",Georgia,"Times New Roman",serif; --font-display:"Anton","Impact","Arial Narrow",sans-serif; --font-voice:"Newsreader",Georgia,serif; --font-mono:"Plex Mono",ui-monospace,"Courier New",monospace;
+  --display-xl:clamp(3.4rem,10vw,8.5rem); --display-lg:clamp(2.8rem,6.4vw,5.4rem); --display-md:clamp(2.2rem,4vw,3.2rem); --body:18px; --subheading:20px;
+  --display-weight:400; --display-tracking:.005em; --display-case:uppercase;
+  --radius:0px; --radius-pill:0px;
+  /* prints don't blur: every shadow is an ink outline or a hard misregistered offset */
+  --shadow-xs:0 0 0 1.5px var(--ink); --shadow-sm:0 0 0 2px var(--ink); --shadow-md:0 0 0 2px var(--ink); --shadow-lg:0 0 0 2px var(--ink),5px 5px 0 var(--riso-blue);
+  --shadow-xl:0 0 0 2px var(--ink),7px 7px 0 var(--riso-blue); --shadow-inset:inset 0 0 0 2px var(--ink); --shadow-pill:0 0 0 2px var(--ink);
+  --header-bg:var(--paper); --header-blur:0px;
+  --reveal-distance:6px; --reveal-blur:0px; --reveal-dur:.2s; --reveal-stagger:60ms; --cascade-dur:.2s; --cascade-stagger:40ms;
+  --shell:1240px;
+}
+body{font-feature-settings:"onum"}
+::selection{background:var(--riso-red);color:var(--ink)}
+a{color:var(--riso-blue)}
+a:hover{color:var(--riso-red-text)}
+
+/* Mono labels and the print colophon */
+.mono{font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.colophon{font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);line-height:1.8}
+/* Misregistration: 2-3 headings max, one direction per page */
+.offset{text-shadow:3px 3px 0 var(--riso-red)}
+.offset-blue{text-shadow:3px 3px 0 var(--riso-blue)}
+/* Stamp: dashed, mono caps, rotated, max two per page */
+.stamp{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--riso-red-text);border:1.5px dashed var(--riso-red-text);padding:8px 12px;transform:rotate(-2deg)}
+/* Halftone panel (CSS, the genre's recipe) */
+.halftone{background-image:radial-gradient(var(--riso-blue) 1.4px,transparent 1.5px);background-size:10px 10px}
+.rule{border:0;border-top:2px solid var(--ink);margin:0}
+
+/* Fictional demonstration banner (eren-design hard rule 2) */
+.demo-banner{background:var(--ink);color:var(--paper);font-family:var(--font-mono);font-size:12.5px;letter-spacing:.04em;text-align:center;padding:9px 16px;line-height:1.5}
+.demo-banner a{color:var(--paper)}
+
+/* Header */
+.hdr{border-bottom:2px solid var(--ink)}
+.wordmark{display:flex;align-items:baseline;gap:10px;color:var(--ink);text-decoration:none}
+.wordmark b{font-family:var(--font-display);font-weight:400;font-size:28px;letter-spacing:.02em;line-height:1}
+.wordmark span{font-family:var(--font-mono);font-size:11px;letter-spacing:.18em}
+.u-wipe{font-family:var(--font-mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.u-wipe::after{height:2px;background:var(--riso-red)}
+.u-wipe:hover,.u-wipe:focus-visible{color:var(--riso-red-text)}
+.menu-btn{font-family:var(--font-mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;background:var(--paper)}
+.t-dropdown a{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.06em;font-size:14px}
+
+/* Buttons: ink slab, red ink lands on hover (arrow-fill mechanic from ui-layouts btn-arrow-right) */
+.btn{font-family:var(--font-mono);font-size:14px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;box-shadow:4px 4px 0 var(--riso-red)}
+.btn .arr svg{color:var(--paper)}
+.btn:hover,.btn:focus-visible{color:var(--ink)}
+.btn:hover .arr svg,.btn:focus-visible .arr svg{color:var(--ink)}
+.tlink{font-family:var(--font-mono);font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;background-image:linear-gradient(var(--riso-red),var(--riso-red));background-size:100% 2px}
+.tlink:hover{color:var(--riso-red-text)}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;border-bottom:2px solid var(--ink);background:var(--paper)}
+.hero-in{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px 32px;padding-block:clamp(40px,6vw,80px) clamp(40px,6vw,72px)}
+.hero h1{grid-column:1/-1;grid-row:2;line-height:.96;font-size:var(--display-xl)}
+.hero .copy{grid-column:8/span 5;grid-row:3;display:flex;flex-direction:column;gap:22px}
+.hero .art{grid-column:1/span 6;grid-row:3/span 2;align-self:start;position:relative;min-height:clamp(220px,30vw,420px)}
+.sun{position:absolute;left:0;bottom:0;width:min(100%,420px);aspect-ratio:1;border-radius:50%;-webkit-mask-image:radial-gradient(circle,#000 69%,transparent 70%);mask-image:radial-gradient(circle,#000 69%,transparent 70%)}
+.sun{top:0;bottom:auto;width:min(100%,clamp(220px,30vw,420px))}
+.sun.red{left:18px;top:12px;background:var(--riso-red);mix-blend-mode:multiply;opacity:.92;clip-path:inset(50% 0 0 0)}
+.hero .colophon{grid-column:8/span 5;grid-row:4}
+
+/* Shelf comparison (image-comparison) */
+.shelf .cmp{aspect-ratio:16/7;border-radius:0}
+.shelf .cmp-shell{border-radius:0;padding:0;background:transparent;box-shadow:var(--shadow-xl)}
+.shelf .cmp-line{width:3px;background:var(--riso-red)}
+.shelf .cmp-knob{border-radius:0;background:var(--ink);color:var(--paper);box-shadow:3px 3px 0 var(--riso-red)}
+.shelf svg{display:block;width:100%;height:100%}
+
+/* Section headings */
+.sec{border-bottom:2px solid var(--ink)}
+.sec.tint{background:var(--paper-2)}
+.kicker{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--riso-red-text)}
+
+/* Bake schedule tabs (segmented control + transition panel) */
+.seg{background:var(--paper);box-shadow:0 0 0 2px var(--ink);padding:0;gap:0}
+.seg-pill{background:var(--ink);box-shadow:none}
+.seg [role="tab"]{font-family:var(--font-mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);padding:14px 20px;border-right:2px solid var(--ink)}
+.seg [role="tab"]:last-of-type{border-right:0}
+.seg [role="tab"][aria-selected="true"]{color:var(--paper)}
+.bake{list-style:none;margin:0;padding:0}
+.bake li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 24px;align-items:baseline;padding:18px 0;border-bottom:1.5px solid var(--ink)}
+.bake .nm{font-size:24px;font-weight:600;line-height:1.2}
+.bake .ds{grid-column:1;color:var(--ink-2);font-size:17px}
+.bake .tm{grid-column:2;grid-row:1/span 2;text-align:right;font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-variant-numeric:tabular-nums}
+
+/* Process: sticky stacked poster sheets */
+.stack-card>article{border-radius:0;padding:40px;background:var(--paper)}
+.stack-card:nth-child(3n+1){--r:-3deg}.stack-card:nth-child(3n+3){--r:2.5deg}
+.step-n{font-family:var(--font-display);font-size:96px;line-height:.9;color:var(--riso-red);text-shadow:4px 4px 0 var(--riso-blue);font-variant-numeric:tabular-nums}
+.step-when{font-family:var(--font-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+
+/* Menu: numbered print index */
+.index{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.index li{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:4px 24px;align-items:baseline;padding:20px 0;border-bottom:1.5px solid var(--ink)}
+.index .no{font-family:var(--font-display);font-size:34px;color:var(--riso-red);line-height:1}
+.index .nm{font-size:23px;font-weight:600}
+.index .ds{grid-column:2;color:var(--ink-2)}
+.index .pr{grid-column:3;grid-row:1;font-family:var(--font-mono);font-size:15px;font-variant-numeric:tabular-nums}
+
+/* Ways to get bread: poster cards (genre pricing: paper / ink field featured / paper + red) */
+.tier{border-radius:0;padding:32px;gap:14px}
+.tier .t-name{font-family:var(--font-display);font-size:40px;line-height:1;text-transform:uppercase}
+.tier .t-price{font-family:var(--font-mono);font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+.tier ul{margin:6px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.tier li{padding-left:22px;position:relative}
+.tier li::before{content:"✳";position:absolute;left:0;color:var(--riso-red-text)}
+.tier.feat{background:var(--ink);color:var(--paper);box-shadow:0 0 0 2px var(--ink),7px 7px 0 var(--riso-red)}
+.tier.feat li::before{color:var(--riso-red)}
+.tier.feat .btn{background:var(--paper);color:var(--ink);box-shadow:4px 4px 0 var(--riso-red)}
+.tier.feat .btn .arr svg{color:var(--ink)}
+.tier.red{box-shadow:0 0 0 2px var(--ink),inset 0 8px 0 var(--riso-red)}
+
+/* FAQ in ink boxes */
+.faq details{border-radius:0;background:var(--paper)}
+.faq summary{font-size:21px;font-weight:600;font-family:var(--font-body)}
+.faq .ic{border-radius:0;background:var(--paper)}
+.faq .ic svg{color:var(--riso-red-text)}
+.faq details>p{color:var(--ink-2);font-size:18px}
+
+/* Visit */
+.hours{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.hours th,.hours td{padding:12px 0;border-bottom:1.5px solid var(--ink);text-align:left;font-weight:400}
+.hours th{font-family:var(--font-mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.hours td{text-align:right;font-family:var(--font-mono);font-size:14px}
+.hours tr.closed td{color:var(--ink-2)}
+.tile{border-radius:0}
+
+/* Order page */
+.order-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:40px}
+.order-grid>form{grid-column:span 8}
+.order-grid>aside{grid-column:9/span 4;position:sticky;top:96px;align-self:start}
+.qty{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;align-items:center;padding:16px 0;border-bottom:1.5px solid var(--ink)}
+.qty .nm{font-size:20px;font-weight:600}
+.qty .pr{font-family:var(--font-mono);font-size:13px;color:var(--ink-2)}
+.step{display:inline-flex;align-items:stretch;box-shadow:0 0 0 2px var(--ink)}
+.step button{width:44px;height:44px;border:0;background:var(--paper);font:500 20px var(--font-mono);color:var(--ink);cursor:pointer}
+.step button:hover{background:var(--paper-2)}
+.step input{width:52px;height:44px;border:0;border-left:2px solid var(--ink);border-right:2px solid var(--ink);text-align:center;font:500 17px var(--font-mono);background:var(--field);color:var(--ink);-moz-appearance:textfield}
+.step input::-webkit-inner-spin-button{-webkit-appearance:none}
+.chips label{border-radius:0;border:2px solid var(--ink);font-family:var(--font-mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.chips label:has(input:checked){background:var(--ink);color:var(--paper)}
+.fld input:not([type=checkbox]):not([type=radio]),.fld select{border:2px solid var(--ink);border-radius:0}
+.ticket{background:var(--paper);box-shadow:var(--shadow-xl);padding:28px}
+.ticket .row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px dashed var(--ink);font-family:var(--font-mono);font-size:14px;font-variant-numeric:tabular-nums}
+.ticket .total{display:flex;justify-content:space-between;padding-top:14px;font-family:var(--font-display);font-size:34px;line-height:1}
+.pbtn{display:inline-flex;align-items:center;gap:10px;height:54px;padding:0 24px;border:0;background:var(--ink);color:var(--paper);font:500 14px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;box-shadow:4px 4px 0 var(--riso-red);cursor:pointer}
+.pbtn:hover{background:var(--riso-blue)}
+.pbtn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--riso-red)}
+
+/* Footer */
+.ftr{border-top:0;background:var(--ink);color:var(--paper)}
+.ftr a{color:var(--paper);opacity:.85}
+.ftr a:hover{color:var(--paper);opacity:1}
+.ftr h4{font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;margin:0 0 10px}
+
+@media (max-width:980px){
+  .hero h1,.hero .copy,.hero .colophon,.hero .art{grid-column:1/-1;grid-row:auto}
+  .hero .art{min-height:calc(min(70vw,300px) + 16px)}
+  .sun{width:min(70vw,300px)}
+  .hero h1,.hero .d-xl{line-height:1}
+  .order-grid>form,.order-grid>aside{grid-column:1/-1}
+  .order-grid>aside{position:static}
+}
+@media (max-width:640px){
+  .hero-in,.order-grid{grid-template-columns:minmax(0,1fr)}
+  .hero-in>*,.order-grid>*{grid-column:1/-1!important}
+  .seg{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));width:100%}
+  .seg [role="tab"]{padding:12px 0;text-align:center}
+  .shelf .cmp{aspect-ratio:4/3}
+  .index li{grid-template-columns:44px minmax(0,1fr)}
+  .index .pr{grid-column:2;grid-row:auto}
+  .step-n{font-size:72px}
+}
+@media (max-width:640px){.g2{grid-template-columns:minmax(0,1fr)!important}}

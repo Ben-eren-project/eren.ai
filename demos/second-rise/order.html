@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Order for pickup</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex">
+<meta name="description" content="Fictional demonstration: a bakery site where you order tomorrow’s bread tonight.">
+<link rel="stylesheet" href="assets/eren-kit.css">
+<link rel="stylesheet" href="assets/bakery.css">
+</head>
+<body>
+<p class="demo-banner">Fictional demonstration by Eren. Second Rise Bakehouse isn’t a real business, and nothing on this site sends or takes payment. <a href="/services.html#examples">Back to Eren for Business</a></p>
+<a class="skip" href="#main">Skip to content</a>
+<header class="hdr">
+  <div class="shell hdr-in">
+    <a class="wordmark" href="./" aria-label="Second Rise Bakehouse, home"><b>Second Rise</b><span>BAKEHOUSE</span></a>
+    <nav class="nav" aria-label="Main"><a class="u-wipe" href="./#bake">This week</a><a class="u-wipe" href="./#menu">Menu</a><a class="u-wipe" href="./#how">How we bake</a><a class="u-wipe" href="./#visit">Visit</a></nav>
+    <div style="display:flex;align-items:center;gap:12px">
+      <a class="btn sm" href="order.html">Order for pickup<span class="arr"><svg viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M8.15 3.15a.5.5 0 0 1 .7 0l4 4a.5.5 0 0 1 0 .7l-4 4a.5.5 0 0 1-.7-.7L11.29 8H2.5a.5.5 0 0 1 0-1h8.79L8.15 3.85a.5.5 0 0 1 0-.7Z" fill="currentColor"/></svg></span></a>
+      <div data-menu style="position:relative">
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="m-menu">Menu</button>
+        <nav id="m-menu" class="t-dropdown" aria-label="Main"><a href="./#bake">This week</a><a href="./#menu">Menu</a><a href="./#how">How we bake</a><a href="./#visit">Visit</a><a href="order.html">Order for pickup</a></nav>
+      </div>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="hero" data-shader="paper" data-colors="#ebe2cf,#f4edde,#d8ccb2" data-seed="11" aria-labelledby="h1">
+  <div class="shell" style="padding-block:clamp(36px,5vw,64px)">
+    <p><span class="stamp">✳ Order by 8 PM</span></p>
+    <h1 id="h1" class="d-xl offset" style="margin-top:18px;line-height:.9"><span data-cascade data-offset="0" style="display:block">Save me a loaf.</span></h1>
+    <p style="margin-top:20px;font-size:21px;max-width:46ch">Pick your bread and a pickup day. It waits behind the counter in a bag with your name on it until 1 PM. Pay when you collect.</p>
+  </div>
+</section>
+<section class="sec" aria-label="Order form">
+  <div class="shell order-grid">
+    <form id="order" data-preview-form data-done="done" aria-describedby="o-note">
+      <fieldset style="border:0;margin:0;padding:0"><legend class="d-md" style="padding:0">What you’d like</legend>
+        <p class="colophon" style="margin-top:8px">Not every loaf is baked every day. Check this week’s bake.</p>
+        <div style="margin-top:16px;border-top:2px solid var(--ink)"><div class="qty"><div><p class="nm" id="n-sourdough">Country sourdough</p><p class="pr">$9.00 each</p></div>
+      <div class="step" role="group" aria-labelledby="n-sourdough"><button type="button" data-dec="sourdough" aria-label="One less Country sourdough">−</button><input type="number" id="q-sourdough" name="sourdough" min="0" max="12" value="1" inputmode="numeric" aria-label="How many Country sourdough" data-price="9.0" data-name="Country sourdough"><button type="button" data-inc="sourdough" aria-label="One more Country sourdough">+</button></div></div><div class="qty"><div><p class="nm" id="n-seeded-rye">Seeded rye</p><p class="pr">$10.00 each</p></div>
+      <div class="step" role="group" aria-labelledby="n-seeded-rye"><button type="button" data-dec="seeded-rye" aria-label="One less Seeded rye">−</button><input type="number" id="q-seeded-rye" name="seeded-rye" min="0" max="12" value="0" inputmode="numeric" aria-label="How many Seeded rye" data-price="10.0" data-name="Seeded rye"><button type="button" data-inc="seeded-rye" aria-label="One more Seeded rye">+</button></div></div><div class="qty"><div><p class="nm" id="n-friday-rye">Friday rye</p><p class="pr">$11.00 each</p></div>
+      <div class="step" role="group" aria-labelledby="n-friday-rye"><button type="button" data-dec="friday-rye" aria-label="One less Friday rye">−</button><input type="number" id="q-friday-rye" name="friday-rye" min="0" max="12" value="0" inputmode="numeric" aria-label="How many Friday rye" data-price="11.0" data-name="Friday rye"><button type="button" data-inc="friday-rye" aria-label="One more Friday rye">+</button></div></div><div class="qty"><div><p class="nm" id="n-fougasse">Olive and herb fougasse</p><p class="pr">$8.00 each</p></div>
+      <div class="step" role="group" aria-labelledby="n-fougasse"><button type="button" data-dec="fougasse" aria-label="One less Olive and herb fougasse">−</button><input type="number" id="q-fougasse" name="fougasse" min="0" max="12" value="0" inputmode="numeric" aria-label="How many Olive and herb fougasse" data-price="8.0" data-name="Olive and herb fougasse"><button type="button" data-inc="fougasse" aria-label="One more Olive and herb fougasse">+</button></div></div><div class="qty"><div><p class="nm" id="n-challah">Challah</p><p class="pr">$9.00 each</p></div>
+      <div class="step" role="group" aria-labelledby="n-challah"><button type="button" data-dec="challah" aria-label="One less Challah">−</button><input type="number" id="q-challah" name="challah" min="0" max="12" value="0" inputmode="numeric" aria-label="How many Challah" data-price="9.0" data-name="Challah"><button type="button" data-inc="challah" aria-label="One more Challah">+</button></div></div><div class="qty"><div><p class="nm" id="n-croissant">Butter croissant</p><p class="pr">$4.50 each</p></div>
+      <div class="step" role="group" aria-labelledby="n-croissant"><button type="button" data-dec="croissant" aria-label="One less Butter croissant">−</button><input type="number" id="q-croissant" name="croissant" min="0" max="12" value="1" inputmode="numeric" aria-label="How many Butter croissant" data-price="4.5" data-name="Butter croissant"><button type="button" data-inc="croissant" aria-label="One more Butter croissant">+</button></div></div><div class="qty"><div><p class="nm" id="n-cardamom">Cardamom bun</p><p class="pr">$4.75 each</p></div>
+      <div class="step" role="group" aria-labelledby="n-cardamom"><button type="button" data-dec="cardamom" aria-label="One less Cardamom bun">−</button><input type="number" id="q-cardamom" name="cardamom" min="0" max="12" value="0" inputmode="numeric" aria-label="How many Cardamom bun" data-price="4.75" data-name="Cardamom bun"><button type="button" data-inc="cardamom" aria-label="One more Cardamom bun">+</button></div></div><div class="qty"><div><p class="nm" id="n-cookie">Chocolate rye cookie</p><p class="pr">$3.50 each</p></div>
+      <div class="step" role="group" aria-labelledby="n-cookie"><button type="button" data-dec="cookie" aria-label="One less Chocolate rye cookie">−</button><input type="number" id="q-cookie" name="cookie" min="0" max="12" value="0" inputmode="numeric" aria-label="How many Chocolate rye cookie" data-price="3.5" data-name="Chocolate rye cookie"><button type="button" data-inc="cookie" aria-label="One more Chocolate rye cookie">+</button></div></div></div>
+      </fieldset>
+      <fieldset style="border:0;margin:40px 0 0;padding:0"><legend class="d-md" style="padding:0;margin-bottom:14px">Pickup day</legend><div class="chips"><label><input type="radio" name="day" value="Wednesday">Wed</label><label><input type="radio" name="day" value="Thursday">Thu</label><label><input type="radio" name="day" value="Friday" checked>Fri</label><label><input type="radio" name="day" value="Saturday">Sat</label><label><input type="radio" name="day" value="Sunday">Sun</label></div></fieldset>
+      <div class="fld" style="margin-top:28px"><label for="window">Pickup window</label><select id="window" name="window"><option>7 – 9 AM</option><option>9 – 11 AM</option><option>11 AM – 1 PM</option></select></div>
+      <fieldset style="border:0;margin:40px 0 0;padding:0"><legend class="d-md" style="padding:0;margin-bottom:14px">Name on the bag</legend>
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 20px" class="g2">
+          <div class="fld"><label for="name">Your name <span class="opt">(required)</span></label><input type="text" id="name" name="name" autocomplete="name" required></div>
+          <div class="fld"><label for="contact">Phone or email <span class="opt">(required)</span></label><input type="text" id="contact" name="contact" autocomplete="email" required></div>
+        </div>
+        <div class="fld" style="margin-top:18px"><label for="note">Anything we should know? <span class="opt">(optional)</span></label><textarea id="note" name="note" rows="3"></textarea></div>
+      </fieldset>
+      <p id="o-err" class="mono" role="alert" style="margin-top:20px;color:var(--riso-red-text)" hidden>Add at least one item, so there’s something to save.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;margin-top:28px"><button class="pbtn" type="submit">Save my order</button><p id="o-note" class="colophon">Pay at pickup. Change or cancel until 8 PM the night before.</p></div>
+    </form>
+    <div id="done" class="ticket" hidden style="grid-column:span 8">
+      <p class="kicker">Saved</p>
+      <h2 class="d-lg" style="margin-top:8px">See you <span id="d-day">Friday</span>.</h2>
+      <p style="margin-top:14px;max-width:46ch">Your bag will be behind the counter from the start of your window until 1 PM. Bring nothing but yourself; you pay at pickup.</p>
+      <p class="mono" style="margin-top:18px;color:var(--riso-red-text)">This is a demonstration, so no order was sent.</p>
+      <button class="pbtn" type="button" data-back style="margin-top:24px">Back to the order</button>
+    </div>
+    <aside aria-labelledby="tk-h">
+      <div class="ticket" aria-live="polite">
+        <p class="kicker" id="tk-h">Your bag</p>
+        <div id="tk-rows" style="margin-top:12px"></div>
+        <p id="tk-empty" class="colophon" style="margin-top:12px" hidden>Nothing yet. Add a loaf.</p>
+        <div class="total"><span>Total</span><span id="tk-total">$0.00</span></div>
+        <p class="colophon" style="margin-top:12px">For <span id="tk-day">Friday</span>, <span id="tk-win">7 – 9 AM</span>. Paid at pickup.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+</main>
+<footer class="ftr">
+  <div class="shell">
+    <div class="ftr-grid">
+      <div><p style="font-family:var(--font-display);font-size:36px;line-height:1;text-transform:uppercase">Second Rise</p><p class="colophon" style="color:var(--paper);opacity:.8;margin-top:10px">Baked overnight. Gone by lunch.</p></div>
+      <nav aria-label="Bakery"><h4>Bakery</h4><a href="./#bake">This week’s bake</a><a href="./#menu">Menu</a><a href="order.html">Order for pickup</a></nav>
+      <div><h4>Visit</h4><p style="line-height:1.9;font-size:15px">214 Mill Street<br>555-0142</p></div>
+      <nav aria-label="About this demo"><h4>This demo</h4><a href="credits.html">Design sources</a><a href="/services.html#examples">Made by Eren</a></nav>
+    </div>
+    <p class="colophon" style="color:var(--paper);opacity:.75;margin-top:48px">Fictional demonstration. Printed in two inks: riso red and riso blue.</p>
+  </div>
+</footer>
+<script src="assets/eren-kit.js"></script>
+<script type="module" src="assets/shaders.js"></script>
+<script>
+(function(){
+  var form=document.getElementById('order'); if(!form) return;
+  var inputs=[].slice.call(form.querySelectorAll('input[type=number]'));
+  var fmt=function(n){return '$'+n.toFixed(2)};
+  function clamp(i){var v=parseInt(i.value,10); if(isNaN(v)||v<0)v=0; if(v>12)v=12; i.value=v; return v}
+  function render(){
+    var rows='',total=0,count=0;
+    inputs.forEach(function(i){var q=clamp(i); if(q){var p=parseFloat(i.dataset.price)*q; total+=p; count+=q; rows+='<div class="row"><span>'+q+' × '+i.dataset.name+'</span><span>'+fmt(p)+'</span></div>'}});
+    document.getElementById('tk-rows').innerHTML=rows;
+    document.getElementById('tk-empty').hidden=count>0;
+    document.getElementById('tk-total').textContent=fmt(total);
+    var day=(form.querySelector('input[name=day]:checked')||{}).value||'';
+    document.getElementById('tk-day').textContent=day; document.getElementById('d-day').textContent=day;
+    document.getElementById('tk-win').textContent=document.getElementById('window').value;
+    return count;
+  }
+  form.addEventListener('click',function(e){var b=e.target.closest('[data-inc],[data-dec]'); if(!b) return;
+    var id=b.dataset.inc||b.dataset.dec, i=document.getElementById('q-'+id); i.value=clamp(i)+(b.dataset.inc?1:-1); render();});
+  form.addEventListener('input',render); form.addEventListener('change',render);
+  form.addEventListener('submit',function(e){ if(!render()){ e.preventDefault(); e.stopImmediatePropagation(); var er=document.getElementById('o-err'); er.hidden=false; inputs[0].focus(); } else document.getElementById('o-err').hidden=true; },true);
+  render();
+})();
+</script>
+</body>
+</html>
