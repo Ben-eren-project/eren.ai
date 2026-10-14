@@ -298,8 +298,8 @@ footer{ border-top:1px solid var(--line); font-size:12px; padding-block:48px 40p
         </div>
       </div>
       <figure class="flow-card" style="margin:0">
-        <canvas id="flow" width="800" height="600" role="img" aria-label="Animation: signals from a business (calls, forms, listings, reviews, bookings, and tools) flow through a narrow gateway and come out as three ranked fixes."></canvas>
-        <figcaption class="flow-cap"><span><b>Everything in.</b> Calls, forms, listings, reviews, bookings, tools.</span><span><b>Three fixes out,</b> ranked.</span></figcaption>
+        <canvas id="flow" width="800" height="600" role="img" aria-label="Animation: signals from a business (calls, forms, listings, reviews, bookings, and tools) flow through Eren and come out as one complete package: the plan, the build and the handover."></canvas>
+        <figcaption class="flow-cap"><span><b>Everything in.</b> Calls, forms, listings, reviews, bookings, tools.</span><span><b>One package out,</b> delivered complete.</span></figcaption>
       </figure>
     </div>
   </header>
@@ -627,7 +627,7 @@ footer{ border-top:1px solid var(--line); font-size:12px; padding-block:48px 40p
           <div class="price">From $1,500 <small>&middot; exact quote after Diagnose</small></div>
           <p>From one fix to a full rebuild, built for you, tested against checks you agreed, and handed over with documentation.</p>
           <div class="mini" aria-label="Example acceptance checklist"><div class="h">Example acceptance checks</div>
-            <div class="row"><i>&#10003;</i>A test call after hours gets a reply</div><div class="row"><i>&#10003;</i>Form submissions reach the owner's phone</div><div class="row wait"><i>&#9675;</i>Handover walkthrough</div></div>
+            <div class="row"><i>&#10003;</i>A test call after hours gets a reply</div><div class="row"><i>&#10003;</i>Form submissions reach the owner's phone</div><div class="row"><i>&#10003;</i>Handover walkthrough</div></div>
         </div>
       </div>
       <p class="fine">Diagnose stands on its own, and its fee is separate from Build. Software, hosting, ads and tax are always shown separately before you agree. <a class="text-link" style="padding:0;margin-left:6px" href="pricing.html">Full pricing <span aria-hidden="true">&rarr;</span></a></p>
@@ -784,7 +784,7 @@ footer{ border-top:1px solid var(--line); font-size:12px; padding-block:48px 40p
 </script>
 <script src="lead-source.js"></script>
 <script>
-/* Hero: business signals flow through the Eren gateway and come out as three ranked fixes. */
+/* Hero: business signals flow through Eren and come out as one complete, delivered package. */
 (() => {
   const cv = document.getElementById("flow");
   if (!cv) return;
@@ -793,7 +793,7 @@ footer{ border-top:1px solid var(--line); font-size:12px; padding-block:48px 40p
   const W = 800, H = 600;
   const SRC = ["Calls", "Forms", "Listings", "Reviews", "Bookings", "Tools"];
   const WAIST = [430, 300];
-  const FIX = [{ y: 214, len: 170, label: "Fix 1" }, { y: 300, len: 128, label: "Fix 2" }, { y: 386, len: 88, label: "Fix 3" }];
+  const FIX = [{ y: 238, label: "The plan" }, { y: 300, label: "The build" }, { y: 362, label: "The handover" }];
   const srcY = i => 105 + i * 78;
   let rs = 947; const rnd = () => (rs = (rs * 16807) % 2147483647) / 2147483647;
   const P = [];
@@ -819,15 +819,27 @@ footer{ border-top:1px solid var(--line); font-size:12px; padding-block:48px 40p
       ctx.beginPath(); ctx.roundRect ? ctx.roundRect(28, y - 17, w, 34, 17) : ctx.rect(28, y - 17, w, 34); ctx.stroke();
       ctx.fillStyle = "#b5c0ce"; ctx.fillText(s, 43, y + 1);
     });
-    // fix bars
-    FIX.forEach((f, k) => {
-      const grow = reduce ? 1 : Math.min(1, .55 + .45 * (0.5 + 0.5 * Math.sin(t * .9 - k * .6)));
-      ctx.fillStyle = "rgba(145,194,237,.16)"; ctx.fillRect(560, f.y - 9, 180, 18);
-      ctx.fillStyle = "#91c2ed"; ctx.fillRect(560, f.y - 9, f.len * grow, 18);
-      ctx.fillStyle = "#f3f2ee"; ctx.font = "500 14px Inter, Arial, sans-serif"; ctx.fillText(String(k + 1), 538, f.y + 1);
-    });
+    // the package: one card, three parts that tick off in turn
+    const PX = 552, PY = 178, PW = 214, PH = 244;
+    ctx.fillStyle = "rgba(145,194,237,.06)"; ctx.strokeStyle = "rgba(196,215,235,.28)"; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.roundRect ? ctx.roundRect(PX, PY, PW, PH, 14) : ctx.rect(PX, PY, PW, PH); ctx.fill(); ctx.stroke();
     ctx.fillStyle = "#99a7b8"; ctx.font = "500 11px Inter, Arial, sans-serif";
-    ctx.fillText("RANKED FIXES", 560, 170);
+    ctx.fillText("ONE COMPLETE PACKAGE", PX + 18, PY + 26);
+    const cyc = reduce ? 1 : (t * .32) % 1;
+    FIX.forEach((f, k) => {
+      const on = reduce ? 1 : Math.min(1, Math.max(0, (cyc - .12 - k * .18) / .1)) * (cyc < .92 ? 1 : Math.max(0, (1 - cyc) / .08));
+      const cx = PX + 30, cy = f.y;
+      ctx.strokeStyle = "rgba(145,194,237,.55)"; ctx.lineWidth = 1.4;
+      ctx.beginPath(); ctx.arc(cx, cy, 10, 0, Math.PI * 2); ctx.stroke();
+      if (on > 0) {
+        ctx.fillStyle = `rgba(145,194,237,${.95 * on})`;
+        ctx.beginPath(); ctx.arc(cx, cy, 10, 0, Math.PI * 2); ctx.fill();
+        ctx.strokeStyle = `rgba(11,21,38,${on})`; ctx.lineWidth = 2; ctx.lineCap = "round"; ctx.lineJoin = "round";
+        ctx.beginPath(); ctx.moveTo(cx - 4.5, cy + .5); ctx.lineTo(cx - 1.2, cy + 3.8); ctx.lineTo(cx + 4.8, cy - 3.6); ctx.stroke();
+      }
+      ctx.fillStyle = "#f3f2ee"; ctx.font = "500 15px Inter, Arial, sans-serif"; ctx.fillText(f.label, cx + 22, cy + 1);
+      if (k < FIX.length - 1) { ctx.fillStyle = "rgba(196,215,235,.14)"; ctx.fillRect(PX + 18, cy + 31, PW - 36, 1); }
+    });
     // E mark at the waist
     ctx.fillStyle = "rgba(145,194,237,.9)";
     const ex = WAIST[0] - 11, ey = WAIST[1] - 16;
@@ -836,12 +848,12 @@ footer{ border-top:1px solid var(--line); font-size:12px; padding-block:48px 40p
     for (const p of P) {
       const u = reduce ? p.u : (p.u + t * p.sp) % 1;
       let x, y, amber;
-      const s0 = [150, srcY(p.s)], out = [555, FIX[p.f].y];
+      const s0 = [150, srcY(p.s)], out = [548, FIX[p.f].y];
       if (u < .5) {
         const k = u / .5; [x, y] = bez(s0, [300, srcY(p.s)], [WAIST[0] - 18, WAIST[1]], k);
         y += p.o * 10 * (1 - k); amber = k < .8;
       } else {
-        const k = (u - .5) / .5; [x, y] = bez([WAIST[0] + 18, WAIST[1]], [500, FIX[p.f].y], out, k);
+        const k = (u - .5) / .5; [x, y] = bez([WAIST[0] + 18, WAIST[1]], [495, FIX[p.f].y], out, k);
         y += p.o * 4 * (1 - k); amber = false;
       }
       const edge = Math.min(1, u / .06, (1 - u) / .06);
