@@ -160,6 +160,7 @@ section{ padding-block:88px; border-bottom:1px solid var(--line); }
 .svc3-item dt{ font-size:12px; font-weight:600; color:var(--ink); letter-spacing:.01em; margin-top:16px; }
 .svc3-item dt:first-child{ margin-top:0; }
 .svc3-item dd{ margin:4px 0 0; color:var(--sub); font-size:13.5px; line-height:1.7; }
+footer a[href^="mailto:"]{ overflow-wrap:anywhere; }
 .svc3-see{ margin:22px 0 0; padding-top:16px; border-top:1px solid var(--line); margin-top:auto; font-size:13px; line-height:1.6; color:var(--muted); }
 .svc3-item dl{ margin-bottom:22px; }
 .svc3-see a{ display:block; color:var(--azure); font-weight:600; font-size:14px; text-decoration:underline; text-underline-offset:4px; margin-bottom:4px; }
@@ -259,6 +260,7 @@ footer{ border-top:1px solid var(--line); font-size:12px; padding-block:48px 40p
 @media (prefers-reduced-motion:reduce){ *{ transition:none !important; } }
 </style>
 <link rel="stylesheet" href="eren-chrome.css">
+<link rel="stylesheet" href="fx/eren-fx.css"><link rel="stylesheet" href="fx/examples.css">
 </head>
 <body>
 
@@ -301,6 +303,47 @@ footer{ border-top:1px solid var(--line); font-size:12px; padding-block:48px 40p
       </figure>
     </div>
   </header>
+
+  <!-- EXAMPLES: the two fictional demos, early on the page -->
+  <section class="xshow" id="examples" aria-labelledby="xshow-h">
+    <div class="xshow-bg" aria-hidden="true"></div>
+    <div class="shell">
+      <div class="xshow-head" data-reveal>
+        <div><div class="ey">Examples</div><h2 id="xshow-h">Two working examples, built for a made-up shop.</h2></div>
+        <p>Click through them the way a customer or an office manager would. Northline Metal Works doesn’t exist, so nothing here is a client result.</p>
+      </div>
+      <div class="xshow-grid">
+        <a class="xcard" href="demos/northline/" data-reveal aria-labelledby="xc1-t" aria-describedby="xc1-d">
+          <span class="xcard-win"><img src="img/demos/northline.webp" width="960" height="2103" alt="" loading="lazy" decoding="async"><span class="xcard-hint" aria-hidden="true">Previewing the whole page</span></span>
+          <span class="xcard-meta"><span class="xcard-kind">Website restructuring <span class="xcard-tag">Fictional shop</span></span><span class="xcard-t" id="xc1-t">Northline Metal Works</span><span class="xcard-d" id="xc1-d">A four-page site for a fabrication shop: services sorted by customer, the shop’s limits in plain view, and a quote form that sends nothing.</span><span class="xcard-go">Open the website demo</span></span>
+        </a>
+        <a class="xcard" href="demos/change-desk/" data-reveal aria-labelledby="xc2-t" aria-describedby="xc2-d">
+          <span class="xcard-win"><img src="img/demos/change-desk.webp" width="960" height="1071" alt="" loading="lazy" decoding="async"><span class="xcard-hint" aria-hidden="true">Previewing the whole page</span></span>
+          <span class="xcard-meta"><span class="xcard-kind">Workflow and connected tools <span class="xcard-tag">Fictional shop</span></span><span class="xcard-t" id="xc2-t">Change Desk</span><span class="xcard-d" id="xc2-d">A change-request tool for the same shop. Nothing reaches the floor until cost, date and the customer’s confirmation are settled.</span><span class="xcard-go">Open the workflow demo</span></span>
+        </a>
+      </div>
+      <p class="xshow-note">Both open in a page labelled as a fictional demonstration, with a link back here.</p>
+    </div>
+  </section>
+  <script type="module">
+    /* Static mesh gradient behind the examples (Paper Shaders, Apache-2.0). Renders once; CSS gradient stays as the fallback. */
+    import { ShaderMount } from './vendor/paper-shaders/shader-mount.js';
+    import { staticMeshGradientFragmentShader } from './vendor/paper-shaders/shaders/static-mesh-gradient.js';
+    import { getShaderColorFromString as rgba } from './vendor/paper-shaders/get-shader-color-from-string.js';
+    const el = document.querySelector('.xshow-bg');
+    if (el) {
+      try {
+        const colors = ['#0b111b', '#0f1d30', '#173a5a', '#0b111b', '#12263d'];
+        new ShaderMount(el, staticMeshGradientFragmentShader, {
+          u_colors: colors.map(rgba), u_colorsCount: colors.length, u_positions: 18,
+          u_waveX: 0.6, u_waveXShift: 0.2, u_waveY: 0.8, u_waveYShift: 0.5, u_mixing: 0.85,
+          u_grainMixer: 0, u_grainOverlay: 0.06,
+          u_fit: 2, u_scale: 1, u_rotation: 200, u_offsetX: 0, u_offsetY: 0,
+          u_originX: 0.5, u_originY: 0.5, u_worldWidth: 0, u_worldHeight: 0
+        }, { alpha: true, antialias: false, powerPreference: 'low-power' }, 0, 0, 1, 1600 * 900);
+      } catch (e) { /* no WebGL2: the CSS background stays */ }
+    }
+  </script>
 
   <!-- SERVICES -->
   <section id="services" aria-labelledby="svc-h">
@@ -811,5 +854,6 @@ footer{ border-top:1px solid var(--line); font-size:12px; padding-block:48px 40p
 })();
 </script>
 <script src="eren-chrome.js" defer></script>
+<script src="fx/eren-fx.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,23 @@
+/* Eren effects: small, calm, and off when people ask for less motion.
+   Written for Eren (14 Oct 2026). Patterns studied in MIT-licensed kits
+   (motion-primitives, trickle-UI-kit, ui-layouts); no code copied.
+   Motion tokens follow the design-taste scale. */
+:root{--fx-fast:140ms;--fx-base:260ms;--fx-slow:520ms;--fx-ease:cubic-bezier(.4,0,.2,1);--fx-ease-out:cubic-bezier(.22,1,.36,1)}
+
+/* Reveal on scroll: content is visible without JS; .fx-on is added by eren-fx.js */
+.fx-on [data-reveal]{opacity:0;transform:translateY(14px);transition:opacity var(--fx-slow) var(--fx-ease-out),transform var(--fx-slow) var(--fx-ease-out);transition-delay:calc(var(--fx-i,0) * 90ms)}
+.fx-on [data-reveal].is-in{opacity:1;transform:none}
+
+/* Highlighter sweep behind a key phrase (amber, low alpha so text contrast is unchanged) */
+.fx-mark{background:linear-gradient(transparent 62%,rgba(232,181,106,.28) 62%) no-repeat 0 0/0% 100%;transition:background-size .9s var(--fx-ease-out)}
+.fx-mark.is-in,html:not(.fx-on) .fx-mark{background-size:100% 100%}
+
+/* Link underline wipe */
+.fx-link{text-decoration:none;background:linear-gradient(currentColor,currentColor) no-repeat 0 100%/0% 1px;transition:background-size var(--fx-base) var(--fx-ease)}
+.fx-link:hover,.fx-link:focus-visible{background-size:100% 1px}
+
+@media (prefers-reduced-motion:reduce){
+  .fx-on [data-reveal]{opacity:1;transform:none;transition:none}
+  .fx-mark{transition:none;background-size:100% 100%}
+  .fx-link{transition:none}
+}
