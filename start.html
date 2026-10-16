@@ -287,6 +287,33 @@
     section.querySelectorAll("[required]").forEach(function(field){ if(!active) field.removeAttribute("required"); });
   });
   document.querySelectorAll("[data-package-row]").forEach(function(row){row.hidden=row.getAttribute("data-package-row")!==packageKey;});
+  // First Look is one short page: the question, the business and how to reach you, then send.
+  // The business and problem steps are folded into the contact step and switched off, so the
+  // step-by-step script sees a single step and the send button is right there.
+  if (isFirstLook) {
+    var firstStep=document.querySelector('fieldset[data-step="business"]');
+    var probStepFL=document.querySelector('fieldset[data-step="problem"][data-package="diagnose"]');
+    var contactStep=document.querySelector('fieldset[data-step="contact"]');
+    var contactFields=contactStep.querySelector(".fields");
+    var head=document.createDocumentFragment();
+    [firstStep.querySelector(".step-title"), firstStep.querySelector(".step-why")].forEach(function(el){head.appendChild(el);});
+    contactStep.querySelector(".step-title").remove();
+    contactStep.querySelector(".step-why").remove();
+    contactStep.insertBefore(head, contactStep.firstChild);
+    var ask=document.getElementById("diagnoseProblem").closest(".f");
+    document.getElementById("diagnoseProblem").style.minHeight="110px";
+    var firstContact=contactFields.firstElementChild;
+    [ask, document.getElementById("business").closest(".f"), document.getElementById("website").closest(".f")].forEach(function(el){ contactFields.insertBefore(el, firstContact); });
+    ["about","pref"].forEach(function(id){ document.getElementById(id).closest(".f").hidden=true; });
+    firstStep.setAttribute("data-off",""); probStepFL.setAttribute("data-off","");
+    contactStep.querySelector(".send-row .step-back").hidden=true;
+    var prog=document.querySelector(".flow-progress"); if(prog) prog.style.display="none";
+    // Keep the request preview in the side column (below the form on phones) so the send
+    // button sits right under the fields, and drop the preview rows this form doesn't ask.
+    var slot=contactStep.querySelector(".review-slot"); if(slot) slot.remove();
+    document.querySelectorAll('[data-preview="about"], [data-preview-group="focus"]').forEach(function(dd){ dd.closest(".row").hidden=true; });
+    var prefDd=document.querySelector('[data-preview="pref"]'); if(prefDd) prefDd.hidden=true;
+  }
   function showError(message, field){
     if(field && window.ErenFlow) window.ErenFlow.reveal(field);
     err.textContent=message; err.hidden=false;
