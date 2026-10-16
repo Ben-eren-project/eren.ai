@@ -1,0 +1,32 @@
+/* Eren review fixes (16 Oct 2026), loaded last.
+   1. Readable small text: the shop orange and the muted grey were under 4.5:1 for small
+      text on the paper backgrounds; both are a step darker here (white button text improves too).
+   2. No text under 11px: the technical mono labels were 7-10px.
+   3. The "Made to your print" stamp sits on a scrim so it reads over the bright metal.
+   4. Headings balance their lines (no one-word last line). */
+:root{--accent:#b03e1f;--dykem:#b03e1f;--muted:#5f665f}
+.northline h1,.northline h2{text-wrap:balance}
+.northline .preview-strip{font-size:11px}
+.northline .identity small{font-size:9px}
+.for{font-size:11px!important;letter-spacing:.02em}
+.new{font-size:10.5px!important;padding:4px 6px!important;font-weight:600}
+.micro{font-size:11px!important}
+.slip dt{font-size:11px}
+.slip-cap{font-size:13px;color:var(--sub)}
+.slip-cap a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.northline .spec caption,.northline .spec thead th{font-size:11px}
+.northline .next li:before{font-size:11px}
+.footer-bottom{font-size:12px}
+.metal-image{position:relative}
+.metal-image::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to bottom,rgba(14,17,15,.6) 0,rgba(14,17,15,0) 64px),linear-gradient(to top right,rgba(14,17,15,.82) 0%,rgba(14,17,15,.55) 28%,rgba(14,17,15,0) 55%)}
+.metal-image .technical-stamp,.metal-image .image-note,.metal-image .image-coordinate{z-index:1}
+.technical-stamp>span{font-size:11px}
+.technical-stamp small{font-size:10.5px!important;max-width:none!important}
+.image-note span{font-size:11px}
+@media (max-width:800px){.technical-stamp small{font-size:10px!important}}
+:root{--sub:#565d56}
+.shop-facts span,.northline .ref,.northline .part dt,.northline .steps .who{font-size:11px!important}
+.new{font-size:11px!important}
+.technical-stamp small{font-size:11px!important}
+@media (max-width:800px){.technical-stamp small{font-size:11px!important}}

@@ -1,437 +1,69 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>How we work — Northline Metal Works</title>
-<meta name="description" content="How a job runs, how changes are handled, and the shop’s limits.">
-<meta name="robots" content="noindex">
-<!-- Display face: a renamed Latin subset of TeX Gyre Heros Condensed Bold (GUST Font License / LPPL), embedded so the page makes no network requests. -->
-<style>
-@font-face{font-family:"Northline Heros Cn Subset";src:url(data:font/woff;base64,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) format("woff");font-weight:700;font-style:normal;font-display:swap}
-/* Northline: the site as a cut sheet. Plate-grey surfaces, ink-dark steel type, Dykem layout blue for scribed lines and labels.
-   Hero = a nested sheet being cut; services = job tags by customer; capabilities = the spec sheet with limits. */
-:root{
-  --plate:#e9ebe8; --sheet:#f7f8f6; --white:#ffffff; --steel:#1b232b; --steel-2:#2b343d; --sub:#46505a; --muted:#59636d;
-  --line:#cdd1cc; --rule:#a9afa8; --dykem:#1f48c8; --dykem-2:#173a9f; --dykem-soft:#e6ecfb; --kerf:#0e1216;
-  --display:"Northline Heros Cn Subset","Arial Narrow","Helvetica Neue Condensed",Arial,sans-serif;
-  --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
-  color-scheme:light;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:76px}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;background:var(--sheet);color:var(--steel);font:16px/1.6 var(--sans);padding-top:env(safe-area-inset-top,0);padding-bottom:env(safe-area-inset-bottom,0)}
-h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0}ul,ol{padding:0;list-style:none}
-a{color:var(--dykem-2)}
-:focus-visible{outline:3px solid var(--dykem);outline-offset:3px}
-[hidden]{display:none!important}
-.skip{position:absolute;left:-9999px;top:8px;z-index:30;background:#fff;color:var(--steel);padding:10px 14px;border:2px solid var(--dykem)}
-.skip:focus{left:12px}
-.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
-.wrap{max-width:1200px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
-
-/* Fictional banner */
-.demo{background:var(--kerf);color:#d8dde2;font-size:13px;line-height:1.5;padding:8px 16px;text-align:center}
-.demo b{color:#fff}
-
-/* Header */
-.site{position:sticky;top:0;z-index:10;background:rgba(247,248,246,.96);backdrop-filter:saturate(1.2) blur(6px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
-.logo{display:flex;align-items:center;gap:12px;color:var(--steel);text-decoration:none}
-.logo svg{flex:none}
-.logo b{display:block;font:700 23px/1 var(--display);letter-spacing:.005em}
-.logo .sub{display:block;font-size:12px;color:var(--muted);margin-top:3px}
-.links{display:flex;align-items:center;gap:26px}
-.links a{color:var(--steel);text-decoration:none;font-size:15px;font-weight:500}
-.links a:hover{color:var(--dykem-2)}
-.links a.cta{color:#fff}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:2px solid var(--steel);background:var(--steel);color:#fff;font:600 15px/1 var(--sans);padding:12px 18px;min-height:46px;border-radius:2px;text-decoration:none;cursor:pointer}
-.btn:hover{background:var(--steel-2)}
-.btn.sm{padding:9px 14px;min-height:40px;font-size:14px}
-.btn.line{background:transparent;color:var(--steel)}
-.btn.line:hover{background:var(--white)}
-.btn[disabled]{background:#c5cac4;border-color:#c5cac4;color:#2f363d;cursor:not-allowed}
-.menu-btn{display:none;border:2px solid var(--steel);background:transparent;color:var(--steel);font:600 14px/1 var(--sans);padding:10px 14px;min-height:44px;border-radius:2px;cursor:pointer}
-
-/* Hero: the cut sheet */
-.hero{background:var(--plate);border-bottom:1px solid var(--rule);position:relative;overflow:hidden}
-.hero-in{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);gap:clamp(28px,4vw,64px);align-items:center;padding-block:clamp(40px,6vw,84px) clamp(40px,5vw,72px)}
-.ref{font:600 12.5px/1.4 var(--mono);color:var(--dykem-2);display:flex;gap:10px;align-items:center}
-.ref::before{content:"";width:28px;height:2px;background:var(--dykem)}
-h1{font:700 clamp(44px,6.4vw,84px)/.95 var(--display);letter-spacing:-.005em;margin-top:18px;text-wrap:balance}
-.lead{font-size:clamp(17px,1.5vw,19px);line-height:1.6;color:var(--sub);margin-top:22px;max-width:52ch}
-.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:36px;border-top:2px solid var(--steel)}
-.facts div{padding:12px 14px 0 0;min-width:0}
-.facts dt{font:700 22px/1.1 var(--display)}
-.facts dd{font-size:13.5px;color:var(--sub);margin-top:4px}
-.sheet{position:relative;min-width:0}
-.sheet svg{display:block;width:100%;height:auto}
-.sheet figcaption{font:12px/1.5 var(--mono);color:var(--muted);margin-top:10px}
-.js .cut{stroke-dasharray:var(--len);stroke-dashoffset:var(--len);animation:cut 2.6s cubic-bezier(.45,.05,.25,1) .4s forwards}
-.cut.c2{animation-delay:1s}.cut.c3{animation-delay:1.55s}.cut.c4{animation-delay:2s}
-.head{offset-path:path("M0 0");opacity:0}
-@keyframes cut{to{stroke-dashoffset:0}}
-@media (prefers-reduced-motion:reduce){.js .cut{animation:none;stroke-dasharray:none;stroke-dashoffset:0}}
-
-/* Sections */
-section{padding-block:clamp(56px,7vw,96px)}
-.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 48px;align-items:end}
-h2{font:700 clamp(34px,4.2vw,54px)/1 var(--display);letter-spacing:-.005em;text-wrap:balance}
-.sec-sub{color:var(--sub);font-size:17px;max-width:54ch}
-
-/* Services as job tags */
-.tags{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:44px}
-.tag{position:relative;background:var(--white);border:1px solid var(--rule);border-radius:2px 2px 2px 2px;padding:30px 26px 24px;display:flex;flex-direction:column;min-width:0;clip-path:polygon(0 0,calc(100% - 26px) 0,100% 26px,100% 100%,0 100%)}
-.tag::before{content:"";position:absolute;right:0;top:0;width:26px;height:26px;background:linear-gradient(225deg,var(--plate) 50%,var(--rule) 50%,var(--rule) calc(50% + 1px),transparent calc(50% + 1px))}
-.tag .hole{position:absolute;left:26px;top:-1px;width:14px;height:14px;border:1px solid var(--rule);border-top:0;border-radius:0 0 8px 8px;background:var(--sheet)}
-.tag .for{font:600 12.5px/1.4 var(--mono);color:var(--dykem-2);margin-top:6px}
-.tag h3{font:700 30px/1 var(--display);margin-top:10px}
-.tag p{color:var(--sub);margin-top:12px;font-size:15.5px}
-.tag dl{margin-top:18px;border-top:1px solid var(--line)}
-.tag dl div{padding:10px 0;border-bottom:1px solid var(--line)}
-.tag dt{font-size:12.5px;font-weight:600;color:var(--muted)}
-.tag dd{font-size:15px;margin-top:2px}
-.tag .go{margin-top:20px;font-weight:600;text-decoration:none;color:var(--dykem-2);display:inline-flex;gap:8px;align-items:center}
-.tag .go:hover{text-decoration:underline;text-underline-offset:4px}
-.new{display:inline-block;font:700 11.5px/1 var(--mono);color:#fff;background:var(--dykem);padding:5px 7px;border-radius:2px;vertical-align:4px;margin-left:6px;letter-spacing:.02em}
-
-/* Process */
-.process{background:var(--steel);color:#eef0ee}
-.process h2{color:#fff}
-.process .sec-sub{color:#c3c9cf}
-.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:48px;counter-reset:s;border-top:1px solid #4a535c}
-.step{padding:22px 22px 0 0;position:relative;min-width:0}
-.step::before{counter-increment:s;content:counter(s,decimal-leading-zero);font:700 46px/1 var(--display);color:#8fa6e8;display:block}
-.step h3{font:700 26px/1.05 var(--display);color:#fff;margin-top:12px}
-.step p{color:#c3c9cf;font-size:15px;margin-top:8px;max-width:30ch}
-.step + .step{border-left:1px solid #4a535c;padding-left:22px}
-
-/* Capabilities spec sheet */
-.spec{margin-top:44px;border:2px solid var(--steel);background:var(--white);overflow-x:auto}
-.spec table{width:100%;border-collapse:collapse;min-width:620px}
-.spec caption{caption-side:top;text-align:left;font:600 12.5px/1.4 var(--mono);color:var(--muted);padding:12px 18px;border-bottom:1px solid var(--rule)}
-.spec th,.spec td{text-align:left;vertical-align:top;padding:14px 18px;border-bottom:1px solid var(--line)}
-.spec thead th{font:600 12.5px/1.4 var(--mono);color:var(--muted);background:var(--sheet)}
-.spec tbody th{font:700 20px/1.15 var(--display);width:20%}
-.spec td{font-size:15px}
-.spec td.lim{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:14px}
-.spec tr:last-child th,.spec tr:last-child td{border-bottom:0}
-.fit{margin-top:16px;color:var(--sub);font-size:15px;max-width:72ch}
-
-/* Quote */
-.quote{background:var(--plate);border-top:1px solid var(--rule)}
-.quote-in{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,72px);align-items:start}
-.note{margin-top:22px;border-left:4px solid var(--dykem);background:var(--dykem-soft);padding:12px 16px;font-size:14.5px;color:var(--steel)}
-.needs{margin-top:22px;display:grid;gap:8px}
-.needs li{display:flex;gap:10px;align-items:baseline;font-size:15.5px}
-.needs li::before{content:"";flex:none;width:9px;height:9px;border:2px solid var(--dykem);transform:translateY(-1px)}
-.form{background:var(--white);border:2px solid var(--steel);padding:clamp(20px,3vw,32px)}
-.form form{display:grid;gap:16px}
-.form h3{font:700 28px/1 var(--display)}
-.field{display:grid;gap:6px}
-.field label{font-size:14px;font-weight:600}
-.field .hint{font-weight:400;color:var(--muted)}
-.field input,.field select,.field textarea{width:100%;font:inherit;font-size:16px;padding:11px 12px;min-height:46px;border:1px solid #8f968e;border-radius:2px;background:#fff;color:var(--steel)}
-.field textarea{min-height:110px;resize:vertical}
-.field .err{color:#9f1f12;font-size:13.5px;font-weight:600}
-.field .err:empty{display:none}
-.field.bad input,.field.bad select{border:2px solid #9f1f12}
-.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
-.done{border:2px solid #1f6a43;background:#e9f3ec;color:#164f31;padding:16px;font-size:15px}
-.done b{display:block;font-size:16px;margin-bottom:4px}
-
-/* Footer */
-footer{background:var(--kerf);color:#c3c9cf;padding-block:48px;font-size:14.5px}
-.fgrid{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr);gap:28px}
-footer b{display:block;color:#fff;font:700 22px/1 var(--display);margin-bottom:10px}
-footer h3{font-size:13px;color:#fff;margin-bottom:8px}
-footer a{display:block;color:#c3c9cf;text-decoration:none;padding:3px 0}
-footer a:hover{color:#fff}
-
-/* Decisions panel (demo only) */
-.dbtn{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0));z-index:20;background:var(--dykem);border-color:var(--dykem);box-shadow:0 6px 18px rgba(14,18,22,.25)}
-.dbtn:hover{background:var(--dykem-2)}
-.dpanel{position:fixed;right:16px;bottom:calc(76px + env(safe-area-inset-bottom,0));z-index:20;width:min(400px,calc(100vw - 32px));max-height:min(70vh,560px);overflow:auto;background:var(--white);border:2px solid var(--steel);box-shadow:0 18px 40px rgba(14,18,22,.25);padding:20px}
-.dpanel h2{font:700 24px/1.05 var(--display)}
-.dpanel p.k{font-size:13px;color:var(--muted);margin-top:6px}
-.dpanel ol{margin-top:14px;counter-reset:d;display:grid;gap:12px}
-.dpanel li{position:relative;padding-left:30px;font-size:14.5px;color:var(--sub)}
-.dpanel li::before{counter-increment:d;content:counter(d);position:absolute;left:0;top:1px;width:20px;height:20px;border:2px solid var(--dykem);color:var(--dykem-2);font:700 11px/16px var(--mono);text-align:center}
-.dpanel li b{color:var(--steel)}
-
-@media (max-width:980px){
-  .hero-in,.quote-in,.sec-head{grid-template-columns:minmax(0,1fr)}
-  .tags{grid-template-columns:minmax(0,1fr)}
-  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .step:nth-child(3){border-left:0;padding-left:0}
-  .step:nth-child(n+3){border-top:1px solid #4a535c;margin-top:22px}
-  .fgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
-  .fgrid > div:first-child{grid-column:1/-1}
-}
-@media (max-width:720px){
-  .menu-btn{display:inline-flex}
-  .links{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--sheet);border-bottom:1px solid var(--rule);padding:8px 16px 16px}
-  .links.open{display:flex}
-  .links a{padding:12px 0;border-bottom:1px solid var(--line);min-height:46px;display:flex;align-items:center}
-  .links a.cta{justify-content:center;border:0;margin-top:10px}
-  .facts{grid-template-columns:minmax(0,1fr)}
-  .facts div{padding:12px 0;border-bottom:1px solid var(--line)}
-  .steps{grid-template-columns:minmax(0,1fr)}
-  .step,.step + .step{border-left:0;padding-left:0}
-  .step + .step{border-top:1px solid #4a535c;margin-top:22px}
-  .two{grid-template-columns:minmax(0,1fr)}
-  .fgrid{grid-template-columns:minmax(0,1fr)}
-  .logo b{font-size:20px}
-  .dbtn{right:12px;left:12px;justify-content:center}
-  footer{padding-bottom:104px}
-  .dpanel{right:12px;left:12px;width:auto}
-}
-
-
-/* Multi-page additions */
-.links a[aria-current="page"]:not(.cta){color:var(--dykem-2);box-shadow:inset 0 -3px 0 var(--dykem);padding-block:23px 20px}
-.links a.cta[aria-current="page"]{background:var(--dykem-2);border-color:var(--dykem-2)}
-.pagehead{background:var(--plate);border-bottom:1px solid var(--rule);padding-block:clamp(40px,5vw,72px) clamp(36px,4.5vw,60px)}
-.pagehead h1{font-size:clamp(40px,5.4vw,70px);max-width:23ch}
-.pagehead .lead{max-width:60ch}
-.crumbs{font:600 12.5px/1.4 var(--mono);color:var(--muted)}
-.crumbs a{color:var(--dykem-2)}
-.more{display:inline-flex;margin-top:32px;font-weight:600;color:var(--dykem-2)}
-.process .more{color:#c9d6f7}
-.process .more:hover{color:#fff}
-/* Home: compact job tags */
-.tag.short p{margin-top:10px}
-.tag.short .go{margin-top:auto;padding-top:20px}
-.band{background:var(--plate);border-top:1px solid var(--rule)}
-.band-in{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:center;justify-content:space-between}
-.band h2{font-size:clamp(30px,3.6vw,46px);max-width:22ch}
-.band p{color:var(--sub);margin-top:10px;max-width:56ch}
-/* What we make */
-.svc{padding-block:clamp(48px,6vw,84px);border-bottom:1px solid var(--rule)}
-.svc:nth-of-type(even){background:var(--white)}
-.svc-in{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,5vw,72px);align-items:start}
-.svc .for{font:600 12.5px/1.4 var(--mono);color:var(--dykem-2)}
-.svc h2{margin-top:12px}
-.svc .body{color:var(--sub);font-size:17px;margin-top:16px;max-width:56ch}
-.svc h3{font-size:15px;font-weight:700;margin-top:26px}
-.svc .needs{margin-top:10px}
-.svc .btn{margin-top:28px}
-.part{background:var(--white);border:2px solid var(--steel);min-width:0}
-.svc:nth-of-type(even) .part{background:var(--sheet)}
-.part svg{display:block;width:100%;height:auto;border-bottom:1px solid var(--rule)}
-.part dl{padding:4px 20px 8px}
-.part dl div{padding:12px 0;border-bottom:1px solid var(--line)}
-.part dl div:last-child{border-bottom:0}
-.part dt{font-size:12.5px;font-weight:600;color:var(--muted)}
-.part dd{font-size:15.5px;margin-top:2px}
-.part figcaption{font:12px/1.5 var(--mono);color:var(--muted);padding:10px 20px;border-top:1px solid var(--rule)}
-.unsure{padding-block:clamp(48px,6vw,80px)}
-.unsure-in{border:2px dashed var(--dykem);padding:clamp(22px,3vw,36px);display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between}
-.unsure h2{font-size:clamp(28px,3.2vw,40px)}
-.unsure p{color:var(--sub);margin-top:8px;max-width:58ch}
-/* How we work */
-.steps.long .step p{max-width:34ch}
-.steps .who{display:block;font:600 12.5px/1.4 var(--mono);color:#8fa6e8;margin-top:12px}
-.change-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center}
-.change-in .sec-sub{margin-top:16px}
-.change-in .needs{margin-top:22px}
-.slip{background:var(--white);border:2px solid var(--steel);box-shadow:8px 8px 0 var(--plate);font-size:15px;min-width:0}
-.slip .top{display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding:14px 18px;border-bottom:2px solid var(--steel);flex-wrap:wrap}
-.slip .top b{font:700 22px/1 var(--display)}
-.slip .top span{font:600 12.5px/1.4 var(--mono);color:var(--muted)}
-.slip dl div{display:grid;grid-template-columns:minmax(0,9em) minmax(0,1fr);gap:12px;padding:11px 18px;border-bottom:1px solid var(--line)}
-.slip dt{font-size:13px;font-weight:600;color:var(--muted)}
-.slip dd .was{text-decoration:line-through;color:var(--muted)}
-.slip .ok{color:#164f31;font-weight:600}
-.slip .stamp{margin:14px 18px 16px;display:inline-block;border:2px solid var(--dykem);color:var(--dykem-2);font:700 13px/1.3 var(--mono);padding:6px 10px;transform:rotate(-2deg)}
-.slip-cap{font:12px/1.5 var(--mono);color:var(--muted);margin-top:14px}
-.capsec{border-top:1px solid var(--rule)}
-/* Quote page */
-.quote.page{border-top:0}
-.q-grid{grid-template-areas:"intro form" "info form";grid-template-rows:auto 1fr;row-gap:0}
-.q-intro{grid-area:intro}.q-info{grid-area:info}.q-grid .form{grid-area:form}
-.q-info .needs{margin-top:12px}
-.qh{font:700 24px/1.1 var(--display);margin-top:26px}
-@media (max-width:980px){.qh{margin-top:0}}
-.quote.page h1{font-size:clamp(40px,5vw,64px);margin-top:14px}
-.form h2{font:700 28px/1 var(--display)}
-.next{margin-top:28px;border-top:2px solid var(--steel);counter-reset:n}
-.next h2{font:700 24px/1.1 var(--display);margin-top:18px}
-.next ol{margin-top:12px;display:grid;gap:10px}
-.next li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px;font-size:15.5px}
-.next li::before{counter-increment:n;content:counter(n);font:700 12px/22px var(--mono);width:22px;height:22px;text-align:center;border:2px solid var(--dykem);color:var(--dykem-2)}
-.prefill{font-size:13.5px;color:var(--sub);margin-top:-8px}
-@media (max-width:980px){
-  .svc-in,.change-in{grid-template-columns:minmax(0,1fr)}
-  .q-grid{grid-template-areas:"intro" "form" "info";grid-template-rows:auto;row-gap:28px}
-  .links{gap:20px}
-}
-@media (max-width:720px){
-  .links a[aria-current="page"]:not(.cta){box-shadow:inset 4px 0 0 var(--dykem);padding:12px 0 12px 14px}
-  .slip dl div{grid-template-columns:minmax(0,1fr);gap:2px}
-}
-
-.demo .demo-back{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:3px;margin-left:6px;white-space:nowrap}.demo .demo-back:focus-visible{outline:2px solid #fff;outline-offset:2px}
-</style>
-</head>
-<body>
-<a class="skip" href="#main">Skip to content</a>
-<div class="demo"><b>Demo site.</b> Northline Metal Works is made up, and the quote form doesn’t send anything. <a class="demo-back" href="/services.html#examples">Back to Eren for Business</a></div>
-
-<header class="site">
-  <div class="wrap nav">
-    <a class="logo" href="index.html" aria-label="Northline Metal Works, home">
-      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect x="1.5" y="1.5" width="31" height="31" fill="none" stroke="#1b232b" stroke-width="3"/><path d="M8 26V8l18 18V8" fill="none" stroke="#1f48c8" stroke-width="3.2" stroke-linecap="square"/></svg>
-      <span><b>Northline Metal Works</b><span class="sub">Custom fabrication, Dayton, Ohio</span></span>
-    </a>
-    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="links">Menu</button>
-    <nav class="links" id="links" aria-label="Site">
-      <a href="index.html">Home</a><a href="what-we-make.html">What we make</a><a href="how-we-work.html" aria-current="page">How we work</a>
-      <a class="btn sm cta" href="quote.html">Start a quote</a>
-    </nav>
-  </div>
-</header>
-
-<main id="main">
-
-<section class="pagehead" aria-labelledby="h1" style="padding-inline:0">
-  <div class="wrap">
-    <p class="ref">How we work</p>
-    <h1 id="h1">You’ll know who has your job, and what happens if it changes.</h1>
-    <p class="lead">Every job has one coordinator from quote to delivery. Below is how a job moves through the shop, how changes are handled, and what the machines can and can’t do.</p>
-  </div>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta http-equiv="Content-Security-Policy" content="form-action 'none'; connect-src 'none'; object-src 'none'; base-uri 'self'"><title>How we work — Northline Metal Works — a fictional demo by Eren</title><link rel="icon" href="../../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="fonts.css"><link rel="stylesheet" href="base.css"><link rel="stylesheet" href="shared.css"><link rel="stylesheet" href="theme.css"><link rel="stylesheet" href="fixes.css"></head><body class="northline page-how-we-work" id="top"><a class="skip-link" href="#main">Skip to content</a><div class="preview-strip">Fictional business · Working design demo · Nothing is sent<a href="../../index.html">View Eren ↗</a></div><header class="site-nav"><a class="identity" href="index.html" aria-label="Northline Metal Works, home"><span class="n-mark" aria-hidden="true">N</span><span>NORTHLINE<small>METAL WORKS</small></span></a><nav id="site-menu" aria-label="Main navigation"><a href="index.html" >Overview</a><a href="what-we-make.html" >What we make</a><a href="how-we-work.html" aria-current=page>How we work</a></nav><div class="nav-actions"><a class="action " href="quote.html">Start a quote<span aria-hidden="true">↗</span></a><button class="menu-toggle" aria-controls="site-menu" aria-expanded="false" type="button">Menu <span>＋</span></button></div></header><main id="main">
+<section aria-labelledby="h1" class="pagehead" style="padding-inline:0">
+<div class="wrap">
+<p class="ref">How we work</p>
+<h1 id="h1">You’ll know who has your job, and what happens if it changes.</h1>
+<p class="lead">Every job has one coordinator from quote to delivery. Below is how a job moves through the shop, how changes are handled, and what the machines can and can’t do.</p>
+</div>
 </section>
-
-<section class="process" id="steps" aria-labelledby="stepsH">
-  <div class="wrap">
-    <div class="sec-head"><h2 id="stepsH">How a job runs.</h2><p class="sec-sub">Four steps, and the same coordinator in each one.</p></div>
-    <ol class="steps long">
-      <li class="step"><h3>Quote</h3><p>We confirm material, quantity and finish, and ask for anything missing before we price it. You get a written quote with the date it’s based on.</p><span class="who">You send: the request</span></li>
-      <li class="step"><h3>Approve</h3><p>For assemblies you approve shop drawings. For parts, the drawing revision is locked on the order, so a reorder matches.</p><span class="who">You send: your approval</span></li>
-      <li class="step"><h3>Make</h3><p>Your coordinator sends first-article photos on request and tells you straight away if anything affects price or date.</p><span class="who">You send: nothing, unless asked</span></li>
-      <li class="step"><h3>Change or deliver</h3><p>Need a change mid-run? Send it in writing. We confirm cost and date before the floor acts on it.</p><span class="who">You send: the change, in writing</span></li>
-    </ol>
-  </div>
+<section aria-labelledby="stepsH" class="process" id="steps">
+<div class="wrap">
+<div class="sec-head"><h2 id="stepsH">How a job runs.</h2><p class="sec-sub">Four steps, and the same coordinator in each one.</p></div>
+<ol class="steps long">
+<li class="step"><h3>Quote</h3><p>We confirm material, quantity and finish, and ask for anything missing before we price it. You get a written quote with the date it’s based on.</p><span class="who">You send: the request</span></li>
+<li class="step"><h3>Approve</h3><p>For assemblies you approve shop drawings. For parts, the drawing revision is locked on the order, so a reorder matches.</p><span class="who">You send: your approval</span></li>
+<li class="step"><h3>Make</h3><p>Your coordinator sends first-article photos on request and tells you straight away if anything affects price or date.</p><span class="who">You send: nothing, unless asked</span></li>
+<li class="step"><h3>Change or deliver</h3><p>Need a change mid-run? Send it in writing. We confirm cost and date before the floor acts on it.</p><span class="who">You send: the change, in writing</span></li>
+</ol>
+</div>
 </section>
-
-<section id="changes" aria-labelledby="chH">
-  <div class="wrap change-in">
-    <div>
-      <h2 id="chH">Changes are written down before they reach the floor.</h2>
-      <p class="sec-sub">A quantity bump or a new revision is the point where jobs usually go wrong. Here, nothing changes on the floor until three things are settled.</p>
-      <ul class="needs" aria-label="What a change needs before the floor acts on it"><li>The new quantity, drawing or finish, in writing</li><li>The cost: no change, or a new price you’ve accepted</li><li>The date: no change, or a new date you’ve agreed</li></ul>
-    </div>
-    <figure>
-      <div class="slip" role="img" aria-label="Example change record: quantity raised from 40 to 60, new price accepted, new date agreed, confirmed by the customer and released to the floor.">
-        <div class="top" aria-hidden="true"><b>Change CR-1041</b><span>Example</span></div>
-        <dl aria-hidden="true">
-          <div><dt>Job</dt><dd>BRK-1042 bracket, rev C</dd></div>
-          <div><dt>Change</dt><dd>Quantity <span class="was">40</span> 60</dd></div>
-          <div><dt>Cost</dt><dd class="ok">New price accepted</dd></div>
-          <div><dt>Date</dt><dd class="ok">New date agreed</dd></div>
-          <div><dt>Confirmed by</dt><dd>The customer, by email</dd></div>
-        </dl>
-        <span class="stamp" aria-hidden="true">RELEASED TO FLOOR</span>
-      </div>
-      <figcaption class="slip-cap">The Change Desk demo shows the full workflow.</figcaption>
-    </figure>
-  </div>
+<section aria-labelledby="chH" id="changes">
+<div class="wrap change-in">
+<div>
+<h2 id="chH">Changes are written down before they reach the floor.</h2>
+<p class="sec-sub">A quantity bump or a new revision is the point where jobs usually go wrong. Here, nothing changes on the floor until three things are settled.</p>
+<ul aria-label="What a change needs before the floor acts on it" class="needs"><li>The new quantity, drawing or finish, in writing</li><li>The cost: no change, or a new price you’ve accepted</li><li>The date: no change, or a new date you’ve agreed</li></ul>
+</div>
+<figure>
+<div aria-label="Example change record: quantity raised from 40 to 60, new price accepted, new date agreed, confirmed by the customer and released to the floor." class="slip" role="img">
+<div aria-hidden="true" class="top"><b>Change CR-1041</b><span>Example</span></div>
+<dl aria-hidden="true">
+<div><dt>Job</dt><dd>BRK-1042 bracket, rev C</dd></div>
+<div><dt>Change</dt><dd>Quantity <span class="was">40</span> 60</dd></div>
+<div><dt>Cost</dt><dd class="ok">New price accepted</dd></div>
+<div><dt>Date</dt><dd class="ok">New date agreed</dd></div>
+<div><dt>Confirmed by</dt><dd>The customer, by email</dd></div>
+</dl>
+<span aria-hidden="true" class="stamp">RELEASED TO FLOOR</span>
+</div>
+<figcaption class="slip-cap">The <a href="../change-desk/">Change Desk demo</a> shows the full workflow.</figcaption>
+</figure>
+</div>
 </section>
-
-<section id="capabilities" class="capsec" aria-labelledby="capH">
-  <div class="wrap">
-    <div class="sec-head"><h2 id="capH">What the shop can do, limits included.</h2><p class="sec-sub">So you can tell in a minute whether your part fits. If it’s outside these, say so in your request and we’ll tell you straight.</p></div>
-    <div class="spec" role="region" aria-labelledby="capH" tabindex="0">
-      <table>
-        <caption>Capabilities and limits</caption>
-        <thead><tr><th scope="col">Process</th><th scope="col">Limits</th><th scope="col">Notes</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">Flat laser</th><td class="lim">Steel to 1/2 in · stainless to 3/8 in · aluminum to 1/4 in · sheet to 60 × 120 in</td><td>Nested to cut waste</td></tr>
-          <tr><th scope="row">Tube laser <span class="new">New</span></th><td class="lim">Round, square and rectangular to 6 in · lengths to 24 ft</td><td>Cope, miter and slot in one pass</td></tr>
-          <tr><th scope="row">Forming</th><td class="lim">Press brake to 12 ft</td><td>Bend radius and tolerance confirmed at quote</td></tr>
-          <tr><th scope="row">Welding</th><td class="lim">MIG and TIG · steel, stainless, aluminum</td><td>Weld procedures on request</td></tr>
-          <tr><th scope="row">Finish</th><td class="lim">In-house powder coat, standard colors</td><td>Plating and galvanizing through partners</td></tr>
-          <tr><th scope="row">Files</th><td class="lim">PDF · DXF · DWG · STEP</td><td>A photo and sketch work for repair parts</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="fit">Not sure it fits? Send it anyway with a note. A clear “no” in a day beats a quote that was never going to work.</p>
-  </div>
+<section aria-labelledby="capH" class="capsec" id="capabilities">
+<div class="wrap">
+<div class="sec-head"><h2 id="capH">What the shop can do, limits included.</h2><p class="sec-sub">So you can tell in a minute whether your part fits. If it’s outside these, say so in your request and we’ll tell you straight.</p></div>
+<div aria-labelledby="capH" class="spec" role="region" tabindex="0">
+<table>
+<caption>Capabilities and limits</caption>
+<thead><tr><th scope="col">Process</th><th scope="col">Limits</th><th scope="col">Notes</th></tr></thead>
+<tbody>
+<tr><th scope="row">Flat laser</th><td class="lim">Steel to 1/2 in · stainless to 3/8 in · aluminum to 1/4 in · sheet to 60 × 120 in</td><td>Nested to cut waste</td></tr>
+<tr><th scope="row">Tube laser <span class="new">New</span></th><td class="lim">Round, square and rectangular to 6 in · lengths to 24 ft</td><td>Cope, miter and slot in one pass</td></tr>
+<tr><th scope="row">Forming</th><td class="lim">Press brake to 12 ft</td><td>Bend radius and tolerance confirmed at quote</td></tr>
+<tr><th scope="row">Welding</th><td class="lim">MIG and TIG · steel, stainless, aluminum</td><td>Weld procedures on request</td></tr>
+<tr><th scope="row">Finish</th><td class="lim">In-house powder coat, standard colors</td><td>Plating and galvanizing through partners</td></tr>
+<tr><th scope="row">Files</th><td class="lim">PDF · DXF · DWG · STEP</td><td>A photo and sketch work for repair parts</td></tr>
+</tbody>
+</table>
+</div>
+<p class="fit">Not sure it fits? Send it anyway with a note. A clear “no” in a day beats a quote that was never going to work.</p>
+</div>
 </section>
-
-<section class="band" aria-labelledby="bandH">
-  <div class="wrap band-in">
-    <div><h2 id="bandH">Fits the limits? Send the drawing.</h2><p>A drawing and a quantity is enough to start.</p></div>
-    <a class="btn" href="quote.html">Start a quote</a>
-  </div>
+<section aria-labelledby="bandH" class="band">
+<div class="wrap band-in">
+<div><h2 id="bandH">Fits the limits? Send the drawing.</h2><p>A drawing and a quantity is enough to start.</p></div>
+<a class="btn" href="quote.html">Start a quote</a>
+</div>
 </section>
-
-</main>
-
-<footer>
-  <div class="wrap fgrid">
-    <div><b>Northline Metal Works</b><p>Cutting, forming, welding and powder coat for steel, stainless and aluminum.</p></div>
-    <div><h3>Site</h3><a href="index.html">Home</a><a href="what-we-make.html">What we make</a><a href="how-we-work.html">How we work</a><a href="how-we-work.html#capabilities">Capabilities and limits</a><a href="quote.html">Request a quote</a></div>
-    <div><h3>About this demo</h3><p>Made by Eren for Business to show how a website restructure works.</p></div>
-  </div>
-</footer>
-
-<button class="btn dbtn" id="dBtn" type="button" aria-expanded="false" aria-controls="dPanel">Why it’s built this way</button>
-<aside class="dpanel" id="dPanel" aria-labelledby="dH" hidden>
-  <h2 id="dH">The decisions behind this page</h2>
-  <p class="k">For the walkthrough. A client site wouldn’t carry this panel.</p>
-  <ol>
-    <li><b>Change handling gets its own section,</b> because a change mid-run is what customers worry about most. The example record is where the Change Desk workflow demo connects.</li>
-    <li><b>Each step says what the customer sends,</b> so nobody wonders whether the shop is waiting on them.</li>
-    <li><b>Capabilities with limits.</b> Buyers can rule themselves out, so the shop gets fewer requests it can’t quote.</li>
-    <li><b>One coordinator, named on every job,</b> is the promise the page is built around. A real build would only say it if the shop works that way.</li>
-  </ol>
-</aside>
-
-<script>
-(function(){
-"use strict";
-/* Hero cut paths (home only): measure each outline so the one-time cutting pass draws it exactly once. */
-document.querySelectorAll(".cut").forEach(function(el){try{el.style.setProperty("--len",Math.ceil(el.getTotalLength()+2))}catch(e){}});
-document.documentElement.classList.add("js");
-var mb=document.getElementById("menuBtn"), links=document.getElementById("links");
-function setMenu(o){links.classList.toggle("open",o);mb.setAttribute("aria-expanded",String(o));mb.textContent=o?"Close":"Menu"}
-mb.addEventListener("click",function(){setMenu(!links.classList.contains("open"))});
-links.addEventListener("click",function(e){if(e.target.closest("a"))setMenu(false)});
-document.addEventListener("keydown",function(e){if(e.key==="Escape"&&links.classList.contains("open")){setMenu(false);mb.focus()}});
-
-var db=document.getElementById("dBtn"), dp=document.getElementById("dPanel");
-function setPanel(o){dp.hidden=!o;db.setAttribute("aria-expanded",String(o));if(o){var h=dp.querySelector("h2");h.setAttribute("tabindex","-1");h.focus()}}
-db.addEventListener("click",function(){setPanel(dp.hidden)});
-document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!dp.hidden){setPanel(false);db.focus()}});
-document.addEventListener("click",function(e){if(!dp.hidden&&!dp.contains(e.target)&&e.target!==db&&!db.contains(e.target))setPanel(false)});
-
-/* Quote page only */
-var f=document.getElementById("qf"); if(!f)return;
-/* The page you came from fills in the job type (quote.html?job=repair). Unknown values are ignored. */
-var JOBS={production:"Production part to print",repair:"Repair or replacement part",assembly:"Fabricated assembly",unsure:"Not sure"};
-var job=null; try{job=new URLSearchParams(location.search).get("job")}catch(e){}
-if(job&&Object.prototype.hasOwnProperty.call(JOBS,job)){document.getElementById("f_type").value=JOBS[job];document.getElementById("prefill").hidden=false}
-document.getElementById("send").disabled=false; /* off without JavaScript, so a browser can never submit it */
-var rules={f_type:function(v){return v?"":"Choose the closest job type."},
-           f_co:function(v){return v?"":"Add your company name."},
-           f_name:function(v){return v?"":"Add your name."},
-           f_email:function(v){return !v?"Add an email address so the shop can reply.":(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)?"":"Check the email address: it should look like name@company.com.")}};
-function check(id){var el=document.getElementById(id), msg=rules[id](el.value.trim()), box=el.closest(".field");
-  box.classList.toggle("bad",!!msg); el.setAttribute("aria-invalid",msg?"true":"false"); document.getElementById("e_"+id.slice(2)).textContent=msg; return !msg}
-/* Re-check a flagged field as it is corrected (never on blur: a message vanishing under the pointer would move the Send button mid-click). */
-Object.keys(rules).forEach(function(id){var el=document.getElementById(id);el.addEventListener(el.tagName==="SELECT"?"change":"input",function(){if(this.closest(".field").classList.contains("bad"))check(id)})});
-f.addEventListener("submit",function(e){
-  e.preventDefault(); var first=null;
-  Object.keys(rules).forEach(function(id){if(!check(id)&&!first)first=id});
-  if(first){document.getElementById(first).focus();return}
-  var ok=document.getElementById("ok"), b=document.getElementById("send");
-  ok.hidden=false; b.disabled=true; b.textContent="Request recorded";
-});
-})();
-</script>
-</body>
-</html>
+</main><footer class="site-footer"><div class="footer-top"><a class="identity" href="index.html"><span class="n-mark">N</span><span>NORTHLINE<small>METAL WORKS</small></span></a><p>Cut. Form. Weld. Finish.<br>One shop. One coordinator.</p><div><a href="what-we-make.html">What we make ↗</a><a href="how-we-work.html#capabilities">Capabilities & limits ↗</a><a href="quote.html">Start a quote ↗</a></div></div><div class="footer-bottom"><span>A fictional shop, thoughtfully built by Eren.</span><a href="../../services.html#examples">See the thinking behind the work ↗</a></div><div class="footer-word" aria-hidden="true">NORTHLINE</div></footer><script src="shared.js"></script></body></html>
