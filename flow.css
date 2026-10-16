@@ -102,8 +102,8 @@ html:not(.flow-js) .flow fieldset.step+fieldset.step{margin-top:56px;padding-top
 .flow-sheet dl{margin:0}
 .flow-sheet .row{padding:12px 0;border-bottom:1px solid #c6d0d7}
 .flow-sheet dt{font-size:11px;color:#516478;margin:0 0 4px}
-.flow-sheet dd{margin:0;font-size:14px;line-height:1.45;color:#172d40;overflow-wrap:anywhere;white-space:pre-line}
-.flow-sheet dd.big{font-size:19px;letter-spacing:-.02em;line-height:1.25}
+.flow-sheet dd{margin:0;font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:15px;font-weight:500;line-height:1.5;letter-spacing:-.006em;color:#0f2436;overflow-wrap:anywhere;white-space:pre-line;font-kerning:normal;text-rendering:optimizeLegibility}
+.flow-sheet dd.big{font-size:20px;font-weight:600;letter-spacing:-.018em;line-height:1.3}
 .flow-sheet dd.is-empty:before{content:"";display:block;height:8px;width:var(--w,58%);margin:6px 0 3px;border-radius:4px;background:#cdd6dd}
 .flow-sheet dd.big.is-empty:before{height:12px}
 .flow-sheet .pills{display:flex;flex-wrap:wrap;gap:5px}
