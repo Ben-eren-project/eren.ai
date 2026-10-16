@@ -308,6 +308,8 @@
     firstStep.setAttribute("data-off",""); probStepFL.setAttribute("data-off","");
     contactStep.querySelector(".send-row .step-back").hidden=true;
     var prog=document.querySelector(".flow-progress"); if(prog) prog.style.display="none";
+    // A question typed into the home page's one-line box arrives here (same tab, this visit only).
+    try { var carried=sessionStorage.getItem("eren-first-look-q"); if(carried){ var dp=document.getElementById("diagnoseProblem"); if(!dp.value) dp.value=carried; sessionStorage.removeItem("eren-first-look-q"); } } catch(_) {}
     // Keep the request preview in the side column (below the form on phones) so the send
     // button sits right under the fields, and drop the preview rows this form doesn't ask.
     var slot=contactStep.querySelector(".review-slot"); if(slot) slot.remove();
