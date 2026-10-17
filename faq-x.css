@@ -1,0 +1,32 @@
+/* Question-and-answer list, past.dev style: a large two-line heading on the left, numbered
+   rows on the right, a chevron that turns, and answers that slide open. Reusable: wrap in
+   <section class="faq-x">. Works without JavaScript (native <details>). */
+.faq-x{padding-block:clamp(64px,8vw,104px);border-top:1px solid var(--line)}
+.faq-x .fx-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.5fr);gap:clamp(32px,6vw,96px);align-items:start}
+.faq-x .fx-head{position:sticky;top:96px}
+.faq-x .fx-head h2{margin:0;font-size:clamp(36px,4.2vw,56px);line-height:1.04;font-weight:420;letter-spacing:-.045em;color:var(--ink)}
+.faq-x .fx-head h2 em{font-family:Lora,Georgia,"Times New Roman",serif;font-style:italic;font-weight:400;letter-spacing:-.035em;color:#a8d1f1}
+.faq-x .fx-head p{margin:20px 0 0;font-size:15px;line-height:1.6;color:var(--sub);max-width:30ch}
+.faq-x .fx-head p a{color:#a8d1f1;text-decoration:underline;text-underline-offset:4px}
+.faq-x .fx-list{border-top:1px solid var(--line-2);counter-reset:fx}
+.faq-x details{border-bottom:1px solid var(--line-2);counter-increment:fx}
+.faq-x summary{display:grid;grid-template-columns:44px minmax(0,1fr) 28px;align-items:center;gap:14px;padding:24px 4px;cursor:pointer;list-style:none;color:var(--ink);font-size:clamp(17px,1.6vw,20px);font-weight:450;letter-spacing:-.015em;line-height:1.35;transition:color .2s}
+.faq-x summary::-webkit-details-marker{display:none}
+.faq-x summary::marker{content:""}
+.faq-x summary::before{content:counter(fx,decimal-leading-zero);font:500 12.5px/1 ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;letter-spacing:.06em;color:var(--muted);align-self:center}
+.faq-x summary:hover{color:#a8d1f1}
+.faq-x summary:focus-visible{outline:2px solid #a8d1f1;outline-offset:-2px;border-radius:4px}
+.faq-x .fx-chev{width:28px;height:28px;display:grid;place-items:center;color:var(--sub);transition:transform .35s cubic-bezier(.22,1,.36,1),color .2s}
+.faq-x .fx-chev svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.faq-x details[open] .fx-chev{transform:rotate(180deg);color:#a8d1f1}
+.faq-x .fx-a{overflow:hidden}
+.faq-x .fx-a>div{padding:0 44px 26px 62px;color:var(--sub);font-size:15.5px;line-height:1.75;max-width:70ch}
+.faq-x .fx-a p{margin:0}.faq-x .fx-a p+p{margin-top:10px}
+.faq-x .fx-a b{color:var(--ink);font-weight:600}
+@media (max-width:860px){
+  .faq-x .fx-grid{grid-template-columns:1fr;gap:28px}
+  .faq-x .fx-head{position:static}
+  .faq-x summary{grid-template-columns:34px minmax(0,1fr) 24px;gap:10px;padding:20px 2px}
+  .faq-x .fx-a>div{padding:0 8px 22px 46px}
+}
+@media (prefers-reduced-motion:reduce){.faq-x .fx-chev{transition:none}}
