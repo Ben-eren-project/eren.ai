@@ -127,94 +127,40 @@
   <a class="brand" href="index.html"><span class="mark"><svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="6.5" width="2.6" height="19" rx="1.3" fill="#57A2E8"/><rect x="7" y="6.5" width="17" height="2.6" rx="1.3" fill="#57A2E8"/><rect x="7" y="15" width="11.5" height="2.6" rx="1.3" fill="#8FC3F2"/><rect x="7" y="22.9" width="17" height="2.6" rx="1.3" fill="#57A2E8"/></svg></span>Eren</a>
   <div class="nav-r"><a href="index.html">← Back to site</a></div>
 </div></nav>
-<div class="flow">
+<div class="flow call-simple">
   <main class="flow-main">
-    <div class="flow-head">
-      <p class="flow-pkg call-pkg"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.7l1.4 4-1.9 1.3a11 11 0 0 0 5.4 5.4l1.3-1.9 4 1.4v2.7a2 2 0 0 1-2.1 2A15.6 15.6 0 0 1 4.6 5.6a2 2 0 0 1 2-2.1z"/></svg>Free phone call · 15 minutes</p>
-      <span class="flow-live" aria-live="polite"></span>
-    </div>
-
     <noscript><p style="border:1px solid #3F7BD6;background:rgba(63,123,214,.08);color:#EDF2FB;border-radius:12px;padding:16px 18px;margin:22px 0 0;font-size:15px;line-height:1.6">Booking needs JavaScript. Call or text <a href="tel:+18155200102" style="color:#57A2E8;text-decoration:underline">(815) 520-0102</a> or email <a href="mailto:ben@erenforbusiness.com" style="color:#57A2E8;text-decoration:underline">ben@erenforbusiness.com</a> and we'll find a time.</p></noscript>
 
     <form id="intake" novalidate>
       <fieldset class="step" data-step="call">
         <h1 class="step-title">Book a call.</h1>
-        <p class="step-why">Not sure what to ask yet? That's fine. Pick 15 minutes and talk it through with Ben.</p>
-        <ul class="call-strip" aria-label="About the call"><li>15 minutes</li><li>Ben calls you</li><li>Weekdays, Central time</li><li>Free</li></ul>
+        <p class="step-why">15 minutes on the phone with Ben. Free.</p>
         <div class="step-body">
-          <div class="f call-phone"><label for="phone">Best number for Ben to call <span class="req">*</span></label><input id="phone" type="tel" autocomplete="tel" maxlength="60" placeholder="(815) 555-0000" required></div>
-          <div class="fields">
-            <div class="f"><label for="you">Your name <span class="req">*</span></label><input id="you" autocomplete="name" maxlength="200" placeholder="First &amp; last" required></div>
-            <div class="f"><label for="business">Business name <span class="req">*</span></label><input id="business" autocomplete="organization" maxlength="300" placeholder="Your business name" required></div>
-            <div class="f"><label for="email">Email <span class="req">*</span></label><input id="email" type="email" autocomplete="email" maxlength="200" placeholder="you@business.com" required><span class="hint">For the calendar invite.</span></div>
-            <div class="f"><label for="website">Website <span class="opt">if you have one</span></label><input id="website" type="url" inputmode="url" maxlength="500" placeholder="https://yourbusiness.com"></div>
-            <div class="f full"><label for="topic">Anything Ben should know first? <span class="opt">optional</span></label><textarea id="topic" class="call-topic" rows="2" maxlength="2000" placeholder="One line is plenty. For example: calls after 5pm go to voicemail."></textarea></div>
-          </div>
+          <div class="f"><label for="you">Your name <span class="req">*</span></label><input id="you" autocomplete="name" maxlength="200" required></div>
+          <div class="f"><label for="business">Business <span class="req">*</span></label><input id="business" autocomplete="organization" maxlength="300" required></div>
+          <div class="f"><label for="phone">Phone <span class="req">*</span></label><input id="phone" type="tel" autocomplete="tel" maxlength="60" required></div>
+          <div class="f"><label for="email">Email <span class="req">*</span></label><input id="email" type="email" autocomplete="email" maxlength="200" required></div>
         </div>
         <div class="send-row"><button type="submit" class="send" id="sendBtn">Pick a time</button></div>
         <span class="err" id="err" role="alert" hidden></span>
-        <div class="trust">No payment is taken. Your details go only to Eren. Please do not enter passwords or sensitive customer records.</div>
       </fieldset>
     </form>
 
     <div class="done" id="done">
-      <h2 id="doneHead" tabindex="-1">Pick a time that works.</h2>
-      <p id="doneMsg">Choose a slot below. You'll get a calendar invite by email, and Ben calls the number you gave.</p>
+      <h2 id="doneHead" tabindex="-1">Pick a time.</h2>
+      <p id="doneMsg">Ben calls the number you gave.</p>
       <div class="book-cal" id="bookCal"></div>
     </div>
   </main>
-
-  <aside class="flow-preview call-side" aria-label="About the call">
-    <div class="flow-preview-in">
-      <div class="call-card">
-        <div class="call-card-top"><span class="call-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.7l1.4 4-1.9 1.3a11 11 0 0 0 5.4 5.4l1.3-1.9 4 1.4v2.7a2 2 0 0 1-2.1 2A15.6 15.6 0 0 1 4.6 5.6a2 2 0 0 1 2-2.1z"/></svg></span><div><b>Free 15-minute call</b><span>By phone, with Ben</span></div></div>
-        <dl class="call-facts">
-          <div><dt>Length</dt><dd>15 minutes</dd></div>
-          <div><dt>How</dt><dd>Ben calls the number you give</dd></div>
-          <div><dt>When</dt><dd>Weekdays, Central time. You pick the slot.</dd></div>
-          <div><dt>Cost</dt><dd>Free, no obligation</dd></div>
-        </dl>
-        <ol class="call-steps">
-          <li><b>Tell us who you are</b><span>Name, business and a number.</span></li>
-          <li><b>Pick a time</b><span>The calendar opens on this page.</span></li>
-          <li><b>Ben calls you</b><span>At the time you picked.</span></li>
-        </ol>
-      </div>
-      <p class="call-quote">“How does the work run today? Here's one thing worth looking at.”</p>
-      <p class="call-note">If Eren can help, Ben will say how. If not, he'll say that too.</p>
-    </div>
-  </aside>
 </div>
 
 <style>
-  /* Book a call: a phone-call page, not a request sheet */
-  .page-book .call-pkg{display:inline-flex;align-items:center;gap:8px}
-  .page-book .call-pkg svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round}
-  .page-book .call-side{background-image:none;background:radial-gradient(ellipse 80% 60% at 70% 20%,#122236 0,transparent 70%)}
-  .page-book .call-side .flow-preview-in{max-width:400px}
-  .call-card{border:1px solid rgba(196,215,235,.24);border-radius:16px;background:#101a27;padding:26px}
-  .call-card-top{display:flex;align-items:center;gap:14px;padding-bottom:20px;border-bottom:1px solid rgba(196,215,235,.14)}
-  .call-card-top b{display:block;font-size:18px;font-weight:600;color:#f3f2ee}
-  .call-card-top span{font-size:14px;color:#b5c0ce}
-  .call-ico{flex:none;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(145,194,237,.12);border:1px solid rgba(145,194,237,.3)}
-  .call-ico svg{width:20px;height:20px;fill:none;stroke:#a8d1f1;stroke-width:1.8;stroke-linejoin:round}
-  .call-facts{margin:18px 0 0;display:grid;gap:12px}
-  .call-facts div{display:grid;grid-template-columns:72px 1fr;gap:12px;font-size:14.5px}
-  .call-facts dt{color:#99a7b8}.call-facts dd{margin:0;color:#f3f2ee}
-  .call-steps{list-style:none;counter-reset:cs;margin:22px 0 0;padding:20px 0 0;border-top:1px solid rgba(196,215,235,.14);display:grid;gap:14px}
-  .call-steps li{counter-increment:cs;display:grid;grid-template-columns:28px 1fr;column-gap:12px;font-size:14px}
-  .call-steps li:before{content:counter(cs);grid-row:span 2;width:26px;height:26px;border-radius:50%;border:1px solid rgba(196,215,235,.24);color:#a8d1f1;font-size:12.5px;font-weight:600;display:flex;align-items:center;justify-content:center}
-  .call-steps b{font-weight:600;color:#f3f2ee}.call-steps span{color:#b5c0ce}
-  .call-quote{font-family:"Lora",Georgia,serif;font-style:italic;font-size:19px;line-height:1.45;color:#f3f2ee;margin:28px 0 0}
-  .call-note{font-size:14px;color:#b5c0ce;margin:8px 0 0}
-  .call-strip{display:none;list-style:none;margin:18px 0 0;padding:0;flex-wrap:wrap;gap:8px}
-  .call-strip li{font-size:13px;color:#b5c0ce;border:1px solid rgba(196,215,235,.24);border-radius:999px;padding:6px 12px}
-  .page-book .flow .call-phone input:not([type=checkbox]){font-size:19px;padding:15px 16px;letter-spacing:.01em}
-  .page-book .flow textarea.call-topic{min-height:64px}
-  .page-book .flow.is-sent{grid-template-columns:minmax(0,1fr)}
-  .page-book .flow.is-sent .call-side{display:none}
-  .page-book .flow.is-sent .flow-main{max-width:900px;width:100%;margin:0 auto}
-  @media (max-width:979px){.call-strip{display:flex}}
+  /* Book a call: one short column */
+  .page-book .flow.call-simple{display:block;max-width:none;border:0;min-height:0}
+  .page-book .call-simple .flow-main{max-width:440px;margin:0 auto;padding-block:clamp(48px,9vw,96px) 80px}
+  .page-book .call-simple .step-body{gap:16px;margin-top:28px}
+  .page-book .call-simple .send{width:100%}
+  .page-book .call-simple .flow-main:has(.done.show){max-width:900px}
 </style>
 <style>
   .book-cal{margin-top:22px;border:1px solid rgba(255,255,255,.16);border-radius:14px;overflow:hidden;background:#fff}
