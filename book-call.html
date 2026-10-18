@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en"><head><script>if(/\.onrender\.com$/i.test(location.hostname)){location.replace("https://erenforbusiness.com"+location.pathname+location.search+location.hash);}</script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Book a Call | Eren for Business</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lora:ital,wght@1,400&display=swap">
+<style>
+  :root{--bg:#080D18;--panel:#0D1830;--ink:#EDF2FB;--sub:#AAB7D0;--muted:#7A87A4;--faint:#59668A;--navy:#1B3A6B;--azure:#57A2E8;--line:rgba(255,255,255,.09);--line-2:rgba(255,255,255,.16);--grad:linear-gradient(120deg,#57a2e8,#2f62b8 45%,#122a52);--good:#4ADE9E;color-scheme:dark}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .shell{max-width:820px;margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+  @keyframes drift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(8,13,24,.72);border-bottom:1px solid var(--line)}
+  .nav-in{max-width:1160px;margin:0 auto;padding:14px clamp(20px,4vw,40px);display:flex;align-items:center;justify-content:space-between}
+  .brand{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:21px;letter-spacing:-.03em}
+  .brand .mark{width:26px;height:26px;flex:none}
+  .nav-r a{font-size:14px;font-weight:600;color:var(--sub)}.nav-r a:hover{color:var(--ink)}
+
+  .head{padding:clamp(48px,8vw,84px) 0 clamp(20px,3vw,30px);text-align:center}
+  .ey{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;background:var(--grad);background-size:200% 200%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:drift 14s ease-in-out infinite}
+  h1{font-size:clamp(32px,5vw,52px);font-weight:800;letter-spacing:-.03em;margin:14px 0 0;text-wrap:balance}
+  .head p{font-size:17px;color:var(--sub);max-width:52ch;margin:16px auto 0}
+  .steps-mini{display:flex;justify-content:center;gap:8px 22px;flex-wrap:wrap;margin:22px 0 0;font-size:13px;color:var(--muted)}
+  .steps-mini b{color:var(--azure)}
+
+  form{padding:clamp(20px,4vw,36px) 0 90px;display:flex;flex-direction:column;gap:30px}
+  fieldset{border:none;margin:0;padding:0}
+  .sh{display:flex;align-items:baseline;gap:11px;margin-bottom:14px;padding-bottom:11px;border-bottom:1px solid var(--line)}
+  .sh .i{font-size:12px;font-weight:700;color:var(--azure)}
+  .sh h3{font-size:16px;font-weight:700;margin:0}
+  label{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+  .req{color:var(--azure)}
+  .fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .f{display:flex;flex-direction:column;gap:6px}.f.full{grid-column:1/-1}
+  input,textarea{font-family:inherit;font-size:15px;color:var(--ink);background:rgba(255,255,255,.03);border:1px solid var(--line-2);border-radius:11px;padding:12px 14px;width:100%}
+  textarea{resize:vertical;min-height:80px;line-height:1.55}
+  input::placeholder,textarea::placeholder{color:var(--muted)}
+  input:focus,textarea:focus{outline:none;border-color:var(--azure);box-shadow:0 0 0 3px rgba(87,162,232,.18)}
+  .checks{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .check{display:flex;align-items:center;gap:11px;border:1px solid var(--line-2);border-radius:11px;padding:13px 15px;cursor:pointer;font-size:14.5px;font-weight:600;background:rgba(255,255,255,.02)}
+  .check:hover{border-color:var(--azure)}
+  .check input{width:17px;height:17px;flex:none;accent-color:var(--azure)}
+  .check:has(input:checked){border-color:var(--azure);background:rgba(87,162,232,.10)}
+  .submit-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .btn{font-family:inherit;font-weight:700;font-size:15px;color:#fff;border:none;cursor:pointer;border-radius:11px;padding:15px 28px;background:var(--grad);background-size:220% 220%;box-shadow:0 12px 30px -12px rgba(63,123,214,.6);transition:filter .15s}
+  .btn:hover{filter:brightness(1.09)}
+  .err{font-size:13px;color:#ffb4b4;font-weight:600}
+  .trust{margin-top:2px;font-size:12.5px;color:var(--muted)}
+
+  .done{display:none;text-align:center;padding:40px 0 100px}
+  .done.show{display:block}
+  .done .ok{width:60px;height:60px;border-radius:50%;background:rgba(74,222,158,.14);color:var(--good);font-size:30px;display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+  .done h2{font-size:28px;font-weight:800;letter-spacing:-.02em;margin:0 0 10px}
+  .done p{color:var(--sub);max-width:46ch;margin:0 auto}
+  @media(max-width:640px){.fields,.checks{grid-template-columns:1fr}}
+
+/* EREN MOBILE LAYOUT PATCH - BEGIN */
+/* Mobile layout only. Existing HTML, copy, URLs, form logic and scripts stay intact. */
+@media (max-width: 1000px) {
+  /* Keep the original navigation links visible in a second row; no new menu copy. */
+  .nav-in { display:grid; grid-template-columns:auto minmax(0,1fr); column-gap:12px; row-gap:6px; padding-block:10px; }
+  .nav-in .brand { grid-column:1; grid-row:1; min-height:44px; }
+  .nav-r { grid-column:2; grid-row:1; justify-self:end; min-width:0; max-width:100%; }
+  .nav-r a { min-height:44px; display:inline-flex; align-items:center; justify-content:center; text-align:center; }
+  .nav-r .btn { max-width:100%; padding:10px 12px; line-height:1.4; }
+  .nav-links { display:flex; grid-column:1 / -1; grid-row:2; justify-content:center; flex-wrap:wrap; gap:0 20px; }
+  .nav-links a { display:flex; align-items:center; justify-content:center; min-height:44px; padding:5px 3px; text-align:center; }
+  nav a:focus-visible { outline:2px solid var(--azure); outline-offset:2px; border-radius:5px; }
+  /* These elements share .shell, but their padding shorthand erased its gutters. */
+  .shell.hero-in, .shell.subhero-in { padding-inline:clamp(20px,4vw,40px); }
+  .btn { max-width:100%; white-space:normal; text-align:center; overflow-wrap:anywhere; }
+  .shell, .stage, .panel, .f, fieldset { min-width:0; }
+  input:not([type="checkbox"]):not([type="radio"]), textarea, select { font-size:16px; max-width:100%; }
+  input, textarea, button, summary, a { touch-action:manipulation; }
+  .faq summary { min-height:44px; display:flex; align-items:center; }
+  .foot-cols a { min-height:44px; display:flex; align-items:center; margin-bottom:2px; }
+  [id] { scroll-margin-top:150px; }
+}
+@media (max-width: 600px) {
+  .nav-links { display:grid; grid-template-columns:auto minmax(0,1fr) auto auto; gap:0 8px; font-size:13px; }
+  .nav-links a { padding-inline:0; }
+  .hero h1 { font-size:clamp(32px,9vw,40px); line-height:1.1; }
+  .hero-cta { align-items:stretch; }
+  .hero-cta .btn { width:100%; min-height:48px; }
+  .hero-cta .note { width:100%; }
+  .pill { max-width:100%; }
+  .pill .d { flex-shrink:0; }
+  .cta { padding:32px 20px; }
+  .cta .btn, .stage .go .btn { width:100%; min-height:48px; }
+  .how { grid-template-columns:minmax(0,1fr); }
+  .foot-cols { gap:24px; }
+  .submit-row .btn { width:100%; min-height:48px; }
+  .check { min-height:48px; }
+  .stage .txt { min-width:0; }
+  .step { grid-template-columns:44px minmax(0,1fr); gap:12px; }
+  .step .marker { width:44px; }
+  .step:not(:last-child)::before { left:21px; }
+  .short .row { flex-wrap:wrap; }
+  .short .row span:last-child { text-align:left; }
+}
+@media (max-width: 380px) {
+  .flow, .chain { grid-template-columns:minmax(0,1fr); }
+  .tab { flex-basis:100%; }
+  .stage, .short, .quote { padding:22px 18px; }
+}
+
+/* EREN MOBILE LAYOUT PATCH - END */
+#intake [hidden]{display:none!important}
+</style><link rel="stylesheet" href="eren-editorial.css"><link rel="stylesheet" href="flow.css">
+<meta name="description" content="Book a free 15-minute call with Ben at Eren. Tell us a little about your business, then pick a time that works.">
+<link rel="canonical" href="https://erenforbusiness.com/book-call.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Eren for Business">
+<meta property="og:title" content="Book a Call | Eren for Business">
+<meta property="og:description" content="Book a free 15-minute call with Ben at Eren. Tell us a little about your business, then pick a time that works.">
+<meta property="og:url" content="https://erenforbusiness.com/book-call.html">
+<meta property="og:image" content="https://erenforbusiness.com/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Eren — Know what to fix. Then build what matters.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="noindex,follow">
+</head><body class="page-start flow-page page-book">
+
+<nav><div class="nav-in">
+  <a class="brand" href="index.html"><span class="mark"><svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="6.5" width="2.6" height="19" rx="1.3" fill="#57A2E8"/><rect x="7" y="6.5" width="17" height="2.6" rx="1.3" fill="#57A2E8"/><rect x="7" y="15" width="11.5" height="2.6" rx="1.3" fill="#8FC3F2"/><rect x="7" y="22.9" width="17" height="2.6" rx="1.3" fill="#57A2E8"/></svg></span>Eren</a>
+  <div class="nav-r"><a href="index.html">← Back to site</a></div>
+</div></nav>
+<div class="flow">
+  <main class="flow-main">
+    <div class="flow-head">
+      <p class="flow-pkg">Free call · 15 minutes</p>
+      <span class="flow-live" aria-live="polite"></span>
+    </div>
+
+    <noscript><p style="border:1px solid #3F7BD6;background:rgba(63,123,214,.08);color:#EDF2FB;border-radius:12px;padding:16px 18px;margin:22px 0 0;font-size:15px;line-height:1.6">Booking needs JavaScript. Call or text <a href="tel:+18155200102" style="color:#57A2E8;text-decoration:underline">(815) 520-0102</a> or email <a href="mailto:ben@erenforbusiness.com" style="color:#57A2E8;text-decoration:underline">ben@erenforbusiness.com</a> and we'll find a time.</p></noscript>
+
+    <form id="intake" novalidate>
+      <fieldset class="step" data-step="call">
+        <h1 class="step-title">Book a call.</h1>
+        <p class="step-why">Fifteen minutes on the phone with Ben. Tell us who you are, then pick a time on the calendar.</p>
+        <div class="step-body">
+          <div class="fields">
+            <div class="f"><label for="you">Your name <span class="req">*</span></label><input id="you" autocomplete="name" maxlength="200" placeholder="First &amp; last" required></div>
+            <div class="f"><label for="business">Business name <span class="req">*</span></label><input id="business" autocomplete="organization" maxlength="300" placeholder="Your business name" required></div>
+            <div class="f"><label for="email">Email <span class="req">*</span></label><input id="email" type="email" autocomplete="email" maxlength="200" placeholder="you@business.com" required></div>
+            <div class="f"><label for="phone">Phone <span class="req">*</span></label><input id="phone" type="tel" autocomplete="tel" maxlength="60" placeholder="(815) 555-0000" required></div>
+            <div class="f full"><label for="website">Website <span class="opt">if you have one</span></label><input id="website" type="url" inputmode="url" maxlength="500" placeholder="https://yourbusiness.com"></div>
+            <div class="f full"><label for="topic">What would you like to talk about? <span class="opt">optional</span></label><textarea id="topic" maxlength="2000" placeholder="One sentence is plenty. For example: calls after 5pm go to voicemail."></textarea></div>
+          </div>
+        </div>
+        <div class="send-row"><button type="submit" class="send" id="sendBtn">Pick a time</button></div>
+        <span class="err" id="err" role="alert" hidden></span>
+        <div class="trust">No payment is taken. Your details go only to Eren. Please do not enter passwords or sensitive customer records.</div>
+      </fieldset>
+    </form>
+
+    <div class="done" id="done">
+      <h2 id="doneHead" tabindex="-1">Pick a time that works.</h2>
+      <p id="doneMsg">Choose a slot below. You'll get a calendar invite by email.</p>
+      <div class="book-cal" id="bookCal"></div>
+    </div>
+  </main>
+
+  <aside class="flow-preview" aria-label="Preview of your call">
+    <div class="flow-preview-in">
+      <div class="flow-sheet-wrap">
+        <div class="flow-sheet">
+          <div class="flow-sheet-top"><span>Your call</span><span>15 min · Free</span></div>
+          <dl>
+            <div class="row"><dt>Name</dt><dd class="big" data-preview="you" style="--w:52%"></dd></div>
+            <div class="row"><dt>Business</dt><dd data-preview="business" style="--w:58%"></dd></div>
+            <div class="row"><dt>Reach you at</dt><dd data-preview="email" style="--w:50%"></dd><dd data-preview="phone" style="--w:34%"></dd></div>
+            <div class="row"><dt>To talk about</dt><dd data-preview="topic" data-max="180" style="--w:80%"></dd></div>
+          </dl>
+          <div class="flow-sheet-bottom"><span>No payment taken</span><span>You pick the time</span></div>
+        </div>
+      </div>
+      <p class="flow-note"><b>What happens on the call.</b> Ben asks how the work runs today and tells you one thing worth looking at. If Eren can help, he'll say how; if not, he'll say that too.</p>
+    </div>
+  </aside>
+</div>
+
+<style>
+  .book-cal{margin-top:22px;border:1px solid rgba(255,255,255,.16);border-radius:14px;overflow:hidden;background:#fff}
+  .book-cal iframe{display:block;width:100%;height:720px;border:0}
+  .book-fallback{margin-top:18px;font-size:15px;line-height:1.6;color:#AAB7D0}
+  .book-fallback a{color:#57A2E8;text-decoration:underline}
+</style>
+<script src="lead-source.js"></script>
+<script>
+(function(){
+  // The Google Calendar booking page (appointment schedule) link. Paste it here.
+  var BOOKING_URL = "";
+  var EREN_API = "https://eren-ops.onrender.com";
+  var form=document.getElementById("intake"), btn=document.getElementById("sendBtn"), err=document.getElementById("err"), done=document.getElementById("done");
+  function value(id){var el=document.getElementById(id);return el?el.value.trim():"";}
+  function showError(msg,id){err.textContent=msg;err.hidden=false;if(id){var el=document.getElementById(id);if(el)el.focus();}}
+  function showCalendar(){
+    var cal=document.getElementById("bookCal");
+    if(BOOKING_URL){
+      var f=document.createElement("iframe");
+      f.src=BOOKING_URL+(BOOKING_URL.indexOf("?")===-1?"?":"&")+"gv=true";
+      f.title="Pick a time for your call with Eren";
+      cal.appendChild(f);
+    } else {
+      cal.remove();
+      document.getElementById("doneHead").textContent="Thanks — we'll text you a time.";
+      document.getElementById("doneMsg").innerHTML='Ben will reach out today with two or three times. Or call <a href="tel:+18155200102">(815) 520-0102</a>.';
+    }
+  }
+  form.addEventListener("submit",function(e){
+    e.preventDefault();
+    var required=["you","business","email","phone"];
+    for(var i=0;i<required.length;i++){ if(!value(required[i])){showError("Please fill in your name, business, email and phone.",required[i]);return;} }
+    if(!document.getElementById("email").checkValidity()){showError("Please enter a valid email address.","email");return;}
+    if(value("website") && !document.getElementById("website").checkValidity()){showError("Please enter a full website URL, including https://.","website");return;}
+    err.hidden=true;
+    var notes=["Booked a call from the Book a call page."];
+    if(value("topic")) notes.unshift(value("topic"));
+    if(window.ErenLeadSource){var s=window.ErenLeadSource.read();if(s) notes.push("Tagged visit source (not verified identity): "+s.source+"; campaign: "+s.campaign);}
+    var payload={business_name:value("business"),website:value("website"),contact_name:value("you"),email:value("email"),phone:value("phone"),
+      preferred_contact:"Phone call (booked)",focus:"Book a call",notes:notes.join("\n\n"),source:"book-call.html"};
+    btn.disabled=true;btn.textContent="One moment…";
+    fetch(EREN_API+"/api/leads",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)})
+      .then(function(r){if(!r.ok)throw new Error("Request failed");return r.json();})
+      .then(function(saved){
+        if(!saved||typeof saved.id!=="number")throw new Error("No lead confirmation");
+        form.style.display="none";done.classList.add("show");showCalendar();
+        if(window.ErenFlow) window.ErenFlow.sent();
+        window.scrollTo({top:0,behavior:"smooth"});document.getElementById("doneHead").focus({preventScroll:true});
+      })
+      .catch(function(){
+        showError("That didn't go through. Please try again, or call or text (815) 520-0102.");
+        btn.disabled=false;btn.textContent="Pick a time";
+      });
+  });
+})();
+</script>
+<script src="flow.js"></script>
+</body></html>
