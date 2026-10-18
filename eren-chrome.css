@@ -82,3 +82,10 @@ footer{padding-bottom:0!important}
 @media(prefers-reduced-motion:reduce){.nav-dd-panel,.nav-dd-caret{transition:none}}
 /* Phones: room for Guides in the one-line menu (same overflow as before at narrower phones) */
 @media(max-width:600px){nav .nav-links{gap:0 8px;font-size:12px}.nav-dd-caret{display:none}.nav-dd-link{gap:0}}
+
+/* Book a call: the quiet partner that sits beside every First Look button */
+.btn.book{background:transparent;color:#f3f2ee;border:1px solid rgba(196,215,235,.32);box-shadow:none}
+.btn.book:hover{background:#172536;border-color:rgba(196,215,235,.55);color:#f3f2ee}
+.btn.book:focus-visible,.pbtn.line:focus-visible{outline:2px solid #a8d1f1;outline-offset:3px}
+a.btn+a.btn.book{margin-left:10px}
+.hero-cta a.btn+a.btn.book,.nav-cta a.btn+a.btn.book{margin-left:0}
