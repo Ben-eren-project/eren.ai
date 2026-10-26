@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="description" content="A fictional demonstration of the Eren agent: give it a business and it returns a few findings, each tied to what it saw, for a person to keep or dismiss.">
+<title>Eren agent · Fictional demonstration</title>
+<link rel="icon" href="../../favicon.svg">
+<style>
+/* A fictional demonstration. The businesses, findings and decisions are made up; nothing is sent anywhere. */
+@font-face { font-family: "Inter"; src: url("fonts/inter-latin-var.woff") format("woff"); font-weight: 100 900; font-display: swap; }
+:root {
+  --surface-0: #f6f5f1; --surface-1: #ffffff; --surface-2: #eeece6;
+  --ink: #17181c; --sub: #4a4e57; --muted: #5f636c;
+  --hairline: rgba(23,24,28,.10); --hairline-strong: rgba(23,24,28,.20); --field: #80848c;
+  --accent: #2361a3; --accent-hover: #1b5089; --accent-ink: #ffffff; --accent-soft: #e4eef8; --focus: #2361a3;
+  --good: #1d7048; --good-soft: #e3f1e9; --warn: #8c5300; --warn-soft: #f9eedb; --bad: #b02a22; --bad-soft: #f8e5e3;
+  --pill: #17181c; --pill-ink: #f6f5f1; --shadow: 0 1px 2px rgba(23,24,28,.04);
+  --font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, "Cascadia Mono", Consolas, Menlo, monospace;
+  --dur: 150ms; color-scheme: light;
+}
+/* Dark: the system setting unless the switch says otherwise. Change both blocks together. */
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --surface-0: #0f1013; --surface-1: #17191d; --surface-2: #1f2126;
+  --ink: #f2f1ec; --sub: #b6b9c0; --muted: #8f939b;
+  --hairline: rgba(242,241,236,.10); --hairline-strong: rgba(242,241,236,.20); --field: #6c717a;
+  --accent: #91c2ed; --accent-hover: #a8d1f1; --accent-ink: #0f1013; --accent-soft: #1b2a3a; --focus: #91c2ed;
+  --good: #6fcf9b; --good-soft: #15291f; --warn: #e8b56a; --warn-soft: #2d2416; --bad: #f08a80; --bad-soft: #2e1a18;
+  --pill: #f2f1ec; --pill-ink: #0f1013; --shadow: none; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --surface-0: #0f1013; --surface-1: #17191d; --surface-2: #1f2126;
+  --ink: #f2f1ec; --sub: #b6b9c0; --muted: #8f939b;
+  --hairline: rgba(242,241,236,.10); --hairline-strong: rgba(242,241,236,.20); --field: #6c717a;
+  --accent: #91c2ed; --accent-hover: #a8d1f1; --accent-ink: #0f1013; --accent-soft: #1b2a3a; --focus: #91c2ed;
+  --good: #6fcf9b; --good-soft: #15291f; --warn: #e8b56a; --warn-soft: #2d2416; --bad: #f08a80; --bad-soft: #2e1a18;
+  --pill: #f2f1ec; --pill-ink: #0f1013; --shadow: none; color-scheme: dark;
+}
+@media (prefers-reduced-motion: reduce) { :root { --dur: 0s; } }
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; }
+body { background: var(--surface-0); color: var(--ink); font: 400 16px/1.6 var(--font); -webkit-font-smoothing: antialiased; }
+button, input, textarea { font: inherit; color: inherit; }
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; left: -9999px; top: 8px; background: var(--surface-1); padding: 8px 12px; border-radius: 8px; z-index: 9; }
+.skip:focus { left: 8px; }
+.ico { flex: none; width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+
+.demo-bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 14px; padding: 9px 16px; background: var(--warn-soft); color: var(--ink); font-size: 13px; text-align: center; border-bottom: 1px solid var(--hairline); }
+.demo-bar b { font-weight: 600; }
+
+.app { display: grid; grid-template-columns: 248px minmax(0, 1fr); min-height: calc(100vh - 40px); }
+.side { position: sticky; top: 12px; align-self: start; height: calc(100vh - 64px); margin: 12px 0 12px 12px; padding: 16px 12px; display: flex; flex-direction: column; gap: 4px; background: var(--surface-1); border: 1px solid var(--hairline); border-radius: 16px; box-shadow: var(--shadow); overflow-y: auto; }
+.brand { display: flex; align-items: center; gap: 10px; padding: 0 4px 16px; font-weight: 600; font-size: 19px; letter-spacing: -.02em; }
+.brand small { display: block; font-size: 12px; font-weight: 400; letter-spacing: 0; color: var(--muted); line-height: 1.2; }
+.mark { flex: none; width: 32px; height: 32px; border-radius: 9px; background: var(--pill); display: grid; place-items: center; }
+.mark path { stroke: var(--pill-ink); }
+.nav { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.nav a { display: flex; align-items: center; gap: 12px; height: 40px; padding: 0 12px; border-radius: 12px; color: var(--sub); text-decoration: none; font-size: 14px; transition: background var(--dur), color var(--dur); }
+.nav a:hover { background: var(--surface-2); color: var(--ink); }
+.nav a[aria-current="page"] { background: var(--pill); color: var(--pill-ink); font-weight: 600; }
+.count { margin-left: auto; min-width: 22px; height: 20px; padding: 0 7px; border-radius: 999px; background: var(--surface-2); color: var(--ink); font-size: 12px; font-weight: 600; display: inline-grid; place-items: center; }
+.nav a[aria-current="page"] .count { background: var(--pill-ink); color: var(--pill); }
+.note { display: grid; grid-template-columns: 18px 1fr; gap: 4px 8px; margin: 16px 0 12px; padding: 12px; border: 1px solid var(--hairline); border-radius: 12px; font-size: 13px; line-height: 1.45; color: var(--sub); }
+.note .ico { grid-row: span 2; color: var(--sub); }
+.note strong { color: var(--ink); }
+.side-foot { margin-top: auto; padding-top: 12px; }
+.theme { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; border-radius: 12px; background: var(--surface-2); }
+.theme button { display: flex; align-items: center; justify-content: center; gap: 8px; height: 32px; border: 0; border-radius: 8px; background: transparent; color: var(--sub); font-size: 13px; cursor: pointer; }
+.theme .ico { width: 16px; height: 16px; }
+.theme button[aria-pressed="true"] { background: var(--surface-1); color: var(--ink); font-weight: 600; box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+
+main { padding: 40px 48px 96px; max-width: 940px; width: 100%; }
+main:focus { outline: none; }
+h1 { font-size: 32px; line-height: 1.1; letter-spacing: -.02em; font-weight: 600; margin: 0 0 8px; }
+h2 { font-size: 20px; letter-spacing: -.01em; font-weight: 600; margin: 0 0 4px; }
+h3 { font-size: 16px; font-weight: 600; line-height: 1.45; margin: 0; }
+.lede { color: var(--sub); margin: 0 0 28px; max-width: 62ch; }
+.hint { color: var(--muted); font-size: 14px; margin: 4px 0 0; }
+.card { background: var(--surface-1); border: 1px solid var(--hairline); border-radius: 16px; box-shadow: var(--shadow); padding: 24px; }
+.stack > * + * { margin-top: 16px; }
+section + section { margin-top: 36px; }
+.row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+input[type=text], textarea { width: 100%; background: var(--surface-1); border: 1px solid var(--field); border-radius: 8px; padding: 10px 12px; }
+textarea { resize: vertical; min-height: 110px; line-height: 1.5; }
+.check { display: flex; gap: 8px; align-items: center; font-weight: 400; font-size: 14px; color: var(--sub); margin: 0; }
+.btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; padding: 10px 18px; font-size: 14px; font-weight: 600; border: 1px solid transparent; cursor: pointer; text-decoration: none; transition: transform var(--dur), background var(--dur); }
+.btn:hover { transform: translateY(-1px); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); }
+.btn.primary:hover { background: var(--accent-hover); }
+.btn.quiet { background: transparent; border-color: var(--hairline-strong); color: var(--ink); }
+.btn.small { padding: 6px 12px; font-size: 13px; }
+.btn:disabled { opacity: .55; cursor: default; transform: none; }
+.badge { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; background: var(--surface-2); color: var(--sub); white-space: nowrap; }
+.badge.good { background: var(--good-soft); color: var(--good); }
+.badge.warn { background: var(--warn-soft); color: var(--warn); }
+.head-meta { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 8px; }
+.head-meta .hint { margin: 0; }
+.back { font-size: 14px; color: var(--sub); text-decoration: none; display: inline-block; margin-bottom: 16px; }
+.back:hover { color: var(--ink); }
+
+.list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--hairline); }
+.list li { border-bottom: 1px solid var(--hairline); }
+.list a { display: grid; grid-template-columns: 136px minmax(0,1fr) auto; gap: 16px; align-items: baseline; padding: 12px 4px; text-decoration: none; color: var(--ink); }
+.list a:hover .t { text-decoration: underline; }
+.when { font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: nowrap; }
+.list .t { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.meta { font-size: 13px; color: var(--muted); white-space: nowrap; }
+.empty { color: var(--muted); font-size: 14px; padding: 12px 4px; }
+
+.steps { list-style: none; margin: 16px 0 0; padding: 0; }
+.steps li { display: grid; grid-template-columns: 64px 1fr; gap: 12px; padding: 7px 0; font-size: 14px; border-bottom: 1px solid var(--hairline); }
+.steps time { font-family: var(--mono); font-size: 12px; color: var(--muted); padding-top: 2px; }
+.steps li:last-child { font-weight: 600; }
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--muted); margin-right: 6px; vertical-align: 1px; }
+
+.finding { display: grid; grid-template-columns: 32px minmax(0,1fr); gap: 4px 16px; }
+.finding .n { font-size: 20px; font-weight: 600; color: var(--muted); line-height: 1.3; }
+.finding dl { margin: 12px 0 0; display: grid; grid-template-columns: 148px minmax(0,1fr); gap: 6px 16px; font-size: 14px; }
+.finding dt { color: var(--muted); }
+.finding dd { margin: 0; color: var(--sub); }
+.call { grid-column: 2; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--hairline); }
+.decided { font-size: 14px; color: var(--sub); margin: 0 0 10px; }
+.why { margin-top: 12px; }
+.why-row { margin-top: 12px; }
+.memlist li { display: grid; grid-template-columns: 96px minmax(0,1fr); gap: 16px; padding: 12px 4px; }
+.memlist .sub { display: block; color: var(--muted); font-size: 14px; margin-top: 2px; }
+.prose h3 { margin-top: 20px; }
+.prose p { color: var(--sub); margin: 6px 0 0; max-width: 64ch; }
+
+@media (max-width: 760px) {
+  .app { grid-template-columns: 1fr; }
+  .side { position: static; height: auto; margin: 8px 8px 0; padding: 10px; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .brand { padding: 0 4px; font-size: 17px; } .brand small, .note, .side-foot .theme .lbl { display: none; }
+  .nav { flex-direction: row; flex-wrap: wrap; width: 100%; } .nav a { height: 36px; padding: 0 10px; font-size: 13px; gap: 8px; }
+  .side-foot { margin: 0 0 0 auto; padding: 0; } .theme { width: 88px; }
+  main { padding: 24px 16px 64px; }
+  .grid2 { grid-template-columns: 1fr; }
+  .list a { grid-template-columns: 1fr auto; } .list .when { grid-column: 1 / -1; }
+  .finding dl { grid-template-columns: 1fr; gap: 2px; } .finding dt { margin-top: 6px; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <symbol id="i-store" viewBox="0 0 24 24"><path d="M4 10v10h16V10M3 7l2-3h14l2 3a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0zM10 20v-5h4v5"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></symbol>
+  <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M7 4h10a1 1 0 0 1 1 1v15l-6-4-6 4V5a1 1 0 0 1 1-1z"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.3M12 17.5h.01"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></symbol>
+</defs></svg>
+<div class="demo-bar"><span><b>Fictional demonstration.</b> The businesses, findings and decisions here are made up.</span><span>Nothing is sent anywhere.</span><a href="/services.html#examples">Back to Eren for Business</a></div>
+<div class="app">
+  <nav class="side" aria-label="Eren agent">
+    <div class="brand"><span class="mark" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 2.5h10M3 8h7M3 13.5h10M3 2.5v11" stroke-width="2" stroke-linecap="round" fill="none"/></svg></span><span>Eren<small>Agent</small></span></div>
+    <ul class="nav">
+      <li><a href="#analyze" data-view="analyze"><svg class="ico" aria-hidden="true"><use href="#i-store"/></svg><span>Analyze a lead</span></a></li>
+      <li><a href="#runs" data-view="runs"><svg class="ico" aria-hidden="true"><use href="#i-list"/></svg><span>Runs</span></a></li>
+      <li><a href="#memory" data-view="memory"><svg class="ico" aria-hidden="true"><use href="#i-bookmark"/></svg><span>Memory</span><span class="count" id="memCount"></span></a></li>
+      <li><a href="#help" data-view="help"><svg class="ico" aria-hidden="true"><use href="#i-help"/></svg><span>How it works</span></a></li>
+    </ul>
+    <div class="note"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg><strong>You stay in charge</strong><span>Every finding waits for a person to keep or dismiss it. Nothing reaches a client on its own.</span></div>
+    <div class="side-foot"><div class="theme" role="group" aria-label="Theme">
+      <button type="button" data-theme-set="light" aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="#i-sun"/></svg><span class="lbl">Light</span><span class="visually-hidden"> theme</span></button>
+      <button type="button" data-theme-set="dark" aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="#i-moon"/></svg><span class="lbl">Dark</span><span class="visually-hidden"> theme</span></button>
+    </div></div>
+  </nav>
+  <main id="main" tabindex="-1">
+    <noscript><h1>Eren agent</h1><p class="lede">This demonstration needs JavaScript to show its screens. It is fictional and sends nothing.</p></noscript>
+  </main>
+</div>
+<script>
+"use strict";
+/* Everything below is made-up demo data and runs only in this page. No request leaves the browser. */
+const $main = document.getElementById("main");
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const STRENGTH = { broken: "Confirmed broken", confirmed: "Confirmed from the site", told: "What the owner said", unsure: "Couldn't confirm from outside" };
+const RUNS = [
+  { id: "pinecrest", when: "Today 9:42", business: "Pinecrest Auto (fictional)", site: "pinecrestauto.example", findings: [
+    { id: "p1", text: "The Book a repair button on the home page goes to a page that doesn't exist, so online bookings never arrive.", fix: "Point the button at the working booking page, then book a test appointment from a phone.", seen: "Home page, top of the page", strength: "broken", matters: "a lot" },
+    { id: "p2", text: "The brakes, tires and inspections pages all share one title, so search results show the same line for each service.", fix: "Give each service page its own title that names the service and the town.", seen: "The three service pages", strength: "confirmed", matters: "some" },
+    { id: "p3", text: "The phone number in the header and the one on the Contact page are different, so some callers may reach the wrong line.", fix: "Ask the owner which number rings the front desk and use only that one everywhere.", seen: "Header and Contact page", strength: "unsure", matters: "a lot" },
+  ] },
+  { id: "maple", when: "Yesterday 16:05", business: "Maple Street Dental (fictional)", site: "maplestreetdental.example", findings: [
+    { id: "m1", text: "The new-patient form asks for insurance details twice, once at the top and again at the end.", fix: "Keep one insurance section and remove the repeat.", seen: "New patients page, the form", strength: "confirmed", matters: "some" },
+    { id: "m2", text: "The owner says the phones are busiest before 9, but the site gives no way to request an appointment outside office hours.", fix: "Add a short request form that the front desk answers when they open.", seen: "What the owner said, and the Contact page", strength: "told", matters: "a lot" },
+  ] },
+];
+const DECISIONS = {};   // finding id -> { decision, reason, only }
+const MEMORY = [{ decision: "dismissed", finding: "Add a live chat box to the website.", reason: "They answer every call themselves and don't want chat", business: "Maple Street Dental (fictional)", only: true, when: "Yesterday" }];
+
+let NAV = 0;
+function setNav(view) {
+  document.querySelectorAll(".nav a").forEach(a => a.dataset.view === view ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
+}
+function show(html, view) { $main.innerHTML = html; setNav(view); $main.focus({ preventScroll: true }); scrollTo(0, 0); }
+function memCount() { const el = document.getElementById("memCount"); el.textContent = MEMORY.length || ""; el.hidden = !MEMORY.length; }
+
+/* Analyze a lead: the form is filled in for the demo business, and starting it plays the run back. */
+function viewAnalyze() {
+  show(`<h1>Analyze a lead</h1>
+    <p class="lede">Eren reads the business's website without changing anything, applies the right method and returns a few findings, each tied to what it saw. You decide what's worth keeping.</p>
+    <form class="card stack" id="anForm" novalidate>
+      <div class="grid2">
+        <div><label for="anName">Business name</label><input type="text" id="anName" value="Pinecrest Auto (fictional)" autocomplete="off"></div>
+        <div><label for="anUrl">Website</label><input type="text" id="anUrl" value="pinecrestauto.example" autocomplete="off"></div>
+      </div>
+      <div><label for="anNotes">What you know about them</label>
+        <textarea id="anNotes" aria-describedby="anHint">Family-run repair shop. The owner says online bookings have gone quiet since the new site went up.</textarea>
+        <p class="hint" id="anHint">Eren treats this as what you were told, never as something it checked. In this demo it always analyzes the fictional Pinecrest Auto.</p></div>
+      <div class="row"><button class="btn primary" type="submit">Start the analysis</button></div>
+    </form>`, "analyze");
+  document.getElementById("anForm").onsubmit = e => { e.preventDefault(); location.hash = "#working"; };
+}
+
+const PLAY = ["Read the home page and every page it links to", "Followed each button and form to where it leads", "Checked the page titles search results would show", "Compared the contact details across pages", "Applied the website method to what it saw", "Checked each finding against what it saw", "Wrote 3 findings for you to review"];
+function viewWorking(n) {
+  show(`<a class="back" href="#runs">← Runs</a>
+    <div class="head-meta"><span class="badge"><span class="dot"></span>Working</span><span class="hint">Analysis · just now</span></div>
+    <h1>Pinecrest Auto (fictional)</h1>
+    <p class="lede">A real run takes a few minutes. This one is played back quickly.</p>
+    <section class="card"><h2>What Eren is doing</h2><ol class="steps" id="steps" aria-live="polite"></ol></section>`, "runs");
+  const list = document.getElementById("steps"), t0 = Date.now();
+  PLAY.forEach((words, i) => setTimeout(() => {
+    if (n !== NAV) return;
+    const li = document.createElement("li"), s = Math.round((Date.now() - t0) / 100) / 10;
+    li.innerHTML = `<time>0:${String(Math.floor(s)).padStart(2, "0")}</time><span>${esc(words)}</span>`;
+    list.appendChild(li);
+    if (i === PLAY.length - 1) setTimeout(() => { if (n === NAV) location.replace("#run/pinecrest"); }, reduce ? 0 : 900);
+  }, reduce ? 0 : 650 * (i + 1)));
+}
+
+function viewRun(id) {
+  const r = RUNS.find(x => x.id === id) || RUNS[0];
+  show(`<a class="back" href="#runs">← Runs</a>
+    <div class="head-meta"><span class="badge">Analysis</span><span class="hint">${esc(r.when)} · ${esc(r.site)}</span></div>
+    <h1>${esc(r.business)}</h1>
+    <p class="lede">${plural(r.findings.length, "finding", "findings")} held up against what Eren saw. Keep what's right. Dismiss what isn't and say why; Eren won't raise that kind of finding again.</p>
+    <section class="stack" aria-label="Findings">${r.findings.map((f, i) => `<article class="card finding">
+      <span class="n" aria-hidden="true">${i + 1}</span>
+      <div><h3 id="fh-${f.id}">${esc(f.text)}</h3>
+        <dl><dt>Fix</dt><dd>${esc(f.fix)}</dd><dt>Where it was seen</dt><dd>${esc(f.seen)}</dd><dt>How sure</dt><dd>${esc(STRENGTH[f.strength])} · matters ${esc(f.matters)}</dd></dl></div>
+      <div class="call" data-id="${f.id}" data-business="${esc(r.business)}"></div></article>`).join("")}</section>`, "runs");
+  document.querySelectorAll(".call").forEach(drawCall);
+}
+function drawCall(box) {
+  const id = box.dataset.id, d = DECISIONS[id], f = RUNS.flatMap(r => r.findings).find(x => x.id === id);
+  const state = d ? (d.decision === "kept" ? `<p class="decided" tabindex="-1"><span class="badge good">Kept</span></p>` : `<p class="decided" tabindex="-1"><span class="badge">Dismissed</span> ${esc(d.reason || "No reason given")}</p>`) : "";
+  const buttons = !d ? `<button type="button" class="btn small quiet" data-act="keep" aria-describedby="fh-${id}">Keep</button><button type="button" class="btn small quiet" data-act="dismiss" aria-describedby="fh-${id}" aria-expanded="false" aria-controls="why-${id}">Dismiss</button>`
+    : d.decision === "kept" ? `<button type="button" class="btn small quiet" data-act="dismiss" aria-describedby="fh-${id}" aria-expanded="false" aria-controls="why-${id}">Dismiss instead</button>`
+    : `<button type="button" class="btn small quiet" data-act="keep" aria-describedby="fh-${id}">Keep instead</button>`;
+  box.innerHTML = `${state}<div class="row">${buttons}</div>
+    <form class="why" id="why-${id}" hidden><label for="whyIn-${id}">Why dismiss it? Eren reads this next time.</label>
+      <input type="text" id="whyIn-${id}" placeholder="e.g. They don't take online bookings">
+      <div class="row why-row"><label class="check"><input type="checkbox" data-only> Only for this business</label><button type="submit" class="btn small quiet">Dismiss it</button></div></form>`;
+  const why = box.querySelector(".why"), dis = box.querySelector('[data-act="dismiss"]'), keep = box.querySelector('[data-act="keep"]');
+  const record = (decision, reason, only) => {
+    DECISIONS[id] = { decision, reason, only };
+    const at = MEMORY.findIndex(m => m.id === id); if (at >= 0) MEMORY.splice(at, 1);
+    MEMORY.unshift({ id, decision, finding: f.text, reason, business: box.dataset.business, only, when: "Just now" });
+    memCount(); drawCall(box); box.querySelector(".decided")?.focus();
+  };
+  if (keep) keep.onclick = () => record("kept", "", false);
+  if (dis) dis.onclick = () => { why.hidden = !why.hidden; dis.setAttribute("aria-expanded", String(!why.hidden)); if (!why.hidden) why.querySelector("input").focus(); };
+  why.onsubmit = e => { e.preventDefault(); record("dismissed", why.querySelector("input").value.trim(), why.querySelector("[data-only]").checked); };
+}
+
+function viewRuns() {
+  show(`<h1>Runs</h1><p class="lede">Every analysis, newest first. Each one keeps its full record.</p>
+    <ul class="list">${RUNS.map(r => `<li><a href="#run/${r.id}"><span class="when">${esc(r.when)}</span><span class="t">${esc(r.business)}</span><span class="meta">${plural(r.findings.length, "finding", "findings")}</span></a></li>`).join("")}</ul>`, "runs");
+}
+
+function viewMemory() {
+  const rows = MEMORY.map(m => `<li><span>${m.decision === "kept" ? '<span class="badge good">Kept</span>' : '<span class="badge">Dismissed</span>'}</span>
+    <span>${esc(m.finding)}<span class="sub">${esc([m.reason, m.only ? "only for " + m.business : m.business, m.when].filter(Boolean).join(" · "))}</span></span></li>`).join("");
+  show(`<h1>What Eren remembers</h1>
+    <p class="lede">Your Keep and Dismiss calls. Eren reads them before every analysis, and drops a kind of finding you dismissed even when it's worded differently. In this demo they last until you leave the page.</p>
+    ${rows ? `<ul class="list memlist">${rows}</ul>` : '<p class="empty">Nothing yet. Keep or dismiss a finding and it shows up here.</p>'}`, "memory");
+}
+
+function viewHelp() {
+  show(`<h1>How it works</h1>
+    <p class="lede">One rule throughout: Eren drafts, a person decides.</p>
+    <section class="card prose">
+      <h3>It looks before it says anything</h3><p>Eren reads the business's own website the way a visitor would, follows the buttons and forms, and changes nothing.</p>
+      <h3>Every finding shows where it came from</h3><p>Each one says what is wrong, the fix, where it was seen and how sure Eren is. If it couldn't confirm something from outside, it says so instead of guessing.</p>
+      <h3>No made-up numbers</h3><p>Without the business's real figures, Eren describes the effect in plain words rather than inventing a cost.</p>
+      <h3>You keep or dismiss</h3><p>Nothing reaches a client until a person keeps it. A dismissal asks why, and the next analysis reads that.</p>
+    </section>`, "help");
+}
+
+function route() {
+  const n = ++NAV;
+  const h = (location.hash || "#run/pinecrest").slice(1);
+  if (h === "working") return viewWorking(n);
+  if (h.startsWith("run/")) return viewRun(h.slice(4));
+  ({ analyze: viewAnalyze, runs: viewRuns, memory: viewMemory, help: viewHelp }[h] || (() => viewRun("pinecrest")))();
+}
+
+/* Theme: follows the system until a switch is pressed (remembered in this browser only). */
+const root = document.documentElement, darkSys = matchMedia("(prefers-color-scheme: dark)");
+function theme(t) {
+  if (t === "light" || t === "dark") root.dataset.theme = t; else delete root.dataset.theme;
+  const on = root.dataset.theme || (darkSys.matches ? "dark" : "light");
+  document.querySelectorAll("[data-theme-set]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.themeSet === on)));
+}
+let saved = null; try { saved = localStorage.getItem("eren-demo-theme"); } catch (e) {}
+theme(saved);
+document.querySelectorAll("[data-theme-set]").forEach(b => b.onclick = () => { try { localStorage.setItem("eren-demo-theme", b.dataset.themeSet); } catch (e) {} theme(b.dataset.themeSet); });
+
+memCount();
+addEventListener("hashchange", route);
+route();
+</script>
+</body>
+</html>
