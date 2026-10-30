@@ -1,4 +1,4 @@
-/* Eren site chrome behaviour: hover pill + capsule/progress/hide-on-scroll for the nav, footer wordmark spotlight. */
+/* Eren site chrome behaviour: hover pill + capsule/progress/hide-on-scroll for the nav. */
 (() => {
   const nav = document.querySelector('nav');
   if (nav) {
@@ -85,11 +85,6 @@
     document.addEventListener('focusin', e => { if (!dd.contains(e.target) && !panel.contains(e.target)) close(false); });
     addEventListener('resize', () => { if (!panel.hidden) place(); });
     addEventListener('scroll', () => { if (!panel.hidden && host.classList.contains('hide')) close(false); else if (!panel.hidden) place(); }, { passive: true });
-  });
-  const wm = document.querySelector('.wordmark');
-  if (wm) wm.addEventListener('pointermove', e => {
-    const r = wm.getBoundingClientRect();
-    wm.style.setProperty('--mx', (e.clientX - r.left) + 'px'); wm.style.setProperty('--my', (e.clientY - r.top) + 'px');
   });
   document.querySelectorAll('a[href="#top"]').forEach(a => a.addEventListener('click', e => {
     e.preventDefault(); scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });

@@ -1,4 +1,4 @@
-/* Eren site chrome: capsule header on scroll, closing CTA band, footer socials + wordmark.
+/* Eren site chrome: capsule header on scroll, closing CTA band, footer socials.
    Shared by every page with the main nav/footer. Respects prefers-reduced-motion. */
 
 /* Header: sliding hover pill, capsule on scroll (desktop), hide on scroll down (mobile) */
@@ -42,7 +42,7 @@ nav{transition:background .35s,border-color .35s,transform .35s}
 .assure li:before{content:"\2713";color:#91c2ed;font-weight:600}
 @media(max-width:800px){.cta2-in{grid-template-columns:1fr;align-items:start}.cta2-side{border-left:0;padding-left:0;border-top:1px solid var(--line-2);padding-top:26px}}
 
-/* Footer: social icons, bottom bar, oversized wordmark with a pointer spotlight */
+/* Footer: social icons, bottom bar */
 footer{padding-bottom:0!important}
 .socials{display:flex;gap:10px;margin-top:22px}
 .socials a{width:40px;height:40px;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;color:var(--sub);transition:border-color .2s,color .2s,background .2s,transform .2s}
@@ -50,9 +50,6 @@ footer{padding-bottom:0!important}
 .socials svg{width:17px;height:17px}
 .foot2-bar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:44px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
 .foot2-bar a{color:var(--sub)}.foot2-bar a:hover{color:#f3f2ee}
-.wordmark{--mx:50%;--my:60%;position:relative;margin-top:28px;height:clamp(120px,24vw,330px);overflow:hidden;user-select:none;-webkit-user-select:none}
-.wordmark span{display:block;font-weight:600;letter-spacing:-.07em;line-height:.8;font-size:clamp(160px,40vw,560px);white-space:nowrap;margin-left:-.04em;background:radial-gradient(260px circle at var(--mx) var(--my),rgba(145,194,237,.55),rgba(145,194,237,0) 70%),linear-gradient(180deg,rgba(243,242,238,.11) 0%,rgba(243,242,238,.02) 85%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
-@media(hover:none){.wordmark span{background:linear-gradient(180deg,rgba(145,194,237,.22) 0%,rgba(243,242,238,.02) 85%);-webkit-background-clip:text;background-clip:text}}
 
 @media(prefers-reduced-motion:reduce){.marq-track{animation:none}nav,.nav-in,.nav-pill{transition:none}}
 
