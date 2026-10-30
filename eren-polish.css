@@ -61,7 +61,6 @@ h2 em,.sec-h em,.closer-title em,.cta2 h2 em,.shift .big b{font-family:inherit!i
 .engagement-price strong{color:#f3f2ee!important}
 .engagement .text-link{color:#f3f2ee!important;border-color:rgba(196,215,235,.28)!important}
 .cta2{background:var(--bg,#0b111b)!important}
-.wordmark span{background:linear-gradient(180deg,rgba(243,242,238,.11) 0%,rgba(243,242,238,.02) 85%)!important;-webkit-background-clip:text!important;background-clip:text!important}
 /* Services: the flow animation stays in its card; the dots behind the headline go */
 #cfield,.cfield{display:none!important}
 
