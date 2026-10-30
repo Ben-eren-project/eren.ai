@@ -140,8 +140,8 @@
 
     <form id="intake" novalidate>
       <fieldset class="step" data-step="business">
-        <h1 class="step-title" id="packageTitle">Start with Diagnose.</h1>
-        <p class="step-why" id="packageIntro">Tell us the one problem you want to understand. We start with a free First Look; the paid Diagnose begins only after you agree to it.</p>
+        <h1 class="step-title" id="packageTitle">Discuss a Diagnose.</h1>
+        <p class="step-why" id="packageIntro">Describe the problem you want to investigate. We’ll confirm the scope, available evidence and fee with you before paid work starts.</p>
         <div class="step-body">
           <p class="sub">About your business</p>
           <div class="fields">
@@ -158,9 +158,9 @@
         <h2 class="step-title">Define the problem</h2>
         <p class="step-why">One problem, in your own words. Say what you see happening. You don’t need numbers to start.</p>
         <div class="step-body">
-          <div class="f full"><label for="diagnoseProblem">What is the one problem you want us to diagnose? <span class="req">*</span></label><textarea id="diagnoseProblem" style="min-height:130px" placeholder="For example: inquiries arrive, but too few turn into quotes. Tell us what you see rather than estimating a loss." required></textarea></div>
+          <div class="f full"><label for="diagnoseProblem">What is the one problem you want us to diagnose? <span class="req">*</span></label><textarea id="diagnoseProblem" style="min-height:130px" placeholder="For example: revised job details reach the office, but the team still uses an older version. Describe what you have noticed." required></textarea></div>
           <div class="f full"><label for="diagnoseFlow">How does that process work today?</label><textarea id="diagnoseFlow" placeholder="Walk us through what happens, from the first customer contact to the outcome."></textarea></div>
-          <div class="f full"><label for="diagnoseEvidence">What evidence can you share?</label><textarea id="diagnoseEvidence" placeholder="Examples: inquiry records, a service page, messages, a booking flow, or feedback. It's fine if you don't have numbers yet."></textarea></div>
+          <div class="f full"><label for="diagnoseEvidence">What evidence can you share?</label><textarea id="diagnoseEvidence" placeholder="Describe the records or examples available, such as a page, job record or customer feedback. Do not paste private customer information here."></textarea></div>
           <div class="f full"><label for="diagnoseOutcome">What would a useful fix achieve?</label><textarea id="diagnoseOutcome" placeholder="Describe the change you'd want to see, even if you don't know the solution yet."></textarea></div>
           <div class="f full"><p class="flow-q" id="focusQ">Where does this problem show up? <span class="opt">Pick any</span></p>
             <div class="chips" role="group" aria-labelledby="focusQ">
@@ -178,15 +178,15 @@
         <h2 class="step-title">Scope the change</h2>
         <p class="step-why">Describe the change and what it depends on. You get an exact quote before any work begins.</p>
         <div class="step-body">
-          <div class="f full"><label for="buildChange">What improvement would you like us to make? <span class="req">*</span></label><textarea id="buildChange" style="min-height:130px" placeholder="For example: a clearer service page, a follow-up process, or a cleaner website-to-booking handoff." required></textarea></div>
+          <div class="f full"><label for="buildChange">What improvement would you like us to make? <span class="req">*</span></label><textarea id="buildChange" style="min-height:130px" placeholder="For example: restructure service pages, give the team one current job record, or connect tools that require repeated entry." required></textarea></div>
           <div class="f full"><p class="flow-q" id="stageQ">Have you completed an Eren Diagnose for this problem?</p>
             <div class="chips" role="radiogroup" aria-labelledby="stageQ">
               <label class="chip"><input type="radio" name="diagnoseStage" value="Yes, Diagnose is complete">Yes, Diagnose is complete</label>
               <label class="chip"><input type="radio" name="diagnoseStage" value="Not yet">Not yet</label>
             </div></div>
           <div class="f full"><label for="buildFinding">What did Diagnose identify, or what have you already agreed to change?</label><textarea id="buildFinding" placeholder="Share the recommendation or decision if you have it. If you haven't done Diagnose, leave this blank."></textarea></div>
-          <div class="f full"><label for="buildDeliverable">What should be delivered?</label><textarea id="buildDeliverable" placeholder="Describe the page, process, template, or tool you expect to receive."></textarea></div>
-          <div class="f full"><label for="buildSuccess">How will you know the work is complete?</label><textarea id="buildSuccess" placeholder="List any must-haves, acceptance checks, or constraints you already know."></textarea></div>
+          <div class="f full"><label for="buildDeliverable">What do you think needs to change? (If known)</label><textarea id="buildDeliverable" placeholder="Describe the page, process, template, or tool you expect to receive."></textarea></div>
+          <div class="f full"><label for="buildSuccess">How will you know the work is complete?</label><textarea id="buildSuccess" placeholder="What should be easier or more reliable afterward? Include any constraints you already know."></textarea></div>
           <div class="f full"><label for="buildDependencies">What systems or people does this depend on?</label><textarea id="buildDependencies" placeholder="For example: website platform, booking tool, CRM, approvals, or existing content. Do not send passwords here."></textarea></div>
           <div class="f full"><label for="buildTiming">Is there a date that matters? <span class="opt">optional</span></label><input id="buildTiming" placeholder="Tell us why the date matters"></div>
         </div>
@@ -196,7 +196,7 @@
 
       <fieldset class="step" data-step="contact">
         <h2 class="step-title">How to reach you</h2>
-        <p class="step-why">So we can reply about your request. Nothing is booked or sent to a client automatically.</p>
+        <p class="step-why">So we can reply about your request.</p>
         <div class="step-body">
           <div class="fields">
             <div class="f"><label for="you">Your name <span class="req">*</span></label><input id="you" autocomplete="name" maxlength="200" placeholder="First &amp; last" required></div>
@@ -209,14 +209,14 @@
         </div>
         <div class="send-row"><button type="button" class="step-back">Back</button><button type="submit" class="send" id="sendBtn">Request a Diagnose conversation</button></div>
         <span class="err" id="err" role="alert" hidden></span>
-        <div class="trust">No payment is taken here. Nothing is booked or sent to a client automatically. Please do not enter passwords or sensitive customer records.</div>
+        <div class="trust">This sends your request to Eren. It does not book a call, take payment or start paid work. Please do not enter passwords or sensitive customer records.</div>
       </fieldset>
     </form>
 
     <div class="done" id="done">
       <div class="ok" aria-hidden="true">✓</div>
-      <h2 id="doneHead">Thanks — we've got it.</h2>
-      <p id="doneMsg">Your request is with Eren. We'll review the details and contact you about the next step. No payment or booking has been made.</p>
+      <h2 id="doneHead">Thanks — your request has been received.</h2>
+      <p id="doneMsg">We'll review the details and contact you about the next step. No call has been booked and no paid work has started.</p>
     </div>
   </main>
 
@@ -248,12 +248,12 @@
   // Empty means the API is available on this page's origin.
   var EREN_API = "https://eren-ops.onrender.com";
   var packages = {
-    diagnose: {ey:"Package 1 · Eren Diagnose", title:"Start with Diagnose.",
-      intro:"Tell us the one problem you want to understand. We start with a free First Look; the paid Diagnose begins only after you agree to it.",
+    diagnose: {ey:"Package 1 · Eren Diagnose", title:"Discuss a Diagnose.",
+      intro:"Describe the problem you want to investigate. We’ll confirm the scope, available evidence and fee with you before paid work starts.",
       button:"Request a Diagnose conversation", primary:"diagnoseProblem",
       fields:[["Business context","about"],["Problem to diagnose","diagnoseProblem"],["Current process","diagnoseFlow"],["Evidence available","diagnoseEvidence"],["Desired outcome","diagnoseOutcome"]]},
-    build: {ey:"Package 2 · Eren Build", title:"Ask about Build.",
-      intro:"Tell us the improvement you'd like us to make. Build follows a defined Diagnose and receives an exact quote before any work begins.",
+    build: {ey:"Package 2 · Eren Build", title:"Discuss a Build.",
+      intro:"Share the change you are considering and any Diagnose findings. The diagnosis and your priorities set the scope; we agree the price and acceptance checks before work starts.",
       button:"Ask about Build", primary:"buildChange",
       fields:[["Business context","about"],["Change requested","buildChange"],["Diagnose finding or agreed change","buildFinding"],["Expected deliverable","buildDeliverable"],["Acceptance criteria","buildSuccess"],["Systems and dependencies","buildDependencies"],["Timing","buildTiming"]]}
   };
@@ -262,9 +262,9 @@
   var selected = packages[packageKey];
   var isFirstLook = new URLSearchParams(window.location.search).get("intent") === "first-look" && !requested;
   if (isFirstLook) {
-    selected = Object.assign({}, selected, {ey:"First Look · Free", title:"Start with a First Look.",
-      intro:"A free 15-minute fit call and one real observation about your website or workflow. Share the question on your mind; a full diagnosis is a separate paid engagement.",
-      button:"Request my free First Look"});
+    selected = Object.assign({}, selected, {ey:"First Look · Free", title:"Request a free First Look.",
+      intro:"Share one question about your website or workflow. We’ll arrange a short conversation to establish fit and discuss an initial observation. A full diagnosis is a separate paid engagement.",
+      button:"Request a free First Look"});
     document.querySelector('label[for="diagnoseProblem"]').innerHTML = 'What would you like us to look at? <span class="req">*</span>';
     ["diagnoseFlow","diagnoseEvidence","diagnoseOutcome"].forEach(function(id){document.getElementById(id).closest(".f").hidden=true;});
     selected.fields = [["Business context","about"],["What they want looked at","diagnoseProblem"]];
@@ -363,10 +363,10 @@
       return response.json();
     }).then(function(saved){
       if(!saved || typeof saved.id!=="number") throw new Error("No lead confirmation");
-      document.getElementById("doneHead").textContent="Thanks, "+value("you").split(" ")[0]+" — we've got it.";
+      document.getElementById("doneHead").textContent="Thanks, "+value("you").split(" ")[0]+" — your request has been received.";
       form.style.display="none";done.classList.add("show");if(window.ErenFlow) window.ErenFlow.sent();window.scrollTo({top:0,behavior:"smooth"});var dh=document.getElementById("doneHead");dh.setAttribute("tabindex","-1");dh.focus({preventScroll:true});
     }).catch(function(){
-      showError("Your request was not sent. Please try again, or email ben@erenforbusiness.com or call (815) 520-0102.");
+      showError("We couldn’t confirm receipt of your request. Please contact ben@erenforbusiness.com or (815) 520-0102 before submitting again.");
       btn.disabled=false;btn.textContent=selected.button;
     });
   });

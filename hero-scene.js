@@ -1,5 +1,5 @@
 /* Home hero scene: one made-up business week on a perspective grid. A "now" frame sweeps
-   Monday to Friday; as it passes each moment, Eren's call appears (worth fixing / leave it).
+   Monday to Friday; as it passes each moment, Eren's call appears (investigate / leave it).
    Click a point for the detail, drag to turn the view, switch the example business, hide a
    lane, pause. No network requests, no storage except the First Look box hand-off. */
 (function () {
@@ -22,7 +22,7 @@
     });
     // Cycle example questions in the placeholder until the visitor types.
     var examples = [
-      'Customers say they can’t find our prices on a phone.',
+      'Customers ask which of our services fits their job.',
       'We retype every invoice into QuickBooks.',
       'People keep calling to ask if their order is ready.',
       'Is our website worth rebuilding, or just fixing?'
@@ -63,23 +63,23 @@
       { l: 't', t: 1.38, when: 'Tue 10:05 AM', label: 'Invoice retyped', sub: 'into QuickBooks', call: 'fix',
         title: 'Every invoice is typed twice.',
         saw: 'The counter writes the ticket, then someone types the same invoice into QuickBooks at night.',
-        say: 'Connect the two before buying anything new. The software they already pay for can take it.' },
+        say: 'Check whether the ticket system and the current accounting plan support a reliable transfer before proposing a connection.' },
       { l: 'f', t: 2.62, when: 'Wed 3:05 PM', label: '“Is it ready?” calls', sub: 'same question, all day', call: 'fix',
         title: 'Customers call to ask where their repair stands.',
         saw: 'The answer is on a paper tag in the back, so every call pulls someone off the bench.',
-        say: 'A status the counter can see in one place, and a text when the repair is ready.' },
+        say: 'Give the counter access to the current job status. If updates would help, prepare a message for staff to check and send.' },
       { l: 'w', t: 3.28, when: 'Thu 11:00 AM', label: 'Booking link', sub: 'works on phones', call: 'leave',
         title: 'The booking link works.',
         saw: 'Checked on a phone: it loads, takes the booking and confirms by text.',
         say: 'Leave it alone. Not everything worth looking at is worth changing.' },
       { l: 't', t: 3.82, when: 'Thu 4:40 PM', label: 'Parts orders', sub: 'in one email thread', call: 'leave',
         title: 'Parts are ordered by email.',
-        saw: 'One person owns it, with one main supplier, and nothing gets lost.',
+        saw: 'One person owns it, with one main supplier, and the owner reports no unresolved parts orders in the example reviewed.',
         say: 'Leave it. It’s old, but it isn’t broken.' },
       { l: 'w', t: 4.62, when: 'Fri 8:15 PM', label: 'After-hours call', sub: 'goes to a full voicemail', call: 'fix',
         title: 'Calls after closing hit a full voicemail box.',
         saw: 'Friday evening, a caller couldn’t leave a message and nobody knew they had called.',
-        say: 'A short text-back for missed calls, and a set time each morning to reply.' }
+        say: 'Make room for messages, confirm the greeting and assign a callback time. Check the call log for requests that still need a reply.' }
     ]},
     bakery: { name: 'Bakery', ev: [
       { l: 'w', t: .3, when: 'Mon 7:05 AM', label: 'Cake orders', sub: 'no pickup time', call: 'fix',
@@ -89,7 +89,7 @@
       { l: 'f', t: 1.15, when: 'Tue 5:30 AM', label: 'Bake list', sub: 'built from 3 places', call: 'fix',
         title: 'The morning bake list is built by hand.',
         saw: 'Website orders, phone orders and a notebook are copied onto one sheet before the ovens start.',
-        say: 'One list the ovens work from, filled in as orders arrive.' },
+        say: 'Compare the three order sources and agree one checked bake list, including how changes reach the baker.' },
       { l: 't', t: 1.85, when: 'Tue 2:00 PM', label: 'Card reader', sub: 'matches the till', call: 'leave',
         title: 'Payments and daily totals are clean.',
         saw: 'The card reader and the till agree every day without anyone fixing them up.',
@@ -97,11 +97,11 @@
       { l: 'f', t: 3.05, when: 'Thu 4:45 PM', label: 'Wholesale orders', sub: 'by text message', call: 'fix',
         title: 'Standing orders from cafés arrive by text.',
         saw: 'A change to Friday’s order was in a text thread and didn’t reach the bake list.',
-        say: 'A standing-order sheet each café can update, feeding the same bake list.' },
-      { l: 't', t: 3.9, when: 'Thu 6:10 PM', label: 'Allergen questions', sub: 'asked on every call', call: 'fix',
-        title: 'The same allergen questions come in by phone.',
-        saw: 'The answers are in the recipe cards, but only the bakers can read them quickly.',
-        say: 'An allergen page drafted from the recipe cards with AI, and every line checked by a baker before it goes up.' },
+        say: 'Record the requested change and have the bakery confirm it before updating the agreed bake list.' },
+      { l: 't', t: 3.9, when: 'Thu 6:10 PM', label: 'Collection questions', sub: 'same answers by phone', call: 'fix',
+        title: 'Staff look up the same collection instructions.',
+        saw: 'In this fictional example, current collection instructions sit in separate documents.',
+        say: 'An assistant could draft answers from approved collection instructions, cite the source and leave staff to check them.' },
       { l: 'w', t: 4.7, when: 'Fri 9:00 PM', label: 'Weekend preorders', sub: 'form works', call: 'leave',
         title: 'The weekend preorder form works.',
         saw: 'It’s short, works on a phone and confirms by email.',
@@ -111,7 +111,7 @@
       { l: 'w', t: .5, when: 'Mon 8:40 AM', label: 'Quote request', sub: 'no drawing upload', call: 'fix',
         title: 'Drawings arrive separately from quote requests.',
         saw: 'Buyers fill in the form, then email the drawing, and the two are matched by hand.',
-        say: 'Let the drawing come in with the request, with the job type already filled in.' },
+        say: 'Check what the estimator needs and whether the existing form can attach the drawing to the same request.' },
       { l: 'f', t: 1.3, when: 'Tue 7:15 AM', label: 'Revised drawing', sub: 'old print on the floor', call: 'fix',
         title: 'A revision reached the office, not the floor.',
         saw: 'Tuesday’s revised drawing was in the inbox while the floor worked from Monday’s print.',
@@ -126,12 +126,12 @@
         say: 'A simple status for each job that the office can read out or send.' },
       { l: 'w', t: 3.5, when: 'Thu 9:00 AM', label: 'Capabilities page', sub: 'limits listed', call: 'leave',
         title: 'The shop’s limits are stated plainly.',
-        saw: 'Sheet sizes, tube sizes and finishes are listed, so poor-fit jobs filter themselves out.',
+        saw: 'Sheet sizes, tube sizes and finishes are listed, so buyers can check the stated limits before making a request.',
         say: 'Leave it alone.' },
       { l: 't', t: 4.25, when: 'Thu 2:10 PM', label: 'Job hours', sub: 'kept in two places', call: 'fix',
         title: 'Hours are tracked twice and matched on Friday.',
         saw: 'Timecards and a spreadsheet both hold job hours, and someone reconciles them every week.',
-        say: 'Connect the timecards to the job record so the hours land once.' }
+        say: 'Check why both records exist and whether the current tools can transfer hours without losing the checks the team needs.' }
     ]}
   };
 
@@ -147,8 +147,8 @@
       var b = document.createElement('button');
       b.type = 'button';
       b.className = 'chip ' + (e.call || '');
-      b.setAttribute('aria-label', e.when + ', ' + LANES[e.l].name + ': ' + e.label + ', ' + e.sub + '. ' + (e.call === 'fix' ? 'Worth fixing.' : 'Leave it.'));
-      var tag = document.createElement('span'); tag.className = 'tag'; tag.textContent = e.call === 'fix' ? 'Fix' : 'Leave';
+      b.setAttribute('aria-label', e.when + ', ' + LANES[e.l].name + ': ' + e.label + ', ' + e.sub + '. ' + (e.call === 'fix' ? 'Investigate.' : 'Leave it.'));
+      var tag = document.createElement('span'); tag.className = 'tag'; tag.textContent = e.call === 'fix' ? 'Check' : 'Leave';
       var txt = document.createElement('span'); txt.textContent = e.label + ' ';
       var sm = document.createElement('small'); sm.textContent = e.sub;
       txt.appendChild(sm);
@@ -169,7 +169,7 @@
     card.querySelector('.saw').textContent = e.saw;
     var call = card.querySelector('.call');
     call.textContent = '';
-    var b = document.createElement('b'); b.className = e.call; b.textContent = e.call === 'fix' ? 'Worth fixing' : 'Leave it';
+    var b = document.createElement('b'); b.className = e.call; b.textContent = e.call === 'fix' ? 'Investigate' : 'Leave it';
     call.appendChild(b); call.appendChild(document.createTextNode(e.say));
     card.hidden = false;
   }
