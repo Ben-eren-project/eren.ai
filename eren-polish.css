@@ -1,0 +1,106 @@
+/* Eren polish layer (30 Oct 2026). Loaded last on every page, so it settles what the page styles left uneven:
+   one button, one type scale (12 13 14 16 20 24 32 48 64), weights 400 and 600, sentence-case labels, the Lora
+   italic on the home hero line only, no glows, no light slab, no numbered FAQ, a quiet static problem strip.
+   Method: eren-design + eren-ui-craft, audited with unslop (Damir Sokolovsky, CC BY 4.0). */
+
+/* ---------- Buttons: one pill, 44px in the page, 36px in the nav ---------- */
+.btn,.hx-p .pbtn{border-radius:999px!important;min-height:44px;padding:0 20px!important;display:inline-flex!important;align-items:center;justify-content:center;gap:8px;font-size:14px!important;font-weight:600!important;line-height:1.2!important;letter-spacing:0!important;text-transform:none!important;box-shadow:none!important;filter:none!important;animation:none!important;transition:background-color .15s,border-color .15s,color .15s,transform .15s!important}
+.btn:not(.ghost),.hx-p .pbtn.solid{background:#a8d1f1!important;color:#0b111b!important;border:1px solid #a8d1f1!important}
+.btn:not(.ghost):hover,.hx-p .pbtn.solid:hover{background:#c2e1f8!important;border-color:#c2e1f8!important}
+.btn.ghost,.hx-p .pbtn.line{background:transparent!important;color:#f3f2ee!important;border:1px solid rgba(196,215,235,.28)!important}
+.btn.ghost:hover,.hx-p .pbtn.line:hover{border-color:rgba(196,215,235,.6)!important;background:rgba(145,194,237,.06)!important}
+.btn:active,.hx-p .pbtn:active{transform:scale(.98)}
+.btn.sm,.nav-r .btn,nav .btn{min-height:36px;padding:0 16px!important;font-size:13px!important}
+/* Home hero: the one-line box is the main way in; Start is the quiet second door */
+.hx-p .hxp-cta .pbtn.solid{background:transparent!important;color:#f3f2ee!important;border:1px solid rgba(196,215,235,.28)!important}
+.hx-p .hxp-cta .pbtn.solid:hover{border-color:rgba(196,215,235,.6)!important;background:rgba(145,194,237,.06)!important}
+.hx-p .ask-go{background:#a8d1f1!important;color:#0b111b!important;border-color:#a8d1f1!important;border-radius:999px!important;font-weight:600!important;font-size:13px!important;padding:0 14px!important;min-height:36px}
+.hxp-cta .hxp-link{color:#f3f2ee;font-size:14px;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(196,215,235,.28);padding:10px 0 2px;align-self:center}
+.hxp-cta .hxp-link:hover{border-color:#a8d1f1}
+.hx-p .hxp-cta{align-items:center;gap:24px!important}
+
+/* ---------- Type: two weights, one scale ---------- */
+b,strong{font-weight:600}
+.brand{font-weight:600!important;font-size:20px!important}
+.marker .dot,.stage .role,.stage .step,.tl,.principle b,.principle .k,.badge,.tag,.who,.flx-k,dl dt,.q h4{font-weight:600!important}
+h1 em{font-weight:400}
+/* Small text never under 12px; in-between sizes snap to the scale */
+.ey,.shell>.ey,.ey.grad-text,.section-index{font-size:13px!important;letter-spacing:0!important;text-transform:none!important;font-weight:600!important;color:#91c2ed!important;background:none!important;-webkit-text-fill-color:#91c2ed!important}
+footer h4{font-size:13px!important;letter-spacing:0!important;text-transform:none!important;font-weight:600!important;color:var(--sub,#b5c0ce)!important}
+.assure li{font-size:14px!important}
+.facts b{font-size:24px!important;font-weight:400!important}
+.facts span,span>small{font-size:13px!important}
+.hxp-fine,.ask-note{font-size:12px!important}
+.flow-sheet-top span,.flow-sheet-bottom span,.sheet-bottom span,.row dt,.step .n,.mini .h,.mini span,.stage .role,.srow .num,.flx-f span,.growth-three article>span{font-size:12px!important;letter-spacing:0!important;text-transform:none!important}
+.mini .row,.row i,.price small,.xcard-kind{font-size:13px!important}
+.guide-body h2,.guide-note h2{font-size:32px!important}
+.guide-body h3,.belief h3,.blk h3,.svc3-item h3{font-size:20px!important}
+.step h3{font-size:24px!important}
+.step .price,.fl-note p,.sec-sub,.svc3-say{font-size:16px!important}
+.xcard-t,.growth-three article>h3,.fx-bring-list li>span{font-size:20px!important}
+.xcard-d,.belief p,.tl-list .body p,.tl,.lrow,.flx-notes li,.txt p{font-size:14px!important}
+.tl-list .body h4,.txt h4{font-size:16px!important}
+.tr{font-size:12px!important}
+/* Labels in sentence case (kept where they help scanning) */
+.fl-note h3,.stage .step,.principle .k,.badge,.panel .tag,.fl-note .tag,.mini .h,dl dt,.flow-sheet-top span,.role,.growth-three article>span{text-transform:none!important;letter-spacing:0!important}
+.fl-note h3{font-size:13px!important}
+.exhead .badge{background:transparent!important;color:#91c2ed!important;border:1px solid rgba(145,194,237,.4)!important;font-size:12px!important;padding:2px 10px!important;border-radius:999px!important}
+/* The decision pack on Services is a document: its field labels stay small caps-free but keep the mono */
+dl dt{font-size:12px!important}
+dl dd{font-size:13px!important}
+
+/* ---------- One italic line: the home hero. Everywhere else headings are plain ---------- */
+h2 em,.sec-h em,.closer-title em,.cta2 h2 em,.shift .big b{font-family:inherit!important;font-style:normal!important;color:inherit!important;-webkit-text-fill-color:currentColor!important;letter-spacing:inherit!important;background:none!important}
+
+/* ---------- Surfaces: no light slab, no glows ---------- */
+.engagement{background:#101a27!important;color:#f3f2ee!important;border-top:1px solid rgba(196,215,235,.14);border-bottom:1px solid rgba(196,215,235,.14)}
+.engagement h2{color:#f3f2ee!important}
+.engagement p,.engagement-price span{color:#b5c0ce!important}
+.engagement .ey{color:#91c2ed!important}
+.engagement-price{border-left-color:rgba(196,215,235,.24)!important;border-top-color:rgba(196,215,235,.24)!important}
+.engagement-price strong{color:#f3f2ee!important}
+.engagement .text-link{color:#f3f2ee!important;border-color:rgba(196,215,235,.28)!important}
+.cta2{background:var(--bg,#0b111b)!important}
+.wordmark span{background:linear-gradient(180deg,rgba(243,242,238,.11) 0%,rgba(243,242,238,.02) 85%)!important;-webkit-background-clip:text!important;background-clip:text!important}
+/* Services: the flow animation stays in its card; the dots behind the headline go */
+#cfield,.cfield{display:none!important}
+
+/* ---------- Not a sequence, so no numbers ---------- */
+.faq-x summary{grid-template-columns:minmax(0,1fr) 28px!important}
+.faq-x summary::before{content:none!important;display:none!important}
+.q .qn{display:none!important}
+
+/* ---------- The problem strip: still, wrapped, readable ---------- */
+.marq{-webkit-mask-image:none!important;mask-image:none!important;padding:20px 0!important}
+.marq-track{animation:none!important;width:auto!important;flex-wrap:wrap;justify-content:center;row-gap:8px;max-width:1160px;margin:0 auto;padding:0 24px}
+.marq-track span[aria-hidden="true"],.marq-track .dup{display:none!important}
+.marq-track span:after{display:none!important}
+.marq-track span:before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:#e8b56a;opacity:.8;margin-right:10px;vertical-align:middle}
+
+/* ---------- How Eren operates: the example sits beside its explanation ---------- */
+@media(min-width:1001px){
+  section:has(.tl-list)>.shell{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:64px;align-items:start}
+  section:has(.tl-list)>.shell>.exhead,section:has(.tl-list)>.shell>.sec-h,section:has(.tl-list)>.shell>.sec-sub{grid-column:1}
+  section:has(.tl-list)>.shell{grid-template-rows:auto auto auto 1fr}
+  section:has(.tl-list)>.shell>.sec-h{margin-top:16px}
+  section:has(.tl-list)>.shell>.tl-list{grid-column:2;grid-row:1 / span 4;margin-top:0!important}
+}
+
+/* ---------- Phone: a menu button instead of six squeezed links ---------- */
+.nav-menu{display:none}
+@media(max-width:760px){
+  nav .nav-in{position:relative}
+  nav .nav-links.collapsible{display:none!important}
+  nav .nav-links.collapsible.open{display:flex!important;flex-direction:column;align-items:stretch;gap:2px!important;position:absolute;left:12px;right:12px;top:calc(100% + 6px);z-index:70;background:#101c2b;border:1px solid rgba(196,215,235,.22);border-radius:14px;padding:8px;box-shadow:0 24px 60px -20px rgba(0,0,0,.8)}
+  nav .nav-links.collapsible.open a{padding:12px 14px;border-radius:9px;font-size:16px!important;min-height:44px}
+  nav .nav-links.collapsible.open a.on:after{display:none}
+  nav .nav-links.collapsible.open a.on{background:rgba(145,194,237,.10)}
+  .nav-menu{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 14px;border-radius:999px;border:1px solid rgba(196,215,235,.28);background:transparent;color:#f3f2ee;font:600 13px/1 Inter,system-ui,sans-serif;cursor:pointer}
+  .nav-menu:focus-visible{outline:2px solid #a8d1f1;outline-offset:2px}
+  .nav-r .btn{padding:0 12px!important;font-size:12px!important;white-space:nowrap}
+  .nav-menu{padding:0;width:36px;justify-content:center}
+  .nav-menu .lbl{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .nav-r{gap:8px!important}
+}
+@media(max-width:370px){.nav-r .btn{display:none!important}}
+@media(prefers-reduced-motion:reduce){.btn,.hx-p .pbtn{transition:none!important}}
