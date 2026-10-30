@@ -1,0 +1,143 @@
+/* Eren redesign layer (30 Oct 2026). Loaded after eren-polish.css on every page.
+   Same pages, words and prices; a visibly different build: a stronger type scale, more air, a rhythm of
+   surfaces (page, raised band, framed card) instead of one flat dark sheet split by hairlines, and the
+   working pieces (hero scene, price, steps, call to action) set in framed panels.
+   Tokens: Eren navy brand, one azure accent, amber only for FIX marks. Method: eren-design + eren-ui-craft + unslop. */
+
+:root{
+  --rd-bg:#0b111b;          /* page */
+  --rd-band:#0e1623;        /* raised band behind a whole section */
+  --rd-card:#121c2b;        /* framed panels and cards */
+  --rd-card2:#16233a;       /* card on a band */
+  --rd-line:rgba(196,215,235,.12);
+  --rd-line2:rgba(196,215,235,.22);
+  --rd-ink:#f3f2ee; --rd-sub:#b5c0ce; --rd-muted:#99a7b8; --rd-azure:#a8d1f1; --rd-azure2:#91c2ed; --rd-amber:#e8b56a;
+  --rd-sec:clamp(72px,8vw,112px);
+  --rd-r:20px; --rd-r2:14px;
+}
+
+/* ---------- Rhythm: bigger sections, surfaces instead of hairlines ---------- */
+section{padding-block:var(--rd-sec)!important;border-bottom:0!important}
+.shell{max-width:1200px}
+.rd-band,.page-index #what,.page-index #how,.page-index #questions{background:var(--rd-band)!important;border-top:1px solid var(--rd-line);border-bottom:1px solid var(--rd-line)!important}
+
+/* ---------- Type: a real scale with a big step between levels ---------- */
+.sec-h,section>.shell>h2,section>.shell:not(.guide-layout)>div>h2:not(.cta2 h2):not(.engagement h2){font-size:clamp(36px,4.6vw,60px)!important;line-height:1.04!important;letter-spacing:-.035em!important;font-weight:400!important;max-width:18ch;text-wrap:balance}
+.sec-sub,section .sec-h + p{font-size:clamp(17px,1.4vw,19px)!important;line-height:1.6;color:var(--rd-sub);max-width:56ch}
+.ey,.section-index{margin-bottom:20px!important;display:block}
+.btn,.hx-p .pbtn{min-height:48px;padding:0 24px!important;font-size:15px!important}
+.btn.sm,.nav-r .btn,nav .btn{min-height:38px;padding:0 18px!important;font-size:13px!important}
+
+/* ---------- Nav: a solid bar that stays put ---------- */
+nav{position:sticky!important;top:0;z-index:60;background:rgba(11,17,27,.92)!important;-webkit-backdrop-filter:saturate(1.2) blur(10px);backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid var(--rd-line)!important}
+
+/* ================= HOME ================= */
+/* Hero: larger headline, the scene in a framed window */
+.page-index .hx-p .hxp-grid{gap:clamp(32px,4vw,64px);padding-block:clamp(56px,7vw,104px) clamp(56px,6vw,88px)}
+.page-index .hero.hx-p h1{font-size:clamp(44px,4.9vw,72px)!important;line-height:1.02!important;letter-spacing:-.045em!important;margin-top:24px}
+.page-index .hx-p .scene{isolation:isolate;margin:24px!important}
+.page-index .hx-p .scene::before{content:"";position:absolute;inset:-24px;z-index:-1;border:1px solid var(--rd-line2);border-radius:var(--rd-r);background:var(--rd-card);pointer-events:none}
+.page-index .hx-p .facts{border-top:1px solid var(--rd-line2);padding-top:24px;margin-top:40px;gap:clamp(24px,4vw,56px)}
+.page-index .hx-p .facts b{font-size:32px!important;letter-spacing:-.03em}
+.page-index .hx-p .facts span{font-size:13px!important;color:var(--rd-muted)}
+.page-index .hx-p .ask{margin-top:32px}
+.page-index .hx-p .ask-box{border-radius:var(--rd-r2)!important;background:var(--rd-card)!important;border-color:var(--rd-line2)!important}
+
+@media(min-width:981px){.page-index .hx-p .hxp-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+
+/* Who we help: one big statement, the two paragraphs under it */
+.page-index #shift .shift{display:block!important}
+.page-index #shift .shift .big{font-size:clamp(36px,4.6vw,60px)!important;line-height:1.05!important;letter-spacing:-.035em;font-weight:400!important;max-width:20ch;margin:0}
+.page-index #shift .shift .col{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);margin-top:48px;padding-top:32px;border-top:1px solid var(--rd-line2)}
+.page-index #shift .shift .col p{font-size:18px!important;line-height:1.65;color:var(--rd-sub);margin:0}
+
+/* Three parts: the journey sits in a framed panel, the three parts become cards */
+.page-index #what .journey{background:var(--rd-card);border:1px solid var(--rd-line2);border-radius:var(--rd-r);padding:clamp(20px,3vw,40px);margin-top:56px}
+.page-index #what .journey-key{border-top:0!important;padding-top:0!important;margin-top:24px!important;gap:16px!important}
+.page-index #what .journey-key>div{background:var(--rd-card);border:1px solid var(--rd-line2);border-radius:var(--rd-r2);padding:28px}
+.page-index #what .journey-key h3{font-size:20px!important;font-weight:600!important;margin-bottom:12px}
+.page-index #what .journey-key p{font-size:15px!important}
+.page-index #what .journey-key + p,.page-index #what .shell>p:last-child{font-size:18px!important;color:var(--rd-sub);margin-top:40px;max-width:52ch}
+
+/* The diagnosis: a framed price card */
+.page-index .engagement{background:var(--rd-bg)!important;border:0!important}
+.page-index .engagement-in{background:var(--rd-card);border:1px solid var(--rd-line2);border-radius:24px;padding:clamp(32px,5vw,72px)!important;grid-template-columns:1.3fr 1fr!important;gap:clamp(32px,5vw,80px)!important}
+.page-index .engagement h2{font-size:clamp(34px,4vw,52px)!important;line-height:1.05!important;letter-spacing:-.035em!important;margin:0 0 20px!important}
+.page-index .engagement p{font-size:17px!important;line-height:1.65}
+.page-index .engagement-price{border-left:1px solid var(--rd-line2)!important;padding-left:clamp(24px,4vw,56px)!important;font-size:14px!important}
+.page-index .engagement-price strong{font-size:clamp(64px,7vw,96px)!important;line-height:1!important;letter-spacing:-.05em!important;margin:12px 0 8px}
+
+/* How it runs: the loop on the band, steps a size up */
+.page-index #how .loop{border-color:rgba(145,194,237,.32)!important;background:var(--rd-card);padding-bottom:56px!important}
+.page-index #how .loop b{font-size:16px!important;color:var(--rd-ink)!important;margin-bottom:10px}
+.page-index #how .loop span{font-size:15px!important}
+.page-index #how .loop-back{background:var(--rd-band)!important}
+
+/* Why Eren: list with rules, the quote as the one bright card */
+.page-index #why .why{grid-template-columns:1.05fr .95fr!important;gap:clamp(40px,6vw,96px)!important;align-items:start!important;margin-top:16px}
+.page-index #why .checklist{gap:0!important;margin-top:40px;border-top:1px solid var(--rd-line2)}
+.page-index #why .checklist>*{padding:18px 0;border-bottom:1px solid var(--rd-line);font-size:16px!important}
+.page-index #why .quote{border:1px solid var(--rd-line2)!important;border-left:3px solid var(--rd-azure2)!important;border-radius:var(--rd-r)!important;background:var(--rd-card)!important;padding:clamp(32px,4vw,56px)!important;margin-top:96px}
+.page-index #why .quote p{font-size:clamp(28px,3vw,40px)!important;line-height:1.25!important}
+
+/* Film: framed, more air */
+.page-index .closer .film{border-radius:var(--rd-r)!important;margin-top:48px!important}
+
+/* FAQ on the band, the questions a size up */
+.page-index #questions .fx-head h2{font-size:clamp(36px,3.8vw,48px)!important;max-width:12ch}
+.page-index #questions .fx-list summary{font-size:20px!important;padding-block:24px!important}
+
+/* ================= ALL PAGES: closing call to action as one framed panel ================= */
+.cta2{padding:0 0 var(--rd-sec)!important}
+.cta2 .marq{border-top:0!important;border-bottom:1px solid var(--rd-line);margin-bottom:var(--rd-sec)}
+.cta2 .cta2-in{background:var(--rd-card);border:1px solid var(--rd-line2);border-radius:28px;padding:clamp(36px,6vw,88px)!important;max-width:1200px;align-items:center!important;margin-inline:auto;grid-template-columns:1.7fr 1fr!important}
+@media(min-width:1241px){.cta2 .cta2-in{max-width:1120px}}
+.cta2 h2{font-size:clamp(34px,4vw,54px)!important;line-height:1.05!important}
+.cta2 p{font-size:17px!important}
+.cta2 .assure li{font-size:15px!important}
+
+/* ---------- Phone ---------- */
+@media(max-width:900px){
+  .page-index .engagement-in{grid-template-columns:1fr!important}
+  .page-index .engagement-price{border-left:0!important;padding-left:0!important;border-top:1px solid var(--rd-line2)!important;padding-top:24px}
+  .page-index #why .why{grid-template-columns:1fr!important}
+  .page-index #why .quote{margin-top:24px}
+}
+@media(max-width:760px){
+  :root{--rd-sec:72px}
+  .page-index #shift .shift .col{grid-template-columns:1fr;gap:20px}
+  .page-index .hx-p .scene{margin:16px 12px!important}
+  .page-index .hx-p .scene::before{inset:-16px -12px;border-radius:16px}
+  .page-index #what .journey{padding:12px;border-radius:16px}
+  .page-index #what .journey-key>div{padding:22px}
+  .cta2 .cta2-in{grid-template-columns:1fr!important;border-radius:20px;margin-inline:16px;padding:32px 22px!important}
+  .page-index .engagement-in{border-radius:20px}
+  .page-index .hero.hx-p h1{font-size:clamp(40px,11vw,52px)!important}
+}
+@media(max-width:600px){.page-index .hx-p .facts b{font-size:24px!important}}
+
+/* ================= INNER PAGES ================= */
+/* Page heads: the same big headline as home, more room under the nav */
+.subhero h1,header.lead h1{font-size:clamp(44px,5.2vw,76px)!important;line-height:1.02!important;letter-spacing:-.045em!important;font-weight:400!important;max-width:16ch}
+.subhero,header.lead{padding-block:clamp(56px,6vw,96px) clamp(56px,6vw,88px)!important;border-bottom:1px solid var(--rd-line)!important}
+.subhero p,header.lead p{font-size:clamp(17px,1.4vw,19px)!important;line-height:1.6!important;max-width:54ch}
+/* Rhythm: every other section sits on the raised band */
+body:not(.page-index)>section:nth-of-type(even):not(.cta2):not(.xshow),
+body:not(.page-index) main>section:nth-of-type(even):not(.cta2):not(.xshow){background:var(--rd-band)!important;border-top:1px solid var(--rd-line);border-bottom:1px solid var(--rd-line)!important}
+/* Cards across the inner pages: one radius, one border, one padding, the card surface */
+.short,.belief,.panel,.blk,.q,.principle,.fu,.stage,.price-card,.pkg,.tier,.svc3-item,.xcard,.lens,.who-card{border-radius:var(--rd-r2)!important;border:1px solid var(--rd-line2)!important;background:var(--rd-card)!important;box-shadow:none!important}
+section:nth-of-type(even) :is(.short,.belief,.panel,.blk,.q,.principle,.fu,.stage,.price-card,.pkg,.tier,.svc3-item,.xcard,.lens){background:var(--rd-card2)!important}
+/* Section heads: the label, then the heading, then one line, with room before the content */
+section .sec-h{margin-bottom:20px!important}
+section .sec-sub{margin-bottom:48px!important}
+/* Pricing: the packages read as two price cards with the figure as the biggest thing in each */
+.page-pricing .stage .price,.page-pricing .step .price{font-size:clamp(40px,4vw,56px)!important;line-height:1.05!important;letter-spacing:-.04em;font-weight:400!important;margin:16px 0 20px!important;color:var(--rd-ink)}
+.page-pricing .stage .price small,.page-pricing .step .price small{display:block;font-size:14px!important;letter-spacing:0;color:var(--rd-muted);margin-top:8px}
+.page-pricing .stage{padding:clamp(28px,3vw,40px)!important}
+.page-pricing .stage.mid{border-color:rgba(168,209,241,.45)!important}
+.page-pricing .glow{display:none!important}
+.page-pricing .h{padding:24px!important}
+/* Guides: article headings stay at reading size; only the page head is a display line */
+section .guide-layout h2,section article h2{font-size:clamp(26px,2.6vw,34px)!important;line-height:1.15!important;letter-spacing:-.02em!important;max-width:none!important;margin-top:56px!important}
+section .guide-layout h3,section article h3{font-size:20px!important}
+section .guide-layout p,section article p{font-size:17px!important;line-height:1.7!important}
