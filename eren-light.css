@@ -101,3 +101,6 @@ html[data-theme="light"] .nav-pill{background:rgba(35,97,163,.07)!important;bord
 html[data-theme="light"] .nav-progress{background:#2361a3!important}
 html[data-theme="light"] .nav-dd-link[aria-expanded="true"]{color:#17181c!important}
 html[data-theme="light"] nav .btn.sm{border-color:#2361a3!important}
+html[data-theme="light"] .svc3-more{border-color:rgba(23,24,28,.12)}
+html[data-theme="light"] .svc3-more summary{color:#2361a3!important}
+html[data-theme="light"] .svc-next a{color:#17181c!important;border-color:rgba(23,24,28,.3)}
