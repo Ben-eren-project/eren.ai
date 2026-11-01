@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<meta name="description" content="A fictional demonstration of the Eren agent: give it a business and it returns a few findings, each tied to what it saw, for a person to keep or dismiss.">
+<meta name="description" content="A fictional demonstration of the Eren agent: a played-back example with a few predefined findings, each tied to what was seen, for a person to keep or dismiss.">
 <title>Eren agent · Fictional demonstration</title>
 <link rel="icon" href="../../favicon.svg">
 <style>
@@ -190,13 +190,13 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const STRENGTH = { broken: "Confirmed broken", confirmed: "Confirmed from the site", told: "What the owner said", unsure: "Couldn't confirm from outside" };
 const RUNS = [
   { id: "pinecrest", when: "Today 9:42", business: "Pinecrest Auto (fictional)", site: "pinecrestauto.example", findings: [
-    { id: "p1", text: "The Book a repair button on the home page goes to a page that doesn't exist, so online bookings never arrive.", fix: "Point the button at the working booking page, then book a test appointment from a phone.", seen: "Home page, top of the page", strength: "broken", matters: "a lot" },
-    { id: "p2", text: "The brakes, tires and inspections pages all share one title, so search results show the same line for each service.", fix: "Give each service page its own title that names the service and the town.", seen: "The three service pages", strength: "confirmed", matters: "some" },
-    { id: "p3", text: "The phone number in the header and the one on the Contact page are different, so some callers may reach the wrong line.", fix: "Ask the owner which number rings the front desk and use only that one everywhere.", seen: "Header and Contact page", strength: "unsure", matters: "a lot" },
+    { id: "p1", text: "The homepage booking button points to a missing page in this example. Whether customers use another booking route is unknown.", fix: "Confirm the intended destination, correct the link and test the route with authorization.", seen: "Home page, top of the page", strength: "broken", matters: "a lot" },
+    { id: "p2", text: "The three service pages use the same page title in this example.", fix: "Give each an accurate, distinct title; search-result wording is not established by the title alone.", seen: "The three service pages", strength: "confirmed", matters: "some" },
+    { id: "p3", text: "The header and Contact page show different phone numbers.", fix: "Confirm what each is for before changing either.", seen: "Header and Contact page", strength: "unsure", matters: "a lot" },
   ] },
   { id: "maple", when: "Yesterday 16:05", business: "Maple Street Dental (fictional)", site: "maplestreetdental.example", findings: [
-    { id: "m1", text: "The new-patient form asks for insurance details twice, once at the top and again at the end.", fix: "Keep one insurance section and remove the repeat.", seen: "New patients page, the form", strength: "confirmed", matters: "some" },
-    { id: "m2", text: "The owner says the phones are busiest before 9, but the site gives no way to request an appointment outside office hours.", fix: "Add a short request form that the front desk answers when they open.", seen: "What the owner said, and the Contact page", strength: "told", matters: "a lot" },
+    { id: "m1", text: "The new-patient form asks for insurance details twice, once at the top and again at the end.", fix: "Confirm whether the repeat is necessary. If it is accidental, retain one appropriate collection point.", seen: "New patients page, the form", strength: "confirmed", matters: "some" },
+    { id: "m2", text: "The owner says the phones are busiest before 9, but the site gives no way to request an appointment outside office hours.", fix: "Check whether an existing patient tool accepts requests, whether patients need another route and who would manage it before adding a form.", seen: "What the owner said, and the Contact page", strength: "told", matters: "a lot" },
   ] },
 ];
 const DECISIONS = {};   // finding id -> { decision, reason, only }
@@ -212,7 +212,7 @@ function memCount() { const el = document.getElementById("memCount"); el.textCon
 /* Analyze a lead: the form is filled in for the demo business, and starting it plays the run back. */
 function viewAnalyze() {
   show(`<h1>Analyze a lead</h1>
-    <p class="lede">Eren reads the business's website without changing anything, applies the right method and returns a few findings, each tied to what it saw. You decide what's worth keeping.</p>
+    <p class="lede">In real work, Eren reads the business's website without changing anything and returns a few findings, each tied to what it saw. This demo plays back a fixed example. You decide what's worth keeping.</p>
     <form class="card stack" id="anForm" novalidate>
       <div class="grid2">
         <div><label for="anName">Business name</label><input type="text" id="anName" value="Pinecrest Auto (fictional)" autocomplete="off"></div>
@@ -220,19 +220,19 @@ function viewAnalyze() {
       </div>
       <div><label for="anNotes">What you know about them</label>
         <textarea id="anNotes" aria-describedby="anHint">Family-run repair shop. The owner says online bookings have gone quiet since the new site went up.</textarea>
-        <p class="hint" id="anHint">Eren treats this as what you were told, never as something it checked. In this demo it always analyzes the fictional Pinecrest Auto.</p></div>
-      <div class="row"><button class="btn primary" type="submit">Start the analysis</button></div>
+        <p class="hint" id="anHint">Eren treats this as what you were told, never as something it checked. In this demo it always plays back the fictional Pinecrest Auto example.</p></div>
+      <div class="row"><button class="btn primary" type="submit">Play the example analysis</button></div>
     </form>`, "analyze");
   document.getElementById("anForm").onsubmit = e => { e.preventDefault(); location.hash = "#working"; };
 }
 
-const PLAY = ["Read the home page and every page it links to", "Followed each button and form to where it leads", "Checked the page titles search results would show", "Compared the contact details across pages", "Applied the website method to what it saw", "Checked each finding against what it saw", "Wrote 3 findings for you to review"];
+const PLAY = ["Example: reviewed the selected website pages", "Example: followed buttons and forms to their destinations", "Example: inspected page titles", "Example: compared contact details across pages", "Example: applied the website method", "Example: matched each finding to its stated evidence", "Example: 3 predefined findings ready for review"];
 function viewWorking(n) {
   show(`<a class="back" href="#runs">← Runs</a>
-    <div class="head-meta"><span class="badge"><span class="dot"></span>Working</span><span class="hint">Analysis · just now</span></div>
+    <div class="head-meta"><span class="badge"><span class="dot"></span>Playback</span><span class="hint">Example analysis · not a live run</span></div>
     <h1>Pinecrest Auto (fictional)</h1>
-    <p class="lede">A real run takes a few minutes. This one is played back quickly.</p>
-    <section class="card"><h2>What Eren is doing</h2><ol class="steps" id="steps" aria-live="polite"></ol></section>`, "runs");
+    <p class="lede">This playback illustrates the stages; it does not run an analysis.</p>
+    <section class="card"><h2>Example stages</h2><ol class="steps" id="steps" aria-live="polite"></ol></section>`, "runs");
   const list = document.getElementById("steps"), t0 = Date.now();
   PLAY.forEach((words, i) => setTimeout(() => {
     if (n !== NAV) return;
@@ -248,7 +248,7 @@ function viewRun(id) {
   show(`<a class="back" href="#runs">← Runs</a>
     <div class="head-meta"><span class="badge">Analysis</span><span class="hint">${esc(r.when)} · ${esc(r.site)}</span></div>
     <h1>${esc(r.business)}</h1>
-    <p class="lede">${plural(r.findings.length, "finding", "findings")} held up against what Eren saw. Keep what's right. Dismiss what isn't and say why; Eren won't raise that kind of finding again.</p>
+    <p class="lede">These are predefined fictional findings. Review the evidence stated in each example and record whether you would keep or dismiss it. A dismissal records your reason for review; it does not establish a general rule.</p>
     <section class="stack" aria-label="Findings">${r.findings.map((f, i) => `<article class="card finding">
       <span class="n" aria-hidden="true">${i + 1}</span>
       <div><h3 id="fh-${f.id}">${esc(f.text)}</h3>
@@ -263,9 +263,10 @@ function drawCall(box) {
     : d.decision === "kept" ? `<button type="button" class="btn small quiet" data-act="dismiss" aria-describedby="fh-${id}" aria-expanded="false" aria-controls="why-${id}">Dismiss instead</button>`
     : `<button type="button" class="btn small quiet" data-act="keep" aria-describedby="fh-${id}">Keep instead</button>`;
   box.innerHTML = `${state}<div class="row">${buttons}</div>
-    <form class="why" id="why-${id}" hidden><label for="whyIn-${id}">Why dismiss it? Eren reads this next time.</label>
+    <form class="why" id="why-${id}" hidden><label for="whyIn-${id}">Why dismiss it? Record the reason for review.</label>
       <input type="text" id="whyIn-${id}" placeholder="e.g. They don't take online bookings">
-      <div class="row why-row"><label class="check"><input type="checkbox" data-only> Only for this business</label><button type="submit" class="btn small quiet">Dismiss it</button></div></form>`;
+      <div class="row why-row"><label class="check"><input type="checkbox" data-only aria-describedby="onlyHint-${id}"> Mark this reason as specific to this business.</label><button type="submit" class="btn small quiet">Dismiss it</button></div>
+      <p class="hint" id="onlyHint-${id}">Leaving this unchecked does not approve a general rule.</p></form>`;
   const why = box.querySelector(".why"), dis = box.querySelector('[data-act="dismiss"]'), keep = box.querySelector('[data-act="keep"]');
   const record = (decision, reason, only) => {
     DECISIONS[id] = { decision, reason, only };
@@ -279,15 +280,15 @@ function drawCall(box) {
 }
 
 function viewRuns() {
-  show(`<h1>Runs</h1><p class="lede">Every analysis, newest first. Each one keeps its full record.</p>
+  show(`<h1>Runs</h1><p class="lede">Fictional example runs, newest first.</p>
     <ul class="list">${RUNS.map(r => `<li><a href="#run/${r.id}"><span class="when">${esc(r.when)}</span><span class="t">${esc(r.business)}</span><span class="meta">${plural(r.findings.length, "finding", "findings")}</span></a></li>`).join("")}</ul>`, "runs");
 }
 
 function viewMemory() {
   const rows = MEMORY.map(m => `<li><span>${m.decision === "kept" ? '<span class="badge good">Kept</span>' : '<span class="badge">Dismissed</span>'}</span>
-    <span>${esc(m.finding)}<span class="sub">${esc([m.reason, m.only ? "only for " + m.business : m.business, m.when].filter(Boolean).join(" · "))}</span></span></li>`).join("");
-  show(`<h1>What Eren remembers</h1>
-    <p class="lede">Your Keep and Dismiss calls. Eren reads them before every analysis, and drops a kind of finding you dismissed even when it's worded differently. In this demo they last until you leave the page.</p>
+    <span>${esc(m.finding)}<span class="sub">${esc([m.reason, m.only ? "specific to " + m.business : m.business, m.when].filter(Boolean).join(" · "))}</span></span></li>`).join("");
+  show(`<h1>Review decisions in this demo</h1>
+    <p class="lede">Keep and Dismiss decisions are recorded in this page's temporary demonstration state. They do not change the predefined findings or train Eren. In real work, proposed lessons need evidence, a defined scope and approval before they become lasting knowledge.</p>
     ${rows ? `<ul class="list memlist">${rows}</ul>` : '<p class="empty">Nothing yet. Keep or dismiss a finding and it shows up here.</p>'}`, "memory");
 }
 
@@ -298,7 +299,7 @@ function viewHelp() {
       <h3>It looks before it says anything</h3><p>Eren reads the business's own website the way a visitor would, follows the buttons and forms, and changes nothing.</p>
       <h3>Every finding shows where it came from</h3><p>Each one says what is wrong, the fix, where it was seen and how sure Eren is. If it couldn't confirm something from outside, it says so instead of guessing.</p>
       <h3>No made-up numbers</h3><p>Without the business's real figures, Eren describes the effect in plain words rather than inventing a cost.</p>
-      <h3>You keep or dismiss</h3><p>Nothing reaches a client until a person keeps it. A dismissal asks why, and the next analysis reads that.</p>
+      <h3>You keep or dismiss</h3><p>Nothing reaches a client until a person reviews and approves delivery. A dismissal asks why and records the reason for review.</p>
     </section>`, "help");
 }
 

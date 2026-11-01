@@ -227,7 +227,7 @@ textarea{min-height:88px;resize:vertical}
 <div class="wrap">
   <details class="notes" id="notes" open>
     <summary>What this demo shows, and what it doesn't</summary>
-    <p><b>The problem:</b> a customer phones or emails a change mid-job ("make the slots 1/2 in", "add two more sections"). Today it reaches whoever picked up, and the floor sometimes acts before cost and date are settled.</p>
+    <p><b>The problem:</b> a customer phones or emails a change mid-job ("make the slots 1/2 in", "add two more sections"). In this fictional shop, changes arrive by phone or email and the floor can act before cost and date are settled.</p>
     <p><b>The change:</b> every request becomes a change notice with one owner. Release stays locked until four things are settled: quantity, cost, date and the customer's confirmation. Each is a definite answer, so typing "unknown" never counts. The floor sees released instructions and nothing else. Rejected changes stay on record with the reason, and every edit keeps its history.</p>
     <p><b>Try it:</b> CR-1041 is ready, so release it. CR-1042 is missing information: fill it in. CR-1043 needs a requote the customer hasn't accepted: reject it with a reason. Then switch to <b>Floor lead</b>.</p>
     <p><b>Not shown:</b> logins, several people editing at once, a database, emailing the customer, or a link to a job system. The handover sheet lists what each needs. Before building anything like this, Eren would check whether the shop's own job software can already hold change requests with an approval step.</p>
@@ -383,7 +383,7 @@ function renderNotice(){
   }
   if(it.status==="rejected"){
     h+='<div class="outcome"><p><span class="stamp st-rej">Rejected · on record<small>'+esc(it.rejectedBy)+' · '+esc(it.rejectedAt)+'</small></span></p>'+
-      '<div class="rejbox"><h3>Reason the customer is told</h3><p>'+esc(it.rejectReason)+'</p></div></div>';
+      '<div class="rejbox"><h3>Reason recorded for a person to share with the customer</h3><p>'+esc(it.rejectReason)+'</p></div></div>';
   }
   h+='<section class="hist" aria-labelledby="histH"><h2 id="histH">History · kept on every change</h2><ol>'+
      it.history.map(function(e){return '<li><span class="t">'+esc(e.t)+' · '+esc(e.who)+'</span><br>'+esc(e.what)+'</li>'}).join("")+'</ol></section></div>';
@@ -430,7 +430,7 @@ function editDialog(it){
    '<fieldset id="fsK"><legend>Customer confirmation</legend><label class="opt"><input type="checkbox" id="f_kok"'+(k.ok?" checked":"")+'><span>The customer confirmed this change, its price and its date<small>Who, how and when are needed to count.</small></span></label>'+
    '<div class="row2"><label class="f">Who<input type="text" id="f_kwho" value="'+esc(k.who)+'"></label><label class="f">How<select id="f_khow"><option value="">Choose</option>'+Object.keys(HOW).map(function(h){return '<option value="'+h+'"'+(k.how===h?" selected":"")+'>'+esc(HOW[h].replace(/^by |^in /,"").replace(/^./,function(c){return c.toUpperCase()}))+'</option>'}).join("")+'</select></label></div>'+
    '<label class="f">When<input type="date" id="f_kwhen" value="'+esc(k.when)+'"></label><p class="err" aria-live="polite"></p></fieldset>'+
-   '<p class="hint">Saving keeps the previous values in the history. Nothing reaches the floor until you release it.</p>',
+   '<p class="hint">Saving records the changes in this demo\'s history. Nothing reaches the floor until you release it.</p>',
    "Save details",
    function(){
      var qn=val("#f_qn"), qnum=qn===""?null:Number(qn), okAll=true;
@@ -470,7 +470,7 @@ function releaseDialog(it){
 }
 function rejectDialog(it){
   modal("Reject "+it.id+" · it stays on record",
-   '<label class="f" id="fsR">Reason the customer will be told<textarea id="f_rej" placeholder="e.g. 8 in tube is beyond our tube laser (6 in max). Options: 6 in tube with gussets, or a plasma-cut plate frame."></textarea><span class="err" aria-live="polite"></span></label>',
+   '<label class="f" id="fsR">Reason recorded for a person to share with the customer<textarea id="f_rej" placeholder="e.g. 8 in tube is beyond our tube laser (6 in max). Options: 6 in tube with gussets, or a plasma-cut plate frame."></textarea><span class="err" aria-live="polite"></span></label>',
    "Reject and keep on record",
    function(){var v=val("#f_rej"),l=document.getElementById("fsR");l.classList.toggle("bad",!v);l.querySelector(".err").textContent=v?"":"A reason is required.";if(!v)return false;
      it.status="rejected"; it.rejectReason=v; it.rejectedBy=COORDINATOR; it.rejectedAt=now();
@@ -492,9 +492,9 @@ function exportCsv(rows){
 function exportDialog(kind){
   var rows=exportRows(), text=kind==="csv"?exportCsv(rows):JSON.stringify(rows,null,2), name="change-desk-"+(S.view==="floor"?"released":"all")+"."+kind;
   modal("Export · "+name,
-   '<p class="hint">'+(S.view==="floor"?"Released instructions only, the same as the floor board shows.":"Every record, in a plain format you keep.")+' Copy it, or it saves as a file when this page runs from your own computer.</p>'+
+   '<p class="hint">'+(S.view==="floor"?"Released instructions only, the same as the floor board shows.":"Every record, in a plain format you keep.")+' Copy the displayed data and try downloading a file. Your browser may limit either action.</p>'+
    '<label class="f">Contents<textarea id="f_exp" readonly style="min-height:220px;font-family:var(--mono);font-size:12px">'+esc(text)+'</textarea></label>',
-   "Copy",
+   "Copy and download",
    function(){var t=document.getElementById("f_exp");t.focus();t.select();
      var done=function(){toast("Copied.")}, fallback=function(){try{document.execCommand("copy");done()}catch(e){toast("Select the text and copy it.")}};
      try{navigator.clipboard.writeText(text).then(done,fallback)}catch(e){fallback()}
