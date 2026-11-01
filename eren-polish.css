@@ -115,3 +115,15 @@ h2 em,.sec-h em,.closer-title em,.cta2 h2 em,.shift .big b{font-family:inherit!i
 
 /* ---------- Home, 1 Nov: fewer sections, so the three parts and the diagnosis carry the page ---------- */
 .page-index .engagement-price strong{font-size:clamp(56px,6vw,80px)!important;line-height:1.05!important}
+
+/* ---------- Home, 1 Nov: who we serve ---------- */
+#serve .sec-sub{max-width:60ch;color:#b5c0ce}
+.serve-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px}
+.serve-col h3{font-size:16px!important;font-weight:600!important;margin:0 0 8px;color:#f3f2ee}
+.serve-col ul{list-style:none;margin:0;padding:0;border-top:1px solid rgba(196,215,235,.14)}
+.serve-col li{position:relative;padding:16px 0 16px 20px;border-bottom:1px solid rgba(196,215,235,.14);font-size:16px;line-height:1.6;color:#b5c0ce}
+.serve-col li:before{content:"";position:absolute;left:0;top:26px;width:6px;height:6px;border-radius:50%}
+.serve-col.was li:before{background:#e8b56a}
+.serve-col.now li:before{background:#91c2ed}
+.serve-col.now li{color:#f3f2ee}
+@media(max-width:760px){.serve-grid{grid-template-columns:1fr;gap:32px;margin-top:32px}}
