@@ -55,7 +55,6 @@ html[data-theme="light"] :focus-visible{outline-color:#2361a3!important}
 
 /* ---------- Nav and footer ---------- */
 html[data-theme="light"] nav{background:rgba(246,245,241,.92)!important;border-color:rgba(23,24,28,.10)!important;box-shadow:none!important}
-html[data-theme="light"] nav *{border-color:rgba(23,24,28,.14)}
 html[data-theme="light"] nav :is(.nav-links a,.nav-dd-link){color:#4a4e57!important}
 html[data-theme="light"] nav :is(.nav-links a.on,.nav-dd-link.on,.nav-links a:hover,.brand){color:#17181c!important}
 html[data-theme="light"] nav .nav-links a.on:after{background:#2361a3!important}
@@ -93,3 +92,12 @@ html[data-theme="light"] :is(.xshow-bg,.subhero .glow,.fx-hero::after,.lead::aft
 html[data-theme="light"] .fx-hero::after{content:none!important}
 html[data-theme="light"] :is(.subhero,.fx-hero,header.lead){background:#f6f5f1!important;background-image:none!important}
 html[data-theme="light"] .fx-hero canvas{opacity:.5}
+
+/* header, fourth pass: the scroll capsule, hover pill and progress line in light */
+html[data-theme="light"] nav .nav-in{border-color:transparent}
+html[data-theme="light"] nav.scrolled{background:transparent!important;border-color:transparent!important}
+html[data-theme="light"] nav.scrolled .nav-in{background:rgba(255,255,255,.92)!important;border-color:rgba(23,24,28,.12)!important;box-shadow:0 12px 32px -16px rgba(23,24,28,.25)!important}
+html[data-theme="light"] .nav-pill{background:rgba(35,97,163,.07)!important;border-color:rgba(35,97,163,.18)!important}
+html[data-theme="light"] .nav-progress{background:#2361a3!important}
+html[data-theme="light"] .nav-dd-link[aria-expanded="true"]{color:#17181c!important}
+html[data-theme="light"] nav .btn.sm{border-color:#2361a3!important}
