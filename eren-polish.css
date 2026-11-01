@@ -103,3 +103,12 @@ h2 em,.sec-h em,.closer-title em,.cta2 h2 em,.shift .big b{font-family:inherit!i
 }
 @media(max-width:370px){.nav-r .btn{display:none!important}}
 @media(prefers-reduced-motion:reduce){.btn,.hx-p .pbtn{transition:none!important}}
+
+/* ---------- Why Eren (home): steady list, quiet quote card ---------- */
+#why .why{align-items:start!important}
+#why .checklist{gap:20px!important}
+#why .ci{font-size:16px!important;line-height:1.6!important;gap:12px!important}
+#why .ci .dot{width:6px!important;height:6px!important;margin-top:10px!important;background:#91c2ed!important}
+#why .quote{border:1px solid rgba(196,215,235,.14)!important;border-left:1px solid rgba(196,215,235,.14)!important;border-radius:12px!important;background:#101a27!important}
+#why .quote .src{font-size:12px!important;letter-spacing:0!important;text-transform:none!important;font-weight:400!important;color:#99a7b8!important}
+@media(min-width:901px){#why .quote{margin-top:4px}}
