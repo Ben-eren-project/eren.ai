@@ -1,0 +1,95 @@
+/* Eren light mode (1 Nov 2026). Only active under html[data-theme="light"]; dark stays the default.
+   Tokens follow the approved 19 Oct base: warm off-white page, white cards, ink #17181c, Eren azure #2361a3.
+   The two drawn visuals (home week scene, journey diagram) stay dark, framed as windows on the light page. */
+
+.theme-toggle{display:inline-grid;place-items:center;width:36px;height:36px;padding:0;border-radius:999px;border:1px solid rgba(196,215,235,.28);background:transparent;color:#f3f2ee;cursor:pointer;flex:none;transition:border-color .15s,background-color .15s}
+.theme-toggle:hover{border-color:rgba(196,215,235,.6)}
+.theme-toggle:focus-visible{outline:2px solid #a8d1f1;outline-offset:2px}
+
+html[data-theme="light"]{
+  --bg:#f6f5f1;--bg-2:#eeece6;--panel:#ffffff;--panel-2:#ffffff;
+  --ink:#17181c;--sub:#4a4e57;--muted:#5f636c;--faint:#676b74;
+  --azure:#2361a3;--blue:#2361a3;--navy:#1b3a6b;
+  --line:rgba(23,24,28,.10);--line-2:rgba(23,24,28,.18);
+  --grad:linear-gradient(120deg,#2361a3,#2361a3);
+  color-scheme:light;
+}
+html[data-theme="light"] body{background:#f6f5f1!important;color:#17181c!important}
+html[data-theme="light"] .theme-toggle{border-color:rgba(23,24,28,.22);color:#17181c}
+html[data-theme="light"] .theme-toggle:hover{border-color:rgba(23,24,28,.5)}
+html[data-theme="light"] .theme-toggle:focus-visible{outline-color:#2361a3}
+
+/* ---------- Text ---------- */
+html[data-theme="light"] :is(h1,h2,h3,h4,h5,h6,.sec-h,b,strong,dt,label,.brand,.price,.said,.lane,summary,.xcard-t,.fx-q,.closer-title,.serve-cols span):not(:is(.scene,.journey,.flx-phone,.gidx-thumb,.xcard-win,.film) *){color:#17181c!important;-webkit-text-fill-color:currentColor!important;background-image:none!important}
+html[data-theme="light"] :is(p,li,dd,small,figcaption,.sec-sub,.xcard-d,.xcard-kind,.fx-a,.ci span,.row span,.srow span,.sheet-top span,.line,.facts span,.hxp-fine,.ask-note,.price small,.step):not(:is(.scene,.journey,.flx-phone,.gidx-thumb,.xcard-win,.film,.btn,.tag) *){color:#4a4e57!important;-webkit-text-fill-color:currentColor!important}
+html[data-theme="light"] .serve-row>div:last-child p,html[data-theme="light"] .serve-col.now li{color:#17181c!important}
+html[data-theme="light"] :is(.ey,.section-index,.grad-text,.exhead .badge,.cta2 .ey,.engagement .ey){color:#2361a3!important;-webkit-text-fill-color:#2361a3!important;background:none!important;border-color:rgba(35,97,163,.35)!important}
+html[data-theme="light"] .hero.hx-p h1{color:#17181c!important}
+html[data-theme="light"] .hero.hx-p h1 em{color:#2361a3!important;-webkit-text-fill-color:#2361a3!important}
+html[data-theme="light"] a:not(.btn):not(.pbtn):not(.brand):not(.xcard):not(.nav-dd-link):not(nav a){color:inherit}
+html[data-theme="light"] :is(p,li,dd,.fx-a) a:not(.btn){color:#2361a3!important;-webkit-text-fill-color:#2361a3!important}
+html[data-theme="light"] .text-link,html[data-theme="light"] .hxp-link{color:#17181c!important;border-color:rgba(23,24,28,.3)!important}
+
+/* ---------- Surfaces: cards become white on the warm page ---------- */
+html[data-theme="light"] :is(.q,.belief,.blk,.stage,.principle,.panel,.short,.quote,.xcard,.h,.fu,.card,.ask-box,.ask-tab,.fl-note,.mini,.sheet,.spec .panel,.check,.fx-bring-list li){background:#ffffff!important;border-color:rgba(23,24,28,.12)!important;box-shadow:none!important}
+html[data-theme="light"] .stage.mid{border-color:rgba(35,97,163,.45)!important}
+html[data-theme="light"] .quote{border-left-color:rgba(23,24,28,.12)!important}
+html[data-theme="light"] .engagement{background:#eeece6!important;border-color:rgba(23,24,28,.10)!important}
+html[data-theme="light"] .engagement :is(h2,strong){color:#17181c!important}
+html[data-theme="light"] .engagement :is(p,span){color:#4a4e57!important}
+html[data-theme="light"] .engagement-price{border-color:rgba(23,24,28,.18)!important}
+html[data-theme="light"] :is(section,header,footer,.cta2,.xshow,.hero,.subhero,.hero-foot){border-color:rgba(23,24,28,.10)!important}
+html[data-theme="light"] .xshow{background:#eeece6!important}
+html[data-theme="light"] :is(input,textarea,select):not([data-tw] *){background:#ffffff!important;color:#17181c!important;border-color:#80848c!important}
+html[data-theme="light"] :is(input,textarea)::placeholder{color:#676b74!important}
+html[data-theme="light"] :is(.marq-track span){color:#4a4e57!important}
+html[data-theme="light"] hr{border-color:rgba(23,24,28,.12)}
+
+/* ---------- Buttons ---------- */
+html[data-theme="light"] :is(.btn:not(.ghost),.ask-go){background:#2361a3!important;border-color:#2361a3!important;color:#ffffff!important}
+html[data-theme="light"] :is(.btn:not(.ghost),.ask-go):hover{background:#1b4f87!important;border-color:#1b4f87!important}
+html[data-theme="light"] :is(.btn.ghost,.hx-p .pbtn.line,.hx-p .hxp-cta .pbtn.solid){background:transparent!important;color:#17181c!important;border-color:rgba(23,24,28,.3)!important}
+html[data-theme="light"] :is(.btn.ghost,.hx-p .pbtn):hover{border-color:rgba(23,24,28,.6)!important;background:rgba(23,24,28,.04)!important}
+html[data-theme="light"] :is(.btn,.pbtn,.ask-go) *{color:inherit!important}
+html[data-theme="light"] :focus-visible{outline-color:#2361a3!important}
+
+/* ---------- Nav and footer ---------- */
+html[data-theme="light"] nav{background:rgba(246,245,241,.92)!important;border-color:rgba(23,24,28,.10)!important;box-shadow:none!important}
+html[data-theme="light"] nav *{border-color:rgba(23,24,28,.14)}
+html[data-theme="light"] nav :is(.nav-links a,.nav-dd-link){color:#4a4e57!important}
+html[data-theme="light"] nav :is(.nav-links a.on,.nav-dd-link.on,.nav-links a:hover,.brand){color:#17181c!important}
+html[data-theme="light"] nav .nav-links a.on:after{background:#2361a3!important}
+html[data-theme="light"] :is(.nav-dd-panel,nav .nav-links.collapsible.open){background:#ffffff!important;border-color:rgba(23,24,28,.14)!important;box-shadow:0 16px 40px -16px rgba(23,24,28,.25)!important}
+html[data-theme="light"] .nav-dd-panel *{color:#17181c}
+html[data-theme="light"] .nav-dd-panel :is(small,span,p){color:#4a4e57!important}
+html[data-theme="light"] .nav-menu{color:#17181c!important;border-color:rgba(23,24,28,.22)!important}
+html[data-theme="light"] footer :is(a,span,p){color:#4a4e57!important}
+html[data-theme="light"] footer :is(h4,.brand){color:#17181c!important}
+html[data-theme="light"] footer .socials a{border-color:rgba(23,24,28,.2)!important}
+
+/* ---------- Drawn visuals stay dark, framed as windows ---------- */
+html[data-theme="light"] .hx-p .scene{isolation:isolate}
+html[data-theme="light"] .hx-p .scene::before{content:"";position:absolute;inset:-20px;z-index:-1;border-radius:16px;background:#0b111b}
+html[data-theme="light"] .hx-p .scene .scene-cap{color:#b5c0ce!important}
+html[data-theme="light"] :is(.journey,.gidx-thumb){background:#0b111b!important;border-radius:16px}
+html[data-theme="light"] .journey{padding:20px}
+html[data-theme="light"] .journey figcaption{color:#b5c0ce!important}
+/* second pass */
+html[data-theme="light"] :is(.hero.hx-p,.hx-p){background:#f6f5f1!important}
+html[data-theme="light"] .hx-p :is(.hxp-lede,.ask-note,.hxp-fine){color:#4a4e57!important}
+html[data-theme="light"] .hx-p .ask-tab{color:#17181c!important}
+html[data-theme="light"] .hx-p .ask-tab *{color:#4a4e57!important}
+html[data-theme="light"] .hx-p .ask-box :is(input,textarea){background:transparent!important;border:0!important}
+html[data-theme="light"] #why .quote{background:#ffffff!important;border-color:rgba(23,24,28,.12)!important}
+html[data-theme="light"] #why .quote p{color:#17181c!important}
+html[data-theme="light"] :is(.xcard-go,.flx-notes li,.principle .k,.panel .tag,.fx-l,.flow-count,.opt){color:#4a4e57!important;-webkit-text-fill-color:currentColor!important}
+html[data-theme="light"] .xcard-go{color:#2361a3!important}
+html[data-theme="light"] .leavemark{background:rgba(23,24,28,.08)!important;color:#17181c!important}
+html[data-theme="light"] figure.flx>figcaption{color:#4a4e57!important}
+html[data-theme="light"] :is(.hxp-pill,.quote .src){color:#4a4e57!important;border-color:rgba(23,24,28,.18)!important;background:#ffffff!important}
+html[data-theme="light"] .quote .src{background:none!important}
+/* third pass: page heads and the examples band lose their dark washes */
+html[data-theme="light"] :is(.xshow-bg,.subhero .glow,.fx-hero::after,.lead::after){display:none!important}
+html[data-theme="light"] .fx-hero::after{content:none!important}
+html[data-theme="light"] :is(.subhero,.fx-hero,header.lead){background:#f6f5f1!important;background-image:none!important}
+html[data-theme="light"] .fx-hero canvas{opacity:.5}

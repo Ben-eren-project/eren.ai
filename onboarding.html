@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en"><head><script>if(/\.onrender\.com$/i.test(location.hostname)){location.replace("https://erenforbusiness.com"+location.pathname+location.search+location.hash);}</script>
+<html lang="en"><head>
+<script>try{if(localStorage.getItem("eren-theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
+<script>if(/\.onrender\.com$/i.test(location.hostname)){location.replace("https://erenforbusiness.com"+location.pathname+location.search+location.hash);}</script>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Eren | Client Onboarding</title>
 <meta name="robots" content="noindex,nofollow">
@@ -86,6 +88,7 @@
 <meta property="og:image:alt" content="Eren — Know what to fix. Then build what matters.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="eren-polish.css">
+<link rel="stylesheet" href="eren-light.css">
 </head><body class="page-onboarding flow-page">
 
 <nav><div class="nav-in">
@@ -379,4 +382,5 @@
 </script>
 <script src="flow.js"></script>
 <script src="eren-polish.js" defer></script>
+<script src="eren-theme.js" defer></script>
 </body></html>

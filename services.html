@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
-<head><script>if(/\.onrender\.com$/i.test(location.hostname)){location.replace("https://erenforbusiness.com"+location.pathname+location.search+location.hash);}</script>
+<head>
+<script>try{if(localStorage.getItem("eren-theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
+<script>if(/\.onrender\.com$/i.test(location.hostname)){location.replace("https://erenforbusiness.com"+location.pathname+location.search+location.hash);}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Services: Diagnose &amp; Build for Local Businesses | Eren</title>
@@ -261,6 +263,7 @@ footer{ border-top:1px solid var(--line); font-size:12px; padding-block:48px 40p
 <link rel="stylesheet" href="eren-chrome.css">
 <link rel="stylesheet" href="fx/eren-fx.css"><link rel="stylesheet" href="fx/examples.css">
 <link rel="stylesheet" href="eren-polish.css">
+<link rel="stylesheet" href="eren-light.css">
 </head>
 <body>
 
@@ -668,5 +671,6 @@ footer{ border-top:1px solid var(--line); font-size:12px; padding-block:48px 40p
 <script src="eren-chrome.js" defer></script>
 <script src="fx/eren-fx.js" defer></script>
 <script src="eren-polish.js" defer></script>
+<script src="eren-theme.js" defer></script>
 </body>
 </html>

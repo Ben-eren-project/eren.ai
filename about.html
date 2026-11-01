@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en"><head><script>if(/\.onrender\.com$/i.test(location.hostname)){location.replace("https://erenforbusiness.com"+location.pathname+location.search+location.hash);}</script>
+<html lang="en"><head>
+<script>try{if(localStorage.getItem("eren-theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
+<script>if(/\.onrender\.com$/i.test(location.hostname)){location.replace("https://erenforbusiness.com"+location.pathname+location.search+location.hash);}</script>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>About Eren for Business | Help for Local Businesses</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lora:ital,wght@1,400&display=swap">
@@ -145,6 +147,7 @@
 <link rel="stylesheet" href="eren-chrome.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "AboutPage", "url": "https://erenforbusiness.com/about.html", "name": "About Eren", "about": {"@id": "https://erenforbusiness.com/#organization"}, "isPartOf": {"@id": "https://erenforbusiness.com/#website"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://erenforbusiness.com/"}, {"@type": "ListItem", "position": 2, "name": "About", "item": "https://erenforbusiness.com/about.html"}]}, {"@type": "Organization", "@id": "https://erenforbusiness.com/#organization", "address": {"@type": "PostalAddress", "addressLocality": "Rockford", "addressRegion": "IL", "addressCountry": "US"}, "areaServed": "Rockford, Illinois and the tri-state area"}]}</script>
 <link rel="stylesheet" href="eren-polish.css">
+<link rel="stylesheet" href="eren-light.css">
 <style>
 /* Moved from the home page, 1 Nov 2026 */
 .shift{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,54px);align-items:center}
@@ -267,4 +270,5 @@
 <script src="lead-source.js" defer></script>
 <script src="eren-chrome.js" defer></script>
 <script src="eren-polish.js" defer></script>
+<script src="eren-theme.js" defer></script>
 </body></html>
