@@ -116,14 +116,27 @@ h2 em,.sec-h em,.closer-title em,.cta2 h2 em,.shift .big b{font-family:inherit!i
 /* ---------- Home, 1 Nov: fewer sections, so the three parts and the diagnosis carry the page ---------- */
 .page-index .engagement-price strong{font-size:clamp(56px,6vw,80px)!important;line-height:1.05!important}
 
-/* ---------- Home, 1 Nov: who we serve ---------- */
-#serve .sec-sub{max-width:60ch;color:#b5c0ce}
-.serve-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px}
-.serve-col h3{font-size:16px!important;font-weight:600!important;margin:0 0 8px;color:#f3f2ee}
-.serve-col ul{list-style:none;margin:0;padding:0;border-top:1px solid rgba(196,215,235,.14)}
-.serve-col li{position:relative;padding:16px 0 16px 20px;border-bottom:1px solid rgba(196,215,235,.14);font-size:16px;line-height:1.6;color:#b5c0ce}
-.serve-col li:before{content:"";position:absolute;left:0;top:26px;width:6px;height:6px;border-radius:50%}
-.serve-col.was li:before{background:#e8b56a}
-.serve-col.now li:before{background:#91c2ed}
-.serve-col.now li{color:#f3f2ee}
-@media(max-width:760px){.serve-grid{grid-template-columns:1fr;gap:32px;margin-top:32px}}
+/* ---------- Home, 1 Nov: who we serve — one row per lane from the hero, in the owner's words ---------- */
+.serve-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:end}
+.serve-head .sec-h{max-width:16ch;margin-bottom:0!important}
+.serve-head .sec-sub{margin:0!important;max-width:56ch;color:#b5c0ce;font-size:16px!important;line-height:1.65}
+.serve-table{margin-top:56px;border-top:1px solid rgba(196,215,235,.24)}
+.serve-row{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr) minmax(0,1.15fr);gap:40px;padding:28px 0;border-bottom:1px solid rgba(196,215,235,.14)}
+.serve-cols{padding:12px 0}
+.serve-cols span{font-size:12px;font-weight:600;color:#99a7b8}
+.serve-row p{margin:0;font-size:15px;line-height:1.6;color:#b5c0ce}
+.serve-row>div:last-child p{color:#f3f2ee}
+.serve-row .lane{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#f3f2ee;margin-bottom:12px}
+.serve-row .lane:before{content:"";width:8px;height:8px;border-radius:2px;background:var(--c)}
+.serve-row .said{font-size:20px!important;line-height:1.35!important;color:#f3f2ee!important;letter-spacing:-.01em;max-width:22ch}
+.serve-foot{margin:32px 0 0;max-width:72ch;font-size:15px;line-height:1.7;color:#b5c0ce}
+.fixmark,.leavemark{display:inline-block;font:600 11px/1 Inter,system-ui,sans-serif;border-radius:3px;padding:4px 6px;vertical-align:2px}
+.fixmark{background:#e8b56a;color:#1a1306;margin-right:6px}
+.leavemark{background:rgba(196,215,235,.16);color:#cfd8e4}
+@media(max-width:900px){
+  .serve-head{grid-template-columns:1fr;gap:20px}
+  .serve-cols{display:none}
+  .serve-row{grid-template-columns:1fr;gap:12px}
+  .serve-row>div:nth-child(2):before{content:"What Eren checks";display:block;font-size:12px;font-weight:600;color:#99a7b8;margin-bottom:4px}
+  .serve-row>div:nth-child(3):before{content:"What changes";display:block;font-size:12px;font-weight:600;color:#99a7b8;margin-bottom:4px}
+}
