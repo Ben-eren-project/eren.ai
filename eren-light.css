@@ -22,7 +22,7 @@ html[data-theme="light"] .theme-toggle:focus-visible{outline-color:#2361a3}
 /* ---------- Text ---------- */
 html[data-theme="light"] :is(h1,h2,h3,h4,h5,h6,.sec-h,b,strong,dt,label,.brand,.price,.said,.lane,summary,.xcard-t,.fx-q,.closer-title,.serve-cols span):not(:is(.scene,.journey,.flx-phone,.gidx-thumb,.xcard-win,.film) *){color:#17181c!important;-webkit-text-fill-color:currentColor!important;background-image:none!important}
 html[data-theme="light"] :is(p,li,dd,small,figcaption,.sec-sub,.xcard-d,.xcard-kind,.fx-a,.ci span,.row span,.srow span,.sheet-top span,.line,.facts span,.hxp-fine,.ask-note,.price small,.step):not(:is(.scene,.journey,.flx-phone,.gidx-thumb,.xcard-win,.film,.btn,.tag) *){color:#4a4e57!important;-webkit-text-fill-color:currentColor!important}
-html[data-theme="light"] .serve-row>div:last-child p,html[data-theme="light"] .serve-col.now li{color:#17181c!important}
+html[data-theme="light"] .serve-h,html[data-theme="light"] .serve-row h3{color:#17181c!important}
 html[data-theme="light"] :is(.ey,.section-index,.grad-text,.exhead .badge,.cta2 .ey,.engagement .ey){color:#2361a3!important;-webkit-text-fill-color:#2361a3!important;background:none!important;border-color:rgba(35,97,163,.35)!important}
 html[data-theme="light"] .hero.hx-p h1{color:#17181c!important}
 html[data-theme="light"] .hero.hx-p h1 em{color:#2361a3!important;-webkit-text-fill-color:#2361a3!important}
@@ -104,3 +104,4 @@ html[data-theme="light"] nav .btn.sm{border-color:#2361a3!important}
 html[data-theme="light"] .svc3-more{border-color:rgba(23,24,28,.12)}
 html[data-theme="light"] .svc3-more summary{color:#2361a3!important}
 html[data-theme="light"] .svc-next a{color:#17181c!important;border-color:rgba(23,24,28,.3)}
+html[data-theme="light"] :is(.serve-rows,.serve-row){border-color:rgba(23,24,28,.12)!important}
