@@ -117,23 +117,23 @@ h2 em,.sec-h em,.closer-title em,.cta2 h2 em,.shift .big b{font-family:inherit!i
 /* ---------- Home, 1 Nov: fewer sections, so the three parts and the diagnosis carry the page ---------- */
 .page-index .engagement-price strong{font-size:clamp(56px,6vw,80px)!important;line-height:1.05!important}
 
-/* ---------- Home: who we work with (2 Nov, Astra's copy) — a modest heading, then one paragraph per area ---------- */
-.serve-head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px;align-items:start}
-.serve-h{font-size:32px!important;line-height:1.15!important;letter-spacing:-.02em!important;font-weight:400!important;margin:0!important;max-width:18ch;color:#f3f2ee}
-.serve-intro p{margin:0 0 16px;font-size:16px;line-height:1.7;color:#b5c0ce;max-width:62ch}
-.serve-intro p:last-child{margin-bottom:0}
-.serve-rows{margin-top:56px;border-top:1px solid rgba(196,215,235,.24)}
-.serve-row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px;padding:28px 0;border-bottom:1px solid rgba(196,215,235,.14)}
-.serve-row h3{margin:0;font-size:16px!important;font-weight:600!important;line-height:1.6;color:#f3f2ee}
-.serve-row p{margin:0;font-size:16px;line-height:1.7;color:#b5c0ce;max-width:62ch}
-.serve-foot{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px;margin-top:28px}
-.serve-foot p{margin:0;max-width:62ch;font-size:16px;line-height:1.7;color:#b5c0ce}
+/* ---------- Home: who we work with (2 Nov) — short head, three areas in the hero's lane colours ---------- */
+.serve-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:end}
+.serve-h{font-size:32px!important;line-height:1.15!important;letter-spacing:-.02em!important;font-weight:400!important;margin:0!important;max-width:20ch;color:#f3f2ee}
+.serve-intro{margin:0;font-size:16px;line-height:1.7;color:#b5c0ce;max-width:52ch}
+.serve-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto auto auto auto;column-gap:40px;margin-top:48px;border-top:1px solid rgba(196,215,235,.24);padding-top:28px}
+.serve-col{display:grid;grid-row:span 4;grid-template-rows:subgrid;align-content:start}
+.serve-col h3{display:flex;align-items:center;gap:10px;margin:0 0 12px;font-size:16px!important;font-weight:600!important;color:#f3f2ee}
+.serve-col h3 i{width:8px;height:8px;border-radius:2px;background:var(--c);flex:none}
+.serve-col p{margin:0 0 20px;font-size:15px;line-height:1.65;color:#b5c0ce}
+.serve-k{display:block;font-size:12px;font-weight:600;color:#99a7b8;margin-bottom:4px}
+.serve-col ul{list-style:none;margin:0;padding:0}
+.serve-col li{padding:8px 0;border-top:1px solid rgba(196,215,235,.12);font-size:14px;line-height:1.5;color:#f3f2ee}
 @media(max-width:900px){
-  .serve-head,.serve-row{grid-template-columns:1fr;gap:16px}
-  .serve-row{gap:8px;padding:24px 0}
+  .serve-head{grid-template-columns:1fr;gap:16px}
   .serve-h{font-size:28px!important}
-  .serve-foot{grid-template-columns:1fr;gap:0}
-  .serve-foot span{display:none}
+  .serve-cols{grid-template-columns:1fr;grid-template-rows:none;row-gap:32px;margin-top:32px}
+  .serve-col{display:block;grid-row:auto}
 }
 
 /* ---------- 1 Nov: inner pages, simpler ---------- */
