@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Inquiry Desk</title>
+<meta name="robots" content="noindex">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data:; form-action 'none'; base-uri 'none'">
+<style>
+/* Inquiry Desk: one defined AI job for the fictional Northline Metal Works.
+   An email comes in, the job record fills from the email's own words, gaps are flagged,
+   and a reply draft waits for a named person. Same visual family as Change Desk. */
+:root{
+  --paper:#fbfbf8; --sheet:#ffffff; --ink:#16191d; --sub:#4a525c; --muted:#5f6873; --line:#d8dbd4; --rule:#b9beb6;
+  --graphite:#1d2228;
+  --ok:#1d6a43; --ok-bg:#e8f3ec; --gap:#8a5300; --gap-bg:#fbf1df; --stop:#a3241b; --stop-bg:#f9e9e7;
+  --rev:#2350b8; --rev-bg:#eaf0fc; --hl:#fff1b8; --hl-on:#ffd95e;
+  --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font:14px/1.55 var(--sans);padding-bottom:env(safe-area-inset-bottom,0)}
+h1,h2,h3,p,ul,ol,dl,dd{margin:0}ul,ol{padding:0;list-style:none}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--rev);outline-offset:2px}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.demo{background:var(--graphite);color:#d6dbe1;font-size:12.5px;line-height:1.5;padding:8px 16px;text-align:center}
+.demo b{color:#fff}
+.demo .demo-back{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:3px;margin-left:6px;white-space:nowrap}
+.demo .demo-back:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;padding:12px 20px;border-bottom:1px solid var(--line);background:var(--sheet)}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand-mark{width:34px;height:34px;border:2px solid var(--ink);display:grid;place-items:center;font:700 12px/1 var(--mono);flex:none}
+.brand b{display:block;font-size:16px;letter-spacing:-.01em}
+.brand span{display:block;font-size:12px;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid var(--rule);border-radius:6px;background:var(--sheet);color:var(--ink);font-weight:600;font-size:13px;padding:8px 13px;min-height:38px;cursor:pointer;text-decoration:none}
+.btn:hover{border-color:var(--sub)}
+.btn.go{background:var(--ok);border-color:var(--ok);color:#fff}
+.btn.go:hover{background:#17573a}
+.btn.ai{background:var(--rev);border-color:var(--rev);color:#fff}
+.btn.ai:hover{background:#1c4196}
+.btn.plain{border-color:transparent;background:transparent;color:var(--sub)}
+.btn.warn{color:var(--stop);border-color:#e3b9b4}
+.btn[disabled]{background:#eceee9;border-color:var(--line);color:#565e68;cursor:not-allowed}
+
+.wrap{max-width:1320px;margin:0 auto;padding:18px 20px 48px}
+.notes{border:1px dashed var(--rule);border-radius:8px;padding:12px 16px;margin-bottom:18px;background:var(--sheet);font-size:13.5px;color:var(--sub)}
+.notes summary{cursor:pointer;font-weight:600;color:var(--ink)}
+.notes p{margin-top:8px;max-width:92ch}.notes b{color:var(--ink)}
+
+.desk{display:grid;grid-template-columns:280px minmax(0,1fr) minmax(0,1.05fr);gap:18px;align-items:start}
+.panel{background:var(--sheet);border:1px solid var(--line);border-radius:8px;min-width:0}
+.panel>h2{font-size:12px;font-weight:600;color:var(--muted);padding:12px 14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:8px}
+
+/* Inbox */
+.mrow{display:block;width:100%;text-align:left;border:0;border-top:1px solid var(--line);background:transparent;padding:11px 14px 12px 12px;border-left:3px solid transparent;cursor:pointer}
+.mrow:first-of-type{border-top:0}
+.mrow:hover{background:#f6f7f3}
+.mrow[aria-current="true"]{background:var(--rev-bg);border-left-color:var(--rev)}
+.mrow .top{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted)}
+.mrow .from{font-weight:600;color:var(--ink);font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mrow .subj{display:block;font-size:13.5px;margin:2px 0 6px;line-height:1.35}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:4px;border:1px solid}
+.chip::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.c-new{color:var(--muted);background:#f1f2ee;border-color:var(--line)}
+.c-read{color:var(--gap);background:var(--gap-bg);border-color:#eccf9c}
+.c-ok{color:var(--ok);background:var(--ok-bg);border-color:#bcdcc8}
+.c-person{color:var(--stop);background:var(--stop-bg);border-color:#ecc3be}
+
+/* Email */
+.mail{padding:18px 20px 20px}
+.mail .meta{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 12px;font-size:13px;color:var(--sub);padding-bottom:12px;border-bottom:1px solid var(--line)}
+.mail .meta dt{color:var(--muted)}.mail .meta dd{overflow-wrap:anywhere}
+.mail h3{font-size:18px;line-height:1.3;margin:14px 0 10px;letter-spacing:-.01em}
+.mail .body{font-size:14.5px;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere}
+.mail .att{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
+.mail .att span{font:12px/1.4 var(--mono);border:1px solid var(--line);border-radius:4px;padding:4px 8px;background:#f6f7f3}
+mark{background:transparent;color:inherit;border-radius:3px;transition:background .25s}
+.lit mark{background:var(--hl)}
+mark.on{background:var(--hl-on)!important;box-shadow:0 0 0 2px var(--hl-on)}
+.readbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+.readbar p{font-size:12.5px;color:var(--muted);flex:1 1 220px}
+
+/* Record */
+.rec{padding:16px 18px 20px}
+.rec .kicker{font:600 11px/1.55 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.rec h3{font-size:18px;margin-top:4px;line-height:1.3}
+.empty{padding:28px 18px;color:var(--muted);font-size:13.5px;text-align:center}
+.fields{margin-top:12px;border:1px solid var(--line);border-radius:6px}
+.f{display:grid;grid-template-columns:118px minmax(0,1fr);gap:4px 12px;padding:9px 12px;border-top:1px solid var(--line);align-items:start;opacity:1;transition:opacity .3s}
+.f:first-child{border-top:0}
+.f.pending{opacity:.25}
+.f dt{font-size:12px;color:var(--muted);padding-top:1px}
+.f dd{font-size:13.5px;overflow-wrap:anywhere}
+.f .src{display:inline-block;margin-top:3px;font-size:11.5px;color:var(--rev);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.f.gap dd{color:var(--gap);font-weight:600}
+.f.gap dd::before{content:"Missing · ";font-weight:700}
+.f.na dd{color:var(--muted)}
+.stopbox{margin-top:12px;border:1px solid #ecc3be;background:var(--stop-bg);border-radius:6px;padding:12px 14px;font-size:13.5px}
+.stopbox b{color:var(--stop)}
+
+/* Draft */
+.draft{margin-top:16px}
+.draft h4{font-size:13px;font-weight:600;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.draft h4 span{font-weight:500;color:var(--muted);font-size:12px}
+.draft textarea{width:100%;min-height:250px;margin-top:8px;border:1px solid var(--rule);border-radius:6px;padding:10px 12px;font-size:13.5px;line-height:1.55;background:#fffef9;resize:vertical}
+.approve{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+.approve label{font-size:13px;color:var(--sub)}
+.approve select{border:1px solid var(--rule);border-radius:6px;padding:7px 8px;min-height:38px;background:var(--sheet)}
+.state{margin-top:10px;font-size:13px}
+.stamp{display:inline-block;border:3px double var(--ok);color:var(--ok);border-radius:4px;padding:5px 11px;font:700 12.5px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;transform:rotate(-2deg);transform-origin:left center}
+.stamp small{display:block;font-size:10.5px;letter-spacing:.03em;font-weight:600}
+.hint{font-size:12.5px;color:var(--gap);margin-top:6px}
+
+/* Rules */
+.rules{margin-top:18px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.rule{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+.rule h2{font-size:13px;font-weight:600}
+.rule ul{margin-top:8px;display:grid;gap:6px;font-size:13px;color:var(--sub)}
+.rule li{padding-left:16px;position:relative}
+.rule li::before{content:"";position:absolute;left:2px;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--rule)}
+.rule.can li::before{background:var(--ok)}.rule.cant li::before{background:var(--stop)}
+
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--graphite);color:#fff;padding:10px 16px;border-radius:6px;font-size:13px;max-width:calc(100% - 32px);z-index:5}
+
+@media (max-width:1180px){.desk{grid-template-columns:240px minmax(0,1fr)}.recpanel{grid-column:1 / -1}}
+@media (max-width:820px){.desk{grid-template-columns:minmax(0,1fr)}.rules{grid-template-columns:minmax(0,1fr)}.inbox{order:0}}
+@media (max-width:480px){.wrap{padding:14px 12px 40px}.bar{padding:10px 12px}.f{grid-template-columns:minmax(0,1fr)}.mail{padding:14px}.rec{padding:14px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="demo"><b>Demo tool.</b> The shop, its customers and their emails are made up. No AI runs in this page: the reading is scripted to show the steps, and nothing leaves this browser tab. <a class="demo-back" href="/services.html#examples">Back to Eren for Business</a></div>
+
+<header class="bar">
+  <div class="brand"><div class="brand-mark" aria-hidden="true">IQ</div><div><b>Inquiry Desk</b><span>Northline Metal Works · new emails into job records</span></div></div>
+  <button class="btn plain" type="button" id="reset">Reset demo</button>
+</header>
+
+<div class="wrap">
+  <details class="notes" open>
+    <summary>What this demo shows, and what it doesn't</summary>
+    <p><b>The job:</b> quote requests arrive by email in every shape. Someone in the office reads each one, copies the details into the job record and writes back asking for whatever is missing.</p>
+    <p><b>The AI's part, and only this:</b> read the email, fill the job record from the customer's own words (every field shows where it came from), mark what's missing, and draft a reply that asks for it. A named person checks the record, edits the draft and approves it. The estimator still prices every job.</p>
+    <p><b>Try it:</b> open each email and press <b>Read this inquiry</b>. Ridgeway has everything. Becker asks for a price. Fox River leaves gaps. The supplier agreement goes straight to a person.</p>
+    <p><b>Not shown:</b> a real mailbox, the shop's job software, or sending. In a real setup the approved reply goes out from the shop's own email, and Eren would first check whether the shop's existing tools can already do part of this.</p>
+  </details>
+
+  <div class="desk">
+    <nav class="panel inbox" aria-label="Inbox"><h2><span>Inbox · quotes@</span><span class="mono" id="count"></span></h2><div id="list"></div></nav>
+    <main class="panel" id="mail" aria-live="polite"></main>
+    <section class="panel recpanel" aria-labelledby="recH"><h2 id="recH"><span>Job record and reply</span><span id="recState"></span></h2><div id="rec"></div></section>
+  </div>
+
+  <div class="rules">
+    <section class="rule can"><h2>The assistant may</h2><ul><li>Fill job-record fields from the email's own words</li><li>Point to the sentence each field came from</li><li>Mark a field missing rather than guess it</li><li>Draft a reply that asks only for what's missing</li></ul></section>
+    <section class="rule cant"><h2>The assistant may not</h2><ul><li>Quote a price, a lead time or a delivery date</li><li>Send anything, or approve its own draft</li><li>Answer contracts, terms or anything legal</li><li>Turn "ASAP" into a date</li></ul></section>
+    <section class="rule"><h2>Checked before it goes live</h2><ul><li>A complete inquiry, an incomplete one and a price question each behave as agreed</li><li>Out-of-scope emails reach a person with no draft</li><li>The reviewer can see the source of every field</li><li>The shop signs off on the rules above</li></ul></section>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+(function(){
+"use strict";
+var REVIEWERS=["Dana · office","Luis · estimator"];
+/* Each email body is an array of plain strings and [id, text] pairs that become highlights. */
+var MAIL=[
+ {id:"m1",from:"Kara Lind",addr:"kara.lind@ridgeway-ag.example",co:"Ridgeway Ag Equipment",time:"Mon 7:42 AM",
+  subj:"Quote request: mounting brackets",
+  body:["Hi,\n\nCould you quote ",["qty","40 mounting brackets"]," per the attached drawing, ",["dwg","RB-212 rev C"],". Material is ",["mat","3/16\" mild steel"],", ",["fin","powder coat black"],".\n\nWe'd need them ",["date","by Friday, Nov 20"],". ",["del","We'll pick up"],".\n\nThanks,\n",["sig","Kara Lind\nPurchasing, Ridgeway Ag Equipment"]],
+  att:["RB-212_revC.pdf"],
+  fields:[["Contact","Kara Lind (Purchasing)","sig"],["Company","Ridgeway Ag Equipment","sig"],["Job type","New parts to a drawing",null],["Item","Mounting bracket","qty"],["Quantity","40","qty"],["Drawing","RB-212 rev C (attached)","dwg"],["Material","3/16\" mild steel","mat"],["Finish","Powder coat, black","fin"],["Needed by","Fri 20 Nov","date"],["Pickup or delivery","Customer pickup","del"]],
+  gaps:[],
+  reply:"Hi Kara,\n\nThanks for the request. We have drawing RB-212 rev C for 40 brackets in 3/16\" mild steel, powder coated black, needed by Friday, November 20, for pickup.\n\nLuis, our estimator, will review the drawing and send the quote. If anything on the drawing needs clarifying, he'll be in touch.\n\nDana\nNorthline Metal Works"},
+ {id:"m2",from:"Tom Becker",addr:"tbecker@mailbox.example",co:"",time:"Mon 8:15 AM",
+  subj:"Cracked trailer hitch",
+  body:["Hello, my ",["item","trailer hitch has a crack along the weld"],", ",["photo","photos attached"],". ",["ask","What would it cost to fix it?"]," ",["drop","I can bring it in most days"],".\n\nTom"],
+  att:["hitch_1.jpg","hitch_2.jpg"],
+  fields:[["Contact","Tom Becker",null],["Company","None given (private customer)",null],["Job type","Repair",null],["Item","Trailer hitch, crack along the weld","item"],["Photos","2 attached","photo"],["Hitch rating","",null],["Trailer use","",null],["Needed by","",null],["Pickup or delivery","Customer drops off","drop"]],
+  gaps:["Hitch rating","Trailer use","Needed by"],
+  note:"Price question: the assistant doesn't answer it. The draft says the estimator prices repairs after seeing the part.",
+  reply:"Hi Tom,\n\nThanks for the photos of the hitch. We can't price a weld repair from photos alone; Luis, our estimator, will look at it when you bring it in.\n\nTo get ready, could you send the hitch's rated capacity (it's usually stamped on the hitch), what the trailer is used for, and when you'd need it back?\n\nDana\nNorthline Metal Works"},
+ {id:"m3",from:"Priya Shah",addr:"priya@foxriverbuilders.example",co:"Fox River Builders",time:"Mon 9:03 AM",
+  subj:"Deck railing",
+  body:["Hi there, we need a ",["item","railing for a deck"],", about ",["len","30 ft"],", ",["mat","stainless maybe?"]," Need it ",["date","ASAP"],".\n\nPriya, ",["sig","Fox River Builders"]],
+  att:[],
+  fields:[["Contact","Priya Shah",null],["Company","Fox River Builders","sig"],["Job type","New fabrication",null],["Item","Deck railing","item"],["Length","About 30 ft (approximate)","len"],["Material","",null],["Drawing or photos","",null],["Install","",null],["Needed by","",null]],
+  gaps:["Material","Drawing or photos","Install","Needed by"],
+  note:"\"ASAP\" isn't a date, and \"stainless maybe?\" isn't a material choice. Both are asked, not guessed.",
+  reply:"Hi Priya,\n\nThanks for getting in touch about the deck railing. So we can put together a quote, could you send a sketch or photos of the deck with the run marked (around 30 ft, you said), whether you'd like stainless or another material, whether you need us to install it, and the date you need it by?\n\nDana\nNorthline Metal Works"},
+ {id:"m4",from:"Steelmart Supply",addr:"accounts@steelmart.example",co:"Steelmart Supply",time:"Mon 9:40 AM",
+  subj:"Supplier agreement: signature needed",
+  body:["Please review and ",["legal","sign the attached supplier agreement"]," by Friday. ",["legal2","It includes our net-15 terms and a guaranteed 2-day turnaround clause"],".\n\nAccounts Team"],
+  att:["Supplier_Agreement_2027.pdf"],
+  stop:"Contract terms and a guaranteed turnaround aren't the assistant's job. This goes to the owner with no draft and no record filled.",
+  fields:[],gaps:[],reply:null}
+];
+var st={}; var sel="m1";
+function fresh(){st={};MAIL.forEach(function(m){st[m.id]={read:false,draft:m.reply,reviewer:"",approved:false}});sel="m1"}
+function $(id){return document.getElementById(id)}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]})}
+function reduce(){return window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches}
+function toast(t){var x=$("toast");x.textContent=t;x.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(function(){x.hidden=true},2600)}
+function chipFor(m){var s=st[m.id];if(m.stop&&s.read)return'<span class="chip c-person">Needs a person</span>';if(s.approved)return'<span class="chip c-ok">Reply approved</span>';if(s.read)return'<span class="chip c-read">Draft waiting</span>';return'<span class="chip c-new">New</span>'}
+function renderList(){
+ $("count").textContent=MAIL.length+" new";
+ $("list").innerHTML=MAIL.map(function(m){return'<button class="mrow" type="button" data-id="'+m.id+'" aria-current="'+(m.id===sel)+'"><span class="top"><span class="from">'+esc(m.from)+'</span><span>'+esc(m.time)+'</span></span><span class="subj">'+esc(m.subj)+'</span>'+chipFor(m)+'</button>'}).join("");
+}
+function bodyHtml(m){return m.body.map(function(p){return typeof p==="string"?esc(p):'<mark data-k="'+p[0]+'">'+esc(p[1])+'</mark>'}).join("")}
+function renderMail(){
+ var m=MAIL.find(function(x){return x.id===sel}),s=st[m.id];
+ $("mail").innerHTML='<div class="mail'+(s.read?' lit':'')+'" id="mailIn"><dl class="meta"><dt>From</dt><dd>'+esc(m.from)+' &lt;'+esc(m.addr)+'&gt;</dd><dt>Received</dt><dd>'+esc(m.time)+'</dd></dl><h3>'+esc(m.subj)+'</h3><div class="body" id="mbody">'+bodyHtml(m)+'</div>'+(m.att.length?'<div class="att">'+m.att.map(function(a){return'<span>'+esc(a)+'</span>'}).join("")+'</div>':'')+
+ '<div class="readbar"><button class="btn ai" type="button" id="readBtn"'+(s.read?' disabled':'')+'>'+(s.read?'Read':'Read this inquiry')+'</button><p>'+(s.read?'Highlighted words are where each field in the record came from.':'The assistant fills the job record from this email and drafts a reply. Nothing is sent.')+'</p></div></div>';
+ $("readBtn").addEventListener("click",function(){readMail(m)});
+}
+function renderRec(animate){
+ var m=MAIL.find(function(x){return x.id===sel}),s=st[m.id],el=$("rec");
+ $("recState").innerHTML=s.read?chipFor(m):"";
+ if(!s.read){el.innerHTML='<p class="empty">Press <b>Read this inquiry</b> to fill the record from the email.</p>';return}
+ if(m.stop){el.innerHTML='<div class="rec"><p class="kicker">Not an inquiry</p><h3>'+esc(m.subj)+'</h3><div class="stopbox"><b>Sent to a person.</b> '+esc(m.stop)+'</div><div class="approve"><button class="btn" type="button" id="toOwner">Mark as passed to the owner</button></div><p class="state" id="ownerState"></p></div>';
+  $("toOwner").addEventListener("click",function(){$("ownerState").textContent="Passed to the owner. No reply drafted, nothing sent.";toast("Passed to the owner")});return}
+ var rows=m.fields.map(function(f,i){var gap=!f[1];return'<div class="f'+(gap?' gap':'')+(animate?' pending':'')+'" data-i="'+i+'"><dt>'+esc(f[0])+'</dt><dd>'+(gap?'ask the customer':esc(f[1]))+(f[2]&&!gap&&document.querySelector('mark[data-k="'+f[2]+'"]')?'<br><button class="src" type="button" data-k="'+f[2]+'">Show where</button>':'')+'</dd></div>'}).join("");
+ var nGap=m.gaps.length;
+ el.innerHTML='<div class="rec"><p class="kicker">Job record · draft</p><h3>'+esc(m.co||m.from)+' · '+esc(m.subj)+'</h3><dl class="fields">'+rows+'</dl>'+
+  (m.note?'<p class="hint">'+esc(m.note)+'</p>':'')+
+  '<div class="draft"><h4>Reply draft<span>'+(nGap?'Asks for the '+nGap+' missing item'+(nGap>1?'s':''):'Nothing missing: confirms and hands to the estimator')+'</span></h4>'+
+  '<label class="sr" for="draftTx">Reply draft</label><textarea id="draftTx"'+(s.approved?' readonly':'')+'>'+esc(s.draft)+'</textarea>'+
+  '<div class="approve"><label for="who">Reviewed by</label><select id="who"'+(s.approved?' disabled':'')+'><option value="">Choose a person</option>'+REVIEWERS.map(function(r){return'<option'+(s.reviewer===r?' selected':'')+'>'+esc(r)+'</option>'}).join("")+'</select>'+
+  (s.approved?'<button class="btn plain" type="button" id="undo">Reopen</button>':'<button class="btn go" type="button" id="approve">Approve reply</button>')+'</div>'+
+  '<div class="state" id="aState">'+(s.approved?'<span class="stamp">Approved<small>'+esc(s.reviewer)+' · not sent (demo)</small></span>':'')+'</div></div></div>';
+ $("draftTx").addEventListener("input",function(e){s.draft=e.target.value});
+ $("who").addEventListener("change",function(e){s.reviewer=e.target.value});
+ if($("approve"))$("approve").addEventListener("click",function(){if(!s.reviewer){$("aState").innerHTML='<p class="hint">Choose who reviewed it. The assistant can\'t approve its own draft.</p>';$("who").focus();return}s.approved=true;renderAll(false);toast("Approved by "+s.reviewer+". In a real setup it would go out from the shop's own email.")});
+ if($("undo"))$("undo").addEventListener("click",function(){s.approved=false;renderAll(false)});
+ el.querySelectorAll(".src").forEach(function(b){b.addEventListener("click",function(){flash(b.getAttribute("data-k"))})});
+ if(animate){var fs=el.querySelectorAll(".f");if(reduce()){fs.forEach(function(f){f.classList.remove("pending")});return}fs.forEach(function(f,i){setTimeout(function(){f.classList.remove("pending");var k=m.fields[i][2];if(k)flash(k,500)},180*i+120)})}
+}
+function flash(k,ms){document.querySelectorAll("mark.on").forEach(function(x){x.classList.remove("on")});var t=document.querySelector('mark[data-k="'+k+'"]');if(!t)return;t.classList.add("on");if(!ms&&t.scrollIntoView)t.scrollIntoView({block:"nearest",behavior:reduce()?"auto":"smooth"});setTimeout(function(){t.classList.remove("on")},ms||1600)}
+function readMail(m){st[m.id].read=true;renderList();renderMail();renderRec(true);toast(m.stop?"Out of scope: sent to a person":"Record filled. "+(m.gaps.length?m.gaps.length+" item(s) missing.":"Nothing missing."))}
+function renderAll(anim){renderList();renderMail();renderRec(anim)}
+$("list").addEventListener("click",function(e){var b=e.target.closest(".mrow");if(!b)return;sel=b.getAttribute("data-id");renderAll(false);if(window.innerWidth<820)$("mail").scrollIntoView({block:"start"})});
+$("list").addEventListener("keydown",function(e){if(e.key!=="ArrowDown"&&e.key!=="ArrowUp")return;var bs=[].slice.call(document.querySelectorAll(".mrow")),i=bs.indexOf(document.activeElement);if(i<0)return;e.preventDefault();var n=bs[(i+(e.key==="ArrowDown"?1:bs.length-1))%bs.length];n.focus()});
+$("reset").addEventListener("click",function(){fresh();renderAll(false);toast("Demo reset")});
+fresh();renderAll(false);
+})();
+</script>
+</body>
+</html>
