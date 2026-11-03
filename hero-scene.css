@@ -95,3 +95,12 @@
   .hx-p .card{left:0;right:0;width:auto}
 }
 @media (prefers-reduced-motion:reduce){.hx-p .chip{transition:none}}
+/* 3 Nov: simpler scene. One read, then still; the count sits in the caption */
+.hx-p .scene-cap b.scene-count{display:block;color:#f3f2ee;font-weight:600;margin-bottom:2px}
+.hx-p .chip[hidden]{display:none}
+.hx-p .chip .tag{display:inline-block}
+.hx-p .chip .tag{font:600 10.5px/1 Inter,system-ui,sans-serif;letter-spacing:0;text-transform:none}
+.hx-p .card .call b.fix{background:#e8b56a;color:#1a1306}
+.hx-p .card .k{font:600 12px/1.3 Inter,system-ui,sans-serif!important;letter-spacing:0!important;text-transform:none!important}
+.hx-p .card .k em{font-style:normal}
+.hx-p .card .call b{font:600 11px/1 Inter,system-ui,sans-serif;letter-spacing:0;text-transform:none}

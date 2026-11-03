@@ -1,7 +1,7 @@
-/* Home hero scene: one made-up business week on a perspective grid. A "now" frame sweeps
-   Monday to Friday; as it passes each moment, Eren's call appears (investigate / leave it).
-   Click a point for the detail, drag to turn the view, switch the example business, hide a
-   lane, pause. No network requests, no storage except the First Look box hand-off. */
+/* Home hero scene: one made-up business week on a perspective grid. Eren reads the week once,
+   Monday to Friday; as the frame passes each moment its call appears (Check / Leave), then the
+   scene settles and stays still. Click a point for the finding, drag to turn the view, switch the
+   example business to read another week. No network requests, no storage except the First Look box hand-off. */
 (function () {
   'use strict';
   var root = document.querySelector('.hx-p');
@@ -40,9 +40,7 @@
   var canvas = scene.querySelector('canvas');
   var ctx = canvas.getContext('2d');
   var layer = scene.querySelector('.chips');
-  var clock = scene.querySelector('.clock');
-  var clockText = clock.querySelector('span');
-  var pauseBtn = clock.querySelector('.pause');
+  var capCount = root.querySelector('.scene-count');
   var card = scene.querySelector('.card');
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -138,7 +136,7 @@
   var bizKey = 'repair', ev = [], chips = [], lanesOn = { w: true, f: true, t: true };
   var now = reduce ? 5 : 0, playing = !reduce, holdUntil = 0, visible = true;
   var yaw = -0.3, pitch = 0.52, W = 0, H = 0, dpr = 1, active = null;
-  var SWEEP = 22000; // ms for a full week
+  var SWEEP = 9000; // ms for Eren to read the full week, once
 
   function build() {
     layer.textContent = '';
@@ -147,11 +145,9 @@
       var b = document.createElement('button');
       b.type = 'button';
       b.className = 'chip ' + (e.call || '');
-      b.setAttribute('aria-label', e.when + ', ' + LANES[e.l].name + ': ' + e.label + ', ' + e.sub + '. ' + (e.call === 'fix' ? 'Investigate.' : 'Leave it.'));
+      b.setAttribute('aria-label', e.when + ', ' + LANES[e.l].name + ': ' + e.label + ', ' + e.sub + '. ' + (e.call === 'fix' ? 'Worth checking.' : 'Leave it.'));
       var tag = document.createElement('span'); tag.className = 'tag'; tag.textContent = e.call === 'fix' ? 'Check' : 'Leave';
-      var txt = document.createElement('span'); txt.textContent = e.label + ' ';
-      var sm = document.createElement('small'); sm.textContent = e.sub;
-      txt.appendChild(sm);
+      var txt = document.createElement('span'); txt.textContent = e.label;
       b.appendChild(tag); b.appendChild(txt);
       b.addEventListener('click', function () { open(i); });
       layer.appendChild(b);
@@ -163,13 +159,13 @@
   function open(i) {
     var e = ev[i]; active = i;
     chips.forEach(function (c, j) { c.classList.toggle('on', j === i); });
-    card.querySelector('.k span').textContent = 'Example · ' + DATA[bizKey].name;
+    card.querySelector('.k span').textContent = LANES[e.l].name + ' · ' + DATA[bizKey].name + ' (example)';
     card.querySelector('.k em').textContent = e.when;
     card.querySelector('h3').textContent = e.title;
     card.querySelector('.saw').textContent = e.saw;
     var call = card.querySelector('.call');
     call.textContent = '';
-    var b = document.createElement('b'); b.className = e.call; b.textContent = e.call === 'fix' ? 'Investigate' : 'Leave it';
+    var b = document.createElement('b'); b.className = e.call; b.textContent = e.call === 'fix' ? 'Check' : 'Leave';
     call.appendChild(b); call.appendChild(document.createTextNode(e.say));
     card.hidden = false;
   }
@@ -181,7 +177,7 @@
     b.addEventListener('click', function () {
       bizKey = b.getAttribute('data-biz');
       root.querySelectorAll('.biz button').forEach(function (o) { o.setAttribute('aria-pressed', String(o === b)); });
-      build(); if (!reduce) { now = 0; } draw();
+      build(); if (!reduce) { now = 0; setPlaying(true); } else { now = 5; draw(); }
     });
   });
   root.querySelectorAll('.lanes button').forEach(function (b) {
@@ -194,12 +190,8 @@
   });
   function setPlaying(p) {
     playing = p;
-    pauseBtn.setAttribute('aria-label', p ? 'Pause the week' : 'Play the week');
-    pauseBtn.innerHTML = p ? '<svg viewBox="0 0 10 10" aria-hidden="true"><rect x="1.5" y="1" width="2.4" height="8"/><rect x="6.1" y="1" width="2.4" height="8"/></svg>'
-                           : '<svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1l7 4-7 4z"/></svg>';
     if (p) { if (now >= 5) now = 0; last = performance.now(); tick(); }
   }
-  pauseBtn.addEventListener('click', function () { setPlaying(!playing); });
 
   /* drag to turn */
   var dragging = false, sx = 0, sy = 0, syaw = 0, spitch = 0, moved = false;
@@ -261,10 +253,11 @@
       line(p0, p1, hexA(L.c, lanesOn[k] ? 0.45 : 0.12), 1.2);
       var lp = proj(tx(0) - 0.3, 0, L.z);
       ctx.fillStyle = hexA(L.c, lanesOn[k] ? 0.9 : 0.3);
-      ctx.font = '600 10.5px ui-monospace,SFMono-Regular,Consolas,monospace';
+      ctx.font = '600 12px Inter,system-ui,sans-serif';
       ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
-      ctx.fillText(L.name.toUpperCase(), lp[0] + 2, lp[1] - 5);
-      laneBoxes.push([lp[0] + 2, lp[1] - 18, ctx.measureText(L.name.toUpperCase()).width + 4, 14]);
+      var lx = Math.max(6, lp[0] + 2);
+      ctx.fillText(L.name, lx, lp[1] - 5);
+      laneBoxes.push([lx, lp[1] - 19, ctx.measureText(L.name).width + 4, 15]);
     });
     // day ticks along the front lane edge
     ctx.textAlign = 'center'; ctx.textBaseline = 'top';
@@ -296,9 +289,15 @@
       }
       placed.push([top[0], top[1], on, seen]);
     });
-    // now frame
+    var reading = now < 5;
+    if (capCount) {
+      var nf = ev.filter(function (e) { return e.call === 'fix'; }).length;
+      capCount.textContent = reading ? 'Eren is reading the week…' : nf + ' worth checking · ' + (ev.length - nf) + ' to leave alone';
+    }
+    // now frame (only while Eren is reading)
     var xn = tx(now), z0 = LANES.w.z - 0.8, z1 = LANES.t.z + 0.8, yh = 1.45;
     var A = proj(xn, 0, z0), B = proj(xn, 0, z1), C = proj(xn, yh, z1), D = proj(xn, yh, z0);
+    if (reading) {
     ctx.fillStyle = 'rgba(168,209,241,0.045)';
     ctx.beginPath(); ctx.moveTo(A[0], A[1]); ctx.lineTo(B[0], B[1]); ctx.lineTo(C[0], C[1]); ctx.lineTo(D[0], D[1]); ctx.closePath(); ctx.fill();
     ctx.strokeStyle = 'rgba(238,241,246,0.75)'; ctx.lineWidth = 1.2; ctx.stroke();
@@ -310,19 +309,13 @@
       ctx.beginPath(); ctx.moveTo(Ab[0], Ab[1]); ctx.lineTo(Bb[0], Bb[1]); ctx.lineTo(Cb[0], Cb[1]); ctx.lineTo(Db[0], Db[1]); ctx.closePath(); ctx.stroke();
       line(Ab, A, 'rgba(196,215,235,0.3)'); line(Bb, B, 'rgba(196,215,235,0.3)'); line(Cb, C, 'rgba(196,215,235,0.3)'); line(Db, D, 'rgba(196,215,235,0.3)');
     }
-    // clock label above the frame
-    var top2 = proj(xn, yh, z1);
-    clock.style.left = Math.max(70, Math.min(W - 70, top2[0])) + 'px';
-    clock.style.top = Math.max(58, top2[1] - 8) + 'px';
-    var day = Math.min(4, Math.floor(now)), frac = Math.min(1, now - day);
-    var mins = Math.round(7 * 60 + frac * 14 * 60), hh = Math.floor(mins / 60), mm = mins % 60;
-    var ap = hh >= 12 ? 'PM' : 'AM', h12 = ((hh + 11) % 12) + 1;
-    clockText.textContent = 'NOW · ' + DAYS[day] + ' ' + h12 + ':' + (mm < 10 ? '0' : '') + mm + ' ' + ap;
+    }
     // chips follow their nodes, nudged apart so labels never sit on each other
     var boxes = laneBoxes.slice();
     var order = chips.map(function (c, i) { return i; }).sort(function (a, b) { return placed[a][1] - placed[b][1]; });
     order.forEach(function (i) {
       var c = chips[i], p = placed[i];
+      if (!p[3]) { c._pos = [-9999, -9999]; return; }
       var key = p[3] ? 's' : 'n'; c._ws = c._ws || {}; var cw = c._ws[key] || 0; if (!cw) { c.classList.toggle('seen', p[3]); cw = c._ws[key] = c.offsetWidth || 160; } var ch = 24;
       var left = p[0] + 12; if (left + cw > W - 2) left = p[0] - 12 - cw;
       left = Math.max(2, left);
@@ -346,7 +339,8 @@
       c.classList.toggle('seen', p[3]);
       c.classList.toggle('future', !p[3]);
       c.style.transform = 'translate(' + Math.round(c._pos[0]) + 'px,' + Math.round(c._pos[1]) + 'px)';
-      c.tabIndex = p[2] ? 0 : -1;
+      c.hidden = !p[3];
+      c.tabIndex = p[3] ? 0 : -1;
     });
   }
   function fade(x, z) { var p = proj(x, 0, z); var d = p[2]; return Math.max(0, Math.min(1, 1.5 - (d - 6) / 5)); }
@@ -358,8 +352,8 @@
     raf = requestAnimationFrame(function step(ts) {
       if (!playing || !visible) return;
       var dt = Math.min(64, ts - (last || ts)); last = ts;
-      if (holdUntil) { if (ts > holdUntil) { holdUntil = 0; now = 0; } }
-      else { now += dt / SWEEP * 5; if (now >= 5) { now = 5; holdUntil = ts + 3500; } }
+      now += dt / SWEEP * 5;
+      if (now >= 5) { now = 5; playing = false; draw(); return; } // read once, then settle
       draw();
       raf = requestAnimationFrame(step);
     });
