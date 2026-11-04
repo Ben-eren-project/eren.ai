@@ -1,4 +1,4 @@
-/* Light / dark toggle. Dark is Eren's default; a visitor's choice is remembered in this browser only.
+/* Light / dark toggle. Light is the default (4 Nov 2026); a visitor who picks dark keeps it, remembered in this browser only.
    The early part (setting data-theme before paint) is inlined in each page's <head>. */
 (function () {
   var root = document.documentElement;
