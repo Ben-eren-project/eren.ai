@@ -109,13 +109,13 @@
 /* EREN MOBILE LAYOUT PATCH - END */
 #intake [hidden]{display:none!important}
 </style><link rel="stylesheet" href="eren-editorial.css"><link rel="stylesheet" href="flow.css">
-<meta name="description" content="Tell Eren what you want to improve. Request a free First Look or discuss a paid Diagnose or Build. No payment or booking is made by submitting this form.">
+<meta name="description" content="Tell Eren what you want to improve. Request a free First Look or discuss a Build. No payment or booking is made by submitting this form.">
 <link rel="canonical" href="https://erenforbusiness.com/start.html">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Eren for Business">
 <meta property="og:title" content="Contact Eren | Discuss Your Business">
-<meta property="og:description" content="Tell Eren what you want to improve. Request a free First Look or discuss a paid Diagnose or Build. No payment or booking is made by submitting this form.">
+<meta property="og:description" content="Tell Eren what you want to improve. Request a free First Look or discuss a Build. No payment or booking is made by submitting this form.">
 <meta property="og:url" content="https://erenforbusiness.com/start.html">
 <meta property="og:image" content="https://erenforbusiness.com/social-card.png">
 <meta property="og:image:width" content="1200">
@@ -135,7 +135,7 @@
 <div class="flow">
   <main class="flow-main">
     <div class="flow-head">
-      <p class="flow-pkg" id="packageEy">Package 1 · Eren Diagnose</p>
+      <p class="flow-pkg" id="packageEy">First Look · Free</p>
       <div class="flow-progress" aria-hidden="true"><span class="flow-bar"><i></i></span><span class="flow-count">1 of 3</span></div>
       <span class="flow-live" aria-live="polite"></span>
     </div>
@@ -144,7 +144,7 @@
 
     <form id="intake" novalidate>
       <fieldset class="step" data-step="business">
-        <h1 class="step-title" id="packageTitle">Discuss a Diagnose.</h1>
+        <h1 class="step-title" id="packageTitle">Request a free First Look.</h1>
         <p class="step-why" id="packageIntro">Describe the problem you want to investigate. We’ll confirm the scope, available evidence and fee with you before paid work starts.</p>
         <div class="step-body">
           <p class="sub">About your business</p>
@@ -183,12 +183,7 @@
         <p class="step-why">Describe the change and what it depends on. You get an exact quote before any work begins.</p>
         <div class="step-body">
           <div class="f full"><label for="buildChange">What improvement would you like us to make? <span class="req">*</span></label><textarea id="buildChange" style="min-height:130px" placeholder="For example: restructure service pages, give the team one current job record, or connect tools that require repeated entry." required></textarea></div>
-          <div class="f full"><p class="flow-q" id="stageQ">Have you completed an Eren Diagnose for this problem?</p>
-            <div class="chips" role="radiogroup" aria-labelledby="stageQ">
-              <label class="chip"><input type="radio" name="diagnoseStage" value="Yes, Diagnose is complete">Yes, Diagnose is complete</label>
-              <label class="chip"><input type="radio" name="diagnoseStage" value="Not yet">Not yet</label>
-            </div></div>
-          <div class="f full"><label for="buildFinding">What did Diagnose identify, or what have you already agreed to change?</label><textarea id="buildFinding" placeholder="Share the recommendation or decision if you have it. If you haven't done Diagnose, leave this blank."></textarea></div>
+          <div class="f full"><label for="buildFinding">Anything we've already discussed or agreed? <span class="opt">optional</span></label><textarea id="buildFinding" placeholder="For example, from your First Look. Leave blank if this is new."></textarea></div>
           <div class="f full"><label for="buildDeliverable">What do you think needs to change? (If known)</label><textarea id="buildDeliverable" placeholder="Describe the page, process, template, or tool you expect to receive."></textarea></div>
           <div class="f full"><label for="buildSuccess">How will you know the work is complete?</label><textarea id="buildSuccess" placeholder="What should be easier or more reliable afterward? Include any constraints you already know."></textarea></div>
           <div class="f full"><label for="buildDependencies">What systems or people does this depend on?</label><textarea id="buildDependencies" placeholder="For example: website platform, booking tool, CRM, approvals, or existing content. Do not send passwords here."></textarea></div>
@@ -211,7 +206,7 @@
           </div>
           <div class="review-slot"></div>
         </div>
-        <div class="send-row"><button type="button" class="step-back">Back</button><button type="submit" class="send" id="sendBtn">Request a Diagnose conversation</button></div>
+        <div class="send-row"><button type="button" class="step-back">Back</button><button type="submit" class="send" id="sendBtn">Request a free First Look</button></div>
         <span class="err" id="err" role="alert" hidden></span>
         <div class="trust">This sends your request to Eren. It does not book a call, take payment or start paid work. Please do not enter passwords or sensitive customer records.</div>
       </fieldset>
@@ -239,7 +234,7 @@
           </dl>
         </div>
       </div>
-      <p class="flow-note"><b>What happens next.</b> We read your request, then contact you about the next step. A paid Diagnose or Build starts only after you agree to it.</p>
+      <p class="flow-note"><b>What happens next.</b> We read your request, then contact you about the next step. A Build starts only after you agree to its scope and price.</p>
     </div>
   </aside>
 </div>
@@ -251,22 +246,22 @@
   // Empty means the API is available on this page's origin.
   var EREN_API = "https://eren-ops.onrender.com";
   var packages = {
-    diagnose: {ey:"Package 1 · Eren Diagnose", title:"Discuss a Diagnose.",
-      intro:"Describe the problem you want to investigate. We’ll confirm the scope, available evidence and fee with you before paid work starts.",
-      button:"Request a Diagnose conversation", primary:"diagnoseProblem",
+    diagnose: {ey:"First Look · Free", title:"Request a free First Look.",
+      intro:"Tell us about one problem with your website, tools or workflow. Eren reviews what you share, then you get a short written read and a 15-minute call. Free, with no obligation.",
+      button:"Request a free First Look", primary:"diagnoseProblem",
       fields:[["Business context","about"],["Problem to diagnose","diagnoseProblem"],["Current process","diagnoseFlow"],["Evidence available","diagnoseEvidence"],["Desired outcome","diagnoseOutcome"]]},
-    build: {ey:"Package 2 · Eren Build", title:"Discuss a Build.",
-      intro:"Share the change you are considering and any Diagnose findings. The diagnosis and your priorities set the scope; we agree the price and acceptance checks before work starts.",
+    build: {ey:"Eren Build", title:"Discuss a Build.",
+      intro:"Share the change you are considering. Every Build starts with a full diagnosis; we agree the scope, price and acceptance checks in writing before work starts.",
       button:"Ask about Build", primary:"buildChange",
-      fields:[["Business context","about"],["Change requested","buildChange"],["Diagnose finding or agreed change","buildFinding"],["Expected deliverable","buildDeliverable"],["Acceptance criteria","buildSuccess"],["Systems and dependencies","buildDependencies"],["Timing","buildTiming"]]}
+      fields:[["Business context","about"],["Change requested","buildChange"],["Already discussed or agreed","buildFinding"],["Expected deliverable","buildDeliverable"],["Acceptance criteria","buildSuccess"],["Systems and dependencies","buildDependencies"],["Timing","buildTiming"]]}
   };
   var requested = new URLSearchParams(window.location.search).get("package");
   var packageKey = Object.prototype.hasOwnProperty.call(packages, requested) ? requested : "diagnose";
   var selected = packages[packageKey];
-  var isFirstLook = new URLSearchParams(window.location.search).get("intent") === "first-look" && !requested;
+  var isFirstLook = packageKey !== "build"; // every route except Build is the free First Look
   if (isFirstLook) {
     selected = Object.assign({}, selected, {ey:"First Look · Free", title:"Request a free First Look.",
-      intro:"Share one question about your website or workflow. We’ll arrange a short conversation to establish fit and discuss an initial observation. A full diagnosis is a separate paid engagement.",
+      intro:"Tell us about one problem with your website, tools or workflow. Eren reviews what you share, then you get a short written read and a 15-minute call. Free, with no obligation.",
       button:"Request a free First Look"});
     document.querySelector('label[for="diagnoseProblem"]').innerHTML = 'What would you like us to look at? <span class="req">*</span>';
     ["diagnoseFlow","diagnoseEvidence","diagnoseOutcome"].forEach(function(id){document.getElementById(id).closest(".f").hidden=true;});
@@ -332,11 +327,7 @@
       var checked=Array.from(document.querySelectorAll('input[name="focus"]:checked')).map(function(item){return item.value;});
       if(checked.length) lines.push("Problem areas: "+checked.join(", "));
     }
-    if(packageKey==="build"){
-      var stage=document.querySelector('input[name="diagnoseStage"]:checked');
-      lines.push("Eren Diagnose status: "+(stage ? stage.value : "Not specified"));
-    }
-    if (isFirstLook) lines.push("Offer requested: Free First Look only. No paid Diagnose or Build agreed.");
+    if (isFirstLook) lines.push("Offer requested: Free First Look only (written read + 15-minute call). No Build agreed.");
     if(value("heardFrom")) lines.push("How they heard about Eren (self-reported): "+value("heardFrom"));
     if(window.ErenLeadSource){var source=window.ErenLeadSource.read();if(source) lines.push("Tagged visit source (not verified identity): "+source.source+"; campaign: "+source.campaign);}
     return lines.join("\n\n");
