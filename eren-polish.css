@@ -164,3 +164,4 @@ h2 em,.sec-h em,.closer-title em,.cta2 h2 em,.shift .big b{font-family:inherit!i
 /* Start (and other form) pages: room between the theme button and "Back to site" */
 .page-start .nav-r,.page-onboarding .nav-r,.flow-page .nav-r{display:flex;align-items:center;gap:16px}
 @media(max-width:760px){.page-start .nav-r,.page-onboarding .nav-r,.flow-page .nav-r{gap:12px!important}}
+.flow-sheet dl .row:last-child{border-bottom:0;padding-bottom:4px}
