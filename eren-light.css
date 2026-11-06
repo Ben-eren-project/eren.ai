@@ -107,3 +107,12 @@ html[data-theme="light"] .svc3-more summary{color:#2361a3!important}
 html[data-theme="light"] .svc-next a{color:#17181c!important;border-color:rgba(23,24,28,.3)}
 html[data-theme="light"] :is(.serve-cols,.serve-col li){border-color:rgba(23,24,28,.12)!important}
 html[data-theme="light"] .serve-col ul:before{color:#5f636c!important}
+html[data-theme="light"] .bs-win{background:#ffffff;border-color:rgba(23,24,28,.14)}
+html[data-theme="light"] .bs-bar{background:#eeece6;border-color:rgba(23,24,28,.10)}
+html[data-theme="light"] .bs-bar i{background:rgba(23,24,28,.18)}
+html[data-theme="light"] .bs-bar span{color:#5f636c}
+html[data-theme="light"] .bs-checks{background:#ffffff;border-color:rgba(23,24,28,.14);box-shadow:0 16px 40px -20px rgba(23,24,28,.35)}
+html[data-theme="light"] .bs-checks li{color:#17181c!important}
+html[data-theme="light"] .bs-k,html[data-theme="light"] .bs-cap{color:#5f636c!important}
+html[data-theme="light"] .bs-cap b{color:#17181c!important}
+html[data-theme="light"] .bs-checks li:before{background-color:#2361a3;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M4 7.2l2 2 4-4.4' fill='none' stroke='%23ffffff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
