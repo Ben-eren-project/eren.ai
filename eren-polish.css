@@ -121,10 +121,10 @@ h2 em,.sec-h em,.closer-title em,.cta2 h2 em,.shift .big b{font-family:inherit!i
 .serve-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:end}
 .serve-h{font-size:32px!important;line-height:1.15!important;letter-spacing:-.02em!important;font-weight:400!important;margin:0!important;max-width:20ch;color:#f3f2ee}
 .serve-intro{margin:0;font-size:16px;line-height:1.7;color:#b5c0ce;max-width:52ch}
-.serve-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto auto auto auto;column-gap:40px;margin-top:48px;border-top:1px solid rgba(196,215,235,.24);padding-top:28px}
-.serve-col{display:grid;grid-row:1 / span 4;grid-template-rows:subgrid;align-content:start}
+.serve-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(6,auto);column-gap:40px;margin-top:48px;border-top:1px solid rgba(196,215,235,.24);padding-top:28px}
+.serve-col{display:grid;grid-row:1 / span 6;grid-template-rows:subgrid;align-content:start}
 .serve-col:nth-of-type(1){grid-column:1}.serve-col:nth-of-type(2){grid-column:2}.serve-col:nth-of-type(3){grid-column:3}
-.serve-col h3{grid-row:1}.serve-col p{grid-row:2}.serve-col ul{grid-row:4}
+.serve-col h3{grid-row:1}.serve-col p{grid-row:2}.serve-col ul{grid-row:4 / span 3;display:grid;grid-template-rows:subgrid}
 .serve-cols>.serve-k{grid-column:1 / -1;grid-row:3;margin:0;padding:12px 0 4px;border-top:1px solid rgba(196,215,235,.14)}
 .serve-col h3{display:flex;align-items:center;gap:10px;margin:0 0 12px;font-size:16px!important;font-weight:600!important;color:#f3f2ee}
 .serve-col h3 i{width:8px;height:8px;border-radius:2px;background:var(--c);flex:none}
@@ -132,12 +132,13 @@ h2 em,.sec-h em,.closer-title em,.cta2 h2 em,.shift .big b{font-family:inherit!i
 .serve-k{display:block;font-size:12px;font-weight:600;color:#99a7b8;margin-bottom:4px}
 .serve-col ul{list-style:none;margin:0;padding:0}
 .serve-col li:first-child{border-top:0}
-.serve-col li{padding:8px 0;border-top:1px solid rgba(196,215,235,.12);font-size:14px;line-height:1.5;color:#f3f2ee}
+.serve-col li{padding:10px 0;border-top:1px solid rgba(196,215,235,.12);font-size:14px;line-height:1.5;color:#f3f2ee}
 @media(max-width:900px){
   .serve-head{grid-template-columns:1fr;gap:16px}
   .serve-h{font-size:28px!important}
   .serve-cols{grid-template-columns:1fr;grid-template-rows:none;row-gap:32px;margin-top:32px}
   .serve-col,.serve-col:nth-of-type(n){display:block;grid-row:auto;grid-column:auto}
+  .serve-col ul{display:block}
   .serve-cols>.serve-k{display:none}
   .serve-col:nth-of-type(1) ul:before{content:"A Build might include";display:block;font-size:12px;font-weight:600;color:#99a7b8;padding:4px 0}
 }
