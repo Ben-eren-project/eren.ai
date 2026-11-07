@@ -264,6 +264,8 @@ footer{ border-top:1px solid var(--line); font-size:12px; padding-block:48px 40p
 <link rel="stylesheet" href="fx/eren-fx.css"><link rel="stylesheet" href="fx/examples.css">
 <link rel="stylesheet" href="eren-polish.css">
 <link rel="stylesheet" href="eren-light.css">
+<link rel="stylesheet" href="eren-graphics.css">
+
 </head>
 <body>
 
@@ -288,7 +290,7 @@ footer{ border-top:1px solid var(--line); font-size:12px; padding-block:48px 40p
 <main>
   <!-- HERO -->
   <header class="subhero">
-    <canvas class="cfield" id="cfield" aria-hidden="true"></canvas>
+    
     <div class="shell hero-grid">
       <div>
         <div class="ey">Services</div>
@@ -299,10 +301,7 @@ footer{ border-top:1px solid var(--line); font-size:12px; padding-block:48px 40p
           <a class="text-link" href="#build">See what a Build includes <span aria-hidden="true">↓</span></a>
         </div>
       </div>
-      <figure class="flow-card" style="margin:0">
-        <canvas id="flow" width="800" height="600" role="img" aria-label="Animation: signals from a business (calls, forms, listings, reviews, bookings, and tools) flow through Eren and come out as one complete package: the plan, the build and the handover."></canvas>
-        <figcaption class="flow-cap"><span><b>One defined problem.</b> The relevant website, workflow and tools.</span><span><b>Diagnose, then decide.</b> Build is a separate agreement.</span></figcaption>
-      </figure>
+      <figure class="gx gx-delivery"><div class="gx-top"><span>From your priorities to a working solution</span><span aria-hidden="true">↗</span></div><div class="gx-plan"><div class="gx-paper-top"><span class="gx-step">01</span><span>Diagnose</span><span class="gx-small">Understand & recommend</span></div><h3>A plan for<br>your business.</h3><dl><div><dt>Your priorities</dt><dd>What you want to improve</dd></div><div><dt>The diagnosis</dt><dd>Findings, evidence and recommendations</dd></div><div><dt>The next step</dt><dd>An action plan you can use</dd></div></dl></div><div class="gx-gate"><span aria-hidden="true">↓</span><p>You choose what to implement.<br><b>Scope and price agreed before Build.</b></p></div><div class="gx-build"><div class="gx-paper-top"><span class="gx-step">02</span><span>Build</span></div><h3>The agreed solution.<br>Ready to use.</h3><div class="gx-build-list"><span>Built around your needs</span><span>Tested against agreed checks</span><span>Documentation and a clear handover</span></div></div><figcaption>The work may include a website, connected software, custom tools or practical AI. The diagnosis determines the fit.</figcaption></figure>
     </div>
   </header>
 
@@ -503,146 +502,12 @@ footer{ border-top:1px solid var(--line); font-size:12px; padding-block:48px 40p
   </div>
 </footer>
 
-<script>
-/* Constellation field: drifting nodes joined by fading lines; nearby nodes ease away from the pointer.
-   Pauses off-screen and in hidden tabs; draws one still frame for reduced-motion users. */
-(() => {
-  const cv = document.getElementById("cfield");
-  if (!cv || !cv.getContext) return;
-  const ctx = cv.getContext("2d"), host = cv.parentElement;
-  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const C = "145,194,237", LINK = 130, PUSH = 160;
-  let W = 0, H = 0, D = 1, nodes = [], lastW = -1;
-  const mouse = { x: -1e4, y: -1e4 };
-  function seed() {
-    const r = cv.getBoundingClientRect(); D = Math.min(devicePixelRatio || 1, 2);
-    W = r.width; H = r.height; cv.width = Math.round(W * D); cv.height = Math.round(H * D);
-    if (Math.abs(W - lastW) < 2 && nodes.length) return; lastW = W;
-    const n = Math.round(Math.min(130, W * H / 9500));
-    nodes = Array.from({ length: n }, () => ({ x: Math.random() * W, y: Math.random() * H,
-      vx: (Math.random() - .5) * .18, vy: (Math.random() - .5) * .18, r: .8 + Math.random() * 1.4 }));
-  }
-  host.addEventListener("pointermove", e => { const r = cv.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; });
-  host.addEventListener("pointerleave", () => { mouse.x = mouse.y = -1e4; });
-  function draw(move) {
-    ctx.setTransform(D, 0, 0, D, 0, 0); ctx.clearRect(0, 0, W, H);
-    if (move) for (const p of nodes) {
-      const dx = p.x - mouse.x, dy = p.y - mouse.y, d = Math.hypot(dx, dy);
-      if (d < PUSH) { const f = (1 - d / PUSH) * .03; p.vx += dx / (d + 1) * f; p.vy += dy / (d + 1) * f; }
-      p.vx *= .985; p.vy *= .985;
-      if (Math.abs(p.vx) < .05) p.vx += (Math.random() - .5) * .02;
-      if (Math.abs(p.vy) < .05) p.vy += (Math.random() - .5) * .02;
-      p.x += p.vx; p.y += p.vy;
-      if (p.x < -20) p.x = W + 20; else if (p.x > W + 20) p.x = -20;
-      if (p.y < -20) p.y = H + 20; else if (p.y > H + 20) p.y = -20;
-    }
-    ctx.lineWidth = 1;
-    for (let i = 0; i < nodes.length; i++) for (let j = i + 1; j < nodes.length; j++) {
-      const a = nodes[i], b = nodes[j], d = Math.hypot(a.x - b.x, a.y - b.y);
-      if (d < LINK) { ctx.strokeStyle = `rgba(${C},${(1 - d / LINK) * .26})`; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke(); }
-    }
-    for (const p of nodes) {
-      const d = Math.hypot(p.x - mouse.x, p.y - mouse.y);
-      if (d < 170) { ctx.strokeStyle = `rgba(${C},${(1 - d / 170) * .4})`; ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke(); }
-      ctx.fillStyle = `rgba(${C},.7)`; ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.2832); ctx.fill();
-    }
-  }
-  let visible = true;
-  if ("IntersectionObserver" in window) new IntersectionObserver(e => { visible = e[0].isIntersecting; }).observe(cv);
-  seed(); addEventListener("resize", () => { seed(); if (reduce) draw(false); });
-  if (reduce) { draw(false); return; }
-  (function loop() { if (visible && !document.hidden) draw(true); requestAnimationFrame(loop); })();
-})();
-</script>
+
 <script src="lead-source.js"></script>
-<script>
-/* Hero: business signals flow through Eren and come out as one complete, delivered package. */
-(() => {
-  const cv = document.getElementById("flow");
-  if (!cv) return;
-  const ctx = cv.getContext("2d");
-  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const W = 800, H = 600;
-  const SRC = ["Calls", "Forms", "Listings", "Reviews", "Bookings", "Tools"];
-  const WAIST = [430, 300];
-  const FIX = [{ y: 238, label: "The plan" }, { y: 300, label: "The build" }, { y: 362, label: "The handover" }];
-  const srcY = i => 105 + i * 78;
-  let rs = 947; const rnd = () => (rs = (rs * 16807) % 2147483647) / 2147483647;
-  const P = [];
-  for (let i = 0; i < 260; i++) P.push({ s: i % 6, f: i % 3, u: rnd(), sp: .09 + rnd() * .06, o: (rnd() - .5) * 2, sz: 1.2 + rnd() * 1.6 });
-  let scale = 1;
-  function size() {
-    const r = cv.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2);
-    cv.width = Math.round(r.width * d); cv.height = Math.round(r.width * .75 * d); scale = cv.width / W;
-  }
-  function bez(a, b, c, u) { const v = 1 - u; return [v * v * a[0] + 2 * v * u * b[0] + u * u * c[0], v * v * a[1] + 2 * v * u * b[1] + u * u * c[1]]; }
-  function draw(t) {
-    ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height);
-    ctx.setTransform(scale, 0, 0, scale, 0, 0);
-    // gateway glow
-    const g = ctx.createRadialGradient(WAIST[0], WAIST[1], 0, WAIST[0], WAIST[1], 150);
-    g.addColorStop(0, "rgba(145,194,237,.18)"); g.addColorStop(1, "rgba(145,194,237,0)");
-    ctx.fillStyle = g; ctx.fillRect(WAIST[0] - 150, WAIST[1] - 150, 300, 300);
-    // source chips
-    ctx.font = "500 15px Inter, Arial, sans-serif"; ctx.textBaseline = "middle";
-    SRC.forEach((s, i) => {
-      const y = srcY(i), w = ctx.measureText(s).width + 30;
-      ctx.strokeStyle = "rgba(196,215,235,.28)"; ctx.lineWidth = 1.2;
-      ctx.beginPath(); ctx.roundRect ? ctx.roundRect(28, y - 17, w, 34, 17) : ctx.rect(28, y - 17, w, 34); ctx.stroke();
-      ctx.fillStyle = "#b5c0ce"; ctx.fillText(s, 43, y + 1);
-    });
-    // the package: one card, three parts that tick off in turn
-    const PX = 552, PY = 178, PW = 214, PH = 244;
-    ctx.fillStyle = "rgba(145,194,237,.06)"; ctx.strokeStyle = "rgba(196,215,235,.28)"; ctx.lineWidth = 1.2;
-    ctx.beginPath(); ctx.roundRect ? ctx.roundRect(PX, PY, PW, PH, 14) : ctx.rect(PX, PY, PW, PH); ctx.fill(); ctx.stroke();
-    ctx.fillStyle = "#99a7b8"; ctx.font = "500 11px Inter, Arial, sans-serif";
-    ctx.fillText("ONE COMPLETE PACKAGE", PX + 18, PY + 26);
-    const cyc = reduce ? 1 : (t * .32) % 1;
-    FIX.forEach((f, k) => {
-      const on = reduce ? 1 : Math.min(1, Math.max(0, (cyc - .12 - k * .18) / .1)) * (cyc < .92 ? 1 : Math.max(0, (1 - cyc) / .08));
-      const cx = PX + 30, cy = f.y;
-      ctx.strokeStyle = "rgba(145,194,237,.55)"; ctx.lineWidth = 1.4;
-      ctx.beginPath(); ctx.arc(cx, cy, 10, 0, Math.PI * 2); ctx.stroke();
-      if (on > 0) {
-        ctx.fillStyle = `rgba(145,194,237,${.95 * on})`;
-        ctx.beginPath(); ctx.arc(cx, cy, 10, 0, Math.PI * 2); ctx.fill();
-        ctx.strokeStyle = `rgba(11,21,38,${on})`; ctx.lineWidth = 2; ctx.lineCap = "round"; ctx.lineJoin = "round";
-        ctx.beginPath(); ctx.moveTo(cx - 4.5, cy + .5); ctx.lineTo(cx - 1.2, cy + 3.8); ctx.lineTo(cx + 4.8, cy - 3.6); ctx.stroke();
-      }
-      ctx.fillStyle = "#f3f2ee"; ctx.font = "500 15px Inter, Arial, sans-serif"; ctx.fillText(f.label, cx + 22, cy + 1);
-      if (k < FIX.length - 1) { ctx.fillStyle = "rgba(196,215,235,.14)"; ctx.fillRect(PX + 18, cy + 31, PW - 36, 1); }
-    });
-    // E mark at the waist
-    ctx.fillStyle = "rgba(145,194,237,.9)";
-    const ex = WAIST[0] - 11, ey = WAIST[1] - 16;
-    ctx.fillRect(ex, ey, 2.5, 32); ctx.fillRect(ex, ey, 22, 2.8); ctx.fillStyle = "#b9dcf7"; ctx.fillRect(ex, ey + 14.6, 15, 2.8); ctx.fillStyle = "rgba(145,194,237,.9)"; ctx.fillRect(ex, ey + 29.2, 22, 2.8);
-    // particles
-    for (const p of P) {
-      const u = reduce ? p.u : (p.u + t * p.sp) % 1;
-      let x, y, amber;
-      const s0 = [150, srcY(p.s)], out = [548, FIX[p.f].y];
-      if (u < .5) {
-        const k = u / .5; [x, y] = bez(s0, [300, srcY(p.s)], [WAIST[0] - 18, WAIST[1]], k);
-        y += p.o * 10 * (1 - k); amber = k < .8;
-      } else {
-        const k = (u - .5) / .5; [x, y] = bez([WAIST[0] + 18, WAIST[1]], [495, FIX[p.f].y], out, k);
-        y += p.o * 4 * (1 - k); amber = false;
-      }
-      const edge = Math.min(1, u / .06, (1 - u) / .06);
-      ctx.fillStyle = amber ? `rgba(232,181,106,${.85 * edge})` : `rgba(145,194,237,${.9 * edge})`;
-      ctx.fillRect(x - p.sz / 2, y - p.sz / 2, p.sz, p.sz);
-    }
-  }
-  let visible = true, t0 = performance.now();
-  if ("IntersectionObserver" in window) new IntersectionObserver(e => { visible = e[0].isIntersecting; }).observe(cv);
-  function loop(now) { if (visible && !document.hidden) draw((now - t0) / 1000); requestAnimationFrame(loop); }
-  size(); addEventListener("resize", () => { size(); if (reduce) draw(0); });
-  if (reduce) draw(0); else requestAnimationFrame(loop);
-})();
-</script>
+
 <script src="eren-chrome.js" defer></script>
 <script src="fx/eren-fx.js" defer></script>
 <script src="eren-polish.js" defer></script>
 <script src="eren-theme.js" defer></script>
-</body>
+<script src="eren-graphics.js"></script></body>
 </html>
