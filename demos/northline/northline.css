@@ -397,3 +397,69 @@ h3{font-size:22px;line-height:1.2;font-weight:600}
 button,input,textarea,select{font-family:inherit}
 .done .tblock>div{padding:12px 32px}
 @media (max-width:720px){.done .tblock>div{padding:12px 20px}}
+
+/* ===== 10 Nov rework: the part is the hero ===== */
+/* Banner goes quiet so the dark hero is the page's one deep band */
+.demo-bar{background:var(--card-2);color:var(--muted-foreground);border-bottom:1px solid var(--border)}
+.demo-bar b,.demo-bar a,.demo-bar a:hover{color:var(--foreground)}
+.demo-bar :focus-visible{outline-color:var(--ring)}
+
+/* Buttons: one solid shape, arrow nudges on hover */
+.btn{padding:0 20px;gap:10px;transition:background-color .15s var(--ease-ui),transform .1s var(--ease-ui)}
+.btn .arr{position:static;width:auto;padding:0;background:none;z-index:auto;transition:transform .2s var(--ease-out)}
+.btn .arr svg{color:currentColor}
+.btn:hover,.btn:focus-visible{background:var(--primary-hover);color:#fff}
+.btn:hover .arr,.btn:focus-visible .arr{width:auto;transform:translateX(3px)}
+.btn.quiet:hover,.btn.quiet:focus-visible{background:var(--muted);color:var(--foreground)}
+
+/* Hero */
+.hero{background:var(--deep);color:var(--deep-ink);padding-block:56px 0}
+.hero-in{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:32px;align-items:center}
+.hero h1{color:#fff;font-size:clamp(40px,4.3vw,64px);margin-bottom:24px}
+.hero .two-tone .mute{color:#8e9aa6}
+.hero .lede{color:var(--deep-sub);max-width:44ch}
+.hero .btn{background:#fff;color:var(--foreground)}
+.hero .btn:hover,.hero .btn:focus-visible{background:#dfe5ea;color:var(--foreground)}
+.hero .btn.quiet{background:transparent;color:var(--deep-ink);border-color:var(--deep-rule)}
+.hero .btn.quiet:hover,.hero .btn.quiet:focus-visible{background:#1e262d;border-color:var(--deep-sub);color:#fff}
+.hero :focus-visible{outline-color:var(--deep-accent)}
+.stage{margin:0;min-width:0}
+.stage-art svg{display:block;width:100%;height:auto}
+.stg{transition:opacity .28s var(--ease-out)}
+[data-rev="cut"] .stg:not(.stg-cut),[data-rev="form"] .stg:not(.stg-form),[data-rev="weld"] .stg:not(.stg-weld),[data-rev="finish"] .stg:not(.stg-finish){opacity:0}
+.isodim path{fill:none;stroke:var(--deep-accent);stroke-width:1.1}
+.isodim text{fill:var(--deep-accent);font-family:var(--font-mono);font-size:15px}
+.stage-ui{display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;align-items:center;margin-top:-8px}
+.hero .seg{background:#1e262d;box-shadow:inset 0 0 0 1px var(--deep-rule)}
+.hero .seg-pill{background:#fff;box-shadow:none}
+.hero .seg [role="tab"]{color:var(--deep-sub);padding:8px 16px;font-size:15px}
+.hero .seg [role="tab"][aria-selected="true"]{color:var(--foreground)}
+.stage-note{font-size:15px;line-height:23px;color:var(--deep-sub);min-height:46px;display:flex;align-items:center}
+.hero .facts{margin-top:56px;border-top:1px solid var(--deep-rule);border-bottom:0}
+.hero .facts>div+div{border-left-color:var(--deep-rule)}
+.hero .facts dt{color:var(--deep-sub)}
+.hero .facts b{color:#fff;font-size:clamp(32px,3.4vw,46px)}
+
+/* How a job runs, on the light page */
+.run-sec{--deep-ink:var(--foreground);--deep-sub:var(--muted-foreground);--deep-accent:var(--primary);background:var(--card-2)}
+.run-sec .run li,.run-sec .run li::before,.run-sec .run::after{border-color:var(--foreground)}
+.run-sec .run li::before,.run-sec .run::after{background:var(--foreground)}
+.run-sec .more{display:inline-block;margin-top:40px;font-size:15px}
+.sec{padding-block:96px}
+
+@media (max-width:1080px){
+  .hero-in{grid-template-columns:minmax(0,1fr);gap:8px}
+  .stage-ui{grid-template-columns:minmax(0,1fr);gap:12px;margin-top:0}
+  .stage-ui .seg{justify-self:start}
+}
+@media (max-width:720px){
+  .hero{padding-block:40px 0}
+  .hero .facts{margin-top:40px}
+  .hero .facts>div:nth-child(2n){border-left-color:var(--deep-rule)}
+  .hero .facts>div:nth-child(n+3){border-top-color:var(--deep-rule)}
+  .hero .seg [role="tab"]{padding:8px 12px}
+  .stage-art{margin-inline:-12px}
+  .sec{padding-block:64px}
+}
+.stage-note[hidden]{display:none}
+.hero h1{text-wrap:balance}
