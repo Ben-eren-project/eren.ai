@@ -107,3 +107,5 @@ html[data-theme="light"] .svc3-more summary{color:#2361a3!important}
 html[data-theme="light"] .svc-next a{color:#17181c!important;border-color:rgba(23,24,28,.3)}
 html[data-theme="light"] :is(.serve-cols,.serve-col li){border-color:rgba(23,24,28,.12)!important}
 html[data-theme="light"] .serve-col ul:before{color:#5f636c!important}
+/* How page: the selected lens tab was a dark slab with dark text in light mode */
+html[data-theme="light"] .tab[aria-selected="true"]{background:#eaf1f9!important;border-color:#2361a3!important}
