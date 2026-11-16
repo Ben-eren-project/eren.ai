@@ -1,41 +1,75 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta http-equiv="Content-Security-Policy" content="form-action 'none'; connect-src 'none'; object-src 'none'; base-uri 'self'"><title>Request a quote — Northline Metal Works — a fictional demo by Eren</title><link rel="icon" href="../../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="fonts.css"><link rel="stylesheet" href="base.css"><link rel="stylesheet" href="shared.css"><link rel="stylesheet" href="theme.css"><link rel="stylesheet" href="fixes.css"></head><body class="northline page-quote" id="top"><a class="skip-link" href="#main">Skip to content</a><div class="preview-strip">Fictional business · Working design demo · Nothing is sent<a href="../../index.html">View Eren ↗</a></div><header class="site-nav"><a class="identity" href="index.html" aria-label="Northline Metal Works, home"><span class="n-mark" aria-hidden="true">N</span><span>NORTHLINE<small>METAL WORKS</small></span></a><nav id="site-menu" aria-label="Main navigation"><a href="index.html" >Overview</a><a href="what-we-make.html" >What we make</a><a href="how-we-work.html" >How we work</a></nav><div class="nav-actions"><a class="action " href="quote.html">Start a quote<span aria-hidden="true">↗</span></a><button class="menu-toggle" aria-controls="site-menu" aria-expanded="false" type="button">Menu <span>＋</span></button></div></header><main id="main">
-<section aria-labelledby="h1" class="quote page" id="quote">
-<div class="wrap quote-in q-grid">
-<div class="q-intro">
-<p class="crumbs"><a href="index.html">Home</a> / Request a quote</p>
-<h1 id="h1">Send what you have. We’ll ask for the rest.</h1>
-<p class="sec-sub" style="margin-top:16px">A drawing and quantity are enough to start. With only a photo and rough sizes, choose “Repair or replacement part” and we’ll sketch it for you to confirm.</p>
-</div>
-<div class="q-info">
-<h2 class="qh">What helps us quote</h2>
-<ul class="needs"><li>Material, and thickness or gauge if you know it</li><li>Quantity, now and per year if it repeats</li><li>When you need it</li><li>Finish: bare, painted or powder coated</li></ul>
-<div class="next">
-<h2>What happens after you send it</h2>
-<ol><li>Your coordinator reads it and replies by email, with questions or a written quote.</li><li>If it’s outside the shop’s limits, you hear that plainly instead of silence.</li><li>Nothing is cut until you approve the quote, and the drawings for assemblies.</li></ol>
-</div>
-</div>
-<div class="form">
-<form aria-labelledby="formH" id="qf" novalidate="">
-<h2 id="formH">Request a quote</h2>
-<div class="field"><label for="f_type">Job type <span class="hint">(pick the closest)</span></label>
-<select aria-describedby="e_type prefill" id="f_type" name="type" required=""><option value="">Choose one</option><option>Production part to print</option><option>Repair or replacement part</option><option>Fabricated assembly</option><option>Not sure</option></select>
-<p aria-live="polite" class="err" id="e_type"></p></div>
-<p class="prefill" hidden="" id="prefill">Filled in from the page you came from. Change it if it’s wrong.</p>
-<div class="two">
-<div class="field"><label for="f_co">Company</label><input aria-describedby="e_co" autocomplete="organization" id="f_co" name="company" required=""/><p aria-live="polite" class="err" id="e_co"></p></div>
-<div class="field"><label for="f_name">Your name</label><input aria-describedby="e_name" autocomplete="name" id="f_name" name="name" required=""/><p aria-live="polite" class="err" id="e_name"></p></div>
-</div>
-<div class="field"><label for="f_email">Email</label><input aria-describedby="e_email" autocomplete="email" id="f_email" inputmode="email" name="email" required="" type="email"/><p aria-live="polite" class="err" id="e_email"></p></div>
-<div class="two">
-<div class="field"><label for="f_mat">Material <span class="hint">(best guess is fine)</span></label><input id="f_mat" name="material" placeholder="e.g. 11 ga carbon steel"/></div>
-<div class="field"><label for="f_qty">Quantity</label><input id="f_qty" inputmode="numeric" name="qty" placeholder="e.g. 40"/></div>
-</div>
-<div class="field"><label for="f_desc">What it is, and when you need it</label><textarea id="f_desc" name="desc" placeholder="A real form would take your drawing here. Use sample details in this demo."></textarea></div>
-<button class="btn" disabled="" id="send" type="submit">Send quote request</button>
-<noscript><p class="note">This demo form needs JavaScript, so it stays switched off here. Nothing can be sent from it.</p></noscript>
-<div class="done" hidden="" id="ok" role="status"><b>Nothing was sent.</b>This preview shows the details a shop could receive through a connected quote form.</div>
-</form>
-</div>
-</div>
-</section>
-</main><footer class="site-footer"><div class="footer-top"><a class="identity" href="index.html"><span class="n-mark">N</span><span>NORTHLINE<small>METAL WORKS</small></span></a><p>Cut. Form. Weld. Finish.<br>One shop. One coordinator.</p><div><a href="what-we-make.html">What we make ↗</a><a href="how-we-work.html#capabilities">Capabilities & limits ↗</a><a href="quote.html">Start a quote ↗</a></div></div><div class="footer-bottom"><span>A fictional shop, thoughtfully built by Eren.</span><a href="../../services.html#examples">See the thinking behind the work ↗</a></div><div class="footer-word" aria-hidden="true">NORTHLINE</div></footer><script src="shared.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; form-action 'none'; connect-src 'none'; object-src 'none'; base-uri 'self'">
+<title>Request a quote: Northline Metal Works (fictional demo by Eren)</title>
+<meta name="description" content="The quote form of a fictional fabrication shop. Nothing is sent.">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/plexsans-var.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="kit/eren-kit.css">
+<link rel="stylesheet" href="northline.css">
+</head><body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="demo-bar" role="note"><div class="shell"><span><b>Fictional demonstration.</b> Northline Metal Works is not a real shop, and nothing you enter here is sent.</span><a href="../../services.html#examples">Back to Eren</a></div></div>
+<header class="hdr"><div class="shell hdr-in">
+  <a class="brand" href="index.html"><svg class="mk" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="7" fill="#11161a"/><path d="M10 23V9l12 14V9" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Northline<small>Metal Works</small></span></a>
+  <div class="hdr-r">
+    <nav class="nav" aria-label="Main"><a class="u-wipe" href="what-we-make.html">What we make</a><a class="u-wipe" href="how-we-work.html">How we work</a><a class="u-wipe" href="how-we-work.html#capabilities">Capabilities</a></nav>
+    
+    <div class="menu-wrap" data-menu><button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button><nav id="menu" class="t-dropdown" aria-label="Main, small screens"><a href="what-we-make.html">What we make</a><a href="how-we-work.html">How we work</a><a href="how-we-work.html#capabilities">Capabilities</a><a href="quote.html">Start a quote</a></nav></div>
+  </div>
+</div></header>
+<main id="main">
+<section class="quote" aria-labelledby="h1"><div class="shell quote-in">
+  <div class="q-side">
+    <h1 id="h1" class="d-xl">Send what you have. We&rsquo;ll ask for the rest.</h1>
+    <p class="lede">A drawing and a quantity are enough to start. With only a photo and rough sizes, choose &ldquo;Repair or replacement part&rdquo; and we&rsquo;ll sketch it for you to confirm.</p>
+    <h2>What helps us quote</h2>
+    <ul class="ticks"><li>Material, and the thickness or gauge if you know it</li><li>Quantity, now and per year if it repeats</li><li>When you need it</li><li>Finish: bare, painted or powder coated</li></ul>
+    <h2>After you send it</h2>
+    <ol class="after"><li>Your coordinator reads it and replies by email, with questions or a written quote.</li><li>If it&rsquo;s outside the shop&rsquo;s limits, you hear that plainly instead of silence.</li><li>Nothing is cut until you approve the quote, and the drawings for assemblies.</li></ol>
+  </div>
+  <div>
+    <form class="formcard" id="qf" action="#" method="post" novalidate aria-labelledby="form-h">
+      <h2 id="form-h">Request a quote</h2>
+      <fieldset class="fset"><legend>Job type</legend><div class="jobtype"><label><input type="radio" name="type" value="production" data-label="Production part to print" aria-describedby="e_type"><b>Production part to print</b><span>You have a drawing</span></label><label><input type="radio" name="type" value="repair" data-label="Repair or replacement part" aria-describedby="e_type"><b>Repair or replacement part</b><span>A photo and rough sizes</span></label><label><input type="radio" name="type" value="assembly" data-label="Fabricated assembly" aria-describedby="e_type"><b>Fabricated assembly</b><span>Frames, railings, enclosures</span></label><label><input type="radio" name="type" value="unsure" data-label="Not sure" aria-describedby="e_type"><b>Not sure</b><span>Describe it and we&rsquo;ll sort it</span></label></div>
+        <p class="err" id="e_type" aria-live="polite"></p>
+        <p class="prefill" id="prefill" hidden>Filled in from the page you came from. Change it if it&rsquo;s wrong.</p></fieldset>
+      <div class="row2">
+        <div class="fld"><label for="f_co">Company</label><input id="f_co" name="company" autocomplete="organization" required aria-describedby="e_company"><p class="err" id="e_company" aria-live="polite"></p></div>
+        <div class="fld"><label for="f_name">Your name</label><input id="f_name" name="name" autocomplete="name" required aria-describedby="e_name"><p class="err" id="e_name" aria-live="polite"></p></div>
+      </div>
+      <div class="fld"><label for="f_email">Email</label><input id="f_email" name="email" type="email" inputmode="email" autocomplete="email" required aria-describedby="e_email"><p class="err" id="e_email" aria-live="polite"></p></div>
+      <div class="row2">
+        <div class="fld"><label for="f_mat">Material <span class="opt">(a best guess is fine)</span></label><input id="f_mat" name="material" placeholder="11 ga carbon steel"></div>
+        <div class="fld"><label for="f_qty">Quantity</label><input id="f_qty" name="qty" inputmode="numeric" placeholder="40"></div>
+      </div>
+      <div class="fld"><label for="f_dwg">Drawing or photo <span class="opt">(optional)</span></label><input id="f_dwg" name="drawing" type="file" accept=".pdf,.dxf,.dwg,.step,.stp,.jpg,.jpeg,.png" aria-describedby="h_dwg"><p class="hint" id="h_dwg">PDF, DXF, DWG, STEP or a photo. In this demo the file stays on your device.</p></div>
+      <div class="fld"><label for="f_desc">What it is, and when you need it</label><textarea id="f_desc" name="desc" placeholder="Replacement guard for a conveyor, needed by the end of next week"></textarea></div>
+      <div class="send-row"><button class="btn" id="send" type="submit" disabled>Send quote request<span class="arr"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></button></div>
+      <noscript><p class="hint">This demo form needs JavaScript, so it stays switched off. Nothing can be sent from it.</p></noscript>
+    </form>
+    <div class="done" id="done" hidden tabindex="-1" role="status" aria-labelledby="done-h">
+      <div class="done-h"><h2 id="done-h">Nothing was sent. This is a demo.</h2><p>On a real site, this is what the coordinator would receive:</p></div>
+      <dl class="tblock" id="summary"></dl>
+      <div class="done-f"><button class="btn quiet" type="button" id="edit">Edit the request</button></div>
+    </div>
+  </div>
+</div></section>
+</main>
+<footer class="ftr"><div class="shell">
+  <div class="ftr-grid">
+    <div><a class="brand" href="index.html"><svg class="mk" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="7" fill="#11161a"/><path d="M10 23V9l12 14V9" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg><span>Northline<small>Metal Works</small></span></a>
+      <p>Steel, stainless and aluminum parts and assemblies, cut, formed, welded and finished in one shop.</p></div>
+    <nav aria-labelledby="f-pages"><h2 id="f-pages">Pages</h2><a href="what-we-make.html">What we make</a><a href="how-we-work.html">How we work</a><a href="how-we-work.html#capabilities">Capabilities and limits</a><a href="quote.html">Start a quote</a></nav>
+    <div class="eren"><h2>About this site</h2><p>Northline is a made-up business. The site is a working design demo by Eren: the pages, the drawings and the quote form are real, the shop is not. <a href="../../services.html#examples">See more of Eren&rsquo;s work</a></p></div>
+  </div>
+  <p class="ftr-b">Fictional demonstration. No real company, people or orders are shown.</p>
+</div></footer>
+<script src="kit/eren-kit.js"></script>
+<script src="northline.js"></script>
+</body>
+</html>
