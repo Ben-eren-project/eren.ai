@@ -1,0 +1,8 @@
+/* Horizon: a luminous blue horizon framing the working example. */
+.eh-hero{position:relative;isolation:isolate;background:linear-gradient(180deg,#0d1a2c 0%,#152b43 34%,#31566a 67%,#bdcfc9 100%);border:0;padding:clamp(76px,8vw,120px) 24px 0;color:#fff}
+.eh-shell{max-width:1280px}.eh-copy{max-width:1000px;margin-bottom:clamp(62px,7vw,96px)}
+.eh-kicker{border-color:#5a7487;color:#c8dce8;background:rgba(240,248,251,.05);margin-bottom:32px}.eh-kicker span{background:#9bd5f2}
+.eh-hero h1{font-family:Georgia,'Times New Roman',serif!important;font-weight:400!important;letter-spacing:-.045em!important;font-size:clamp(48px,6.8vw,94px)!important;line-height:1.01!important;color:#f7f8f4!important;max-width:1000px}
+.eh-lede{color:#d4e2e8;font-size:19px;max-width:61ch;margin-top:26px}.eh-actions{margin-top:34px}.eh-primary{background:#f6faf9!important;color:#11273a!important;padding:0 25px}.eh-primary:hover{background:#d8edf7!important}.eh-secondary{color:#e4f1f6!important}.eh-caption{color:#c0d2de}
+.eh-showcase{background:#102132;border:1px solid #49677a;padding:20px 20px 0;border-radius:13px 13px 0 0}.eh-window{max-width:none;border-radius:7px 7px 0 0}.eh-under{padding:17px 5px 19px;color:#dce9ec}.eh-windowbody{grid-template-columns:210px minmax(0,1fr)}.eh-work{padding:34px 42px 38px}.eh-layers>div{background:#f0f6f7}.eh-outcome{background:#dceff2}
+@media(max-width:760px){.eh-hero{padding:64px 16px 0}.eh-copy{margin-bottom:52px}.eh-lede{font-size:17px}.eh-showcase{padding:10px 10px 0}.eh-work{padding:22px 18px}.eh-under{padding:16px 4px}.eh-windowbody{display:block}}
