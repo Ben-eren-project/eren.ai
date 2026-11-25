@@ -1,0 +1,28 @@
+/* Horizon visual system: local preview, existing page content and forms retained. */
+.hp-preview{--hp-ink:#142b3d;--hp-blue:#1d4e75;--hp-line:#cad9e0}
+.hp-preview header.hero,.hp-preview header.lead,.hp-preview header.subhero{position:relative!important;background:linear-gradient(155deg,#0d1a2c 0%,#172e45 58%,#345c6c 100%)!important;color:#f8fbfa!important;border:0!important;min-height:590px!important;display:flex!important;align-items:center!important;padding:80px max(24px,calc((100% - 1200px)/2))!important;gap:64px!important;overflow:hidden!important}
+.hp-preview header.hero>.shell,.hp-preview header.lead>.shell,.hp-preview header.subhero>.shell{flex:1 1 56%!important;width:auto!important;max-width:680px!important;margin:0!important;padding:0!important}
+.hp-preview header .glow,.hp-preview header canvas,.hp-preview header .fx-labels{display:none!important}
+.hp-preview header h1{font-family:Georgia,'Times New Roman',serif!important;font-size:clamp(45px,5vw,72px)!important;line-height:1.05!important;font-weight:400!important;letter-spacing:-.04em!important;color:#f8fbfa!important;text-wrap:balance!important}
+.hp-preview header p,.hp-preview header .big,.hp-preview header .note,.hp-preview header .small-note{color:#d6e5eb!important;line-height:1.65!important}
+.hp-preview header .ey,.hp-preview header .grad-text{color:#b6e1f5!important}
+.hp-preview header .principle{background:transparent!important;border:0!important;color:#e5f1f6!important;box-shadow:none!important;padding:20px 0!important}
+.hp-preview header .principle b,.hp-preview header .principle span,.hp-preview header .principle .k{color:#d9e9f0!important}
+.hp-preview header .lead-grid{display:block!important}.hp-preview header .lead-grid>div{max-width:650px}
+.hp-visual{flex:0 1 420px;min-width:300px;background:#f8fbfb;color:#163247;border-radius:8px;padding:26px;box-shadow:0 24px 70px rgba(1,15,26,.18)}
+.hp-visual-top{display:flex;justify-content:space-between;gap:12px;color:#587888;font-size:11px;letter-spacing:.07em;border-bottom:1px solid #d5e2e6;padding-bottom:18px}
+.hp-visual h2{font:400 32px/1.13 Georgia,serif;letter-spacing:-.025em;margin:28px 0 20px;color:#17344a}
+.hp-visual-rows>div{display:grid;grid-template-columns:32px 1fr 20px;align-items:center;gap:8px;padding:16px 0;border-top:1px solid #d8e5e8;font-size:14px}.hp-visual-rows span{color:#5285a0;font-size:12px}.hp-visual-rows strong{font-weight:600;color:#19394d}.hp-visual p{border-top:1px solid #d8e5e8;padding-top:18px;color:#4b6877!important;font-size:12px;margin:0}
+.hp-preview section h2,.hp-preview main h2{font-family:Georgia,'Times New Roman',serif!important;font-weight:400!important;letter-spacing:-.025em!important;line-height:1.13!important}
+.hp-preview section:not(.cta2){padding-block:88px}
+.hp-preview .cta2 h2,.hp-preview .growth-cta h2{font-family:Georgia,serif!important;font-weight:400!important}
+.hp-preview a:focus-visible,.hp-preview button:focus-visible,.hp-preview input:focus-visible,.hp-preview textarea:focus-visible,.hp-preview select:focus-visible{outline:3px solid #397db1!important;outline-offset:3px}
+.hp-start input,.hp-start textarea,.hp-book-call input,.hp-onboarding input,.hp-onboarding textarea,.hp-onboarding select{min-height:44px;border-radius:8px}
+@media(max-width:900px){.hp-preview header.hero,.hp-preview header.lead,.hp-preview header.subhero{display:block!important;min-height:0!important;padding:64px 20px!important}.hp-preview header.hero>.shell,.hp-preview header.lead>.shell,.hp-preview header.subhero>.shell{width:100%!important;max-width:none!important}.hp-visual{min-width:0;margin:36px 0 0;max-width:550px}.hp-preview section:not(.cta2){padding-block:56px}}
+@media(prefers-reduced-motion:reduce){.hp-preview *,.hp-preview *::before,.hp-preview *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.hp-services header .hero-grid{display:block!important}.hp-services header .hero-grid>div+div{margin-top:26px}.hp-services header .hero-grid h1{max-width:650px}
+.hp-about .story>*{min-width:0}.hp-about .quote{min-width:0;overflow-wrap:anywhere}.hp-preview footer a[href^="mailto:"]{overflow-wrap:anywhere}.hp-preview footer .foot-in>div{min-width:0}
+/* Maintain contrast on dark hero backgrounds over existing theme styles. */
+html body.hp-preview header h1{color:#f8fbfa!important}
+html body.hp-preview header p:not(.hp-visual p),html body.hp-preview header .big,html body.hp-preview header .ey,html body.hp-preview header .note{color:#d6e5eb!important}
+html body.hp-services header .path span,html body.hp-services header .path b{color:#d6e5eb!important}
